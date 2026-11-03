@@ -29,7 +29,7 @@ wrap=f'''<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta na
 input{{font:inherit;font-size:1.8rem;letter-spacing:.4em;text-align:center;width:100%;box-sizing:border-box;padding:.6rem;border:2px solid #C9D6DE;border-radius:.8rem}}
 button{{font:inherit;font-weight:700;width:100%;min-height:3rem;margin-top:.9rem;border:0;border-radius:.8rem;background:#1A1F47;color:#fff;font-size:1.05rem}}
 .e{{color:#B3261E;min-height:1.4rem;margin-top:.6rem;font-size:.95rem}}.s{{color:#5B6475;font-size:.9rem}}</style></head>
-<body><form class="c" id="f"><div class="k">KING WINGS TRAVEL</div><h1>{title}</h1>
+<body><form class="c" id="f"><img src="../../logo.png" alt="King Wings Travel DMC" style="width:11rem;max-width:70%;height:auto;display:block;margin:0 auto .3rem"><h1>{title}</h1>
 <label for="p" class="s">{pinL}</label>
 <input id="p" inputmode="numeric" autocomplete="off" maxlength="8" style="margin-top:.6rem">
 <button>{openL}</button><div class="e" id="e"></div></form>
