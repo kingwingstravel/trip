@@ -26,4 +26,8 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
 - `ui` — per-language overrides of any interface text (`weatherV`, `timeV`, `thanksSub`, `noHotel`, `nextT`, …). Languages without built-in texts fall back to English — put their texts here.
 - `route`, `tripImg` — for the "share the whole trip" picture; `showMeals` (false hides meals); `photos` (link after the trip)
 
+New group: `python3 tools/newcode.py .` prints a free CODE and a PIN.
+Full sample (fictional contacts): `tools/example_group.json`.
+Change check: `python3 tools/srchash.py SHEET_VALUES.json "<logo link>"` → compare with `g/CODE/src.sha`; write the new value there after publishing.
+
 No prices, net rates, margins or partner names in GROUP.json. `build_guide.py` stops on sheet errors (#ERROR…) and warns about anything that looks like a price.
