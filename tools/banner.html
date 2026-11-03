@@ -1,36 +1,111 @@
-<div id="kwInstall" style="display:none;position:fixed;left:.6rem;right:.6rem;bottom:5.2rem;z-index:50;background:#1A1F47;color:#fff;border-radius:1rem;padding:.9rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.25);font:15px/1.35 system-ui,-apple-system,Segoe UI,sans-serif">
- <button id="kwInstClose" aria-label="×" style="position:absolute;top:.3rem;right:.5rem;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer">×</button>
- <b style="display:block;margin-bottom:.25rem" id="kwInstHead"></b>
- <div id="kwInstText"></div>
- <button id="kwInstBtn" style="display:none;margin-top:.6rem;width:100%;min-height:2.8rem;border:0;border-radius:.8rem;background:#E9B13F;color:#1A1F47;font-weight:700;font-size:1rem;cursor:pointer"></button>
+<style>
+#kwInstall{display:none;position:fixed;left:.6rem;right:.6rem;bottom:5.4rem;z-index:50;max-width:30rem;margin:0 auto;background:#1A1F47;color:#fff;border:3px solid #E9B13F;border-radius:1.2rem;padding:1.1rem 1.1rem 1rem;box-shadow:0 10px 30px rgba(0,0,0,.35);font:17px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;animation:kwUp .35s ease-out}
+#kwInstall .kwTop{display:flex;gap:.8rem;align-items:center;margin-bottom:.6rem}
+#kwInstall .kwTop img{width:3.2rem;height:3.2rem;border-radius:.8rem;flex:none;background:#fff}
+#kwInstall .kwH{font-weight:800;font-size:1.12rem;line-height:1.3}
+#kwInstall .kwEn{display:block;opacity:.75;font-size:.85em;font-weight:500;margin-top:.15rem}
+#kwInstall .kwT{font-size:1rem}
+#kwInstall .kwT b{color:#E9B13F}
+#kwInstall .kwBtns{display:flex;flex-direction:column;gap:.5rem;margin-top:.9rem}
+#kwInstall button{font:inherit;font-weight:800;min-height:3.2rem;border-radius:.9rem;cursor:pointer;font-size:1.05rem}
+#kwInstall .kwMain{border:0;background:#E9B13F;color:#1A1F47}
+#kwInstall .kwLater{background:none;border:2px solid rgba(255,255,255,.45);color:#fff;font-weight:600;min-height:2.8rem}
+#kwArrow{display:none;position:fixed;left:50%;bottom:.3rem;transform:translateX(-50%);z-index:51;font-size:2.6rem;color:#E9B13F;text-shadow:0 2px 6px rgba(0,0,0,.4);animation:kwBounce 1s infinite}
+#kwPill{display:none;position:fixed;right:.6rem;bottom:5.6rem;z-index:40;background:#E9B13F;color:#1A1F47;border:0;border-radius:2rem;padding:.55rem .9rem;font:700 .95rem system-ui,-apple-system,Segoe UI,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}
+@keyframes kwUp{from{transform:translateY(2rem);opacity:0}to{transform:none;opacity:1}}
+@keyframes kwBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,.6rem)}}
+</style>
+<div id="kwInstall" role="dialog" aria-live="polite">
+ <div class="kwTop"><img src="../../icon-192.png" alt=""><div class="kwH" id="kwInstHead"></div></div>
+ <div class="kwT" id="kwInstText"></div>
+ <div class="kwBtns"><button class="kwMain" id="kwInstBtn" style="display:none"></button><button class="kwLater" id="kwInstLater"></button></div>
 </div>
+<div id="kwArrow" aria-hidden="true">⬇</div>
+<button id="kwPill"></button>
 <script>
 (function(){
- var KEY="kw_inst_hide";
- function get(){try{return localStorage.getItem(KEY)}catch(e){return null}}
- function set(){try{localStorage.setItem(KEY,"1")}catch(e){}}
+ // Rules: show after 12 s; "Later" -> back on the next visit, max 3 times; then only the small button; never once installed.
+ var NK="kw_inst_n",DK="kw_inst_done",SK="kw_inst_seen",MAX=3,DELAY=12000;
+ function lg_(k){try{return localStorage.getItem(k)}catch(e){return null}}
+ function ls_(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+ function ss_(k,v){try{if(v===undefined)return sessionStorage.getItem(k);sessionStorage.setItem(k,v)}catch(e){return null}}
  if("serviceWorker" in navigator){navigator.serviceWorker.register("../../sw.js",{scope:"../../"}).catch(function(){})}
- var standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
- if(standalone||get())return;
+ var standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+ if(standalone){ls_(DK,"1");return}
+ if(lg_(DK))return;
  var X={
-  en:{h:"Save to home screen",i:"Install",a:"Open the guide in one tap, even offline.",s:"Open this link in <b>Safari</b>, then save it to your home screen.",t:"1) Tap <b>Share</b> ⬆︎ below<br>2) Choose <b>Add to Home Screen</b>"},
-  id:{h:"Simpan ke layar utama",i:"Pasang",a:"Buka panduan dengan satu ketukan, juga tanpa internet.",s:"Buka tautan ini di <b>Safari</b> (menu ⋯ → «Buka di Safari»), lalu simpan ke layar utama.",t:"1) Ketuk <b>Bagikan</b> ⬆︎ di bawah<br>2) Pilih <b>«Tambah ke Layar Utama»</b>"},
-  ms:{h:"Simpan ke skrin utama",i:"Pasang",a:"Buka panduan dengan satu sentuhan, walaupun tanpa internet.",s:"Buka pautan ini dalam <b>Safari</b>, kemudian simpan ke skrin utama.",t:"1) Ketik <b>Kongsi</b> ⬆︎ di bawah<br>2) Pilih <b>«Tambah ke Skrin Utama»</b>"},
-  ru:{h:"Сохранить на главный экран",i:"Установить",a:"Путеводитель откроется одним касанием, даже без интернета.",s:"Откройте эту ссылку в <b>Safari</b> и сохраните на главный экран.",t:"1) Нажмите <b>Поделиться</b> ⬆︎ внизу<br>2) Выберите <b>«На экран „Домой“»</b>"}
+  en:{h:"Put King Wings on your home screen",a:"The guide will open in one tap, even without internet.",i:"Install",l:"Later",p:"📲 Install",
+      ch:"To install, open this page in <b>Chrome</b>.",cb:"Open in Chrome",
+      sf:"To install, open this page in <b>Safari</b>: tap <b>⋯</b> or the compass icon, then <b>«Open in Safari»</b>. Or copy the link and paste it into Safari.",cp:"Copy link",ok:"Link copied ✓",
+      ios:"1) Tap <b>Share</b> ⬆︎ at the bottom<br>2) Tap <b>«Add to Home Screen»</b><br>3) Tap <b>«Add»</b>",
+      ioc:"1) Tap <b>Share</b> ⬆︎ at the top right<br>2) Tap <b>«Add to Home Screen»</b>",
+      and:"1) Tap the menu <b>⋮</b> at the top right<br>2) Tap <b>«Add to Home screen»</b> or <b>«Install app»</b>"},
+  id:{h:"Simpan King Wings di layar utama",a:"Panduan terbuka dengan satu ketukan, juga tanpa internet.",i:"Pasang",l:"Nanti",p:"📲 Pasang",
+      ch:"Untuk memasang, buka halaman ini di <b>Chrome</b>.",cb:"Buka di Chrome",
+      sf:"Untuk memasang, buka halaman ini di <b>Safari</b>: ketuk <b>⋯</b> atau ikon kompas, lalu <b>«Buka di Safari»</b>. Atau salin tautan dan tempel di Safari.",cp:"Salin tautan",ok:"Tautan tersalin ✓",
+      ios:"1) Ketuk <b>Bagikan</b> ⬆︎ di bawah<br>2) Ketuk <b>«Tambah ke Layar Utama»</b><br>3) Ketuk <b>«Tambah»</b>",
+      ioc:"1) Ketuk <b>Bagikan</b> ⬆︎ di kanan atas<br>2) Ketuk <b>«Tambah ke Layar Utama»</b>",
+      and:"1) Ketuk menu <b>⋮</b> di kanan atas<br>2) Ketuk <b>«Tambahkan ke layar utama»</b> atau <b>«Instal aplikasi»</b>"},
+  ms:{h:"Simpan King Wings di skrin utama",a:"Panduan dibuka dengan satu sentuhan, walaupun tanpa internet.",i:"Pasang",l:"Kemudian",p:"📲 Pasang",
+      ch:"Untuk memasang, buka halaman ini dalam <b>Chrome</b>.",cb:"Buka dalam Chrome",
+      sf:"Untuk memasang, buka halaman ini dalam <b>Safari</b>: ketik <b>⋯</b> atau ikon kompas, kemudian <b>«Buka dalam Safari»</b>. Atau salin pautan dan tampal dalam Safari.",cp:"Salin pautan",ok:"Pautan disalin ✓",
+      ios:"1) Ketik <b>Kongsi</b> ⬆︎ di bawah<br>2) Ketik <b>«Tambah ke Skrin Utama»</b><br>3) Ketik <b>«Tambah»</b>",
+      ioc:"1) Ketik <b>Kongsi</b> ⬆︎ di atas kanan<br>2) Ketik <b>«Tambah ke Skrin Utama»</b>",
+      and:"1) Ketik menu <b>⋮</b> di atas kanan<br>2) Ketik <b>«Tambah ke skrin utama»</b> atau <b>«Pasang apl»</b>"},
+  ru:{h:"Поставьте King Wings на главный экран",a:"Путеводитель будет открываться одним касанием, даже без интернета.",i:"Установить",l:"Позже",p:"📲 Иконка",
+      ch:"Чтобы установить, откройте эту страницу в <b>Chrome</b>.",cb:"Открыть в Chrome",
+      sf:"Чтобы установить, откройте эту страницу в <b>Safari</b>: нажмите <b>⋯</b> или значок компаса, затем <b>«Открыть в Safari»</b>. Или скопируйте ссылку и вставьте в Safari.",cp:"Скопировать ссылку",ok:"Ссылка скопирована ✓",
+      ios:"1) Нажмите <b>Поделиться</b> ⬆︎ внизу<br>2) Нажмите <b>«На экран „Домой“»</b><br>3) Нажмите <b>«Добавить»</b>",
+      ioc:"1) Нажмите <b>Поделиться</b> ⬆︎ вверху справа<br>2) Нажмите <b>«На экран „Домой“»</b>",
+      and:"1) Нажмите меню <b>⋮</b> вверху справа<br>2) Нажмите <b>«Добавить на главный экран»</b> или <b>«Установить приложение»</b>"}
  };
  var lg=(document.documentElement.lang||"en").slice(0,2),A=X[lg]||X.en,B=X.en,two=A!==B;
- function j(a,b,sep){return two?a+sep+"<span style='opacity:.8'>"+b+"</span>":a}
- var box=document.getElementById("kwInstall"),txt=document.getElementById("kwInstText"),btn=document.getElementById("kwInstBtn");
- document.getElementById("kwInstHead").innerHTML="📲 "+A.h+(two?" · "+B.h:"");
- btn.textContent=A.i+(two?" · "+B.i:"");
- document.getElementById("kwInstClose").onclick=function(){box.style.display="none";set()};
- var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua),inapp=/FBAN|FBAV|Instagram|WhatsApp|Line\/|Telegram/i.test(ua),safari=ios&&/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS/.test(ua);
+ function h2(k){return A[k]+(two?"<span class='kwEn'>"+B[k]+"</span>":"")}
+ var box=document.getElementById("kwInstall"),txt=document.getElementById("kwInstText"),btn=document.getElementById("kwInstBtn"),later=document.getElementById("kwInstLater"),pill=document.getElementById("kwPill"),arrow=document.getElementById("kwArrow");
+ document.getElementById("kwInstHead").innerHTML=h2("h");
+ later.textContent=A.l+(two?" · "+B.l:"");
+ pill.textContent=A.p;
+
+ var ua=navigator.userAgent,
+     ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),
+     iphone=/iPhone|iPod/.test(ua),
+     android=/Android/i.test(ua),
+     inapp=/FBAN|FBAV|FB_IAB|Instagram|WhatsApp|Line\/|Telegram|; wv\)|MicroMessenger|TikTok/i.test(ua),
+     crios=/CriOS/.test(ua),
+     safari=ios&&/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua)&&!inapp;
  var deferred=null;
- window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferred=e;txt.innerHTML=j(A.a,B.a," · ");btn.style.display="block";box.style.display="block"});
- btn.onclick=function(){if(!deferred)return;deferred.prompt();deferred.userChoice.finally(function(){box.style.display="none";set()})};
- if(ios){
-  txt.innerHTML=(inapp||!safari)?j(A.s,B.s,"<br>"):j(A.t,B.t,"<br>");
-  box.style.display="block";
+ window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferred=e});
+ window.addEventListener("appinstalled",function(){ls_(DK,"1");hide();pill.style.display="none"});
+
+ // link that reopens this guide with the PIN already in it (so the guest does not type it again in the other browser)
+ function pinUrl(){var m=location.pathname.match(/\/g\/([^\/]+)\//),p=m?lg_("kw_pin_"+m[1]):null;return location.origin+location.pathname+(p?"?p="+encodeURIComponent(p):"")}
+
+ function setMain(label,fn){btn.textContent=label;btn.style.display="block";btn.onclick=fn}
+ function fill(){
+  btn.style.display="none";arrow.style.display="none";
+  if(deferred){txt.innerHTML=h2("a");setMain(A.i+(two?" · "+B.i:""),function(){deferred.prompt();deferred.userChoice.then(function(r){if(r&&r.outcome==="accepted")ls_(DK,"1")}).finally(function(){deferred=null;hide()})});return true}
+  if(android&&inapp){
+   txt.innerHTML=h2("ch");
+   setMain(A.cb+(two?" · "+B.cb:""),function(){var u=pinUrl(),r=u.replace(/^https:\/\//,"");location.href="intent://"+r+"#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(u)+";end"});return true}
+  if(android){txt.innerHTML=h2("and");return true}
+  if(ios&&safari){txt.innerHTML=h2("ios");if(iphone)arrow.style.display="block";return true}
+  if(ios&&crios){txt.innerHTML=h2("ioc");return true}
+  if(ios){
+   txt.innerHTML=h2("sf");
+   setMain(A.cp+(two?" · "+B.cp:""),function(){var u=pinUrl();function ok(){btn.textContent=A.ok}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(ok,function(){prompt("",u)});else prompt("",u)});return true}
+  return false; // desktop without install support: nothing to show
  }
+ function show(){if(!fill())return;pill.style.display="none";box.style.display="block"}
+ function hide(){box.style.display="none";arrow.style.display="none"}
+ later.onclick=function(){hide();ls_(NK,String((+lg_(NK)||0)+1));pill.style.display="block"};
+ pill.onclick=show;
+
+ setTimeout(function(){
+  if(!ios&&!android&&!deferred)return;           // desktop: only if the browser can install
+  var n=+lg_(NK)||0;
+  if(n>=MAX||ss_(SK)){pill.style.display="block";return}  // already asked this visit, or 3 times: small button only
+  ss_(SK,"1");show();
+ },DELAY);
 })();
 </script>
