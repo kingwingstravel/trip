@@ -1,8 +1,8 @@
 <div id="kwInstall" style="display:none;position:fixed;left:.6rem;right:.6rem;bottom:5.2rem;z-index:50;background:#1A1F47;color:#fff;border-radius:1rem;padding:.9rem 1rem;box-shadow:0 8px 24px rgba(0,0,0,.25);font:15px/1.35 system-ui,-apple-system,Segoe UI,sans-serif">
  <button id="kwInstClose" aria-label="×" style="position:absolute;top:.3rem;right:.5rem;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer">×</button>
- <b style="display:block;margin-bottom:.25rem">📲 Simpan ke layar utama · Save to home screen</b>
+ <b style="display:block;margin-bottom:.25rem" id="kwInstHead"></b>
  <div id="kwInstText"></div>
- <button id="kwInstBtn" style="display:none;margin-top:.6rem;width:100%;min-height:2.8rem;border:0;border-radius:.8rem;background:#E9B13F;color:#1A1F47;font-weight:700;font-size:1rem;cursor:pointer">Pasang · Install</button>
+ <button id="kwInstBtn" style="display:none;margin-top:.6rem;width:100%;min-height:2.8rem;border:0;border-radius:.8rem;background:#E9B13F;color:#1A1F47;font-weight:700;font-size:1rem;cursor:pointer"></button>
 </div>
 <script>
 (function(){
@@ -12,15 +12,24 @@
  if("serviceWorker" in navigator){navigator.serviceWorker.register("../../sw.js",{scope:"../../"}).catch(function(){})}
  var standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
  if(standalone||get())return;
+ var X={
+  en:{h:"Save to home screen",i:"Install",a:"Open the guide in one tap, even offline.",s:"Open this link in <b>Safari</b>, then save it to your home screen.",t:"1) Tap <b>Share</b> ⬆︎ below<br>2) Choose <b>Add to Home Screen</b>"},
+  id:{h:"Simpan ke layar utama",i:"Pasang",a:"Buka panduan dengan satu ketukan, juga tanpa internet.",s:"Buka tautan ini di <b>Safari</b> (menu ⋯ → «Buka di Safari»), lalu simpan ke layar utama.",t:"1) Ketuk <b>Bagikan</b> ⬆︎ di bawah<br>2) Pilih <b>«Tambah ke Layar Utama»</b>"},
+  ms:{h:"Simpan ke skrin utama",i:"Pasang",a:"Buka panduan dengan satu sentuhan, walaupun tanpa internet.",s:"Buka pautan ini dalam <b>Safari</b>, kemudian simpan ke skrin utama.",t:"1) Ketik <b>Kongsi</b> ⬆︎ di bawah<br>2) Pilih <b>«Tambah ke Skrin Utama»</b>"},
+  ru:{h:"Сохранить на главный экран",i:"Установить",a:"Путеводитель откроется одним касанием, даже без интернета.",s:"Откройте эту ссылку в <b>Safari</b> и сохраните на главный экран.",t:"1) Нажмите <b>Поделиться</b> ⬆︎ внизу<br>2) Выберите <b>«На экран „Домой“»</b>"}
+ };
+ var lg=(document.documentElement.lang||"en").slice(0,2),A=X[lg]||X.en,B=X.en,two=A!==B;
+ function j(a,b,sep){return two?a+sep+"<span style='opacity:.8'>"+b+"</span>":a}
  var box=document.getElementById("kwInstall"),txt=document.getElementById("kwInstText"),btn=document.getElementById("kwInstBtn");
+ document.getElementById("kwInstHead").innerHTML="📲 "+A.h+(two?" · "+B.h:"");
+ btn.textContent=A.i+(two?" · "+B.i:"");
  document.getElementById("kwInstClose").onclick=function(){box.style.display="none";set()};
  var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua),inapp=/FBAN|FBAV|Instagram|WhatsApp|Line\/|Telegram/i.test(ua),safari=ios&&/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS/.test(ua);
  var deferred=null;
- window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferred=e;txt.textContent="Buka panduan dengan satu ketukan, juga tanpa internet. · Open the guide in one tap, even offline.";btn.style.display="block";box.style.display="block"});
+ window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferred=e;txt.innerHTML=j(A.a,B.a," · ");btn.style.display="block";box.style.display="block"});
  btn.onclick=function(){if(!deferred)return;deferred.prompt();deferred.userChoice.finally(function(){box.style.display="none";set()})};
  if(ios){
-  if(inapp||!safari){txt.innerHTML="Buka tautan ini di <b>Safari</b> (menu ⋯ → «Buka di Safari»), lalu simpan ke layar utama.<br><span style='opacity:.8'>Open this link in <b>Safari</b>, then save it to your home screen.</span>"}
-  else{txt.innerHTML="1) Ketuk <b>Bagikan</b> <span style='font-size:1.1em'>⬆︎</span> di bawah · Tap <b>Share</b><br>2) Pilih <b>«Tambah ke Layar Utama»</b> · <b>Add to Home Screen</b>"}
+  txt.innerHTML=(inapp||!safari)?j(A.s,B.s,"<br>"):j(A.t,B.t,"<br>");
   box.style.display="block";
  }
 })();
