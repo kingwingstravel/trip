@@ -1,0 +1,956 @@
+{
+ "code": "abcdefgh",
+ "lang": "id",
+ "langs": [
+  "id",
+  "en"
+ ],
+ "title": "Panduan Perjalanan · Sufi Heritage · 2–9 Nov 2026",
+ "start": "2026-11-02",
+ "countries": [
+  "uz",
+  "kz"
+ ],
+ "home": "kz",
+ "guests": {
+  "id": "6 tamu + 1 bayi",
+  "en": "6 guests + 1 infant"
+ },
+ "logo": {
+  "mode": "kw"
+ },
+ "support": "+7 700 000 00 00",
+ "guides": {
+  "kz": {
+   "name": "Guide Name",
+   "phone": "+7 700 000 00 01"
+  },
+  "uz": {
+   "name": "Guide Name"
+  }
+ },
+ "drivers": {
+  "kz": {
+   "name": "Driver Name",
+   "car": "Hyundai Starex"
+  }
+ },
+ "route": "Tashkent · Turkistan · Almaty · Kolsai · Bukhara · Samarkand",
+ "tripImg": "madrasa",
+ "ui": {
+  "id": {
+   "timeV": "Semua negara di rute: UTC+5 (2 jam lebih lambat dari Jakarta)",
+   "weatherV": "Kota sekitar 3–15 °C, malam dekat 0 °C; Shymbulak dan Kolsai lebih dingin",
+   "weather": "Cuaca November",
+   "noHotel": "Malam ini tanpa hotel — penerbangan pulang",
+   "thanksSub": "8 hari, 2 negara, ziarah warisan sufi dan alam Kazakhstan — banyak kenangan. Semoga perjalanan pulang Anda lancar."
+  },
+  "en": {
+   "timeV": "All countries on the route: UTC+5 (2 hours behind Jakarta)",
+   "weatherV": "Cities about 3–15 °C, nights near 0 °C; Shymbulak and Kolsai are colder",
+   "weather": "Weather in November",
+   "noHotel": "No hotel tonight — flight home",
+   "thanksSub": "8 days, 2 countries, Sufi heritage and the nature of Kazakhstan — many memories. Have a safe trip home."
+  }
+ },
+ "check": {
+  "id": [
+   "Paspor berlaku minimal 6 bulan",
+   "Paspor selalu di tas tangan (perbatasan 3 Nov, penerbangan 4, 6 dan 9 Nov)",
+   "Asuransi perjalanan",
+   "Sedikit uang tunai (dolar AS dalam pecahan kecil)",
+   "Adaptor listrik tipe C/F",
+   "Jaket hangat, topi, sarung tangan, sepatu antiselip (Shymbulak, Kolsai)",
+   "Pakaian sopan dan kerudung untuk tempat ziarah",
+   "Buka panduan ini sekali saat online"
+  ],
+  "en": [
+   "Passport valid for at least 6 months",
+   "Passport always in your hand luggage (border 3 Nov, flights 4, 6 and 9 Nov)",
+   "Travel insurance",
+   "Some cash (US dollars in small notes)",
+   "Power adapter type C/F",
+   "Warm jacket, hat, gloves, anti-slip shoes (Shymbulak, Kolsai)",
+   "Modest clothes and a scarf for the holy sites",
+   "Open this guide once while online"
+  ]
+ },
+ "stays": [
+  {
+   "city": "Tashkent",
+   "from": 0,
+   "to": 1,
+   "nights": 1
+  },
+  {
+   "city": "Turkistan",
+   "name": "Hampton by Hilton Turkistan",
+   "from": 1,
+   "to": 2,
+   "nights": 1,
+   "in": "20:00",
+   "booking": "000001, 000002",
+   "addr": "6A Zholbarys Khan St, Turkistan",
+   "taxiRu": "г. Туркестан, ул. Жолбарыс хана, 6А",
+   "nameRu": "Отель «Hampton by Hilton»",
+   "map": "https://www.google.com/maps/search/?api=1&query=Hampton+by+Hilton+Turkistan"
+  },
+  {
+   "city": "Almaty",
+   "name": "Astra Hotel",
+   "from": 2,
+   "to": 3,
+   "nights": 1,
+   "in": "23:15",
+   "booking": "000001, 000002",
+   "addr": "12 Zheltoksan St, Almaty",
+   "taxiRu": "г. Алматы, ул. Желтоксан, 12",
+   "nameRu": "Отель «Astra»",
+   "map": "https://www.google.com/maps/search/?api=1&query=Astra+Hotel+Zheltoksan+12+Almaty"
+  },
+  {
+   "city": "Saty (Kolsai)",
+   "name": "Saty Village guesthouse",
+   "from": 3,
+   "to": 4,
+   "nights": 1,
+   "in": "20:30",
+   "addr": "Saty village, Kolsai Lakes area"
+  },
+  {
+   "city": "Tashkent",
+   "from": 4,
+   "to": 5,
+   "nights": 1
+  },
+  {
+   "city": "Bukhara",
+   "from": 5,
+   "to": 6,
+   "nights": 1
+  },
+  {
+   "city": "Samarkand",
+   "name": "Samaria Hotel & Spa",
+   "from": 6,
+   "to": 7,
+   "nights": 1,
+   "in": "20:30",
+   "addr": ""
+  }
+ ],
+ "days": [
+  {
+   "c": "uz",
+   "place": "Tashkent",
+   "t": "21:50",
+   "title": {
+    "id": "Jakarta — Kuala Lumpur — Tashkent, tiba malam",
+    "en": "Jakarta — Kuala Lumpur — Tashkent, evening arrival"
+   },
+   "meet": {
+    "id": "Aula kedatangan, Bandara Internasional Tashkent (TAS)",
+    "en": "Arrivals hall, Tashkent International Airport (TAS)"
+   },
+   "plan": [
+    [
+     "21:50",
+     {
+      "id": "Tiba di Tashkent (Batik Air OD 751 dari Kuala Lumpur — akan dikonfirmasi)",
+      "en": "Arrival in Tashkent (Batik Air OD 751 from Kuala Lumpur — to be confirmed)"
+     }
+    ],
+    [
+     "22:00",
+     {
+      "id": "Pemeriksaan paspor, bagasi, dan penjemputan",
+      "en": "Passport control, luggage and meeting"
+     }
+    ],
+    [
+     "23:00",
+     {
+      "id": "Transfer ke hotel",
+      "en": "Transfer to the hotel"
+     }
+    ],
+    [
+     "23:30",
+     {
+      "id": "Check-in dan istirahat",
+      "en": "Check-in and rest"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Selamat datang di Uzbekistan! Simpan paspor dan dokumen visa di tas tangan. Waktu Uzbekistan UTC+5.",
+    "en": "Welcome to Uzbekistan! Passport and visa documents in your hand luggage. Uzbekistan time UTC+5."
+   },
+   "tags": [
+    {
+     "id": "Tiba 21:50",
+     "en": "Arrival 21:50"
+    }
+   ],
+   "hotel": 0,
+   "img": "night_arrival"
+  },
+  {
+   "c": "kz",
+   "place": "Tashkent → Turkistan",
+   "t": "07:30",
+   "title": {
+    "id": "Tashkent — perbatasan — Turkistan",
+    "en": "Tashkent — border — Turkistan"
+   },
+   "meet": {
+    "id": "Lobi hotel, Tashkent",
+    "en": "Hotel lobby, Tashkent"
+   },
+   "plan": [
+    [
+     "06:30",
+     {
+      "id": "Sarapan dan check-out",
+      "en": "Breakfast and check-out"
+     }
+    ],
+    [
+     "07:30",
+     {
+      "id": "Perjalanan ke perbatasan Kazakhstan",
+      "en": "Drive to the Kazakhstan border"
+     }
+    ],
+    [
+     "09:00",
+     {
+      "id": "Melintasi perbatasan Kaplanbek (sekitar 09:00–11:00), bertemu guide Kazakhstan",
+      "en": "Kaplanbek border crossing (about 09:00–11:00), meet your Kazakhstan guide"
+     }
+    ],
+    [
+     "11:00",
+     {
+      "id": "Perjalanan ke Turkistan (perkiraan)",
+      "en": "Drive to Turkistan (approx.)"
+     }
+    ],
+    [
+     "13:00",
+     {
+      "id": "Makan siang",
+      "en": "Lunch"
+     }
+    ],
+    [
+     "14:00",
+     {
+      "id": "Ziarah Mausoleum Khoja Ahmed Yasawi",
+      "en": "Mausoleum of Khoja Ahmed Yasawi"
+     }
+    ],
+    [
+     "16:00",
+     {
+      "id": "Jalan-jalan di kota tua Turkistan",
+      "en": "Walk in historic Turkistan"
+     }
+    ],
+    [
+     "18:30",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "20:00",
+     {
+      "id": "Check-in hotel",
+      "en": "Hotel check-in"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Hari melintasi perbatasan · paspor di tas tangan. Uzbekistan → Kazakhstan (pos perbatasan Kaplanbek). Zona waktu sama (UTC+5). Jadwal setelah perbatasan tergantung antrean. Berpakaian sopan di mausoleum: bahu dan lutut tertutup, kerudung untuk wanita.",
+    "en": "Border day · passport in your hand luggage. Uzbekistan → Kazakhstan (Kaplanbek checkpoint). Same time zone (UTC+5). Times after the border depend on the queue. Modest dress for the mausoleum: shoulders and knees covered, scarf for ladies."
+   },
+   "tags": [
+    {
+     "id": "Hari perbatasan",
+     "en": "Border day"
+    },
+    {
+     "id": "Paspor!",
+     "en": "Passport!"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "13:00 · makan siang di Turkistan",
+     "en": "13:00 · lunch in Turkistan"
+    },
+    "d": {
+     "id": "18:30 · makan malam di Turkistan",
+     "en": "18:30 · dinner in Turkistan"
+    }
+   },
+   "hotel": 1,
+   "img": "road"
+  },
+  {
+   "c": "kz",
+   "place": "Turkistan → Almaty",
+   "t": "08:00",
+   "title": {
+    "id": "Turkistan — Shymkent — terbang ke Almaty",
+    "en": "Turkistan — Shymkent — flight to Almaty"
+   },
+   "meet": {
+    "id": "Lobi hotel, Hampton by Hilton Turkistan",
+    "en": "Hotel lobby, Hampton by Hilton Turkistan"
+   },
+   "plan": [
+    [
+     "07:00",
+     {
+      "id": "Sarapan",
+      "en": "Breakfast"
+     }
+    ],
+    [
+     "08:00",
+     {
+      "id": "Check-out dan perjalanan ke Shymkent",
+      "en": "Check-out and drive to Shymkent"
+     }
+    ],
+    [
+     "10:30",
+     {
+      "id": "Tiba di Shymkent (perkiraan)",
+      "en": "Arrival in Shymkent (approx.)"
+     }
+    ],
+    [
+     "11:00",
+     {
+      "id": "Tur kota Shymkent",
+      "en": "Shymkent city tour"
+     }
+    ],
+    [
+     "12:30",
+     {
+      "id": "Makan siang",
+      "en": "Lunch"
+     }
+    ],
+    [
+     "13:30",
+     {
+      "id": "Pusat kota dan waktu bebas",
+      "en": "City centre and free time"
+     }
+    ],
+    [
+     "17:00",
+     {
+      "id": "Makan malam lebih awal",
+      "en": "Early dinner"
+     }
+    ],
+    [
+     "18:15",
+     {
+      "id": "Transfer ke Bandara Shymkent (CIT)",
+      "en": "Transfer to Shymkent Airport (CIT)"
+     }
+    ],
+    [
+     "21:05",
+     {
+      "id": "Penerbangan Air Astana KC 970 Shymkent → Almaty (tiba 22:25)",
+      "en": "Air Astana KC 970 Shymkent → Almaty (lands 22:25)"
+     }
+    ],
+    [
+     "23:15",
+     {
+      "id": "Transfer dan check-in hotel",
+      "en": "Transfer and hotel check-in"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Hari ini penerbangan domestik: paspor di tas tangan. Koper sudah siap setelah sarapan. Bagasi per orang: 1 tas kabin maks. 8 kg + 1 koper maks. 23 kg. Kode booking: ABC123.",
+    "en": "Domestic flight today: passport in your hand luggage. Keep your suitcase packed after breakfast. Baggage per person: 1 hand bag up to 8 kg + 1 suitcase up to 23 kg. Booking code: ABC123."
+   },
+   "tags": [
+    {
+     "id": "KC 970 · 21:05",
+     "en": "KC 970 · 21:05"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "12:30–13:30 · makan siang di Shymkent",
+     "en": "12:30–13:30 · lunch in Shymkent"
+    },
+    "d": {
+     "id": "17:00–18:00 · makan malam lebih awal di Shymkent",
+     "en": "17:00–18:00 · early dinner in Shymkent"
+    }
+   },
+   "hotel": 2,
+   "img": "flight"
+  },
+  {
+   "c": "kz",
+   "place": "Almaty → Kolsai",
+   "t": "07:30",
+   "title": {
+    "id": "Almaty — Shymbulak — Kolsai",
+    "en": "Almaty — Shymbulak — Kolsai"
+   },
+   "meet": {
+    "id": "Lobi hotel, Astra, Almaty",
+    "en": "Hotel lobby, Astra, Almaty"
+   },
+   "plan": [
+    [
+     "06:30",
+     {
+      "id": "Sarapan dan check-out",
+      "en": "Breakfast and check-out"
+     }
+    ],
+    [
+     "07:30",
+     {
+      "id": "Perjalanan ke Medeu dan Shymbulak",
+      "en": "Drive to Medeu and Shymbulak"
+     }
+    ],
+    [
+     "08:30",
+     {
+      "id": "Pemandangan gunung dan kereta gantung",
+      "en": "Mountain views and cable car"
+     }
+    ],
+    [
+     "10:30",
+     {
+      "id": "Perjalanan ke kawasan Kolsai",
+      "en": "Drive to the Kolsai area"
+     }
+    ],
+    [
+     "13:00",
+     {
+      "id": "Makan siang di perjalanan",
+      "en": "Lunch on the way"
+     }
+    ],
+    [
+     "14:00",
+     {
+      "id": "Melewati kawasan Charyn menuju Saty / Kolsai",
+      "en": "Through the Charyn area to Saty / Kolsai"
+     }
+    ],
+    [
+     "17:30",
+     {
+      "id": "Danau Kolsai, jika waktu dan cuaca memungkinkan",
+      "en": "Kolsai Lake, if time and weather allow"
+     }
+    ],
+    [
+     "19:30",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "20:30",
+     {
+      "id": "Check-in di guesthouse",
+      "en": "Check-in at the guesthouse"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Hari perjalanan panjang di pegunungan. Bawa jaket hangat, topi, sarung tangan, dan sepatu antiselip. Sinyal ponsel sangat lemah atau tidak ada di dekat Kolsai. Kunjungan ke danau bisa dipindah ke pagi berikutnya.",
+    "en": "Long road day in the mountains. Warm jacket, hat, gloves and anti-slip shoes. Little or no mobile signal near Kolsai. The lake visit may move to the next morning."
+   },
+   "tags": [
+    {
+     "id": "Pakaian hangat",
+     "en": "Warm clothes"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "13:00 · makan siang di perjalanan",
+     "en": "13:00 · lunch on the way"
+    },
+    "d": {
+     "id": "Kolsai Lakes Town · 19:30 · makan malam",
+     "en": "Kolsai Lakes Town · 19:30 · dinner"
+    }
+   },
+   "hotel": 3,
+   "img": "mountains"
+  },
+  {
+   "c": "kz",
+   "place": "Kolsai → Almaty → Tashkent",
+   "t": "07:30",
+   "title": {
+    "id": "Kolsai — tur kota Almaty — terbang ke Tashkent",
+    "en": "Kolsai — Almaty city tour — flight to Tashkent"
+   },
+   "meet": {
+    "id": "Guesthouse Saty Village",
+    "en": "Saty Village guesthouse"
+   },
+   "plan": [
+    [
+     "06:30",
+     {
+      "id": "Sarapan dan check-out",
+      "en": "Breakfast and check-out"
+     }
+    ],
+    [
+     "07:30",
+     {
+      "id": "Danau Kolsai: foto pagi",
+      "en": "Kolsai Lake: morning photo stop"
+     }
+    ],
+    [
+     "08:30",
+     {
+      "id": "Kembali ke Almaty",
+      "en": "Drive back to Almaty"
+     }
+    ],
+    [
+     "13:30",
+     {
+      "id": "Makan siang (perkiraan)",
+      "en": "Lunch (approx.)"
+     }
+    ],
+    [
+     "14:30",
+     {
+      "id": "Taman Panfilov, Katedral Zenkov, dan pusat kota",
+      "en": "Panfilov Park, Zenkov Cathedral and city centre"
+     }
+    ],
+    [
+     "16:30",
+     {
+      "id": "Green Bazaar / toko cokelat Rahat, jika waktu memungkinkan",
+      "en": "Green Bazaar / Rahat chocolate shop, if time allows"
+     }
+    ],
+    [
+     "18:00",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "19:30",
+     {
+      "id": "Transfer ke Bandara Almaty",
+      "en": "Transfer to Almaty Airport"
+     }
+    ],
+    [
+     "20:10",
+     {
+      "id": "Di bandara, 3 jam sebelum penerbangan",
+      "en": "At the airport, 3 hours before the flight"
+     }
+    ],
+    [
+     "23:10",
+     {
+      "id": "Uzbekistan Airways HY 766 Almaty → Tashkent (akan dikonfirmasi), tiba 00:40 (7 Nov)",
+      "en": "Uzbekistan Airways HY 766 Almaty → Tashkent (to be confirmed), lands 00:40 (7 Nov)"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Hari melintasi perbatasan · paspor di tas tangan. Penerbangan internasional Kazakhstan → Uzbekistan. Zona waktu sama (UTC+5). Kemas koper di pagi hari — malam ini tidak ada hotel sebelum penerbangan.",
+    "en": "Border day · passport in your hand luggage. International flight Kazakhstan → Uzbekistan. Same time zone (UTC+5). Pack your suitcase in the morning — no hotel tonight before the flight."
+   },
+   "tags": [
+    {
+     "id": "Ganti negara",
+     "en": "Border day"
+    },
+    {
+     "id": "HY 766 · 23:10",
+     "en": "HY 766 · 23:10"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "13:30 · makan siang di Almaty",
+     "en": "13:30 · lunch in Almaty"
+    },
+    "d": {
+     "id": "18:00–19:00 · makan malam di Almaty",
+     "en": "18:00–19:00 · dinner in Almaty"
+    }
+   },
+   "hotel": 4,
+   "img": "city"
+  },
+  {
+   "c": "uz",
+   "place": "Tashkent → Bukhara",
+   "t": "07:30",
+   "title": {
+    "id": "Tashkent — Bukhara — ziarah lima Pir",
+    "en": "Tashkent — Bukhara — the five Pirs"
+   },
+   "meet": {
+    "id": "Stasiun kereta Tashkent",
+    "en": "Tashkent railway station"
+   },
+   "plan": [
+    [
+     "00:40",
+     {
+      "id": "Tiba di Bandara Tashkent",
+      "en": "Arrival at Tashkent Airport"
+     }
+    ],
+    [
+     "01:30",
+     {
+      "id": "Transfer dan istirahat singkat",
+      "en": "Transfer and short rest"
+     }
+    ],
+    [
+     "07:30",
+     {
+      "id": "Berkumpul di stasiun kereta",
+      "en": "Meet at the railway station"
+     }
+    ],
+    [
+     "08:30",
+     {
+      "id": "Kereta Tashkent → Bukhara (tiba 12:36)",
+      "en": "Train Tashkent → Bukhara (arrives 12:36)"
+     }
+    ],
+    [
+     "12:45",
+     {
+      "id": "Penjemputan dan makan siang singkat",
+      "en": "Meeting and quick lunch"
+     }
+    ],
+    [
+     "13:15",
+     {
+      "id": "Ziarah ke lima Pir di wilayah Bukhara",
+      "en": "Pilgrimage to the five Pirs in the Bukhara region"
+     }
+    ],
+    [
+     "19:30",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "21:00",
+     {
+      "id": "Check-in hotel",
+      "en": "Hotel check-in"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Malam sangat singkat. Berpakaian sopan di tempat-tempat suci. Sore hari sangat padat; beberapa kunjungan mungkin setelah gelap.",
+    "en": "Very short night. Modest dress for the holy sites. The afternoon is very busy; some visits may be after dark."
+   },
+   "tags": [
+    {
+     "id": "Kereta 08:30",
+     "en": "Train 08:30"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "12:45–13:15 · makan siang singkat",
+     "en": "12:45–13:15 · quick lunch"
+    },
+    "d": {
+     "id": "19:30 · makan malam",
+     "en": "19:30 · dinner"
+    }
+   },
+   "hotel": 5,
+   "img": "silkroad"
+  },
+  {
+   "c": "uz",
+   "place": "Bukhara → Samarkand",
+   "t": "07:00",
+   "title": {
+    "id": "Bukhara — 2 Pir — Samarkand — Imam Al-Bukhari",
+    "en": "Bukhara — 2 Pirs — Samarkand — Imam Al-Bukhari"
+   },
+   "meet": {
+    "id": "Lobi hotel, Bukhara",
+    "en": "Hotel lobby, Bukhara"
+   },
+   "plan": [
+    [
+     "06:30",
+     {
+      "id": "Sarapan",
+      "en": "Breakfast"
+     }
+    ],
+    [
+     "07:00",
+     {
+      "id": "Check-out",
+      "en": "Check-out"
+     }
+    ],
+    [
+     "07:30",
+     {
+      "id": "Sayyid Amir Kulol",
+      "en": "Sayyid Amir Kulol"
+     }
+    ],
+    [
+     "09:00",
+     {
+      "id": "Kompleks Bahauddin Naqshband",
+      "en": "Bahauddin Naqshband complex"
+     }
+    ],
+    [
+     "10:30",
+     {
+      "id": "Salat dan kunjungan kompleks",
+      "en": "Prayer and visit of the complex"
+     }
+    ],
+    [
+     "11:30",
+     {
+      "id": "Makan siang",
+      "en": "Lunch"
+     }
+    ],
+    [
+     "12:30",
+     {
+      "id": "Transfer ke stasiun kereta",
+      "en": "Transfer to the railway station"
+     }
+    ],
+    [
+     "15:09",
+     {
+      "id": "Kereta Bukhara → Samarkand (tiba 16:46)",
+      "en": "Train Bukhara → Samarkand (arrives 16:46)"
+     }
+    ],
+    [
+     "17:00",
+     {
+      "id": "Perjalanan ke kompleks Imam Al-Bukhari",
+      "en": "Drive to the Imam Al-Bukhari complex"
+     }
+    ],
+    [
+     "17:45",
+     {
+      "id": "Ziarah",
+      "en": "Pilgrimage visit"
+     }
+    ],
+    [
+     "19:30",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "20:30",
+     {
+      "id": "Check-in hotel",
+      "en": "Hotel check-in"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Berpakaian sopan di tempat-tempat suci. Jika kompleks Imam Al-Bukhari tutup pada malam hari, kunjungan dipindah ke pagi berikutnya.",
+    "en": "Modest dress for the holy sites. If the Imam Al-Bukhari complex is closed in the evening, the visit moves to the next morning."
+   },
+   "tags": [
+    {
+     "id": "Kereta 15:09",
+     "en": "Train 15:09"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "11:30–12:30 · makan siang",
+     "en": "11:30–12:30 · lunch"
+    },
+    "d": {
+     "id": "19:30 · makan malam",
+     "en": "19:30 · dinner"
+    }
+   },
+   "hotel": 6,
+   "img": "train"
+  },
+  {
+   "c": "uz",
+   "place": "Samarkand → Jakarta",
+   "t": "08:00",
+   "title": {
+    "id": "Samarkand — Tashkent — pulang",
+    "en": "Samarkand — Tashkent — flight home"
+   },
+   "meet": {
+    "id": "Lobi hotel, Samaria Hotel & Spa",
+    "en": "Hotel lobby, Samaria Hotel & Spa"
+   },
+   "plan": [
+    [
+     "07:00",
+     {
+      "id": "Sarapan",
+      "en": "Breakfast"
+     }
+    ],
+    [
+     "08:00",
+     {
+      "id": "Check-out",
+      "en": "Check-out"
+     }
+    ],
+    [
+     "08:30",
+     {
+      "id": "Lapangan Registan",
+      "en": "Registan Square"
+     }
+    ],
+    [
+     "10:15",
+     {
+      "id": "Mausoleum Gur-e-Amir",
+      "en": "Gur-e-Amir Mausoleum"
+     }
+    ],
+    [
+     "11:30",
+     {
+      "id": "Kompleks Shah-i-Zinda",
+      "en": "Shah-i-Zinda complex"
+     }
+    ],
+    [
+     "12:45",
+     {
+      "id": "Makan siang",
+      "en": "Lunch"
+     }
+    ],
+    [
+     "14:00",
+     {
+      "id": "Belanja suvenir dan transfer ke stasiun",
+      "en": "Souvenir shopping and transfer to the station"
+     }
+    ],
+    [
+     "16:56",
+     {
+      "id": "Kereta Samarkand → Tashkent (tiba sekitar 19:00)",
+      "en": "Train Samarkand → Tashkent (arrives about 19:00)"
+     }
+    ],
+    [
+     "19:30",
+     {
+      "id": "Makan malam",
+      "en": "Dinner"
+     }
+    ],
+    [
+     "20:15",
+     {
+      "id": "Transfer ke Bandara Tashkent",
+      "en": "Transfer to Tashkent Airport"
+     }
+    ],
+    [
+     "20:40",
+     {
+      "id": "Di bandara, 3 jam sebelum penerbangan",
+      "en": "At the airport, 3 hours before the flight"
+     }
+    ],
+    [
+     "23:40",
+     {
+      "id": "Batik Air OD 752 Tashkent → Kuala Lumpur → Jakarta (akan dikonfirmasi)",
+      "en": "Batik Air OD 752 Tashkent → Kuala Lumpur → Jakarta (to be confirmed)"
+     }
+    ]
+   ],
+   "imp": {
+    "id": "Hari kepulangan. Paspor di tas tangan. Tukar sisa sum Uzbekistan sebelum terbang — di luar Uzbekistan sulit ditukar.",
+    "en": "Departure day. Passport in your hand luggage. Change your leftover Uzbek sum before the flight — it is hard to change outside Uzbekistan."
+   },
+   "tags": [
+    {
+     "id": "Bandara 20:40",
+     "en": "Airport 20:40"
+    }
+   ],
+   "meals": {
+    "l": {
+     "id": "12:45–13:45 · makan siang",
+     "en": "12:45–13:45 · lunch"
+    },
+    "d": {
+     "id": "19:30–20:15 · makan malam sebelum ke bandara",
+     "en": "19:30–20:15 · dinner before the airport"
+    }
+   },
+   "hotel": -1,
+   "img": "madrasa"
+  }
+ ]
+}
