@@ -21,6 +21,7 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
 - `stays` — `[{city, name, from, to, nights, in, booking, addr, taxiRu, nameRu, map}]` (`from`/`to` = day index, 0-based; no `name` → "to be confirmed")
 - `days` — `[{c, place, t, title, meet, plan:[["07:00",{en,id}]…], imp, tags:[{en,id}], meals:{l,d,o}, hotel, img, tNote, pill}]`
   - text = `{en:"…", id:"…"}`; `hotel` = stays index, `-1` = no hotel tonight, omitted = hide
+  - `dep` — flight day: `{go:"06:30", fly:"09:30", flight:{en,id}}` (leave for the airport, flight time, flight text). Shows the "📅 Remind me about the flight" button (calendar file with 2 reminders: evening before 20:00 — or 09:00 the same day if leaving after 12:00 — and 1 hour before leaving). Without `dep` the page finds it itself from a plan line like "Transfer to … Airport".
   - `img`: night_arrival, road, flight, mountains, city, silkroad, train, madrasa
 - `check` — `{en:[…], id:[…]}` before-you-go list
 - `ui` — per-language overrides of any interface text (`weatherV`, `timeV`, `thanksSub`, `noHotel`, `nextT`, …). Languages without built-in texts fall back to English — put their texts here.
