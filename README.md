@@ -18,6 +18,7 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
 - `logo` — `{mode:"kw"|"agent"|"two"|"kw+agent"|"none", files:["/path/logo.png"]}`
 - `support` — 24/7 phone
 - `guides` / `drivers` — per country: `{kz:{name,phone,car}, uz:{name}}` (phone only if allowed to show)
+  - next to «Call» a messenger button by country: kz/kg/tj WhatsApp, uz Telegram, tm imo (copies the number). Override: `msg:"whatsapp"|"telegram"|"imo"`. Support 24/7 gets WhatsApp.
 - `stays` — `[{city, name, from, to, nights, in, booking, addr, taxiRu, nameRu, map}]` (`from`/`to` = day index, 0-based; no `name` → "to be confirmed")
 - `days` — `[{c, place, t, title, meet, plan:[["07:00",{en,id}]…], imp, tags:[{en,id}], meals:{l,d,o}, hotel, img, tNote, pill}]`
   - text = `{en:"…", id:"…"}`; `hotel` = stays index, `-1` = no hotel tonight, omitted = hide
