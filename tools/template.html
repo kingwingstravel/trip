@@ -469,7 +469,7 @@ function render(){
  {const b=document.getElementById("openWho"),ms=mine();if(PEOPLE.length){b.style.display="";b.textContent=isStaff()?"👥 "+L().staffL:"👤 "+(ms.length?ms.map(p=>p.name.trim().split(/\s+/)[0]).join(", "):"?")}else b.style.display="none"}
  document.getElementById("tripline").textContent=tripLine();
  document.getElementById("pilotNote").textContent=l.pilot;
- document.getElementById("tabs").innerHTML=["today","days","hotel","help"].map(k=>`<button class="tab" data-tab="${k}" ${!S.after&&S.tab===k?'aria-current="page"':""}>${IC[k]}${l[k]}</button>`).join("");
+ document.getElementById("tabs").innerHTML=["today","days"].concat(STAYS.length?["hotel"]:[],["help"]).map(k=>`<button class="tab" data-tab="${k}" ${!S.after&&S.tab===k?'aria-current="page"':""}>${IC[k]}${l[k]}</button>`).join("");
  renderHero();
  document.getElementById("app").innerHTML=S.after?vAfter():V[S.tab]();
  document.getElementById("taxiTitle").textContent=l.taxiTitle;
