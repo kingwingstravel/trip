@@ -7,5 +7,7 @@ v=json.load(open(sys.argv[1],encoding='utf8'))
 if isinstance(v,dict): v=v.get('values',v)
 h=hashlib.sha256(json.dumps(v,ensure_ascii=False,sort_keys=True).encode())
 h.update((sys.argv[2] if len(sys.argv)>2 else '').encode())
-for f in ('template.html','build_guide.py'): h.update(open(os.path.join(here,f),'rb').read())
+for f in ('template.html','build_guide.py','claim_url.txt'):
+    fp=os.path.join(here,f)
+    if os.path.exists(fp): h.update(open(fp,'rb').read())
 print(h.hexdigest())

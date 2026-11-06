@@ -36,6 +36,10 @@ for i,pp in enumerate(G.get('people',[]) or []):
 txt=json.dumps(G,ensure_ascii=False)
 if re.search(r'\d[\d\s.,]*\s?(USD|EUR|KZT|UZS|KGS|тг\b|тенге|\$)|нетто|наценк|net price',txt,re.I): warn.append('похоже на цену/нетто — проверь!')
 if '#ERROR' in txt or '#REF' in txt or '#N/A' in txt: err.append('в данных ошибка таблицы (#ERROR / #REF / #N/A)')
+cf=os.path.join(here,'claim_url.txt')
+if not G.get('claimUrl') and os.path.exists(cf): G['claimUrl']=open(cf,encoding='utf8').read().strip()
+cu=str(G.get('claimUrl','') or '').strip()
+if cu and not re.fullmatch(r'https://script\.google\.com/macros/s/[A-Za-z0-9_-]+/exec',cu): err.append('claimUrl: адрес веб-приложения бота …/exec')
 sc=str(G.pop('staffCode','') or '').strip()
 if G.get('people'):
     if not re.fullmatch(r'\d{6}',sc): err.append('staffCode: 6 цифр (код для гида и агента, B26) — нужен, когда есть people')
