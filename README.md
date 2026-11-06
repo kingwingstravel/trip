@@ -25,6 +25,9 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
   - `dep` — flight day: `{go:"06:30", fly:"09:30", flight:{en,id}}` (leave for the airport, flight time, flight text). Shows the "📅 Remind me about the flight" button (calendar file with 2 reminders: evening before 20:00 — or 09:00 the same day if leaving after 12:00 — and 1 hour before leaving). Without `dep` the page finds it itself from a plan line like "Transfer to … Airport".
   - `img`: night_arrival, road, flight, mountains, city, silkroad, train, madrasa
 - `check` — `{en:[…], id:[…]}` before-you-go list
+- `people` — personal part (optional). First open shows «Who are you?» with the names; the tourist taps own name once, the phone remembers it (more people can be added on one phone; «I am the guide or agent» skips). `[{id:"p01", name:"Ahmad Fauzi", rooms:{"0":"512","2":"1108"}, tickets:[{day:1, text:"HY 763 · Seat 14A · Booking K7XQ2M"}], msg:{en,id}, notes:[{day:3, text:{en,id}}]}]`
+  - `rooms` key = stays index; shown on Today, tonight's hotel and Hotel tab. `tickets` shown on that day and in Help. `msg` every day, `notes` on their day (no `day` = every day).
+  - NO passport numbers, dates of birth or ticket images with passport data — `build_guide.py` stops on anything passport-like.
 - `ui` — per-language overrides of any interface text (`weatherV`, `timeV`, `thanksSub`, `noHotel`, `nextT`, …). Languages without built-in texts fall back to English — put their texts here.
 - `route`, `tripImg` — for the "share the whole trip" picture; `showMeals` (false hides meals); `photos` (link after the trip)
 

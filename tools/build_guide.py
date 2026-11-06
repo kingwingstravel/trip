@@ -22,6 +22,17 @@ for i,d in enumerate(G.get('days',[])):
     h=d.get('hotel')
     if h is not None and h>=len(stays): err.append(f'days[{i}].hotel: нет такого stays')
     if not d.get('title'): err.append(f'days[{i}]: нет title')
+ids=set()
+for i,pp in enumerate(G.get('people',[]) or []):
+    if not pp.get('id') or not pp.get('name'): err.append(f'people[{i}]: нужны id и name')
+    if pp.get('id') in ids: err.append(f'people[{i}]: id повторяется')
+    ids.add(pp.get('id'))
+    for k in (pp.get('rooms') or {}):
+        if not (str(k).isdigit() and int(k)<len(stays)): err.append(f'people[{i}].rooms: нет отеля {k}')
+    for k in pp.get('tickets',[]) or []:
+        if not isinstance(k.get('day'),int) or not 0<=k['day']<n: err.append(f'people[{i}].tickets: day вне дней')
+    pt=json.dumps(pp,ensure_ascii=False)
+    if re.search(r'pass?port|paspor|паспорт|\b[A-Z]{1,2}\d{6,8}\b',pt,re.I): err.append(f'people[{i}] ({pp.get("name")}): похоже на паспортные данные — убрать')
 txt=json.dumps(G,ensure_ascii=False)
 if re.search(r'\d[\d\s.,]*\s?(USD|EUR|KZT|UZS|KGS|тг\b|тенге|\$)|нетто|наценк|net price',txt,re.I): warn.append('похоже на цену/нетто — проверь!')
 if '#ERROR' in txt or '#REF' in txt or '#N/A' in txt: err.append('в данных ошибка таблицы (#ERROR / #REF / #N/A)')
@@ -40,4 +51,4 @@ esc=lambda s:s.replace('&','&amp;').replace('<','&lt;')
 t=t.replace('/*__G__*/null',data,1).replace('__TITLE__',esc(G['title']),1).replace('__LANG__',G['lang'],1)
 open(out,'w',encoding='utf8').write(t)
 for w in warn: print('ВНИМАНИЕ:',w)
-print('ok',out,len(t),'дней',n,'отелей',len(stays))
+print('ok',out,len(t),'дней',n,'отелей',len(stays),'туристов',len(G.get('people',[]) or []))
