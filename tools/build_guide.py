@@ -36,6 +36,11 @@ for i,pp in enumerate(G.get('people',[]) or []):
 txt=json.dumps(G,ensure_ascii=False)
 if re.search(r'\d[\d\s.,]*\s?(USD|EUR|KZT|UZS|KGS|тг\b|тенге|\$)|нетто|наценк|net price',txt,re.I): warn.append('похоже на цену/нетто — проверь!')
 if '#ERROR' in txt or '#REF' in txt or '#N/A' in txt: err.append('в данных ошибка таблицы (#ERROR / #REF / #N/A)')
+sc=str(G.pop('staffCode','') or '').strip()
+if G.get('people'):
+    if not re.fullmatch(r'\d{6}',sc): err.append('staffCode: 6 цифр (код для гида и агента, B26) — нужен, когда есть people')
+    else:
+        import hashlib; G['staffHash']=hashlib.sha256((G.get('code','')+':'+sc).encode()).hexdigest()
 lg=G.get('logo') or {'mode':'kw'}
 imgs=list(lg.get('imgs',[]))
 for p in lg.pop('files',[]) or []:

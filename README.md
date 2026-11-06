@@ -27,6 +27,7 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
 - `check` — `{en:[…], id:[…]}` before-you-go list
 - `people` — personal part (optional). First open shows «Who are you?» with the names; the tourist taps own name once, the phone remembers it (more people can be added on one phone; «I am the guide or agent» skips). `[{id:"p01", name:"Ahmad Fauzi", rooms:{"0":"512","2":"1108"}, tickets:[{day:1, text:"HY 763 · Seat 14A · Booking K7XQ2M"}], msg:{en,id}, notes:[{day:3, text:{en,id}}]}]`
   - `rooms` key = stays index; shown on Today, tonight's hotel and Hotel tab. `tickets` shown on that day and in Help. `msg` every day, `notes` on their day (no `day` = every day).
+  - `staffCode` — 6 digits (sheet B26, `tools/staffcode.py PIN` makes one, never equal to the PIN), required when `people` is set. «I am the guide or agent» asks for it once; then the phone shows rooms and tickets of the whole group. Only its hash goes into the page.
   - NO passport numbers, dates of birth or ticket images with passport data — `build_guide.py` stops on anything passport-like.
 - `ui` — per-language overrides of any interface text (`weatherV`, `timeV`, `thanksSub`, `noHotel`, `nextT`, …). Languages without built-in texts fall back to English — put their texts here.
 - `route`, `tripImg` — for the "share the whole trip" picture; `showMeals` (false hides meals); `photos` (link after the trip)
