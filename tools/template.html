@@ -102,6 +102,10 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
 .pilot{font-size:.85rem;color:var(--muted);text-align:center;padding:0 1rem}
 .toast{position:fixed;left:50%;bottom:5.5rem;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:.8rem;font-size:.9rem;z-index:20;display:none;max-width:90%}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.langbar{display:flex;gap:.4rem;flex-wrap:wrap}
+.langbar button{font:inherit;font-weight:700;min-height:2.8rem;padding:0 1rem;border-radius:2rem;border:2px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
+.langbar button[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
+.hrow{flex-wrap:wrap;gap:.5rem}
 </style>
 </head>
 <body>
@@ -111,6 +115,7 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
     <span class="logos" id="logos"></span>
     <span style="display:flex;gap:.4rem"><button class="iconbtn" id="openWho" aria-label="👤" style="display:none;max-width:11rem;padding:0 .7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></button><button class="iconbtn" id="openSettings" aria-label="Aa">Aa</button></span>
   </div>
+  <div class="langbar" id="langbar" role="group" aria-label="Language"></div>
   <div class="sub" id="tripline"></div>
 </header>
 <div class="band" aria-hidden="true" id="band"></div>
@@ -152,6 +157,12 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
     <div class="seg" role="radiogroup" id="sizes"></div>
     <h2 id="langTitle" style="margin-top:.6rem"></h2>
     <div class="seg" role="radiogroup" id="langs"></div>
+  </div>
+</div>
+<div class="overlay" id="langPick" role="dialog" aria-modal="true" aria-labelledby="lpTitle">
+  <div class="ovbody" style="padding-top:2.5rem">
+    <h1 id="lpTitle"></h1>
+    <div class="seg" role="radiogroup" id="lpList" style="margin-top:1rem"></div>
   </div>
 </div>
 <div class="overlay" id="who" role="dialog" aria-modal="true" aria-labelledby="whoTitle">
@@ -466,6 +477,7 @@ function render(){
  document.documentElement.lang=S.lang;
  document.documentElement.style.setProperty("--fs",S.size+"px");
  renderLogo();
+ {const lb=document.getElementById("langbar");lb.style.display=LANGS.length>1?"":"none";lb.innerHTML=LANGS.map(x=>`<button data-lang="${x}" aria-pressed="${S.lang===x}">${LANGNAME[x]||x}</button>`).join("")}
  {const b=document.getElementById("openWho"),ms=mine();if(PEOPLE.length){b.style.display="";b.textContent=isStaff()?"👥 "+L().staffL:"👤 "+(ms.length?ms.map(p=>p.name.trim().split(/\s+/)[0]).join(", "):"?")}else b.style.display="none"}
  document.getElementById("tripline").textContent=tripLine();
  document.getElementById("pilotNote").textContent=l.pilot;
@@ -533,7 +545,7 @@ document.addEventListener("click",e=>{
  else if(el.id==="openSettings"){document.getElementById("settings").classList.add("open")}
  else if(el.dataset.close){document.getElementById(el.dataset.close).classList.remove("open")}
  else if(el.dataset.size){S.size=+el.dataset.size;store.set(P+"size",S.size);render()}
- else if(el.dataset.lang){S.lang=el.dataset.lang;store.set(P+"lang",S.lang);render()}
+ else if(el.dataset.lang){S.lang=el.dataset.lang;store.set(P+"lang",S.lang);const lp=document.getElementById("langPick");if(lp.classList.contains("open")){lp.classList.remove("open");render();if(PEOPLE.length&&meIds()===null)openWho(false);else claim(false)}else render()}
  else if(el.dataset.vote){store.set(P+"vote",el.dataset.vote);render()}
  else if(el.id==="prev"&&S.day>0){S.day--;render()}
  else if(el.id==="next"&&S.day<DAYS.length-1){S.day++;render()}
@@ -549,7 +561,8 @@ document.addEventListener("change",e=>{if(e.target.dataset.ck===undefined)return
 document.addEventListener("submit",async e=>{if(e.target.id!=="whoCode")return;e.preventDefault();const ok=await tryCode(document.getElementById("whoCodeIn").value);if(ok)staffOn();else document.getElementById("whoCodeE").textContent=L().codeBad});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".overlay.open").forEach(o=>o.classList.remove("open"))});
 render();
-if(PEOPLE.length&&meIds()===null)openWho(false);
+if(LANGS.length>1&&store.get(P+"lang",null)===null){document.getElementById("lpTitle").textContent=LANGS.map(x=>(T[x]&&T[x].lang)||"Language").filter((v,i,a)=>a.indexOf(v)===i).join(" · ");document.getElementById("lpList").innerHTML=LANGS.map(x=>`<button class="opt" data-lang="${x}" style="min-height:4.2rem;font-size:1.25rem"><b>${LANGNAME[x]||x}</b></button>`).join("");document.getElementById("langPick").classList.add("open")}
+else if(PEOPLE.length&&meIds()===null)openWho(false);
 else claim(false);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)claim(false)});
 </script>
