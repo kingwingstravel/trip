@@ -382,7 +382,7 @@ function vdPick(f){
 function vdShrinkStart(f){
  return new Promise(res=>{
   try{
-   const v=vdEl;if(!v||!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream||f.size<25*1048576)return res(null);
+   const v=vdEl;if(!v||!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream||f.size<8*1048576)return res(null);
    const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return res(null);
    const ac=new AC(),src=ac.createMediaElementSource(v),dst=ac.createMediaStreamDestination();src.connect(dst);
    const w0=v.videoWidth||1280,h0=v.videoHeight||720,k=Math.min(1,1280/Math.max(w0,h0),720/Math.min(w0,h0));
