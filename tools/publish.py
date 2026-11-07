@@ -45,8 +45,10 @@ async function open_(pin,quiet){{try{{
 }}catch(e){{if(!quiet)document.getElementById("e").textContent="{wrongL}";return false}}}}
 document.getElementById("f").onsubmit=e=>{{e.preventDefault();document.getElementById("e").textContent="…";open_(document.getElementById("p").value.trim())}};
 let saved=null;try{{saved=localStorage.getItem(K)}}catch(e){{}}
-const qp=new URLSearchParams(location.search).get("p");
-if(qp){{try{{history.replaceState(null,"",location.pathname)}}catch(e){{}}open_(qp,true).then(ok=>{{if(!ok&&saved)open_(saved,true)}})}}
+const sq=new URLSearchParams(location.search),qp=sq.get("p"),sp=sq.get("s");
+if(sp){{try{{localStorage.setItem("kw_{code}_s",sp)}}catch(e){{}}}}
+if(qp||sp){{try{{history.replaceState(null,"",location.pathname)}}catch(e){{}}}}
+if(qp){{open_(qp,true).then(ok=>{{if(!ok&&saved)open_(saved,true)}})}}
 else if(saved)open_(saved,true);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("../../sw.js",{{scope:"../../"}}).catch(()=>{{}});
 </script></body></html>'''

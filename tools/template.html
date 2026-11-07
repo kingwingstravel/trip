@@ -560,11 +560,15 @@ document.addEventListener("click",e=>{
 document.addEventListener("change",e=>{if(e.target.dataset.ck===undefined)return;const i=+e.target.dataset.ck;let a=store.get(P+"ck",[]);a=e.target.checked?[...new Set([...a,i])]:a.filter(x=>x!==i);store.set(P+"ck",a)});
 document.addEventListener("submit",async e=>{if(e.target.id!=="whoCode")return;e.preventDefault();const ok=await tryCode(document.getElementById("whoCodeIn").value);if(ok)staffOn();else document.getElementById("whoCodeE").textContent=L().codeBad});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".overlay.open").forEach(o=>o.classList.remove("open"))});
+(async()=>{
+{let s=null;try{s=localStorage.getItem(P+"s");localStorage.removeItem(P+"s")}catch(e){}
+ if(s&&G.staffHash&&await tryCode(s)){store.set(P+"me",[]);store.set(P+"staff",true)}}
 render();
 if(LANGS.length>1&&store.get(P+"lang",null)===null){document.getElementById("lpTitle").textContent=LANGS.map(x=>(T[x]&&T[x].lang)||"Language").filter((v,i,a)=>a.indexOf(v)===i).join(" · ");document.getElementById("lpList").innerHTML=LANGS.map(x=>`<button class="opt" data-lang="${x}" style="min-height:4.2rem;font-size:1.25rem"><b>${LANGNAME[x]||x}</b></button>`).join("");document.getElementById("langPick").classList.add("open")}
 else if(PEOPLE.length&&meIds()===null)openWho(false);
 else claim(false);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)claim(false)});
+})();
 </script>
 </body>
 </html>
