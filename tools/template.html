@@ -91,7 +91,9 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
 .opt{font:inherit;color:var(--ink);text-align:left;display:flex;align-items:center;gap:1rem;min-height:3.6rem;padding:.5rem 1rem;border-radius:1rem;border:2px solid var(--line);background:#fff;cursor:pointer}
 .opt[aria-checked="true"]{border:3px solid var(--gold);background:var(--goldSoft)}
 .opt .aa{width:2.6rem;text-align:center;font-weight:700;color:var(--navy)}
-.sharecard{width:100%;max-width:340px;margin:0 auto;border-radius:1rem;display:block;box-shadow:0 10px 30px rgba(0,0,0,.35);background:#fff}
+.fmtb{font:inherit;font-weight:700;font-size:.95rem;min-height:3rem;border-radius:2rem;border:2px solid rgba(255,255,255,.5);background:transparent;color:#fff;cursor:pointer}
+.fmtb[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
+.sharecard{width:auto;max-width:min(100%,340px);max-height:52vh;margin:0 auto;border-radius:1rem;display:block;box-shadow:0 10px 30px rgba(0,0,0,.35);background:#fff}
 .sheet{background:#fff;border-radius:1.3rem 1.3rem 0 0;padding:1.2rem 1rem 1.6rem;margin-top:auto;display:flex;flex-direction:column;gap:.8rem;max-width:520px;width:100%;align-self:center}
 .apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
 .app{font:inherit;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:.35rem;font-size:.85rem;font-weight:600;color:var(--ink);cursor:pointer;padding:.2rem 0}
@@ -141,13 +143,14 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
 
 <div class="overlay dark" id="share" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="ovtop"><span></span><button class="btn ghost" style="width:auto;min-height:3rem" data-close="share" id="shareClose"></button></div>
+  <div id="shFmt" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:0 1.2rem .7rem"><button class="fmtb" data-fmt="p">📷 Instagram 4:5</button><button class="fmtb" data-fmt="s">🎵 TikTok · Stories 9:16</button></div>
   <div style="padding:0 1.2rem"><img class="sharecard" id="shareImg" alt=""></div>
   <div class="sheet">
     <h2 id="shareTitle" style="margin:0"></h2>
     <div class="small" id="shareSub"></div>
     <div class="apps">
       <a class="app" id="shWa" href="https://wa.me/" target="_blank" rel="noopener" style="text-decoration:none"><span style="background:var(--green)">W</span>WhatsApp</a>
-      <button class="app" id="shNative"><span style="background:#8A2F62">◎</span>Instagram</button>
+      <button class="app" id="shNative"><span style="background:#8A2F62">◎</span>Instagram · TikTok</button>
       <button class="app" id="shSave"><span style="background:var(--navy)">↓</span><b id="shSaveL" style="font-weight:600"></b></button>
     </div>
     <div class="small" id="shareSafe"></div>
@@ -393,24 +396,14 @@ async function phCollage(kick,title,date){
  for(const p of order){if(sel.length>=4)break;if(!sel.includes(p))sel.push(p)}
  let hIm=hero.im,hF=hero.faces||[];
  try{const src=PH.fulls[hero.id]||(PH.fulls[hero.id]=await phGet(hero.id));const fi=await phImg(src);const k=fi.naturalWidth/hero.im.naturalWidth;hIm=fi;hF=hF.map(f=>({x:f.x*k,y:f.y*k,width:f.width*k,height:f.height*k}))}catch(e){}
- const W=1080,H=1350,c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
- g.fillStyle="#FFFFFF";g.fillRect(0,0,W,H);
- const n=1+sel.length,G8=8,A=800,L=[];
+ const D=shDims(),W=D.W,A=D.A,c=document.createElement("canvas");c.width=W;c.height=D.H;const g=c.getContext("2d");
+ g.fillStyle="#FFFFFF";g.fillRect(0,0,W,D.H);
+ const n=1+sel.length,G8=8,L=[];
  if(n===1)L.push([0,0,W,A]);
  else if(n===2){L.push([0,0,W,(A-G8)/2],[0,(A+G8)/2,W,(A-G8)/2])}
- else{const hh=480,tw=(W-G8*(n-2))/(n-1);L.push([0,0,W,hh]);for(let i=0;i<n-1;i++)L.push([i*(tw+G8),hh+G8,tw,A-hh-G8])}
- const draw=(im,faces,r)=>{const [sx,sy,sw,sh]=fcrop(im.naturalWidth,im.naturalHeight,faces,r[2],r[3]);g.drawImage(im,sx,sy,sw,sh,r[0],r[1],r[2],r[3])};
- draw(hIm,hF,L[0]);sel.forEach((p,i)=>draw(p.im,p.faces,L[i+1]));
- const f="'Golos Text',system-ui,sans-serif";
- g.fillStyle="#4A5672";g.font=`700 38px ${f}`;g.fillText(kick.toUpperCase(),72,872);
- let fs=72;g.font=`700 ${fs}px ${f}`;
- const lines=t=>{const w=t.split(" ");let n=1,line="";for(const x of w){const s=line?line+" "+x:x;if(g.measureText(s).width>936&&line){n++;line=x}else line=s}return n};
- while(lines(title)>2&&fs>48){fs-=6;g.font=`700 ${fs}px ${f}`}
- g.fillStyle="#14213D";let y=wrapText(g,title,72,872+fs+14,936,fs+12);
- g.fillStyle="#4A5672";g.font=`400 40px ${f}`;g.fillText(date,72,Math.min(y+62,1112));
- g.fillStyle="#1A4375";g.font=`600 38px ${f}`;g.fillText(TAG,72,Math.min(y+116,1164));
- g.fillStyle="#1A4375";g.fillRect(0,H-170,W,6);
- try{const lg=await loadImg(KWLOGO);const lh=130,lw=lg.width*lh/lg.height;g.drawImage(lg,W-60-lw,H-152,lw,lh)}catch(e){}
+ else{const hh=D.story?700:480,tw=(W-G8*(n-2))/(n-1);L.push([0,0,W,hh]);for(let i=0;i<n-1;i++)L.push([i*(tw+G8),hh+G8,tw,A-hh-G8])}
+ coverDraw(g,hIm,L[0],hF);sel.forEach((p,i)=>coverDraw(g,p.im,L[i+1],p.faces));
+ await cardFrame(g,D,kick,title,date);
  return await new Promise(ok=>c.toBlob(b=>ok(b),"image/jpeg",.9));
 }
 async function phStar(){
@@ -695,20 +688,32 @@ function render(){
 let shareBlob=null,shareText="";
 function loadImg(src){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src})}
 function wrapText(c,t,x,y,max,lh){const w=t.split(" ");let line="";for(const word of w){const test=line?line+" "+word:word;if(c.measureText(test).width>max&&line){c.fillText(line,x,y);line=word;y+=lh}else line=test}c.fillText(line,x,y);return y}
+let SHF=(()=>{try{return localStorage.getItem("kw_fmt")||"p"}catch(e){return "p"}})(),SHK="day";
+function fmtBtns(){document.querySelectorAll("#shFmt [data-fmt]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.fmt===SHF)))}
+function shDims(){const s=SHF==="s";return {W:1080,H:s?1920:1350,A:s?1150:800,story:s}}
+function coverDraw(g,im,r,faces){const [sx,sy,sw,sh]=fcrop(im.naturalWidth||im.width,im.naturalHeight||im.height,faces||[],r[2],r[3]);g.drawImage(im,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}
+async function cardFrame(g,D,kick,title,date){
+ const f="'Golos Text',system-ui,sans-serif",tw=D.story?820:936,y0=D.A+72;
+ g.fillStyle="#4A5672";g.font=`700 38px ${f}`;g.fillText(kick.toUpperCase(),72,y0);
+ let fs=72;g.font=`700 ${fs}px ${f}`;
+ const lines=t=>{const w=t.split(" ");let n=1,line="";for(const x of w){const s=line?line+" "+x:x;if(g.measureText(s).width>tw&&line){n++;line=x}else line=s}return n};
+ while(lines(title)>2&&fs>48){fs-=6;g.font=`700 ${fs}px ${f}`}
+ g.fillStyle="#14213D";const y=wrapText(g,title,72,y0+fs+14,tw,fs+12);
+ const band=D.story?1560:D.H-170;
+ g.fillStyle="#4A5672";g.font=`400 40px ${f}`;g.fillText(date,72,Math.min(y+62,band-68));
+ g.fillStyle="#1A4375";g.font=`600 38px ${f}`;g.fillText(TAG,72,Math.min(y+116,band-16));
+ g.fillStyle="#1A4375";g.fillRect(0,band,D.W,6);
+ try{const lg=await loadImg(KWLOGO);const lh=D.story?120:130,lw=lg.width*lh/lg.height;g.drawImage(lg,D.story?72:D.W-60-lw,band+18,lw,lh)}catch(e){}
+}
 async function makeCard(im0,kicker,title,date){
- const W=1080,H=1350,c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
- g.fillStyle="#FFFFFF";g.fillRect(0,0,W,H);
- const im=await loadImg(im0);g.drawImage(im,0,0,W,648);
- const f="'Golos Text',system-ui,sans-serif";
- g.fillStyle="#4A5672";g.font=`700 40px ${f}`;g.fillText(kicker.toUpperCase(),72,740);
- g.fillStyle="#14213D";g.font=`700 84px ${f}`;let y=wrapText(g,title,72,850,936,96);
- g.fillStyle="#4A5672";g.font=`400 44px ${f}`;g.fillText(date,72,y+80);
- g.fillStyle="#1A4375";g.font=`600 40px ${f}`;g.fillText(TAG,72,y+150);
- g.fillStyle="#1A4375";g.fillRect(0,H-170,W,6);
- try{const lg=await loadImg(KWLOGO);const lh=130,lw=lg.width*lh/lg.height;g.drawImage(lg,W-60-lw,H-152,lw,lh)}catch(e){}
+ const D=shDims(),c=document.createElement("canvas");c.width=D.W;c.height=D.H;const g=c.getContext("2d");
+ g.fillStyle="#FFFFFF";g.fillRect(0,0,D.W,D.H);
+ const im=await loadImg(im0);if(D.story)coverDraw(g,im,[0,0,D.W,D.A]);else g.drawImage(im,0,0,D.W,648);
+ await cardFrame(g,D.story?D:Object.assign({},D,{A:668}),kicker,title,date);
  return new Promise(ok=>c.toBlob(b=>ok(b),"image/jpeg",.9));
 }
 async function openShare(kind){
+ SHK=kind;fmtBtns();
  const l=L();let im,kick,title,date;
  if(kind==="trip"){im=IMGLIB[G.tripImg]||img(DAYS.length-1);kick=l.tripCard(DAYS.length);title=G.route||COUNTRIES.map(cn).join(" · ");date=longRange()}
  else{const d=DAYS[S.day];im=img(S.day);kick=l.inPlace(S.day+1,d.place||"");title=tx(d.title);date=shortDate(S.day)}
@@ -734,6 +739,7 @@ document.addEventListener("click",e=>{
  const im=e.target.closest("[data-imo]");if(im){const v=im.dataset.imo;(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast(L().imoCopied),()=>toast(v));return}
  const me=e.target.closest("[data-me]");if(me){pickMe(me.dataset.me);return}
  const wb=e.target.closest("[data-who],#openWho,#whoSkip");if(wb){if(wb.id==="whoSkip")skipWho();else openWho(wb.dataset.who==="add");return}
+ {const fb=e.target.closest("[data-fmt]");if(fb){if(SHF!==fb.dataset.fmt){SHF=fb.dataset.fmt;try{localStorage.setItem("kw_fmt",SHF)}catch(e){}openShare(SHK)}return}}
  {const pt=e.target.closest("[data-ph]");if(pt){phOpen(+pt.dataset.ph);return}
   if(e.target.closest("#phMore")){PH.shown+=24;phFill();return}
   if(e.target.closest("#phPrev")){phOpen(PH.cur-1);return}
