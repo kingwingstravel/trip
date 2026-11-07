@@ -45,9 +45,11 @@ async function open_(pin,quiet){{try{{
 }}catch(e){{if(!quiet)document.getElementById("e").textContent="{wrongL}";return false}}}}
 document.getElementById("f").onsubmit=e=>{{e.preventDefault();document.getElementById("e").textContent="…";open_(document.getElementById("p").value.trim())}};
 let saved=null;try{{saved=localStorage.getItem(K)}}catch(e){{}}
-const sq=new URLSearchParams(location.search),qp=sq.get("p"),sp=sq.get("s");
+const sq=new URLSearchParams(location.search),qp=sq.get("p"),sp=sq.get("s"),sl=sq.get("l"),sm=sq.get("m");
 if(sp){{try{{localStorage.setItem("kw_{code}_s",sp)}}catch(e){{}}}}
-if(qp||sp){{try{{history.replaceState(null,"",location.pathname)}}catch(e){{}}}}
+try{{if(sl&&localStorage.getItem("kw_{code}_lang")===null)localStorage.setItem("kw_{code}_lang",JSON.stringify(sl));
+if(sm&&!sp&&localStorage.getItem("kw_{code}_me")===null)localStorage.setItem("kw_{code}_me",JSON.stringify(sm.split(",")))}}catch(e){{}}
+if(qp||sp||sl||sm){{try{{history.replaceState(null,"",location.pathname)}}catch(e){{}}}}
 if(qp){{open_(qp,true).then(ok=>{{if(!ok&&saved)open_(saved,true)}})}}
 else if(saved)open_(saved,true);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("../../sw.js",{{scope:"../../"}}).catch(()=>{{}});

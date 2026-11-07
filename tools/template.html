@@ -228,6 +228,9 @@ function claim(confirm){
   if(j&&j.conflict&&p&&(meIds()||[])[0]===p&&!document.getElementById("who").classList.contains("open")){WHO.dup=p;document.getElementById("toast").style.display="none";openWho(false)}
  }).catch(()=>{})}catch(e){}
 }
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+if(IOS)document.querySelectorAll('link[rel="manifest"]').forEach(x=>x.remove());
+function syncUrl(){if(!IOS)return;let pin=null;try{pin=localStorage.getItem("kw_pin_"+G.code)}catch(e){}if(!pin)return;const q=new URLSearchParams();q.set("p",pin);q.set("l",S.lang);if(typeof isStaff==="function"&&isStaff()){const sc=store.get(P+"sc","");if(sc)q.set("s",sc)}else if(typeof meIds==="function"){const m=meIds();if(m&&m.length)q.set("m",m.join(","))}try{history.replaceState(null,"",location.pathname+"?"+q.toString())}catch(e){}}
 function isStaff(){return !!store.get(P+"staff",false)}
 function meIds(){const v=store.get(P+"me",null);return Array.isArray(v)?v:null}
 function mine(){const ids=meIds()||[];return ids.map(id=>PEOPLE.find(p=>p.id===id)).filter(Boolean)}
@@ -497,6 +500,7 @@ function render(){
  document.getElementById("langTitle").textContent=l.lang;
  document.getElementById("sizes").innerHTML=[[18,l.normal,"100%",22],[22,l.large,"125%",28],[27,l.xl,"150%",34]].map(s=>`<button class="opt" role="radio" aria-checked="${S.size===s[0]}" data-size="${s[0]}"><span class="aa" style="font-size:${s[3]}px">Aa</span><span><b>${s[1]}</b><br><span class="small">${s[2]}</span></span></button>`).join("");
  document.getElementById("langs").innerHTML=LANGS.map(x=>`<button class="opt" role="radio" aria-checked="${S.lang===x}" data-lang="${x}"><b>${LANGNAME[x]||x}</b></button>`).join("");
+ syncUrl();
 }
 /* ---- share picture: drawn on the phone, nothing loaded in advance ---- */
 let shareBlob=null,shareText="";
@@ -558,11 +562,11 @@ document.addEventListener("click",e=>{
  else if(el.id==="addCal"){addCal()}
 });
 document.addEventListener("change",e=>{if(e.target.dataset.ck===undefined)return;const i=+e.target.dataset.ck;let a=store.get(P+"ck",[]);a=e.target.checked?[...new Set([...a,i])]:a.filter(x=>x!==i);store.set(P+"ck",a)});
-document.addEventListener("submit",async e=>{if(e.target.id!=="whoCode")return;e.preventDefault();const ok=await tryCode(document.getElementById("whoCodeIn").value);if(ok)staffOn();else document.getElementById("whoCodeE").textContent=L().codeBad});
+document.addEventListener("submit",async e=>{if(e.target.id!=="whoCode")return;e.preventDefault();const cv=document.getElementById("whoCodeIn").value.trim(),ok=await tryCode(cv);if(ok){store.set(P+"sc",cv);staffOn()}else document.getElementById("whoCodeE").textContent=L().codeBad});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".overlay.open").forEach(o=>o.classList.remove("open"))});
 (async()=>{
 {let s=null;try{s=localStorage.getItem(P+"s");localStorage.removeItem(P+"s")}catch(e){}
- if(s&&G.staffHash&&await tryCode(s)){store.set(P+"me",[]);store.set(P+"staff",true)}}
+ if(s&&G.staffHash&&await tryCode(s)){store.set(P+"me",[]);store.set(P+"staff",true);store.set(P+"sc",String(s))}}
 render();
 if(LANGS.length>1&&store.get(P+"lang",null)===null){document.getElementById("lpTitle").textContent=LANGS.map(x=>(T[x]&&T[x].lang)||"Language").filter((v,i,a)=>a.indexOf(v)===i).join(" · ");document.getElementById("lpList").innerHTML=LANGS.map(x=>`<button class="opt" data-lang="${x}" style="min-height:4.2rem;font-size:1.25rem"><b>${LANGNAME[x]||x}</b></button>`).join("");document.getElementById("langPick").classList.add("open")}
 else if(PEOPLE.length&&meIds()===null)openWho(false);
