@@ -6,14 +6,15 @@
 <meta name="robots" content="noindex, nofollow">
 <title>__TITLE__</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@500;600&display=swap">
 <style>
-:root{--bg:#F3F6FA;--card:#FFFFFF;--ink:#14213D;--muted:#4A5672;--line:#D5DDE8;--navy:#1A4375;--deep:#2D3B62;--teal:#4EB1C1;--tealText:#1A6B77;--light:#D3DFEE;--gold:#E9A93A;--goldSoft:#FDF1D8;--red:#A8321E;--green:#1E7A47;--fs:18px}
+:root{--bg:#F0F6FF;--card:#FFFFFF;--ink:#252E56;--muted:#4A5672;--line:#D3DFEE;--navy:#2667A8;--deep:#2D3B62;--teal:#4EB1C1;--tealText:#1A6B77;--light:#D3DFEE;--gold:#E9B13F;--hero:radial-gradient(120% 90% at 80% 10%,#1A4375 0%,#2D3B62 50%,#1C2642 100%);--blue:linear-gradient(100deg,#2667A8 42%,#132D56 116%);--goldSoft:#FDF1D8;--red:#A8321E;--green:#1E7A47;--fs:18px}
 *{box-sizing:border-box}
 html{font-size:var(--fs)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Golos Text',system-ui,sans-serif;font-size:1rem;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1rem;line-height:1.5}
+h2{font-family:'Source Serif 4',Georgia,serif;font-weight:600}
 .wrap{max-width:520px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:6rem}
-header{background:var(--navy);color:#fff;padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.35rem}
+header{background:var(--hero);color:#fff;padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.35rem}
 .hrow{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
 .logos{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
 .logo{display:inline-flex;align-items:center;height:2.1rem;padding:0 .7rem;border:2px dashed rgba(255,255,255,.7);border-radius:.55rem;font-size:.9rem;font-weight:700}
@@ -36,7 +37,7 @@ h2{margin:0 0 .6rem;font-size:1.2rem}
 .daynav .t{flex:1;text-align:center;min-width:0}
 .arrow{font:inherit;width:3.1rem;height:3.1rem;flex:0 0 auto;border-radius:.9rem;border:2px solid var(--navy);background:#fff;color:var(--navy);font-size:1.3rem;font-weight:700;cursor:pointer}
 .arrow:disabled{border-color:var(--line);color:#8A94A8;cursor:default}
-.now{background:var(--navy);color:#fff;border-radius:1.2rem;padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
+.now{background:var(--blue);color:#fff;border-radius:1.2rem;padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
 .pill{align-self:flex-start;background:var(--gold);color:var(--ink);font-weight:700;font-size:.9rem;padding:.2rem .8rem;border-radius:999px}
 .bigtime{font-size:2.4rem;font-weight:700;line-height:1}
 .now .place{color:var(--light);font-size:.95rem}
@@ -98,7 +99,7 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
 .apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
 .app{font:inherit;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:.35rem;font-size:.85rem;font-weight:600;color:var(--ink);cursor:pointer;padding:.2rem 0}
 .app span{width:3.3rem;height:3.3rem;border-radius:1rem;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:700}
-.thanks{background:var(--navy);color:#fff;padding:1.2rem 1.1rem}
+.thanks{background:var(--hero);color:#fff;padding:1.2rem 1.1rem}
 .strip{display:grid;grid-template-columns:repeat(5,1fr)}
 .strip img{width:100%;height:3.6rem;object-fit:cover;display:block}
 .vote{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.6rem}
@@ -463,7 +464,7 @@ async function makeVideo(kind){
   const lg=await loadImg(KWLOGO).catch(()=>null);
   const W=1080,H=1920,FPS=30,IN=48,PER=54,FD=10,OUT=66,N=IN+ims.length*PER+OUT;
   const c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
-  const f="'Golos Text',system-ui,sans-serif";
+  const f="'IBM Plex Sans',system-ui,sans-serif";
   ims.forEach(o=>{const w=o.im.naturalWidth,h=o.im.naturalHeight;if(w>h&&o.faces.length>=2){const x0=Math.min(...o.faces.map(q=>q.x)),x1=Math.max(...o.faces.map(q=>q.x+q.width));o.fit=(x1-x0)>h*W/H*.8}
    if(o.fit){const tc=document.createElement("canvas");tc.width=18;tc.height=32;const [a1,a2,a3,a4]=fcrop(w,h,[],18,32);tc.getContext("2d").drawImage(o.im,a1,a2,a3,a4,0,0,18,32);let s=tc;for(const m of [4,4]){const n=document.createElement("canvas");n.width=s.width*m;n.height=s.height*m;const x=n.getContext("2d");x.imageSmoothingEnabled=true;x.imageSmoothingQuality="high";x.drawImage(s,0,0,n.width,n.height);s=n}o.bg=s}});
   const fit=(o,t,alpha)=>{g.globalAlpha=alpha;g.imageSmoothingEnabled=true;g.drawImage(o.bg,0,0,W,H);g.fillStyle="rgba(0,0,0,.28)";g.fillRect(0,0,W,H);
@@ -792,16 +793,16 @@ function fmtBtns(){document.querySelectorAll("#shFmt [data-fmt]").forEach(b=>b.s
 function shDims(){const s=SHF==="s";return {W:1080,H:s?1920:1350,A:s?1150:800,story:s}}
 function coverDraw(g,im,r,faces){const [sx,sy,sw,sh]=fcrop(im.naturalWidth||im.width,im.naturalHeight||im.height,faces||[],r[2],r[3]);g.drawImage(im,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}
 async function cardFrame(g,D,kick,title,date){
- const f="'Golos Text',system-ui,sans-serif",tw=D.story?820:936,y0=D.A+72;
+ const f="'IBM Plex Sans',system-ui,sans-serif",tw=D.story?820:936,y0=D.A+72;
  g.fillStyle="#4A5672";g.font=`700 38px ${f}`;g.fillText(kick.toUpperCase(),72,y0);
  let fs=72;g.font=`700 ${fs}px ${f}`;
  const lines=t=>{const w=t.split(" ");let n=1,line="";for(const x of w){const s=line?line+" "+x:x;if(g.measureText(s).width>tw&&line){n++;line=x}else line=s}return n};
  while(lines(title)>2&&fs>48){fs-=6;g.font=`700 ${fs}px ${f}`}
- g.fillStyle="#14213D";const y=wrapText(g,title,72,y0+fs+14,tw,fs+12);
+ g.fillStyle="#252E56";const y=wrapText(g,title,72,y0+fs+14,tw,fs+12);
  const band=D.story?1560:D.H-170;
  g.fillStyle="#4A5672";g.font=`400 40px ${f}`;g.fillText(date,72,Math.min(y+62,band-68));
- g.fillStyle="#1A4375";g.font=`600 38px ${f}`;g.fillText(TAG,72,Math.min(y+116,band-16));
- g.fillStyle="#1A4375";g.fillRect(0,band,D.W,6);
+ g.fillStyle="#2667A8";g.font=`600 38px ${f}`;g.fillText(TAG,72,Math.min(y+116,band-16));
+ g.fillStyle="#2667A8";g.fillRect(0,band,D.W,6);
  try{const lg=await loadImg(KWLOGO);const lh=D.story?120:130,lw=lg.width*lh/lg.height;g.drawImage(lg,D.story?72:D.W-60-lw,band+18,lw,lh)}catch(e){}
 }
 async function makeCard(im0,kicker,title,date){

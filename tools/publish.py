@@ -21,13 +21,13 @@ ct=AESGCM(key).encrypt(iv,h.encode('utf8'),None)
 b=lambda x:base64.b64encode(x).decode()
 wrap=f'''<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>{title}</title>
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1A1F47">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2D3B62">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="King Wings"><link rel="apple-touch-icon" href="../../icon-192.png">
-<style>body{{margin:0;font:16px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;background:#EEF4F7;color:#1A1F47;display:flex;min-height:100vh;align-items:center;justify-content:center}}
-.c{{background:#fff;border-radius:1.2rem;padding:1.6rem 1.3rem;width:min(22rem,90vw);box-shadow:0 8px 30px rgba(26,31,71,.12);text-align:center}}
-.k{{font-weight:800;letter-spacing:.12em;font-size:.85rem;color:#2F8FA8}}h1{{font-size:1.3rem;margin:.6rem 0 1rem}}
-input{{font:inherit;font-size:1.8rem;letter-spacing:.4em;text-align:center;width:100%;box-sizing:border-box;padding:.6rem;border:2px solid #C9D6DE;border-radius:.8rem}}
-button{{font:inherit;font-weight:700;width:100%;min-height:3rem;margin-top:.9rem;border:0;border-radius:.8rem;background:#1A1F47;color:#fff;font-size:1.05rem}}
+<style>body{{margin:0;font:16px/1.4 "IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;background:#F0F6FF;color:#252E56;display:flex;min-height:100vh;align-items:center;justify-content:center}}
+.c{{background:#fff;border-radius:1.2rem;padding:1.6rem 1.3rem;width:min(22rem,90vw);box-shadow:0 8px 30px rgba(37,46,86,.12);text-align:center}}
+.k{{font-weight:800;letter-spacing:.12em;font-size:.85rem;color:#2667A8}}h1{{font-size:1.3rem;margin:.6rem 0 1rem}}
+input{{font:inherit;font-size:1.8rem;letter-spacing:.4em;text-align:center;width:100%;box-sizing:border-box;padding:.6rem;border:2px solid #D3DFEE;border-radius:.8rem}}
+button{{font:inherit;font-weight:700;width:100%;min-height:3rem;margin-top:.9rem;border:0;border-radius:.8rem;background:#4EB1C1;color:#1C2642;font-size:1.05rem}}
 .e{{color:#B3261E;min-height:1.4rem;margin-top:.6rem;font-size:.95rem}}.s{{color:#5B6475;font-size:.9rem}}</style></head>
 <body><form class="c" id="f"><img src="../../logo.png" alt="King Wings Travel DMC" style="width:11rem;max-width:70%;height:auto;display:block;margin:0 auto .3rem"><h1>{title}</h1>
 <label for="p" class="s">{pinL}</label>
@@ -56,6 +56,6 @@ if("serviceWorker" in navigator)navigator.serviceWorker.register("../../sw.js",{
 </script></body></html>'''
 d=os.path.join(out,'g',code);os.makedirs(d,exist_ok=True)
 open(os.path.join(d,'index.html'),'w',encoding='utf8').write(wrap)
-json.dump({"name":"King Wings · "+title,"short_name":"King Wings","start_url":"./","scope":"./","display":"standalone","background_color":"#EEF4F7","theme_color":"#1A1F47",
+json.dump({"name":"King Wings · "+title,"short_name":"King Wings","start_url":"./","scope":"./","display":"standalone","background_color":"#F0F6FF","theme_color":"#2D3B62",
  "icons":[{"src":"../../icon-192.png","sizes":"192x192","type":"image/png"},{"src":"../../icon-512.png","sizes":"512x512","type":"image/png"}]},open(os.path.join(d,'manifest.webmanifest'),'w'),ensure_ascii=False)
 print('ok',d,len(wrap))
