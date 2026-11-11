@@ -31,6 +31,7 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
   - Name conflict check: `claimUrl` (or `tools/claim_url.txt`, one line — the bot web app …/exec from sheet «Настройки бота» B1 of «Взаиморасчёты King Wings»). The page tells the bot «this phone chose p03» (no names); if the same name is on two phones, both phones get «Who are you?» again until each taps own name. «👤 Choose my name again» is on Today under «For you».
   - NO passport numbers, dates of birth or ticket images with passport data — `build_guide.py` stops on anything passport-like.
 - `ui` — per-language overrides of any interface text (`weatherV`, `timeV`, `thanksSub`, `noHotel`, `nextT`, …). Languages without built-in texts fall back to English — put their texts here.
+- Daily memo (🧳 on Today): `build_guide.py` fills `days[i].wx` = `[{n,lat,lon,m}]` (place for the forecast; `m:1` mountains) and `days[i].holy` from hotel city and plan text. The phone fetches a free forecast (open-meteo, no key) after the page is shown, caches it 3 h; offline → `ui.weatherV`. What to wear / take is chosen from the forecast. On the day the group enters a country the memo lists its border rules (`dn_<country>` in the template, checked 11.11.2026); Help shows all of them.
 - `route`, `tripImg` — for the "share the whole trip" picture; `showMeals` (false hides meals); `photos` (link after the trip)
 
 New group: `python3 tools/newcode.py .` prints a free CODE and a PIN.

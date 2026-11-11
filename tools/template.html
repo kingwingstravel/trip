@@ -113,6 +113,7 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
 .langbar button{font:inherit;font-weight:700;min-height:2.8rem;padding:0 1rem;border-radius:2rem;border:2px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
 .langbar button[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
 .hrow{flex-wrap:wrap;gap:.5rem}
+.memo h2{margin-bottom:.3rem}.memo .mrow{padding:.6rem 0;border-top:1px solid var(--line);overflow-wrap:anywhere;line-height:1.4}.memo .mrow:first-of-type{border-top:0}.memo ul{margin:.25rem 0 0;padding-left:1.3rem}.memo li{margin:.2rem 0}
 </style>
 </head>
 <body>
@@ -225,6 +226,39 @@ const TZ={kz:5,uz:5,tj:5,tm:5,kg:6};
 const SOSN={kz:{n:"112"},kg:{n:"103",x:[["police","102"],["fire","101"]]},uz:{n:"103",x:[["police","102"],["fire","101"]]},tj:{n:"103",x:[["police","102"],["fire","101"]]},tm:{n:"03",x:[["police","02"],["fire","01"]]}};
 const LANGNAME={en:"English",id:"Bahasa Indonesia",ru:"Русский",ms:"Bahasa Melayu",ko:"한국어",tr:"Türkçe",ar:"العربية",zh:"中文",hi:"हिन्दी"};
 const LANGS=(G.langs||[G.lang,"en"]).filter((v,i,a)=>a.indexOf(v)===i);
+/* ---- 🧳 Памятка на день (11.11.2026): погода по прогнозу, что надеть, что взять, правила границы ---- */
+const T1={
+ en:{memo:"🧳 Memo for today",wxNow:"Weather",wear:"What to wear",take:"Take with you",border:"🛃 Border today",dont:"🚫 Do not bring · be careful",
+  w0:"Clear",w1:"Partly cloudy",w2:"Cloudy",w3:"Fog",w4:"Drizzle",w5:"Rain",w6:"Snow",w7:"Showers",w8:"Thunderstorm",rainP:"rain",mt:"mountains",
+  wr1:"Winter jacket, warm hat, gloves, scarf and warm shoes",wr2:"Warm jacket, hat and gloves; layers you can take off",wr3:"Light jacket or sweater; dress in layers",wr4:"Light clothes; a light jacket for the evening",
+  wrM:"In the mountains it is colder — take an extra warm layer",tkU:"Umbrella or raincoat",tkS:"Waterproof shoes — it can be slippery",tkH:"Modest clothes; a scarf for ladies (holy places)",tkG:"Sunglasses",tkW:"Comfortable walking shoes and water",
+  wxOff:"Forecast appears when the phone is online",
+  dn_uz:["No drones — they are taken at the border (a permit is needed long before the trip).","Medicines only in original packs, with a doctor's prescription. Codeine and some strong painkillers or sleeping pills are banned.","Cash over 100 million sum (about $8,000): declare all of it on entry and keep the paper until you leave."],
+  dn_kz:["Cash over $10,000: declare it. You may not take out more than $10,000 in cash."],
+  dn_kg:["Cash over $10,000: declare it and keep the stamped paper until you leave."],
+  dn_tj:["Drones only with a permit from the Civil Aviation Agency.","Cash over $10,000: declare it."],
+  dnAll:"Antiques and old carpets: ask the shop for an export certificate and keep receipts."},
+ id:{memo:"🧳 Catatan hari ini",wxNow:"Cuaca",wear:"Pakaian",take:"Bawa",border:"🛃 Perbatasan hari ini",dont:"🚫 Jangan dibawa · hati-hati",
+  w0:"Cerah",w1:"Cerah berawan",w2:"Berawan",w3:"Berkabut",w4:"Gerimis",w5:"Hujan",w6:"Salju",w7:"Hujan lokal",w8:"Badai petir",rainP:"hujan",mt:"pegunungan",
+  wr1:"Jaket musim dingin, topi hangat, sarung tangan, syal dan sepatu hangat",wr2:"Jaket hangat, topi dan sarung tangan; pakaian berlapis",wr3:"Jaket tipis atau sweter; pakaian berlapis",wr4:"Pakaian ringan; jaket tipis untuk malam",
+  wrM:"Di pegunungan lebih dingin — bawa lapisan hangat tambahan",tkU:"Payung atau jas hujan",tkS:"Sepatu tahan air — bisa licin",tkH:"Pakaian sopan; kerudung untuk wanita (tempat suci)",tkG:"Kacamata hitam",tkW:"Sepatu nyaman untuk berjalan dan air minum",
+  wxOff:"Prakiraan cuaca muncul saat ponsel online",
+  dn_uz:["Jangan bawa drone — akan disita di perbatasan (izin harus diurus jauh sebelum perjalanan).","Obat hanya dalam kemasan asli, dengan resep dokter. Kodein dan beberapa obat pereda nyeri kuat atau obat tidur dilarang.","Uang tunai lebih dari 100 juta sum (sekitar $8.000): laporkan semuanya saat masuk dan simpan kertasnya sampai keluar."],
+  dn_kz:["Uang tunai lebih dari $10.000: wajib dilaporkan. Tidak boleh membawa keluar lebih dari $10.000 tunai."],
+  dn_kg:["Uang tunai lebih dari $10.000: laporkan dan simpan kertas bercap sampai keluar."],
+  dn_tj:["Drone hanya dengan izin dari Badan Penerbangan Sipil.","Uang tunai lebih dari $10.000: wajib dilaporkan."],
+  dnAll:"Barang antik dan karpet tua: minta sertifikat ekspor di toko dan simpan struknya."},
+ ru:{memo:"🧳 Памятка на сегодня",wxNow:"Погода",wear:"Что надеть",take:"Взять с собой",border:"🛃 Сегодня граница",dont:"🚫 Не везти · осторожно",
+  w0:"Ясно",w1:"Переменная облачность",w2:"Облачно",w3:"Туман",w4:"Морось",w5:"Дождь",w6:"Снег",w7:"Ливни",w8:"Гроза",rainP:"дождь",mt:"горы",
+  wr1:"Зимняя куртка, тёплая шапка, перчатки, шарф и тёплая обувь",wr2:"Тёплая куртка, шапка и перчатки; одежда слоями",wr3:"Лёгкая куртка или свитер; одежда слоями",wr4:"Лёгкая одежда; на вечер лёгкая куртка",
+  wrM:"В горах холоднее — возьмите ещё один тёплый слой",tkU:"Зонт или дождевик",tkS:"Непромокаемая обувь — может быть скользко",tkH:"Скромная одежда; платок для женщин (святые места)",tkG:"Солнечные очки",tkW:"Удобная обувь для ходьбы и вода",
+  wxOff:"Прогноз появится, когда телефон будет в интернете",
+  dn_uz:["Не везите дрон — его заберут на границе (разрешение нужно задолго до поездки).","Лекарства только в заводской упаковке и с рецептом врача. Кодеин и некоторые сильные обезболивающие и снотворные запрещены.","Наличные больше 100 млн сумов (около $8 000): задекларировать всё при въезде и хранить бумагу до выезда."],
+  dn_kz:["Наличные больше $10 000 — задекларировать. Вывезти наличными больше $10 000 нельзя."],
+  dn_kg:["Наличные больше $10 000 — задекларировать и хранить бумагу с печатью до выезда."],
+  dn_tj:["Дрон только с разрешением Агентства гражданской авиации.","Наличные больше $10 000 — задекларировать."],
+  dnAll:"Антиквариат и старые ковры: попросите в магазине сертификат на вывоз и храните чеки."}};
+["en","id","ru"].forEach(k=>{if(T0[k])Object.assign(T0[k],T1[k])});
 const T={};
 LANGS.forEach(k=>{T[k]=Object.assign({},T0.en,T0[k]||{},(G.ui&&G.ui[k])||{})});
 const P="kw_"+G.code+"_";
@@ -766,6 +800,41 @@ function wd(){return WD[S.lang]||WD.en}
 function mo(){return MO[S.lang]||MO.en}
 function cn(c){return (CN[S.lang]||CN.en)[c]||CN.en[c]||c}
 function dateOf(i){const d=new Date(START);d.setDate(d.getDate()+i);return d}
+const WX={d:null};
+function wxKey(w){return Number(w.lat).toFixed(2)+","+Number(w.lon).toFixed(2)}
+function ymd(dt){return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0")}
+function wxLoad(){
+ const locs=[...new Set(DAYS.flatMap(d=>(d.wx||[]).map(wxKey)))];if(!locs.length)return;
+ const K="kw_wx_"+G.code,c=store.get(K,null);if(c&&c.d)WX.d=c.d;
+ if(Date.now()>dateOf(DAYS.length-1).getTime()+864e5)return;
+ if(dateOf(0).getTime()-Date.now()>15*864e5)return;
+ if(c&&Date.now()-c.t<3*36e5)return;
+ const la=locs.map(x=>x.split(",")[0]).join(","),lo=locs.map(x=>x.split(",")[1]).join(",");
+ try{fetch("https://api.open-meteo.com/v1/forecast?latitude="+la+"&longitude="+lo+"&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&timezone=auto&forecast_days=16").then(r=>r.ok?r.json():null).then(j=>{if(!j)return;const a=Array.isArray(j)?j:[j],d={};a.forEach((o,i)=>{if(o&&o.daily&&locs[i])d[locs[i]]=o.daily});WX.d=d;store.set(K,{t:Date.now(),d});fillMemo()}).catch(()=>{})}catch(e){}
+}
+function wxDay(w,i){const f=WX.d&&WX.d[wxKey(w)];if(!f||!f.time)return null;const k=f.time.indexOf(ymd(dateOf(i)));if(k<0||f.temperature_2m_max[k]==null)return null;return {mx:f.temperature_2m_max[k],mn:f.temperature_2m_min[k],pp:f.precipitation_probability_max?f.precipitation_probability_max[k]:null,c:f.weather_code?f.weather_code[k]:null}}
+function wxDesc(c,l){if(c==null)return "";if(c===0)return l.w0;if(c<=2)return l.w1;if(c===3)return l.w2;if(c<=48)return l.w3;if(c<=57)return l.w4;if(c<=67)return l.w5;if(c<=77)return l.w6;if(c<=82)return l.w7;if(c<=86)return l.w6;return l.w8}
+function vMemo(i){
+ const d=DAYS[i],l=L();if(!d)return "";
+ const wx=d.wx||[],rows=[];let mx=null,rain=false,snow=false,sun=false,any=false;
+ wx.forEach(w=>{const f=wxDay(w,i);if(!f)return;any=true;
+  rows.push(`<div><b>${esc(w.n)}${w.m?` (${l.mt})`:""}:</b> ${Math.round(f.mn)}…${Math.round(f.mx)} °C · ${esc(wxDesc(f.c,l))}${f.pp!=null&&f.pp>=30?` · ☔ ${f.pp}%`:""}</div>`);
+  mx=mx==null?f.mx:Math.min(mx,f.mx);
+  if((f.pp!=null&&f.pp>=40)||(f.c>=51&&f.c<=67)||(f.c>=80&&f.c<=82)||f.c>=95)rain=true;
+  if((f.c>=71&&f.c<=77)||f.c===85||f.c===86)snow=true;
+  if(f.c!=null&&f.c<=1&&w.m)sun=true});
+ const mount=wx.some(w=>w.m),wear=any?(mx<=2?l.wr1:mx<=10?l.wr2:mx<=18?l.wr3:l.wr4):null;
+ const take=[];if(rain)take.push(l.tkU);if(snow)take.push(l.tkS);if(d.holy)take.push(l.tkH);if(sun)take.push(l.tkG);take.push(l.tkW);
+ const bl=(i===0||DAYS[i-1].c!==d.c)?(l["dn_"+d.c]||[]):[];
+ const li=a=>`<ul>${a.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`;
+ return `<section class="card memo"><h2>${l.memo}</h2>
+ ${wx.length?`<div class="mrow"><div class="small">🌡 ${l.wxNow}</div>${any?rows.join(""):`<div>${esc(l.weatherV||l.wxOff)}</div>`}</div>`:""}
+ ${wear||mount?`<div class="mrow"><div class="small">👕 ${l.wear}</div>${wear?`<div>${esc(wear)}</div>`:""}${mount?`<div>⛰️ ${esc(l.wrM)}</div>`:""}</div>`:""}
+ <div class="mrow"><div class="small">🎒 ${l.take}</div>${li(take)}</div>
+ ${bl.length?`<div class="mrow"><div class="small">${l.border} · ${esc(cn(d.c))}</div>${li(bl)}</div>`:""}</section>`}
+function fillMemo(){const el=document.getElementById("memoSlot");if(el)el.innerHTML=vMemo(+el.dataset.i)}
+function vDont(l){const a=COUNTRIES.flatMap(c=>(l["dn_"+c]||[]).map(t=>cn(c)+": "+t));if(!a.length)return "";a.push(l.dnAll);
+ return `<section class="card memo"><h2>${l.dont}</h2><ul>${a.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></section>`}
 function fullDate(i){const d=dateOf(i);return `${wd()[d.getDay()]}, ${d.getDate()} ${mo()[d.getMonth()]}`}
 function shortDate(i){const d=dateOf(i);return `${d.getDate()} ${mo()[d.getMonth()]} ${d.getFullYear()}`}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
@@ -891,6 +960,7 @@ function vToday(){
  ${vCal(d,l)}
  ${newG?"":vPeople(d,l)}
  ${d.imp&&tx(d.imp)?`<section class="warn"><b>${l.important}</b>${esc(tx(d.imp))}</section>`:""}
+ <div id="memoSlot" data-i="${S.day}">${vMemo(S.day)}</div>
  ${plan?`<section class="card"><h2>${l.plan}</h2><ol class="plan">${plan}</ol></section>`:""}
  ${vMeals(d,l)}
  <div id="phSlot"></div>
@@ -925,6 +995,7 @@ function vHelp(){
  ${SUPPORT?`<section class="now"><div class="place">${l.support}</div><div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums">${esc(SUPPORT)}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><a class="btn" style="background:var(--gold);color:var(--ink)" href="${tel(SUPPORT)}">📞 ${l.call}</a><a class="btn" style="background:#1F7A4A;color:#fff;border:0" href="https://wa.me/${SUPPORT.replace(/[^\d]/g,"")}" target="_blank" rel="noopener">WhatsApp</a></div></section>`:""}
  <section class="card"><h2>${l.good}</h2><dl>${rows.map(r=>`<div><dt>${r[0]}</dt><dd>${esc(r[1])}</dd></div>`).join("")}</dl></section>
  ${ck.length?`<section class="card"><h2>${l.check}</h2>${ck.map((c,i)=>`<label style="display:flex;gap:.8rem;align-items:center;min-height:3.2rem;border-top:${i?"1px solid var(--line)":"0"}"><input type="checkbox" data-ck="${i}" ${store.get(P+"ck",[]).includes(i)?"checked":""} style="width:1.6rem;height:1.6rem;flex:0 0 auto;accent-color:var(--navy)"><span>${esc(c)}</span></label>`).join("")}</section>`:""}
+ ${vDont(l)}
  ${vMePhone(l)}
  <button class="btn ghost" data-open="settings">Aa · ${l.settings}</button>`;
 }
@@ -1066,6 +1137,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelect
 {let s=null;try{s=localStorage.getItem(P+"s");localStorage.removeItem(P+"s")}catch(e){}
  if(s&&G.staffHash&&await tryCode(s)){store.set(P+"me",[]);store.set(P+"staff",true);store.set(P+"sc",String(s))}}
 render();
+wxLoad();
 if(LANGS.length>1&&store.get(P+"lang",null)===null){document.getElementById("lpTitle").textContent=LANGS.map(x=>(T[x]&&T[x].lang)||"Language").filter((v,i,a)=>a.indexOf(v)===i).join(" · ");document.getElementById("lpList").innerHTML=LANGS.map(x=>`<button class="opt" data-lang="${x}" style="min-height:4.2rem;font-size:1.25rem"><b>${LANGNAME[x]||x}</b></button>`).join("");document.getElementById("langPick").classList.add("open")}
 else if(PEOPLE.length&&meIds()===null)openWho(false);
 else claim(false);

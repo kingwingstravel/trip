@@ -36,6 +36,39 @@ for i,pp in enumerate(G.get('people',[]) or []):
 txt=json.dumps(G,ensure_ascii=False)
 if re.search(r'\d[\d\s.,]*\s?(USD|EUR|KZT|UZS|KGS|тг\b|тенге|\$)|нетто|наценк|net price',txt,re.I): warn.append('похоже на цену/нетто — проверь!')
 if '#ERROR' in txt or '#REF' in txt or '#N/A' in txt: err.append('в данных ошибка таблицы (#ERROR / #REF / #N/A)')
+# --- daily memo (решение владельца 11.11.2026): место для прогноза погоды на каждый день, горы, святые места ---
+# days[i].wx = [{n, lat, lon, m}] (m=1 — горы, холоднее), days[i].holy = 1. Поставлено вручную — не трогаем.
+CITY={'tashkent':(41.311,69.28),'samarkand':(39.654,66.96),'bukhara':(39.768,64.455),'khiva':(41.378,60.364),'fergana':(40.386,71.787),
+ 'nukus':(42.46,59.6),'termez':(37.224,67.278),'shakhrisabz':(39.057,66.834),'almaty':(43.238,76.946),'shymkent':(42.317,69.596),
+ 'turkistan':(43.297,68.27),'turkestan':(43.297,68.27),'astana':(51.169,71.449),'taraz':(42.9,71.367),'bishkek':(42.875,74.6),
+ 'osh':(40.513,72.816),'karakol':(42.49,78.39),'cholpon-ata':(42.65,77.08),'dushanbe':(38.559,68.787),'panjakent':(39.495,67.609),
+ 'penjikent':(39.495,67.609),'khujand':(40.283,69.633),'ashgabat':(37.96,58.326),'mary':(37.6,61.83)}
+MOUNT={'medeu':('Medeu',43.157,77.059),'shymbulak':('Shymbulak',43.128,77.081),'big almaty lake':('Big Almaty Lake',43.05,76.98),
+ 'kok-tobe':('Kok-Tobe',43.233,76.975),'ala archa':('Ala Archa',42.565,74.482),'seven lakes':('Seven Lakes',39.36,67.62),
+ 'haftkul':('Seven Lakes',39.36,67.62),'kolsai':('Kolsai',42.93,78.32),'charyn':('Charyn',43.35,79.08),'chimgan':('Chimgan',41.55,70.0),
+ 'issyk-kul':('Issyk-Kul',42.65,77.08),'burana':('Burana',42.746,75.25)}
+HOLY=re.compile(r'mosque|masjid|mausoleum|madrasa|madrassa|khast[- ]imam|hazrat|shrine|imam |shakhi|shah-i|yasawi|yassawi|naqshband|bahauddin|ziarah|ziyarat',re.I)
+def _en(o): return (o.get('en') if isinstance(o,dict) else o) or ''
+last_city=None
+for i,d in enumerate(G.get('days',[])):
+    text=' '.join([_en(d.get('title')),_en(d.get('place')),_en(d.get('meet'))]+[_en(p[1]) for p in (d.get('plan') or []) if len(p)>1]).lower()
+    h=d.get('hotel');city=None
+    if isinstance(h,int) and 0<=h<len(stays): city=(stays[h].get('city') or '').strip()
+    if not city or city.lower() not in CITY:
+        found=[(text.find(k),k) for k in CITY if text.find(k)>=0]
+        city=max(found)[1].title() if found else last_city
+    if 'wx' not in d:
+        wx=[];seen=set()
+        for k,(nm,la,lo) in MOUNT.items():
+            if k in text and nm not in seen and len(wx)<1: wx.append({'n':nm,'lat':la,'lon':lo,'m':0 if k=='kok-tobe' else 1});seen.add(nm)
+        if city and city.lower() in CITY:
+            la,lo=CITY[city.lower()];wx.append({'n':city,'lat':la,'lon':lo,'m':0})
+        tl=_en(d.get('title')).lower();ft=sorted((tl.find(k),k) for k in CITY if tl.find(k)>=0)
+        if len(wx)<2 and ft and (not city or ft[0][1]!=city.lower()) and CITY[ft[0][1]]!=CITY.get((city or '').lower()):
+            k=ft[0][1];wx.insert(0,{'n':k.title(),'lat':CITY[k][0],'lon':CITY[k][1],'m':0})
+        if wx: d['wx']=wx
+    if 'holy' not in d and HOLY.search(text): d['holy']=1
+    if city: last_city=city
 cf=os.path.join(here,'claim_url.txt')
 if not G.get('claimUrl') and os.path.exists(cf): G['claimUrl']=open(cf,encoding='utf8').read().strip()
 cu=str(G.get('claimUrl','') or '').strip()
