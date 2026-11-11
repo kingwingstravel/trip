@@ -46,7 +46,11 @@ CITY={'tashkent':(41.311,69.28),'samarkand':(39.654,66.96),'bukhara':(39.768,64.
 MOUNT={'medeu':('Medeu',43.157,77.059),'shymbulak':('Shymbulak',43.128,77.081),'big almaty lake':('Big Almaty Lake',43.05,76.98),
  'kok-tobe':('Kok-Tobe',43.233,76.975),'ala archa':('Ala Archa',42.565,74.482),'seven lakes':('Seven Lakes',39.36,67.62),
  'haftkul':('Seven Lakes',39.36,67.62),'kolsai':('Kolsai',42.93,78.32),'charyn':('Charyn',43.35,79.08),'chimgan':('Chimgan',41.55,70.0),
- 'issyk-kul':('Issyk-Kul',42.65,77.08),'burana':('Burana',42.746,75.25)}
+ 'issyk-kul':('Issyk-Kul',42.65,77.08),'burana':('Burana',42.746,75.25),'jeti-oguz':('Jeti-Oguz',42.33,78.23),
+ 'skazka':('Skazka',42.15,77.36),'fairy tale':('Skazka',42.15,77.36),'tash-rabat':('Tash-Rabat',40.82,75.29),'tash rabat':('Tash-Rabat',40.82,75.29),
+ 'son-kul':('Son-Kul',41.83,75.13),'song-kol':('Son-Kul',41.83,75.13),'son kul':('Son-Kul',41.83,75.13),'kel-suu':('Kel-Suu',40.95,76.0),'kol-suu':('Kel-Suu',40.95,76.0)}
+# связь по местам (Виталий, 11.11.2026) — ключ текста в шаблоне sg_<код>
+SIG={'skazka':'sk','fairy tale':'sk','tash-rabat':'tr','tash rabat':'tr','kel-suu':'ks','kol-suu':'ks','son-kul':'sn','song-kol':'sn','son kul':'sn'}
 HOLY=re.compile(r'mosque|masjid|mausoleum|madrasa|madrassa|khast[- ]imam|hazrat|shrine|imam |shakhi|shah-i|yasawi|yassawi|naqshband|bahauddin|ziarah|ziyarat',re.I)
 def _en(o): return (o.get('en') if isinstance(o,dict) else o) or ''
 last_city=None
@@ -68,6 +72,9 @@ for i,d in enumerate(G.get('days',[])):
             k=ft[0][1];wx.insert(0,{'n':k.title(),'lat':CITY[k][0],'lon':CITY[k][1],'m':0})
         if wx: d['wx']=wx
     if 'holy' not in d and HOLY.search(text): d['holy']=1
+    if 'sig' not in d:
+        sg=sorted({v for k,v in SIG.items() if k in text})
+        if sg: d['sig']=sg
     if city: last_city=city
 cf=os.path.join(here,'claim_url.txt')
 if not G.get('claimUrl') and os.path.exists(cf): G['claimUrl']=open(cf,encoding='utf8').read().strip()
