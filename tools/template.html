@@ -242,10 +242,10 @@ const WHO={add:false,dup:null};
 const CLAIM=G.claimUrl||"";
 function devId(){let d=store.get("kw_dev",null);if(!d){d=Math.random().toString(36).slice(2,12);store.set("kw_dev",d)}return d}
 function claim(confirm){
- if(!CLAIM||!PEOPLE.length)return;
- const ids=meIds();if(ids===null)return;
- const p=isStaff()?"":(ids[0]||"");
- try{fetch(CLAIM+"?a=claim&g="+encodeURIComponent(G.code)+"&d="+devId()+"&p="+encodeURIComponent(p)+"&c="+(confirm?1:0)).then(r=>r.json()).then(j=>{
+ if(!CLAIM)return;
+ let p="",w="t",nm="";
+ if(PEOPLE.length){const ids=meIds();if(ids===null)return;if(isStaff())w="s";else{p=ids[0]||"";const pp=PEOPLE.find(x=>x.id===p);nm=pp?pp.name:""}}
+ try{fetch(CLAIM+"?a=claim&g="+encodeURIComponent(G.code)+"&d="+devId()+"&p="+encodeURIComponent(p)+"&c="+(confirm?1:0)+"&w="+w+"&n="+encodeURIComponent(nm)).then(r=>r.json()).then(j=>{
   if(j&&j.conflict&&p&&(meIds()||[])[0]===p&&!document.getElementById("who").classList.contains("open")){WHO.dup=p;document.getElementById("toast").style.display="none";openWho(false)}
  }).catch(()=>{})}catch(e){}
 }
