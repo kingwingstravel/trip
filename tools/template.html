@@ -938,7 +938,7 @@ function flightsOf(d){
  (d.plan||[]).forEach(p=>txt.push(en(p[1])));
  [d.title,d.meet,d.imp].forEach(x=>txt.push(en(x)));
  const out=[];
- txt.forEach(t=>{if(!/flight|рейс|airport|аэропорт|arriv|прил|depart|вылет|✈|bandara|penerbangan/i.test(t))return;
+ txt.forEach(t=>{if(!/flight|рейс|air|аэропорт|arriv|прил|depart|вылет|✈|bandara|penerbangan/i.test(t))return;
   const re=/\b([A-Z]{2}|[A-Z]\d|\d[A-Z])\s?(\d{2,4})\b/g;let m;
   while((m=re.exec(t))){const c=m[1]+m[2];if(!out.includes(c))out.push(c)}});
  return out.slice(0,3);
