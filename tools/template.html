@@ -223,6 +223,7 @@ nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:re
     <form id="whoCode" style="display:none;flex-direction:column;gap:.6rem"><label for="whoCodeIn" id="whoCodeL" style="font-weight:700"></label><input id="whoCodeIn" inputmode="numeric" autocomplete="off" maxlength="8" style="font:inherit;font-size:1.6rem;letter-spacing:.3em;text-align:center;padding:.6rem;border:2px solid var(--line);border-radius:.8rem"><button class="btn primary" id="whoCodeBtn"></button><div id="whoCodeE" style="color:var(--red);min-height:1.4rem"></div></form>
   </div>
 </div>
+<button id="spFab" data-setpt="1" style="display:none;position:fixed;right:1rem;bottom:5.6rem;z-index:6;min-height:3.2rem;padding:0 1.1rem;border-radius:2rem;border:2px solid var(--gold);background:var(--goldSoft);color:var(--ink);font:inherit;font-weight:700;box-shadow:0 4px 14px rgba(37,46,86,.25)"></button>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -1060,7 +1061,7 @@ const LPK=P+"lpts";
 function lpParse(x){const a=String(x||"").split(",");const lat=+a[0],lon=+a[1];if(a.length<2||!isFinite(lat)||!isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180||(!lat&&!lon))return null;return {lat,lon,t:/^\d{1,2}:\d\d$/.test(a[2]||"")?a[2]:"",d:/^\d{4}-\d\d-\d\d$/.test(a[3]||"")?a[3]:"",n:a.slice(4).join(",").trim().slice(0,60)}}
 function lpAdd(p){let a=store.get(LPK,[]).filter(x=>!(x.d===p.d&&x.t===p.t&&Math.abs(x.lat-p.lat)<1e-5&&Math.abs(x.lon-p.lon)<1e-5));a.push(p);store.set(LPK,a.slice(-12))}
 function dayPts(i){const dd=ymd(dateOf(i));const live=store.get(LPK,[]).filter(p=>p.d===dd).sort((a,b)=>(b.t||"").localeCompare(a.t||""));return live.concat((DAYS[i].pts||[]).filter(p=>p&&(tx(p.n)||p.t)))}
-function vSetPt(l){return isStaff()?`<button class="btn" data-setpt="1" style="flex-direction:column;gap:0;min-height:3.8rem;background:var(--goldSoft);border:2px solid var(--gold);color:var(--ink)"><span>${l.ptSet}</span><small style="font-weight:500;font-size:.85rem">${l.ptSetSub}</small></button>`:""}
+function vSetPt(l){return ""}
 function vPts(d,l){
  const ps=dayPts(S.day);if(!ps.length)return vSetPt(l);
  return ps.map((p,k)=>`<section class="card" style="border:3px solid var(--teal);display:flex;flex-direction:column;gap:.6rem"><h2 style="margin:0">${l.ptT}${p.t?` · ${esc(p.t)}`:""}</h2>${p.ph?`<img src="${p.ph}" alt="" style="width:100%;border-radius:.8rem">`:""}${tx(p.n)?`<div style="font-size:1.15rem;font-weight:700">${esc(tx(p.n))}</div>`:""}${p.lat!=null?`<button class="btn primary" data-nav="${k}" style="flex-direction:column;gap:0;min-height:3.8rem"><span>${l.ptGo}</span><small style="font-weight:500;font-size:.85rem">${l.ptSub}</small></button>`:""}</section>`).join("")+vSetPt(l);
@@ -1135,6 +1136,7 @@ function renderHero(){
 }
 function render(){
  const l=L();
+ {const f=document.getElementById("spFab");f.style.display=isStaff()&&!S.after?"":"none";f.textContent=l.ptT}
  document.documentElement.lang=S.lang;
  document.documentElement.style.setProperty("--fs",S.size+"px");
  renderLogo();
