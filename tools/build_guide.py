@@ -100,7 +100,8 @@ for i,d in enumerate(G.get('days',[])):
             nm=re.sub(r'^[\s—–\-·,:|]+|[\s—–\-·,:|]+$','',nm).strip()
             pt={'n':{'en':nm}}
             if t: pt['t']=f'{int(t.group(1)):02d}:{t.group(2)}'
-            if m: pt['lat'],pt['lon']=float(m.group(1)),float(m.group(2))
+            if not m: warn.append(f'день {i+1}: «{ln}» — нет координат, карточку сбора не делаю');continue
+            pt['lat'],pt['lon']=float(m.group(1)),float(m.group(2))
             pts.append(pt)
         if pts: d['pts']=pts
     for k,pt in enumerate(d.get('pts') or []):
