@@ -280,7 +280,7 @@ function claim(confirm){
  let p="",w="t",nm="";
  if(PEOPLE.length){const ids=meIds();if(ids===null)return;if(isStaff())w="s";else{p=ids[0]||"";const pp=PEOPLE.find(x=>x.id===p);nm=pp?pp.name:""}}
  try{fetch(CLAIM+"?a=claim&g="+encodeURIComponent(G.code)+"&d="+devId()+"&p="+encodeURIComponent(p)+"&c="+(confirm?1:0)+"&w="+w+"&n="+encodeURIComponent(nm)).then(r=>r.json()).then(j=>{
-  if(j&&j.conflict&&p&&(meIds()||[])[0]===p&&!document.getElementById("who").classList.contains("open")){WHO.dup=p;document.getElementById("toast").style.display="none";openWho(false)}
+  /* 13.11.2026 решение владельца: имя выбрано один раз — больше НИКОГДА не спрашивать само. Спор одного имени окно не открывает (на iPhone Safari и значок — разные «телефоны» для бота, это давало ложные споры). */
  }).catch(()=>{})}catch(e){}
 }
 const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
