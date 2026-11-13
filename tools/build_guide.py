@@ -76,6 +76,40 @@ for i,d in enumerate(G.get('days',[])):
         sg=sorted({v for k,v in SIG.items() if k in text})
         if sg: d['sig']=sg
     if city: last_city=city
+# --- 📍 места сбора (решение владельца 13.11.2026): days[i].pts=[{t,n:{en,..},lat,lon,ph}] или days[i].back — текст клетки «Сбор обратно»
+# строка: «12:30 Green Bazaar, main entrance 43.2630, 76.9531» (координаты или ссылка Google Maps с @lat,lon / q=lat,lon); каждая строка — отдельная точка
+CO=re.compile(r'(-?\d{1,2}\.\d{3,})\s*,\s*(-?\d{1,3}\.\d{3,})')
+def _ph(path):
+    try:
+        from PIL import Image,ImageOps;import io
+        im=ImageOps.exif_transpose(Image.open(path)).convert('RGB');im.thumbnail((560,560))
+        b=io.BytesIO();im.save(b,'JPEG',quality=62,optimize=True,progressive=True)
+        return 'data:image/jpeg;base64,'+base64.b64encode(b.getvalue()).decode()
+    except Exception as e: warn.append(f'фото места сбора не прочиталось: {path} ({e})');return None
+for i,d in enumerate(G.get('days',[])):
+    raw=d.pop('back',None)
+    if raw and not d.get('pts'):
+        pts=[]
+        for ln in str(raw).splitlines():
+            ln=ln.strip()
+            if not ln or ln=='?': continue
+            t=re.search(r'\b([01]?\d|2[0-3])[:.]([0-5]\d)\b',ln);m=CO.search(ln)
+            nm=re.sub(r'https?://\S+','',ln)
+            if m: nm=nm.replace(m.group(0),'')
+            if t: nm=nm.replace(t.group(0),'',1)
+            nm=re.sub(r'^[\s—–\-·,:|]+|[\s—–\-·,:|]+$','',nm).strip()
+            pt={'n':{'en':nm}}
+            if t: pt['t']=f'{int(t.group(1)):02d}:{t.group(2)}'
+            if m: pt['lat'],pt['lon']=float(m.group(1)),float(m.group(2))
+            pts.append(pt)
+        if pts: d['pts']=pts
+    for k,pt in enumerate(d.get('pts') or []):
+        if pt.get('lat') is not None and not (-90<=pt['lat']<=90 and -180<=pt['lon']<=180): err.append(f'days[{i}].pts[{k}]: координаты неверные')
+        if pt.get('lat') is None: warn.append(f'день {i+1}: место сбора «{_en(pt.get("n"))}» без координат — стрелки не будет')
+        if pt.get('ph') and not str(pt['ph']).startswith('data:'):
+            v=_ph(pt['ph'])
+            if v: pt['ph']=v
+            else: pt.pop('ph')
 cf=os.path.join(here,'claim_url.txt')
 if not G.get('claimUrl') and os.path.exists(cf): G['claimUrl']=open(cf,encoding='utf8').read().strip()
 cu=str(G.get('claimUrl','') or '').strip()
