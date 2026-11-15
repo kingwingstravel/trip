@@ -313,7 +313,7 @@ function claim(confirm){
 }
 const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 if(IOS)document.querySelectorAll('link[rel="manifest"]').forEach(x=>x.remove());
-function syncUrl(){if(!IOS)return;let pin=null;try{pin=localStorage.getItem("kw_pin_"+G.code)}catch(e){}if(!pin)return;const q=new URLSearchParams();q.set("p",pin);q.set("l",S.lang);if(typeof isStaff==="function"&&isStaff()){const sc=store.get(P+"sc","");if(sc)q.set("s",sc)}else if(typeof meIds==="function"){const m=meIds();if(m&&m.length)q.set("m",m.join(","))}try{history.replaceState(null,"",location.pathname+"?"+q.toString())}catch(e){}}
+function syncUrl(){if(!IOS)return;let pin=null;try{pin=localStorage.getItem("kw_pin_"+G.code)}catch(e){}if(!pin)return;const q=new URLSearchParams();q.set("p",pin);q.set("l",S.lang);/* 15.11 владелец: код гида НИКОГДА не кладём в адрес — ссылку из адресной строки могут переслать туристам */if(typeof isStaff==="function"&&isStaff()){}else if(typeof meIds==="function"){const m=meIds();if(m&&m.length)q.set("m",m.join(","))}try{history.replaceState(null,"",location.pathname+"?"+q.toString())}catch(e){}}
 /* ---- 📷 Фото группы: гид добавляет (режим гида), туристы смотрят и сохраняют. Фото лежат у бота на Диске, страница грузит их только когда их открывают ---- */
 const PH={items:null,staff:false,busy:false,shown:24,thumbs:{},fulls:{},ready:{},up:"",cur:0,delArm:0};
 function phKey(){let k="";try{k=localStorage.getItem("kw_pin_"+G.code)||""}catch(e){}return k}
