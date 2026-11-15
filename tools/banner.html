@@ -59,12 +59,15 @@
       ioc:"1) Нажмите <b>Поделиться</b> ⬆︎ вверху справа<br>2) Нажмите <b>«На экран „Домой“»</b>",
       and:"1) Нажмите меню <b>⋮</b> вверху справа<br>2) Нажмите <b>«Добавить на главный экран»</b> или <b>«Установить приложение»</b>"}
  };
- var lg=(document.documentElement.lang||"en").slice(0,2),A=X[lg]||X.en,B=X.en,two=A!==B;
+ var lg,A,B=X.en,two;
+ function setLang(){lg=(document.documentElement.lang||"en").slice(0,2);A=X[lg]||X.en;two=A!==B}
+ setLang();
  function h2(k){return A[k]+(two?"<span class='kwEn'>"+B[k]+"</span>":"")}
  var box=document.getElementById("kwInstall"),txt=document.getElementById("kwInstText"),btn=document.getElementById("kwInstBtn"),later=document.getElementById("kwInstLater"),pill=document.getElementById("kwPill"),arrow=document.getElementById("kwArrow");
- document.getElementById("kwInstHead").innerHTML=h2("h");
- later.textContent=A.l+(two?" · "+B.l:"");
- pill.textContent=A.p;
+ function texts(){setLang();document.getElementById("kwInstHead").innerHTML=h2("h");later.textContent=A.l+(two?" · "+B.l:"");pill.textContent=A.p}
+ texts();
+ // 15.11: язык кнопки = язык, выбранный в путеводителе (страница меняет <html lang>)
+ try{new MutationObserver(function(){texts();if(box.style.display==="block")fill()}).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]})}catch(e){}
 
  var ua=navigator.userAgent,
      ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),
