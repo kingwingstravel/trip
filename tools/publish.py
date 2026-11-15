@@ -21,7 +21,7 @@ ct=AESGCM(key).encrypt(iv,h.encode('utf8'),None)
 b=lambda x:base64.b64encode(x).decode()
 wrap=f'''<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>{title}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#2D3B62">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap"><script>/* 15.11: iPhone — без manifest, иначе значок «Домой» открывает адрес без PIN */if(!(/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1))){{const l=document.createElement("link");l.rel="manifest";l.href="manifest.webmanifest";document.head.appendChild(l)}}</script><meta name="theme-color" content="#2D3B62">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="King Wings"><link rel="apple-touch-icon" href="../../icon-192.png">
 <style>body{{margin:0;font:16px/1.4 "IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;background:#F0F6FF;color:#252E56;display:flex;min-height:100vh;align-items:center;justify-content:center}}
 .c{{background:#fff;border-radius:1.2rem;padding:1.6rem 1.3rem;width:min(22rem,90vw);box-shadow:0 8px 30px rgba(37,46,86,.12);text-align:center}}
