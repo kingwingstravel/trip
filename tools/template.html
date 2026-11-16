@@ -329,7 +329,7 @@ function phFill(){
  const its=PH.items||[];
  if(!after&&!st&&!its.length){el.innerHTML="";phVidSlots();return}
  let h=`<section class="card" style="display:flex;flex-direction:column;gap:.7rem"><h2 style="margin:0">${l.phTitle}${its.length?` <span class="small" style="font-weight:500">· ${its.length}</span>`:""}</h2>`;
- if(st&&CLAIM)h+=`<div class="small">${l.phStaff}</div><label class="btn primary" style="position:relative;overflow:hidden">${l.phAdd}<input type="file" accept="image/*" multiple id="phIn" style="position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer"></label>${PH.up?`<div style="font-weight:700" id="phSt">${esc(PH.up)}</div>`:""}${PQ.run&&PQ.bg?`<div class="small">${l.vdBg}</div>`:""}`;
+ if(st&&CLAIM)h+=`<div class="small">${l.phStaff}</div><button class="btn primary" id="phAddB" type="button">${l.phAdd}</button>${PH.up?`<div style="font-weight:700" id="phSt">${esc(PH.up)}</div>`:""}${PQ.run&&PQ.bg?`<div class="small">${l.vdBg}</div>`:""}`;
  if(!CLAIM)h+=`<div class="small">${st?l.phOff:l.photosSoon}</div>`;
  else if(PH.items===null)h+=`<div class="small">${l.phLoad}</div>`;
  else if(!its.length)h+=`<div class="small">${st?l.phNone:l.photosSoon}</div>`;
@@ -346,9 +346,14 @@ async function phThumbs(){
  try{await Promise.all([w(),w(),w()])}finally{phTL=false}
  if(PH.items&&PH.items.slice(0,PH.shown).some(p=>!PH.thumbs[p.t]&&!p.bad))phThumbs();
 }
+/* 16.11.2026: одно постоянное поле выбора фото вне перерисовки — раньше карточка перерисовывалась, пока открыта галерея, и выбор терялся (приходилось жать 2–3 раза) */
+function phPick(){let i=document.getElementById("phInG");if(!i){i=document.createElement("input");i.type="file";i.accept="image/*";i.multiple=true;i.id="phInG";i.setAttribute("aria-hidden","true");i.style.cssText="position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none";document.body.appendChild(i);i.addEventListener("change",()=>{const fs=[...(i.files||[])];i.value="";if(fs.length)phUpload(fs)})}i.click()}
 function phImg(src){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=()=>rej(new Error("img"));im.src=src})}
-function phScale(im,max,q){const w=im.naturalWidth,h=im.naturalHeight,k=Math.min(1,max/Math.max(w,h)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*k));c.height=Math.max(1,Math.round(h*k));c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c.toDataURL("image/jpeg",q).split(",")[1]}
-async function phPrep(f){const u=URL.createObjectURL(f);try{const im=await phImg(u);return {full:phScale(im,2048,.86),th:phScale(im,640,.72)}}finally{URL.revokeObjectURL(u)}}
+/* 16.11.2026: холст сразу освобождаем (iPhone ограничивает общую память холстов — после многих фото getContext давал null и фото «не принималось») */
+function phScale(im,max,q){const w=im.naturalWidth||im.width,h=im.naturalHeight||im.height;if(!w||!h)throw new Error("img");const k=Math.min(1,max/Math.max(w,h)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*k));c.height=Math.max(1,Math.round(h*k));try{const x=c.getContext("2d");if(!x)throw new Error("ctx");x.drawImage(im,0,0,c.width,c.height);const b=(c.toDataURL("image/jpeg",q).split(",")[1])||"";if(b.length<200)throw new Error("enc");return b}finally{c.width=c.height=0}}
+async function phDecode(f,alt){if(!alt){const u=URL.createObjectURL(f);try{const im=await phImg(u);if(im.decode)try{await im.decode()}catch(e){}return {im,done:()=>URL.revokeObjectURL(u)}}catch(e){URL.revokeObjectURL(u);if(!window.createImageBitmap)throw e}}
+ let bm;try{bm=await createImageBitmap(f,{imageOrientation:"from-image"})}catch(e){bm=await createImageBitmap(f)}return {im:bm,done:()=>{try{bm.close()}catch(e){}}}}
+async function phPrep(f,a){const d=await phDecode(f,a===1);try{const m=a===2?1600:2048;return {full:phScale(d.im,m,.86),th:phScale(d.im,640,.72)}}finally{d.done()}}
 async function phPost(a,o){const r=await fetch(CLAIM+"?a="+a,{method:"POST",body:JSON.stringify(Object.assign({g:G.code,s:store.get(P+"sc","")},o))});let j=null;try{j=await r.json()}catch(e){}return j||(r.ok?{ok:true,blind:true}:{ok:false})}
 /* Очередь фото в памяти телефона (IndexedDB kw_ph): шаг 1 — телефон готовит все выбранные фото и кладёт их в очередь; шаг 2 — отправка по одному. Закрыли путеводитель — при следующем открытии загрузка продолжится сама. Отправленное фото сразу удаляется из очереди — дублей нет. */
 const PQ={run:false,chk:false,prep:false,bg:false,todo:[],seq:0,mem:new Map(),nodb:false,wake:null,blind:false};
@@ -379,7 +384,7 @@ async function phUpload(files){
    phMsg(vdFmt(l.phPrep,{n:i,t:i+PQ.todo.length}));
    const sig=[f.name,f.size,f.lastModified].join("/");
    if(phSigs()[sig]){phBAdd({dup:1});continue}
-   let d=null;for(let a=0;a<2&&!d;a++){try{d=await phPrep(f)}catch(e){}}
+   let d=null;for(let a=0;a<3&&!d;a++){if(a)await new Promise(r=>setTimeout(r,500*a));try{d=await phPrep(f,a)}catch(e){}}
    if(!d){phBAdd({t:1,bad:1});continue}
    const k=G.code+"|"+Date.now().toString(36).padStart(9,"0")+"-"+String(PQ.seq++%10000).padStart(4,"0");
    phSig(sg=>{sg[sig]="q"});phBAdd({t:1});
@@ -1223,6 +1228,7 @@ document.addEventListener("click",e=>{
   if(e.target.closest("#vidSave")){vidShare(true);return}}
  {const fb=e.target.closest("[data-fmt]");if(fb){if(SHF!==fb.dataset.fmt){SHF=fb.dataset.fmt;try{localStorage.setItem("kw_fmt",SHF)}catch(e){}openShare(SHK)}return}}
  {const pt=e.target.closest("[data-ph]");if(pt){phOpen(+pt.dataset.ph);return}
+  if(e.target.closest("#phAddB")){phPick();return}
   if(e.target.closest("#phMore")){PH.shown+=24;phFill();return}
   if(e.target.closest("#phPrev")){phOpen(PH.cur-1);return}
   if(e.target.closest("#phNext")){phOpen(PH.cur+1);return}
