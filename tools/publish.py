@@ -53,7 +53,7 @@ if(sm&&!sp&&localStorage.getItem("kw_{code}_me")===null)localStorage.setItem("kw
 if(qp||sp||sl||sm||spt){{try{{history.replaceState(null,"",location.pathname)}}catch(e){{}}}}
 if(qp){{open_(qp,true).then(ok=>{{if(!ok&&saved)open_(saved,true)}})}}
 else if(saved)open_(saved,true);
-if("serviceWorker" in navigator)navigator.serviceWorker.register("../../sw.js",{{scope:"../../"}}).catch(()=>{{}});
+if("serviceWorker" in navigator){{navigator.serviceWorker.register("../../sw.js",{{scope:"../../"}}).catch(()=>{{}});navigator.serviceWorker.ready.then(r=>{{if(r.active)r.active.postMessage({{kw:"keep",u:location.href}})}}).catch(()=>{{}})}}
 </script></body></html>'''
 d=os.path.join(out,'g',code);os.makedirs(d,exist_ok=True)
 open(os.path.join(d,'index.html'),'w',encoding='utf8').write(wrap)

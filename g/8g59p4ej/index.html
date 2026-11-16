@@ -31,5 +31,5 @@ if(sm&&!sp&&localStorage.getItem("kw_8g59p4ej_me")===null)localStorage.setItem("
 if(qp||sp||sl||sm){try{history.replaceState(null,"",location.pathname)}catch(e){}}
 if(qp){open_(qp,true).then(ok=>{if(!ok&&saved)open_(saved,true)})}
 else if(saved)open_(saved,true);
-if("serviceWorker" in navigator)navigator.serviceWorker.register("../../sw.js",{scope:"../../"}).catch(()=>{});
+if("serviceWorker" in navigator){navigator.serviceWorker.register("../../sw.js",{scope:"../../"}).catch(()=>{});navigator.serviceWorker.ready.then(r=>{if(r.active)r.active.postMessage({kw:"keep",u:location.href})}).catch(()=>{})}
 </script></body></html>
