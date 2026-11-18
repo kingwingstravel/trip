@@ -510,5 +510,442 @@
 "desc": "Яркий ягодно-травяной лимонад с сочной малиной, тонким цветочным ароматом дикой розы и свежим базиликовым акцентом.",
 "img": "https://imageproxy.wolt.com/assets/6aace982a269104d44bd6a2e"
 }
+],
+"glovo:tom-yum-bar-ala": [
+{
+"name": "Том Ям с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/07c6d2437e80888cc6a28010a9502838021f625f124b65d2d5e244af4b588c19?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям с морепродуктами",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/47924ca693a773ec3e5abb4e59dd9e644c5c0ba9ad6994f6f16ed83e6270b683?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Филадельфия классик",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4388e9513ef2d1fd9a96fc772885912a040851aac20d3ff9769415c65bd72846?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Онигири лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/c7006425-2d23-450f-91f7-889b35590455.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Онигири курица",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/734bbc36-affd-491e-bdf3-962bac4e8852.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Манго маракуя",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/81ea6e0b-ba8a-4bea-a4ef-4061162dc32e.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Поке с лососем и соусом никеей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/dd568d8d352aa80dfdcb7fa75d315a7ae9c1d3b3f2520f9d72fdfd050c977329?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фунчоза с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/2876d93f-9a95-42ee-8550-d1fc2834b5df.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тайский салат с говяжьей вырезкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5475d41893d554c9f2d8e40c4b51118864aec0b1d4a3fbc34a6829f22f682166?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Кабачки в азиатском соусе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/c6d58d9c-a2d0-4937-8e51-6ae166af3bc9.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Три гриба по-пекински",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/42a7cae2c3873071852432fac61a0d1c75a22e3d51015cf4401569e9ab8420d5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Кайсо Сарада-Чука",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/aa850d8b6f90de930582a0609dd42a1d41fcf002cd98f18d0c0997c1aa721273?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Битые огурцы",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/95b7c8684c01e19e091e914664d14983d08a19a322c307452ce3044c72c5b9b5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям China Town",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ab333f2a57b18c5d8b80535ad0305e46cba1970567e83a0397d04a4f5b1bec63?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям Royal thai",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2f8c7ee8d51dfa3652e78d4d591d26b3e62ea54ca9f45710cf3371d716541cd4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям  с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/055c986a85dd3300511d22a60db54705e8ba2a21939691c52ff26bd1b2a75e44?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям \"Морские гады\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/852cb0359dff12cbb93eab3f0d048df9ce75a82b6d22b42ebd5f7dc154f0cfdc?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Карри Лакса",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/abe4a48f-a935-4374-8652-b081b72298aa.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Кха с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/26178e6723486e0d1dadaf52e3a6b709cb98f1ecafb4abe66620b373c24ed77d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "TOMYUM рамэн",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/b2b81ea8-99a4-413f-8352-90aa9a900799.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Карри Red с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/19d80e77843b1b3f25b8cdd153cf182381ddbaaf778daf4efa3d4ddd3ac483a3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям  с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/750f46fba537aa698ec18a612ecc877aacfaf1362ff1fade97d690b808ef9cf8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям Green",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/af6db073e0edc1761248e3b5e739483b5fc456098f0313f359f1ff795662ea64?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям  с гёдза",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ff307716cf6cb17b1f75fc6d3d79683173030279a4943c8ae1674d6fc945459d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Карри Red с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/087a622bcd35815846e7d14305d81ccd2487e15f5559c7b0b1e2194e85371394?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сырный рамэн",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e6f0b23a193495f8a3be618c52fef132fa361088c1fa4dc3c9f60d0d0376ff14?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Кха с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/55b7a90c606ad65b0be74a569a0e7c7bc2011d900f97f2725810ee8eafe77771?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Карри Green",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/38c378e7d45de3780eb70fc07d2e935b4bdf24e86fea75bcc5cd65d580fa7631?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фо с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/5261380525/ef63612f-2798-4bcf-b60f-3351bfe7f21e.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/109b764094469774eafe0d49042593c714c6fda7fd0c7842490a200f5d4e124e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сёю рамэн",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/4f86109c-61d6-4539-a32a-e071c9b128fd.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рис пропаренный",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e7b956ce0432d33592db745a6bbace9ea444b32c9aac022a4212f4a1d37b8011?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тартар из лосося",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/885c743d35fecbf5673a0cfbf4c4ffb9241efb9c149d526d149ce5c59bb7e34c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тартар из угря",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/585f8ac0db31f6e623a6f800ec7b6f3be16521c3aba5be02714e107f07d99bb9?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": " Королевские креветки чипотле в темпуре",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b3df40667d7889addddbf94dbace0dce6f5d26c8d5cb2fee19e82ff32c26d51d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Королевские креветки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c1cd61124259ea466168f8a9b3e778726ca0621c2bc9e20c069fd80505da900f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сыр Пханган",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/10a41d2d1c1370576c9855b65ca034a7600bcffb72418b5b04260910f87d4d04?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Нэм с креветкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f6443502de53da1e12e032999b6e9e336182da1d1c61306e266a47a9d8e3ab39?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Нэм с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5e8f43a3b2411123ef82fb530e166a7f49b3ca786205528c8df7a6f8dc000d5b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тайские наггетсы Самуи",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/783f3b1dec9ed67b157758b23a505b56ef390a33f2f127a5d4917caebcef566c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Нэм с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c546f213bfcda3ee9969c930a26e8ec8d835c51becbe2d2f5be8a86bb2b18c40?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рис Bangkok с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/dc40344678a3ad7ab77641fc9154dc7e55c9f9f63de07926ae1b3460186ad4c4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Говядина Black Thai Pepper",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ca5b4d0b3242e74966986aa0d80ef7bc283321b03fc6a476ad71d033eff2c941?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пад Тай с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/46f13f241bf44b9f32d7bd036d6837aa5ce75f83d2b2cf0dfe881bec20e1e4f5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Говядина Гальби",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/22178e4258f862fdae2e06a0aabaad9400557795d584949a129842a4a111ee70?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пад Тай с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0370eff50b3ca6e2c44a41fc4768cd4f24fb6def4fb9fbaf429822e730418d60?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Кацу Карри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/f3a815f0-14e7-4876-8833-6eb5ca7d06f3.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Кунг Пао",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/1b0bea92-5029-4b0c-bccf-089dfd1e207a.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курица Терияки с кунжутом и рисом",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/79e495a8b144098108a4b2dd6d7e72a8fd91d52ed3df701abac5ba695b4fc49b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жареный рис по-Сычуаньски",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9d12ad583a5aab8aae244c88f9d7dc6cbc4b4fb6e43e0f28d40f113adee58551?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Филадельфия Max",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c32089b5232e90cadd5bd4090eba9cab26979def0964abc6bdc3256cafe83b2a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Филадельфия Унаги",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a3c25486f4306a86a26d3433157f56f7d46c2cf5f3b635e9b69a9d327e922878?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Филадельфия с креветкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/96141458-ec57-417e-9f20-87d98e7a6b59.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бонито с лососем терияки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e5a534dda7774554173490a1eea1d95673db0cdde23bba715d7961dbc1460555?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лава с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1b3fac0ba161d37914615b485c87db70c8081a3b86caad51d68f9659a5cd3648?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Темпура ролл с лососем терияки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1dced44d3362529a986be7d56dc3e94759989bc0dd4e6f2c23e64f75203dea2b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Темпура с угрем и соусом унаги",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/be341a0f36f6bac64b2de5fbfe77ee42bd7cad01c883b233233deccb07e0f506?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Запеченный ролл с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e3de299e51f494bb9831b7e574dfef4813f3f975c0df2840344175cddfd1a582?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Запеченный ролл с угрем и тамаго",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/14388cd605d6428763ea9e816c0f06723b2d88a2670fb697eabe86b4e101d10e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Темпура ролл с креветкой и соусом \"Лава\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e4a234fc4b429f158066c28a939a358020e4ce6445a4468befc185d714cdfd8c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Запеченный ролл краб-крем и тамаго",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/75e97f4bd851e7dd655d2927e6876dc3b4b31bcb8d5986f6cce43a9d20e7517b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Калифорния с краб-кремом",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9ed5af8ffbfa6f3df3eaa4fa9d49db21d0b288437f5abcded0ecd43606939f41?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши Угорь",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/21ad7516-c77f-4a67-b1e4-aea09803fb1f.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши Лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/ccd157c3-a8ea-4e88-a1c0-ea4f5959d509.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши Креветка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/d54f7da4-a481-4201-b403-2bd03c07613e.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши Тамаго",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/dfaa4379-b358-4894-b2dd-deeec8511ebd.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Роллы Middle SET",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/5261380604/9fe4249c-c7a8-4658-b9b7-e6036fa2b53a.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Запеченные роллы сет ",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5abe3dab7ac8600832785a5c24b9d9871bc774b9513f831312025f3b48e7e8d7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши SET",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/b788fa92-73eb-49f0-b931-9e9873f3e149.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гункан суши сет",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fe6266b5d2de81e5251ebac1f9934b1451f9eab1512ee4fe5610d112b2003a0e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчик Роти с нутеллой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ad2afc77855b98d8401fbce2e93b5b69b6c82127cc94c1bd3d55e4458587a036?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Нежность Фудзиямы",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b8ab3ba96881dc19bcaf5d51d8614bf8a3579cd4716a73693a748f7d8fe3cec2?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчик роти с яблоком",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/230fb3d1b68b40d3b1f63170b44e55d5e17977c7f3f914831b4e49b3918f9f1d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "СПРИНГ РОЛЛ",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/d92146e1-8fff-4ef4-bac5-07c8df6dfccb.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Матча зеленая дыня",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/84f4c8be-b597-45db-bd63-bdb61f704cde.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Матча манго маракуя",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/323456fe-fba5-411d-843c-412c33d27810.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Матча",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/9a32ac8b-7e21-4351-9509-de5b9aeadc28.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Малина\\дикая роза\\базилик",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42369264348/e7cc4e3d-7380-4a5f-84fc-0a6875447c76.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жасмин ананас",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/f8c4236d-240b-4f8f-b177-12901e53b5ac.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Айс\\ти черная смородина",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42370725493/91e82933-fae7-49e2-843b-05b946ca3f0a.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Малина юдзу",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42370725721/ed473c94-fa08-46f8-9cdd-9465be0dfc8c.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Айва розмарин",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42370725847/871ec3d6-ffe7-4670-b6ff-b241e7e8c683.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Манго чили тимьян",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/53fd5b85-3ee5-4c60-893d-4254dec68ed6.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Классический лимонад",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42370822939/cfe6d376-47b1-46bd-b422-6267b170d4cc.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Rich",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42371268234/69eda073-6b58-4ba2-acc7-5c2cb1193849.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Боржоми 0,3",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/product/42287726956/c6684f6a-385e-4e02-8633-e5c5cf551cf3.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тамаринд 250мм",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/431142/PRODUCT/36589249371/bba79df7-8c65-4ed1-a4f4-8032d9fd7125.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+}
 ]
 }

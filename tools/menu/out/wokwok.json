@@ -635,5 +635,497 @@
 "desc": "1л",
 "img": null
 }
+],
+"glovo:wok-wok-ala": [
+{
+"name": "Бейжің сиыр еті.  Говядина по-пекински",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b47a96842ff2d247ffde6e55b87ec7d641f464bf31a3a4f39c12341c8c8f03e7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пад тай",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e84613dcfa1bbdb4970b0bed820468f4cfef7294e4cbb8b898079f6b6ea837d9?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сингапурша дайындалған кеспе/Лапша по-Сингапурски",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/27fcdcdcb09019b281204beddfde0d94d01acfa0544d683095634b011201e66e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "СЕТ #1",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/20218707403/b87dadd8-6d9c-4376-a452-0b24ff3663d3.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "СЕТ #2",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/33197aaf617512449890cc51b464c23ebbd5615df3a9116d37b1abc0a5a9477b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Картофель фри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/26820278640/b0d30b9d-25a6-4f98-8705-3ad67907c8fc.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рис",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/26820277802/8e41400c-0212-43f0-9a47-5bc46d98641f.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қытайша әзірленген сиыр еті бар тоқаштар. Пампушки с говядиной по-китайски",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0d47c107b81903883b49b68adb643c7dc69ed6cd1377097b1b8827530526998a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бұрыш қосылған тауық еті/ Курица с перцем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0e8819da2155a92bae4316fec14172204d285295d7e546c3e1cacd0386fdad46?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Эби темпура спайси",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/598d8cd2f2c9c01e8ddd2b43e8c99ed51888389ce6e7124185fb48aeb1a53630?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Буланған брокколи/  Брокколи бланшированная",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c517cfa8a95cc373a45cc597714ec329cb8032151376d56d7bc09ed737181fe1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Терияки тұздығындағы тауық еті. Курица в соусе терияки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8b6e54997128341e604f0ed4d928098bd52531f57ad24afa7ed5a801e4ae113e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Яннем тұздығындағы тауық еті. Курица в соусе яннем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/87fe302424a0dd5fd4da6fc451a46f15678ea3a584677cc17a6e6315da7e0cb7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тофу қосылған токпокки/Токпокки с тофу",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4cbf441678cdc16a485c1db23a3883d2030bb6d7532d2620ad2403d342c58944?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тәтті және ащы тұздықтағы эноки/ Эноки в сладко-остром соусе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f9f4327425191855eca95adf3be890af1161af8a23da5249ee178891341da748?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "салат с курицей тирияки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/b65fa20d-7a64-43ef-ae27-e722187dc7dc.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жасыл салат /Зеленый салат",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/f1b74045-8f37-46f9-932d-0fc254c50ba8.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Баклажан салаты/ Салат из баклажан",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4b685f876860aee7fbf4087ae4c8bd06c961b7aabf1229aeb1d68c8adba5ae60?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сарымсақ қосылған қияр/ Огурцы с чесноком",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ab419894b4c50a71ee52e18caf050b611f39bb702140446b297eded807c5354e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ағаш саңырауқұлақтары/ Салат с древесными грибами",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/d23e6095-d15b-496b-8fff-f5ab2dd7d7d2.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Кешью жаңғағы қосылған микс салат/ Микс салатов с орехами кешью",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0db79e14ffa2040557d22836af88a966bae6dd5d9c817d65884cf969eb4a8789?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат \"Нок ты\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/064db0462d495db0193ea1e9108bf9f0e00e9266a5a9519be8f3fe1994cb8391?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чука салаты/Салат чука",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8bf65113feb0ab3f83ce58e18260e5cd06305b15985bf81c2746ab4669b3a04a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям Рамен",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/0c85648f-0839-476d-9524-0a2f4775ac71.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Том Ям с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0e46ffa6b47ff03e657b54316a822595593dc6bf02477501a1106d6724113775?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ірімшік қосылған рамен. Сырный рамен с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9e2f6573444ce4bd061a9eecc55bdd6945030cc755b047098fec06e7f739a484?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сиыр еті қосылған  рамен/ Рамэн с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/20218707391/36d5d310-42a3-4bae-9e7e-28419213db46.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп \"Фо Бо\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b97778b44e7cf3507b2e74c262d156243b03ea4d37d189da286d4a76ce25fcf1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ащы-қышқыл сорпасы/ Суп остро-кислый",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5cb150d69a7e86faa7d9016898f699eea6517a3ff873aba4b150193dc4b37daf?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Мисо сорпасы/Мисо суп",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/efd236f69b3b43c7b3416300a5dc391d77f4dc03455f9db1f58441656d890650?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пеште пісірілген теңіз өнімдері/  Морепродукты на жаровне",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fb880806ba16507a642b0b5649944cf164461f349a9d51a7d98198dbc56b7ab9?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Зімбір кокос тұздығындағы албырт балығы/ Лосось в имбирно-кокосовом соусе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8747f7da4171e8c29cb6e81bb77b281430ba806af6704c312627ef1ea13c9bd1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пеште пісірілген сиыр еті/ Говядина на жаровне",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f5fffe78f357bbbe70cb1487f3e76d8657827c2915f73a82f986db3386ecd64a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Саңырауқұлақ қосылған сиыр еті/Говядина с грибами",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/f2ca2552-776e-43c0-b753-6e3553ee0606.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бұрыш қосылған сиыр еті/ Перечная говядина",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f5150272bbfc7a5ddf261f5658c6f26905497d1e9f3cf205020624e28d937ad3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "курица на жаровне",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/b21c701f-3a65-440e-a158-25956f9df7cb.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Асжапырақпен тауық еті/ Куриная грудка со шпинатом и сливочным соусом",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/98c3e264a0cfe6d2d938b73e3633670793a556200bc7b824420562a8b5d6f895?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қызыл карри қосылған тауық еті/ Курица с красным карри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a3471accc9908285e5f820a0521563a7e499ee0a25348fccf40e4305bc9209b3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чапчхе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1727cfd599b52babc8716e3685c3c19e913f494a85057fb45d7995dcbec6acf0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Асжапырақ пен сиыр етінен жасалған кеспе/ Лапша из шпината с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6ba25e1091c60d7bfa0f94004144ff5e12186d5ef505b6944427c15b7d16ce66?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сиыр еті қосылған удон кеспесі/ Лапша удон с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2d3af9edad4a16d29456687615416407a6f02d02c4e47fa479c3ea4cca1091ca?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қуырылған рамен/ Жареный рамен",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5613a696b3864b78a6ea13d2dd7527e19891ab804221f17749c1651f8b7290d6?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тауық қосылған удон соба/ Удон соба с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d473fcc23ab075749a573de647e42e8239958949a2fcbedba9172708a0dc2a5c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Асжапырақ пен тауық етінен жасалған кеспе/ Лапша из шпината с куриным филе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2e7927839b9c69727fae3ec45c4bb6411f346fa93d577d9755136206a5d1fb77?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тауық еті қосылған удон кеспесі/ Лапша удон с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7e818c3804bc259e3e2cb686e004de3f0d5515a5159bada985bb7f3349bcb3ad?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Асшаян қосылған/ Покум паб с креветками",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/37d47b3ef9ae66daf0c5b0893788f8489058500117761322bbf6750b3b28946d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Тауық еті қосылған/ Покум паб с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1f52067c8a18ad15704ad8f0173effca70d4bdaa233701975dbbafecb6255c3a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Көкөністер қосылған/ Покум паб с овощами",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/82515f2faea2c8dcc7066c3b2fe52e7847229c048afc3539a3dde5ac26f2cd39?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сиыр етінен гедза/Гедза с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/edbc650678562d213fbd454b6af4993ed84da2e8f0f5e726bbb0e2cd83bde50e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Күркетауық қосылған қуырылған дим сам/ Жареный дим сам с индейкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7b77250fc7e7734413ca788e895b92a7d01fd477ae6a199811f0b2a6cdb2e8fd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сиыр еті қосылған дим сам/ Димсамы с говядиной",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/53035cabbe82ac28ca224d8309c1b7f550f93f6397c68d5aea2d27405a0f2581?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қуырылған маньтау/ Маньтоу (жареный)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f509032f42600edd14922720e2a607c259f2c5972cbed47e7361ac9d21c01b1c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Маньтоу",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4835831a807735db0f51f97ffdd0d090be9074948864f1d7cadbb8ae51c0b989?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ролл Жиынтығы/ Ролл Ассорти",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4fb41d407de9b5bcb1127ffd436e370edc4e5ae45b4626bc5043683ad802c596?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Классикалық филадельфия/ Ролл \"Филадельфия\" классик",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/20218707229/7e85a5a7-667a-4968-94f4-74d9d66934ec.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ролл \"Филадельфия\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/20218707232/6425af2a-33d2-431f-ae94-8078696acc1b.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт қосылған канада/ Ролл \"Канада\" с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8b5445c5f950da772445377b08ad5bf04e9a359fc82ec32f0af2eb057a98ad75?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт пен асшаян қосылған роллы/ Ролл с запеченный с лососем и креветкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8f4cda6deadef10dce99be4e71dfe31e0ec4ac3e161d4b47a3143ce7ef8f2afd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт қосылған ірімшік ролл/ Сырный ролл с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ed84e2ac455d57d92ea8864e24d7e6a64b5cf5860380ec977a87688c5b5627ca?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қуырылған албырт қосылған темпура роллы/ Ролл \"Темпура\" с жареным лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/47c52ba44f64b7126b9013c06e8d9f8b2e1de7701648496470a7ddac6c0ad7f0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ролл \"Вулкан\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/89fa8a9207709987bf74c5819fe35e59326a2337ec657242b298dc4540a67b36?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жыланбалық қосылған темпура ролл/ Ролл \"Темпура\" с угрем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4ba6acaa323cd2fb3a992c85f495c5f77e3ba0cc2e010d5bb57149e84c7edfae?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт қосылған темпура роллы/ Ролл \"Темпура\" с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f8295eca39de6f6165ccfdecd5edc44844e80389b85760fb64438e7d930f3786?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ірімшік қосылған темпура роолы/ Ролл \"Темпура с сыром\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0048fd17e8d355df263780abb4bf0c4558eb52e07f3cecd948256fb15eca7d4e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Асшаянмен калифорния/ Ролл \"Калифорния\" с креветкой",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2999cc3e1e508152086d5ee7e579b0e16afcbe897d3f0b96e25328296a1489f4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт қосылған ролл/ Ролл с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/59074b1b07c6c4d06b64cfec15054399d028e5d217bd415f364d0b017a50f6a3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жыланбалық пен қияр қосылған ролл/ Ролл с угрем и огурцом",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/40128a23c5c577ccbec098332c1cec99b0315d225ba26afdb1dd2d51a0cdfc5e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қияр қосылған ролл/ Ролл с огурцом",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/87606232b87f823bf612387821bc09c6cc4e1bb3ab801db535222c864de1d507?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сашими албырт/ Сашими лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/cea870f16ba59fa7da010e60f000d60d4e7c7658d9b98d023366900ad548dfdb?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сашими жыланбалық/ Сашими угорь",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1ee2639cfa31ced479150f0646db208ce5a2cb67b53ec99b7d27b9c8f1ea2c6e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сашими асшаян/ Сашими креветка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/899abfb389264c806d859864700a2ba971e1b64d65e988eeacad08e28772ea00?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Албырт суши/ суши Лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c5efe5250d6d1afcc7d504d1f5f3ef16e666a3875d2959c4cbd41840ff69c260?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Спайси албырт/ Спайси лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/22fbff63dc032444df0f2794a43c1d21e47c3316342ec69c527c881e12480d80?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Көмештелген спайси албырт/ Запеченный спайси лосось",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9ad328d9d5b93bcacd6213c5cdd288632e8fca3c053ca8313ef9f366a44f2066?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши жыланбалық/ Суши \"Угорь\"",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b08669f7927c858a1ce1a2287823d5592a840fc917ce24b90ca448359c916275?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суши асшаян/ Суши креветка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7a318f7c20f66dd49c6e0fe1745f7ee6b54579ee9a09c398a405d3baeda42e95?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ұшатын балық уылдырығы/ Икра летучей рыбы",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f943bea18dd46ef0cdf9b074e3e6050881a180d3c0f17c25ae2a4479c94244f3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Спайси жыланбалық/ Спайси угорь",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c57b89fa70e2c8ad3ccd3b0105ff167fc293ca29b256858daed425903fed2c1d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Спайси асшаян/ Спайси креветка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/02ba5ee0d1d2ad18f1b84609548ec2f95ce58810a96adc0251dbaf6f00989d44?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Көмештелген спайси жыланбалық/ Запеченный спайси угорь",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2d4b418d6520a5886a8a148266dce1fad9649281cdd0b158de8ae4774265a73c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Көмештелген спайси асшаян/ Запеченная спайси креветка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c16593d041d552a506c226446b095a4f5a0a415a92b76b422ec203ea50eeb2dd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сарымсақ қосылған нан/ Чесночный хлеб",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8f9a912844173f9d819f2b29495983f6d4d42d3d161022408cd6f9bbf2ab8c30?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Қара нан/ Бородинский хлеб",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c5b7e86286e99e0d8df6909bfaff6ddd4412a2ca1d81d8b0f3a23041aed7f91b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Наполеон с малиновым пюре",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/1697adaa-4e3c-4154-a1ea-5a39e2019f5a.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Маскорпоне кремі қосылған канноли/ Канноли с кремом маскарпоне",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/afba585effba234280a953ec6fa3ba6925d34fc24a542e751bf6dbec8c84eaca?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шоколадное муале",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/214f8a6e816a684b333a3cd35e84e05770dc97456d1ad8173236173793e08b01?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Мини бургер с фри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/5282bb82-65c0-4057-ac1e-f17d5d4fcbcd.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куриные наггетсы с фри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/41732351543/fc6c16ce-e3f8-48b8-a062-7afaa0a28867.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куриные палочки с фри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/c1b5ff69-121a-4ea9-b8c6-96e251f7d953.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп лапша с курицей",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/41732344085/2cc8421f-dd79-444e-9311-254aa7286f02.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Темпура с жареным лососем ",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/36217a38-d9f3-4696-a794-90e7acdac82e.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Вулкан",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/aa3df866-3983-4b26-9c83-e37e2152ccb4.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Темпура с лососем",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/868388/product/3d975cc3-8bdf-486d-9758-7a4adf7a7bc1.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Манго шейк",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/79b5e44c-a4b5-4dec-8917-535dd3e23119.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Манго-маракуйя шейк",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/5730b7fe-3873-4b24-900d-90a68d9b09f9.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Манго-ананас шейк",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/product/a5e6762a-110e-445c-9fee-aae92efa9acb.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соки \"Gracio\" (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/59a2b48a966fe2f9269d9b858ff3948ba348c7e409e157943307d83770037d35?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Coca cola (0,25 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/global-menu-service/GV_KZ/vendor/628231/PRODUCT/20218707703/6e4bcb03-8a74-4e64-8153-6b7bafa25e96.jpg?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+}
 ]
 }

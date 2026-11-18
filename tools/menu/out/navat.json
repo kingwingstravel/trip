@@ -1,1 +1,999 @@
-{}
+{
+"glovo:navat-ala": [
+{
+"name": "Плов Праздничный  1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c7428a0b262fb33fdacb8ceb85b11c63f0ea61b1073e142f89f13aaa395eb195?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лагман по-домашнему Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2de4fe37d158cc06acb974c7ddc4a550a8299f07e70e4264e320ae1130b21509?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Оливье Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d06bc973aeb41085465b6f64ea41fb06ca02d773e0c59393aff7fd90c9c19438?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Дорадо по восточному 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e1fd3de2ed7463b34433c8ede244fad9203589bf77e0ebd766e636738b3decec?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рыба в соусе Sweet Chilli филе форели (300 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6124e02776463dc85a925a9bd51242b75aa2b20154c889785ae6cee55308021f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рыба по-домашнему 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a0a7192596b995d29585eaab2a6916cb90892be0439097faa8da155da3e8da21?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куырдак по-домашнему Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fce778e26d59fbcccbe93c048c7e335ec4de4202649eeb39d3cea6c1d520fc2e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Телятина в сливочном соусе (250 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a2ca21f168999fb112f9b8e28c7b7b65d5716dfcd1e572e6f512d63f11731637?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курочка в соусе Терияки Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/dc8bcd38685c90fb05c17bef6f21b9b68f61c83e8eab0458921b5c932b450f5e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куырдак по казахский 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0bd1229f46a04e5b0181e145832f3b5c1a7819906bf5dad199d1aab5d4edb638?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куырдак из курочки Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/90381c0c23b5e3f06c3c948d66691ee63406457109797fb812adc3fa475d0f3d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Нарын 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9356855c151cfb87b6356045efa5fef6701aa8e4787873c047afa8dd62e3d9d0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лазуро (300 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6d23bad872096e38cd6320c3e6ab972bb819994d12acd69d947f7cfb822fc56f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курица с арахисом по кит Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a170e2751e29c06367a8e16affca8afe4b018f8e13671cc1f06944b5280fd324?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курица с кунжутом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d22347db3c9eff962ef130e516e213801f487c5539b1215d49087e4df93e497a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бризоль с фри",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0bc37609b2fae4f54e4120412898505d22fc4a55d835792cb2828562fa3d337d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курица в кисло-сладком соусе 1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5554b3f3d05e0cb45e60572154c554c0e1bf2f1efdad020bcb14f541f5bd285f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бефстроганов с гречкой 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2115fb4dfbff149454e179b021bf108ae6a9a79fb0783a1570e51515461d11a8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бефстроганов с рисом 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1250fcf4d7709743e435bbefcb43341b13aa226228bbcadc78e53f7167377e4b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бефстроганов с пюре  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/02e03c924befe9b074de5f6edf8ec99fc6230891864f8df5c1eaa91fd751b300?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Котлеты по-домашнему с фри 1пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4df499db32279cbe0e55a6355f59e419c1aabb44a532a8a0a3a9edb9c7675e2b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куриная грудка 1 пор. Достав",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5acdf8c70152c3336d5ef98b2503b9f6fc4161e754ebd3090299e5fb73d601e8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Курин котлет. на подушке из пюре Доставк",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e84e81500af5cd0ae92bbdb26472f4feabb0d2a052ff10c2e7cac5f0470e133f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фрикасе с пюре 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/05ca5a8683bc696dde053d5e693c110e11e9701b42ced6b1c7d08e955ffc5199?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фрикасе с гречкой (290 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d09cd95c66a8ac434b8e2fce1dbd7e5ef2b31863f81e327a0b2e828608c63c74?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фрикасе с рисом (290 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/820bce101d649d6e76030761d03776863bddb745928cb8a3d42e2f0f2a2ee726?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гош-нан мясной (350 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/72ef228bb1b52b7bfef12167b03bddce9420e25fba8fc56a73d3babbc5c41e15?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жареная чучвара (230 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3452ebace9f344d2a0df1c194cdbd74afe9f06ff85e6e4fdc4c0b1d8e33e5f6f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Аш-лям-фу (650 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c40eba6bb23c18ddf2547549229c96665aede146f7de14799d02bb010b9ec5ef?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Домашние вареники (380 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/15197b142176839eddfc66349bce288b8a4dab37cd6c73b4f48868e48f87982a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Цомян Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/97a130985da648401a374c39c2d13f6a47ae6965135593f9f9fe8c2a03509098?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Каурмалагман Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2fcd96fc13967138f57fbb23bfec0daa91c788ecc4571f4b8c9d33a3a8af4638?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гуйру-ганфан Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/88ffad4a9a9cf9b9f69c6609802f4b7f0b9f4e42ac433e3927c48d92e830cd1d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гуйру-лагман Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1772cd2f9309d3eeee688f59d5f79c78166154c44c39a3c14ff6a70dcc3907d7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ганфан по-домашнему Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/45e71598083182de9d65e369be4352a8f869438f3b41ad573bb2c16c7cf690e1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гуйру-лагман вегет. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/22139401ff13f8f2bb202536481d62dafb7a049d563b703825791173c17d7dcb?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фиш Бешпармак Ассорти 1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/bef599845f50213b8e79b8eca0d55462c8692ef4cb84959b78b0f09d2f40cb24?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фиш Бешпармак с осетром 1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ebde08f3fb8d4d11665b1a3d8654a4b3149bb6a4e6744ad73eb8cc30709441bc?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фиш Бешпармак с семгой 1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/dd4c8bf215a9ffd26c206eee56b30875a73bdf70f2be021bf8b4658ffe0c00ad?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Беш-бармак с кониной 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6758e7a6caf4bb1714423594a009401990b12f2e6bfb644c04e7e909daea9c4a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Беш-бармак с говядины  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/324a29a8f2e37f929036a654825cc1687ac51a37f462b7e0ef940e03a5a96b32?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Беш-бармак с с бараниной Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a6b0ad450c82825563ca583cf923a21105f96aa9dc8c97eb0022b240afcf5426?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Плов Той Аши 1п Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/bd57586d94a66a2a5082966eab2c702907746707209203d68901daa3cde41436?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Припущенные овощи 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0426a50688ec1517cce55e571df04495fa4b2b85d708790aa5bce9571f7c974f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Картофель по-деревенски 1пор Дост",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e15943636b1a8e30b1a9884a6a297130477cbc4d4c8fc31533895f14f462cc7d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Фри 1пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ae6b8df4d971f55a4a1945ae399ec6eef64daed7697d78d1306122957d4098db?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Рис 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/afac6ce32eb950ecbc43d821693a356d4499e16b2eb68fb1b122d850f4eae0b0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Гречка 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5c823220e9ebae505d9774afa2a9cea6a8dc01dff3a43a29c35d39442d0f8508?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Гарнир Пюре 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/25ac8ddcf8e52a48168e4b0a525dd1cc73af5288894761a67494b75fb946ac68?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Хан Чебурек 1шт Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6fd965f0efd3cd85badb5af8fa22c4a644c27933bb80b8e520e5b5ac372c5645?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чебуреки с джусаем 3шт. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/749d9f97898650489690fd81b39c7f38363163ca131a6b57afe427d87369b79e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Каттама Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1e00ddf49b82574da26ae893d1d3325aa660d103343dd0d97115ff19042aadc4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Алатская самса 1 шт. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/de46c6f43c763ffa23cf02da74a039bd39ffd58083f93075bd7baf46e4778457?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Самса с курицей  и сыром 1шт Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4ea9fb0a13b26edee678c4acedc23ee36c2ae5026de802af51fdb3c51e79d883?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Самса с мясом 1 шт. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/412f2a3d07c946288d5f922a1ff72fcfe2c2d6a0e73aa162c6e862e5f5b09cb7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Баурсаки 200 гр Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0822a7d87a5755c62a876ca2cc8e6874d6830e9dd0f310c2873fe5c4484dc607?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лепешка 1 шт Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3d05e491d71229f50ae493bfffb4f1d9217bf01bb1bf61e6feae34c829a1f5dd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Казахские национальные сладости Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/42c5c383850bbe21921e152e0d7fd27543a2c78eb2cf13076ab50fae0cb12092?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ассорти из сухофруктов Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/18e9f1eaf41566cb69f4d0f893fbef38cd4159058c6df79ce58a22e7040998e8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шоколадный Чизкейк Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/baa851e7a86fa7c373150aeb8cd8fc6f1f8dfaba3ecf92daba25079bd43342ed?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чизкейк Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e5c67347305822794ed0e8832d0e17e90fbe74f6f65a61e8fc4b3d6c8a5018d7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чак-чак национальный",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fb806f2d31a8e0e75d72721bab38a933afb7ac2fde97a3730691dce8bf1a53bf?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Чак-чак",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9483b6c59786db8d32ad67bd599037ed3d577c284d7a25548c6020a12014f636?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Брускетта с семгой Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0775aa584d5b0543238be06bcdde811a9dbaa552aaaa56d384dab9c07f8ded23?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Омлет со страчателлой Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/79260f08be1831592d8b4f5893fe347d3829a3a8e4dc8918ea1ed0968eb90c1e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Омлет Байский со шпинатом (350 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/412e7cc5cf84ab060ea6527a914ee7a52706f2c992b9b22a6f7d99c94c578545?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сырники с домашним вареньем, 2 шт",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5bbcffd097fdd1979a8bed244e0b5df8cd439fd333befa10f00608a35faa77e1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Яичница с сосисками (250 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8e956b018404694df081aceecc388c112098c096597aa85bef4fe77067db9678?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики с мясом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/eff7f7e2886fa05371d01d306119b8f969247d98338a239a5d75202855c006ce?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики с творогом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/02424551a4db1f0033c3041822182a066645277bf8021534ba22f0a39974fcde?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики с бананом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ffa1e7345c31bac88615359ff2c1b26fb36874a2f73ccc0891aac97cdc79d535?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики с вареньем 170 гр",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c2b7ba3946de6e5f6bf7011ea1877c126ba098ff8f1ece39fe94253a320ba3f5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики со сгущеным молоком  Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/72094e79eb9f209f59abfb5af2bbadf3b159f0c56158b3cbdc2169ec6b71f471?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Блинчики со сметаной Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/32ddf92d1287793a2bfad2adf577c5128feff3b3c2b70d34a41485034dac7fe1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Яичница-скрэмбл Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/14880f90b84c2a647f1bb73dcf6b3261635761e4dfd254be836caad482250b31?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Рисовая Каша Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/961ef52016e00e5749757fc8f6174b1abc9ecc2c55ae3d72be9e3ed4e9210297?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пшенная каша Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/252d4a16c98e01a3201c280a1b2de17ac006adcb0cb39328512c6893e7596791?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Яичница глазунья (150 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/69daca7a11237722104a004a5e0b3b5004e4b2ae5f88ab91e66490c9aae6b895?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ассорти рыбное Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ff723d8ce73e3601a399689a1415a2ff3fa70d6d789487ac859cd86a4742af05?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ассорти Национальное (370 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/060538ffbe8c3ae022c12d493112c3c48147f6fe313338855b73507415b7e8ee?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ассорти солений (550 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1ae36caf1d2ddb53939ca57e6744f67682a3e6e1071ae7e486601273e9800320?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ассорти Кавказское (700 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e73fd4edf05c0f61b7ac0a6c6c7f42f014765804c819e20009cb3439331f31a1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Закуска Любимая Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b191b2fa3b6dc943eda3098f5634661dea219f628eae6df6e6f6e4628f9d2ec8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Селедочка под водочку Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/454e97ca3fe2772cd62f4474bafdfcb4af952add498164328a357a11f00aacd0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Ширин Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6286e2c43c6194c5a16be017319d51c9a97b3d38e70553132b76608240eab2f5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Буррата с томатами Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/0e087a2e1fc71a9f9a4c59186598197abbab44ab5b41d9b3b218c7e9cdda9d06?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат с киноа и форелью Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5da73e4c02b176e256c73ccf7c9d2ece8a55fb59a7e7cad46bb88940fb81931b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Женское счастье Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3b69d521e7b566ce96cbdf86baa4258a40c98ca62eae6c150cbd8bbc6dac1008?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат язык в соусе Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/999ed98065b72e55e79dbb9913a38c4121577d344f18ba16d87858f14d391b47?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат с тунцом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8dcaddad53b8eb3618e42401afd3fae567bdb9b921a93ca1caff9b431bc406f1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Фаттуш Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/25dca0bc6bcc79500eb6c348f9fc5d9b30323b010648c98a1bf6cb1552f7b754?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Дамду Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/069402e4628caf60029e8689f9ee47d5318fdb0b6a94f1aa77d519d02360fdd7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Дамду Вегетарианский Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/13045ec6f0f493e89df255c407266d7a8c5c2b219babd644561511230b4cca5b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Телятина с грибами Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/738d01a0b5e631bf2a1b7b7624b384d4ab0d3abd54d7bc3cf49a59ffb8e2e516?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Цезарь с курицей Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a9805e99dc43e197daaf9cee712219f885cb05b09e100724bf8ef08be550f138?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат телятина с перц и бакл Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/184946d0e0830d7184746a20c7353cf2096aec35d250558a8ace82a33b195c6d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат с жаренным сыром Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5d5b85cd3a78fcc276a6bb30fd8e31b85df673d799841576cbdccd4aeaf1c997?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Мужской Каприз Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3314444025e0d5c02eda2a0f448b4f7c1c3818cd22b6fba229cb987497fb03cf?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Восточный Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3722fe73b0224c6e4fe4d85ed37910fed61a9562108598e42f3cfd83ff1e2f46?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Греческий Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/de59c37d56a6bae8bb5b9ac98a6892e6e099534d5b9388b44c8421a67826a0fd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Брокколи под кунжутным соусом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/18aa1cd2951f55f59de5256a0987039bdb86fbed954d008b00ce9d8bc65ad3ca?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Эноки в сладко-остром соусе",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e91f01f71c59c4a25a4b33c514cbf0775dd1b36d2ce846e63e9c7aa7a01afa42?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Гнездо Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/54ae44426bf16a56808e11d563d318150c929244d72d6616f046b178f8bcd434?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Лянсай Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/090213e34b0e7cf268d2460020edc7196b092e038c13dcb92dc867675078ae49?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат свекольный с рукколой  Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d43623f8c87883f5c5b959c7064486882073dfd8a9a0171cb22b1b9a9fee2ab1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Мергенчи Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a1b1711179c00905af2e655df887e57343e68a206f2260830664fd459abd6463?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Ерофеевский Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/cf62b0dc045b1b43f5f5d86cc04396389ea5e9311df44702213963e145ffdbf0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Битые огурцы по-китайский Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/97e9c969f1c9f098b3acddfbc72ecbab391166e4af52a05d422d2074097ad297?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Огурцы с чесноком  Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c848d9d5bc6a183c15efaa2035cc14659fe64025c50cd11ac14e3205e0b82173?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Винегрет Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1456a354f3b47cd84b1bdbfeaaf92aea4b42e12febe75cf53c50c408e34eb481?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Свекольный с орехами Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7986ca0d97eb1d972e8c14f32469a628181813129384672a9dd0923f5c8fae37?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат домашний Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e47dc3fd7f0508e33ec3ef78e400e4cfdfed7a0536769bf6807f5c410f8051f2?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Витаминка капустная Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/828a71ed2a18c2752085521f971b9c911561e7270d7f56003f0a01b1112c7ba3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Витаминка свекольная Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b09080e3d2cf682c691a8c36f9b2be78c925cd168636925fee443438d6538c46?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Свежий с майонезом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1a3c592d575f273592f06eb4e7582a4d96488dadf823d6be9d286bc61bcb05ae?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Морковча Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1b57d9e8efca24e469e86845d8624466e3b2a56c1d64a9d2cd0638664b7ad0a7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Свежий с маслом Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2fb9d60857d949d8d498f1e747a57a65e2662c4bc0827f8abfb7337823f7eaf3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Свежий со сметаной Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a9260b9c51180d7c6b41bfac580478f98dcc60faf7b2ea3ebdb8206a83daa48f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Ачичук Острый Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b64bc735f147a5c7ac72fb5fc22e4094134140b098a5aef3af863bb83ba44ba6?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Салат Ачичук Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2ac1c12263d579dabe19a86603793f0867c698fb300ca7e725ccdfb63321c3d0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Зеленая Аджика 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7cc97d8fefe15bfc83a33256f93ff8b941c929225d20185f129e8447dd664f95?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Балкаймак Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/89aa444005faa6e914f5dc31ac34d7fd50c5f46a3f550941bff6e55673c25d08?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Варенье",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/09612384be34e3a266a47572567be403ca6dc4cdc0770531ceafae297326000a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сгущенное молоко",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8b67dea844cc06674fd706582620384d621046575e8aa42e19c414acba14ecc8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Каймак  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b1229bf98f41beb2efc41307180b78633fbc11d4b300c04ff2a013d6cd949aa0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Аджика из спелых томатов (50 гр.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3bb56ffd167df545a99a3c5bd0d4ce6fa865ea83a3b086041e6b7c5a1524a7d8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Майонез  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/bb4ff74b24a021e81780a1747d3db25031f151d77c2073236788c16e2f35a959?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Сузьма 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d0b927c56c31d8f4cf2c43a943be4652f6ac7fd8921e0aeaaf6cb333591e7140?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Кавказский  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3fc4049e25ac2c5ea6acdb9d7f9de4a2b223da1fc65b95d7a3408282a2ae41b4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Чесночный  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5b57fb64a4e09ff7db88c8f3fe485a0443ea25c43bf4e5ebc1ede85f77f867ad?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Соус Кетчуп  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5a2020eca073ccec05a28e84d6472ae75652678ff204f427bb9b89bb6734aef8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Уха 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/45088ea08df68a53a02ccb749b0fcc241c45b69ba953e3c933ec855e2ba8bc69?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Сорпа из говядины 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9d7a2a83ec9529ad6a31d9d2965c527dc9903fbaf3201d589daf05c6881faf34?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Солянка 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c92ba6be215d22d3d97c534e19dbb8d076932415d2b196f68daaa06a1e0eede9?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Сантавру 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e9bc5736c52e78822dd462b6001fa19c6534e965267b827ef32074bbec1a9916?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Борщ 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/98ca8ff44a6e0ea2f940c2769813805103e15d732a51ad140654b63f3fe043f3?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Мастава 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b5cdc1e42744b4886e80ea2003055202a2bf787639a3ca095d2684553fd0423c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Мампар 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e6498196ad7628a18fde17dfb5604647d9500d5c6c10e73e5778dc6483ac2b17?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Окрошка 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5a0fcbc60bd05006ab38ce6e378ec759c8ad53526f134e9779592c331a429e5e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Мясо по-казахский 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7049375187a71d1c2f4bcc28caeb9484a1ce060e6fa19925030d35df043a7be1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп с фрикадельками  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/370fd00bf241c1d045843a8809118205121df7105dc047337db913ae3cef3184?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Сорпа из баран 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3c1a11c2ba6bbe44e80720997936af4d5f760370b2d11ef8c56f9650bef55a91?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Чучвара на красн Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6fedc75ff65ffd734f16c4fcb34dfb471b92a70c729c163eef32696769ec7724?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Щи зеленые  1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/46fdd70a8607bbc3f5f40a2785e0fef9f2b0062a519163ba31b25ddc03cff588?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Овощной 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/61ed97632e1fe0de70e240437b84c0072682fd6e057fe4997cee01a4b854ed32?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Чечевичный 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f08ea7776a56270e6f5c2f1b3cbcfc93b0cd35b6b6b3808db0adc2ee1fa00a91?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп Лапша 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f107c0493a7ae014b47ae6713afb54595eff55c1d94964b3acbb72ab41c5adaa?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Суп  Вегетарианский 1 пор. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4aa01a2745047776999a1a234c2ccc05348da54f671f2a771e9908426ca5321c?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Вишневый Компот 1л. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9658800b178c85076dd47e94fa3ce3a9f47b558dc4a263fa0d8bdbea567a3605?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Red bull (0,25 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4e8638f26b8aeb5425db70ea475b676ab79f8e7156409af1f6b6ece1f39f9675?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сок Piko 1 л",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b022861cf3b21dd62f191bfdcc9053a3cfa4a527d622a0b85f501bc10d244a50?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Домашний компот 1л.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/889f808a9e2ac97826ea9ee93b7768e6b151cf1e082cf4b1c3bbffa5e4d86c45?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шалап 1л.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8dafc63e135e80165739a469391f8c73b3c44644c381bbedc794171603e30456?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Schweppes tonic 0.33",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5180213016340f953708208cf412e74f172afa8c16ef5df1c3fb6e9af20b01a8?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Borjomi (0,33 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1a972ab49f70ef5f615f57ce109818de7dca4571d05b3b9ccc0fc64b85b4ee00?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Coca-Cola (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b873c71b653f85220edf30f7c20550dba2ff28f8a4cfcc1cd04e30862a96ba55?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Bonaqua (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c810605e06cd8f2bdd40ccc83e02b266ffc4d62b6a3fc34f4c6aa7d023391c69?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Coca-Cola 0,25 л",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/482a0b60981961c62ecec94dafd55af40f258511b3baa1c3f071eacccfc6a00d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Вишневый Компот 0,250. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/b8de44ca1cef60dba7f4e1e22b3e7b50ff39a6b3c70b7aca795e4f4f1f7a62f5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Домашний компот (0.25 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e628c8c6a8e4198cbc92a9f9428a23e872617592b20beb53b246a07874ebeee5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шалап 0,25",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/cc48d98ec393bd3e4ec6930090a4ffa739cda4acb54678fb3e3b543c1ad201bb?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлычная Фантазия 1,6 кг Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/94ddcc3f084ca53b850f82d9293dcac79429240e2ea121bc2c27e5f137977cc5?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из бараньих ребер Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5e32b2b7e0aad809ac918356945f77fb8acccddc64b979152cf8f855d5218f94?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из телятины Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fc8791aea317f2ccf974070df08a760c98adc5659845d8cc3a61f3bbe3421b61?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из ягненка Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/68205a8e827b420705fd45bebab887b35a75465403424550f9e9663b5caa70ae?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ханский \"Люля кебаб\" Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/6394ed96e4271828455b980bd9ea877efed3fe54d0f1f44abc623b5c6c16855a?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из куриных крыльев Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a3a56c5cd6fb07249f2e1f41acbd86a45b3623ed1873480043ca98a06c4ad2f2?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из куриного филе Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/2848f6de567dd30e25bb33870e07b59c99f94076ac6275851bc3781a90e15782?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлык из шампиньонов Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/ae76d0a4a409d6fc2795fa63b7c78d16e8d880598dfdac1b646d95b1be2801a0?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Шашлычный соус 1 пор Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/bb50c684b5f0eeed8a5dc98980ef020cf38a990e900ee554c913c4d5f7c898ac?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Той бес-бармак с кониной Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/079d0af71e5caafb0edacecc25bf46c4672e5b2394d1ce7c4da7af669715fe8f?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фиш Бешбармакм Ассорти Банкет Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8585839c7cb84219b7da045a5d71bd26309fc9103f9d237ad29463af1fcad50b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фиш Бешбармак с осетром Банкет Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/fc269143aef46864932d93bbb9c30521eeb3ac4a255ebc958f1f756400ca4c6b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад арбуз-земляника 1л Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/c20137dae13e04f65e262680d6efac13259fff71b4cb9e2f6f6889586ab38aa1?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад Бодрый цитрус (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/156898370b193e78628a92ff2a8c176760c87f99b57b4c0a8f46360409680215?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад ананасовый (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/9bd248d5178e04d97022db4cb02314b90fd952e340fdeaf4fad240820c455366?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад Черная смородина (1 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4fa3e2ca243c51ed43467d42638b81587534b8271ff02111ece696770be960fe?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ice tea апельсиновый 0,5л Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/5ee80758c0c2640fac0462b5ff4be8eb78ce9e14ac2f5f86d2599df406e00bac?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ice tea черный 0,5л Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/1b745295b719e7ca40a144004ab2324c055365edf020f22440a6d916f0aef44d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад арбуз-земляника 0,5л Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/be0201fbe063a5a779fee5d5f3ba57bf2cd3573f2f963251442643030a7d8acf?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад Бодрый цитрус (0.5 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/067497db5514dbd7bbf4a613e9c103709abefaeee64813e676050d8e1d61ee15?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад Черная смородина (0,5 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e6347802b71f997f3981b11bcda6aecf2a9228fbfe8e1b7f6511d9a37e08f097?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Лимонад ананасовый (0,5 л.)",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/107bee347ed942ecd63ff3bb3aec8aed9ed60c6ae8e37921286bceda761be12e?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Ice tea зеленый, 500 мл",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f0a7d3613138bc6263bb70153985485ea0c0deebf81d9c6686707547a18debe7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Фри 35 см",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/4d119bbdcb9793c81f69ab94c75299ec3bdcc9948d57670f235226765487ae7d?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Цезарь 35 см",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e2f5237880f9c816986422af694e60bff1054c54217aef3d2f60f744b0e3df91?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Куриная Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7aed448d19fb34eb66494bcdc48a1a934aad633a6d9ff74d712ad1f07f7fba30?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Чикен Бум Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/e55598d7fcdcf9657498b342bd07993fd1ee6c204c4b95006fab532445e45da7?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Маргарита 35 см",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/63281136a4df5bf6b52e09b2fc99fe86c0558c65dda4537f3587bcb62e231ce4?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Сырная  Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f8c3a1349ef4fcffd873942dc4ca79555a6b4d0b659215ad8f22fdf790c8adfb?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Пицца Пепперони Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/3f4d14dac625170e2cf4e89590b2144bcf46c839e0608a56ba5d991a9b5e5f1b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Хрустящие крылышки",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/f52dcb3e7e592fdb338f4dbc5ded28359730dc92ed582d80a6ee384151afe319?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бургер с гов. котлетой Детс. Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/278b2248a8469933ba22ea1bc2ea604836211321d98c29ca592f7ed6ab4b7152?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Бургер с курицей Детс.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/d2cacf02eb63f3da7f8a892cc8bc2a7f5a27295ee7d72a42e4c179cf251eb1cd?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Фруктовый салат Детс.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a082b1e87218c572d990f128870095379f425b6ff8bbf3ae741ee56f177ab471?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Куриные наггетсы  Детс.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/88129f0f25a72d91d2df42de943421796334043121099390357aeeaf11ae317b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Скрембл с колбасками Детс.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/a7779f9517d89a9b6ba4a87cf2b445f8210fda3a915eb66a746439bd3deb5362?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Сладкие баурсаки Детс.Доставка",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/7b744897fea33329ae2e1064aad3934f62a9af3095fdf728d4756321caacc71b?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+},
+{
+"name": "Жареные вареники",
+"desc": "",
+"img": "https://glovo.dhmedia.io/image/menus-glovo/products/8d353c6a62a606db733b175ec33a5e0c203406f4f8b9d83db0902380bc78d977?t=W3sicmVzaXplIjp7Im1vZGUiOiJmaXQiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjMyMH19XQ=="
+}
+]
+}
