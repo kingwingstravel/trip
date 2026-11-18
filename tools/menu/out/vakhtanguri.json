@@ -1,0 +1,164 @@
+{
+"wolt:vakhtanguri": [
+{
+"name": "Салаты",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/bcace842-7ddc-11ec-9d87-8a3b30ef22a3___________.jpeg"
+},
+{
+"name": "Основные блюда",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/e89f660e-7ddd-11ec-bd0f-0262ff21dad9______________.jpeg"
+},
+{
+"name": "запеченный",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/4e9179a6-7ddf-11ec-b24b-ceffc4120e31_9s0a4381.jpeg"
+},
+{
+"name": "Хинкали",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/c03f94a2-7ddf-11ec-9bd6-2a60cea9b416________.jpeg"
+},
+{
+"name": "К/П салат",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/bcace842-7ddc-11ec-9d87-8a3b30ef22a3___________.jpeg"
+},
+{
+"name": "К/П салат с грецкими орехами",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/dbfc5516-7ddc-11ec-92c8-a26f596e3bea___________.jpeg"
+},
+{
+"name": "Салат с курицей",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/03c8cf8e-7ddd-11ec-8102-aaa18eefd3a0______________.jpeg"
+},
+{
+"name": "Салат оливье",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/4744f22e-7ddd-11ec-8b00-fa0bd2d58e34_______.jpeg"
+},
+{
+"name": "Цезарь",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/57ea10e6-7ddd-11ec-ab52-ea7f1f21723b_______.jpeg"
+},
+{
+"name": "Цезарь с креветками",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/66072380-7ddd-11ec-aba2-f64d567fc3cc_______.jpeg"
+},
+{
+"name": "Ассорти пхали",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/e89f660e-7ddd-11ec-bd0f-0262ff21dad9______________.jpeg"
+},
+{
+"name": "Чакамули из телятины",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/42829f6a-7dde-11ec-8de0-3e2128164011________________________.jpeg"
+},
+{
+"name": "бараньи отбивные",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/54c2599a-7dde-11ec-b27a-ea0fee5780cf________________________.jpeg"
+},
+{
+"name": "устрица",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/6423dbd4-7dde-11ec-933d-86b4404b0e86______.jpeg"
+},
+{
+"name": "Шашлык из баранины",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/9583559c-7dde-11ec-831d-5e06afe1f764_9s0a4430.jpeg"
+},
+{
+"name": "Шашлык с телятиной",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/a59495cc-7dde-11ec-8dd3-860b2c443c7b___________________.jpeg"
+},
+{
+"name": "Курица барбекю",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/d42bc2b6-7dde-11ec-ab16-c2d2f7bea100______________.jpeg"
+},
+{
+"name": "Шашлык из лосося",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/fb90f0ec-7dde-11ec-9251-1a8486836dc7_9s0a4400.jpeg"
+},
+{
+"name": "Форель на шампуре",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/126ac31a-7ddf-11ec-80d3-8abb8a13e3ff_9s0a4408.jpeg"
+},
+{
+"name": "кебаб",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/2a094c3a-7ddf-11ec-a9d7-ceffc4120e31_______.jpeg"
+},
+{
+"name": "Хачапури Имерули",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/4e9179a6-7ddf-11ec-b24b-ceffc4120e31_9s0a4381.jpeg"
+},
+{
+"name": "Хачапури Мегрули",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/5f76f674-7ddf-11ec-9075-eaad3132d0ad_________________.jpeg"
+},
+{
+"name": "Королевские хачапури",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/71e3ffb4-7ddf-11ec-b67a-2ecc80144792________________.jpeg"
+},
+{
+"name": "бобы",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/a4305bf2-7ddf-11ec-bf92-5a75974e74b8________.jpeg"
+},
+{
+"name": "Хинкали городские",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/c03f94a2-7ddf-11ec-9bd6-2a60cea9b416________.jpeg"
+},
+{
+"name": "Хинкали Мтиулиури",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/d072d172-7ddf-11ec-b031-eea00177a72a________.jpeg"
+},
+{
+"name": "Картофель хинкали",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/e0dd6a7c-7ddf-11ec-a2dd-8ebc9dd206ff________.jpeg"
+},
+{
+"name": "Хинкали грибные",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/f451030c-7ddf-11ec-9d97-d641417fa347________.jpeg"
+},
+{
+"name": "Хинкали сыр",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/0267d5a6-7de0-11ec-ac78-428edb82177b________.jpeg"
+},
+{
+"name": "Хинкали Чакафули",
+"desc": "10 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/1ab8d02e-7de0-11ec-b8ed-ee36a22e49d7________.jpeg"
+},
+{
+"name": "Пицца пепперони",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/4c6ce902-7de0-11ec-ba2d-d61b40faa93a_9s0a4403.jpeg"
+},
+{
+"name": "Это беспорядок",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61eff08db5e87fb2839aa6a6/825b72ea-7de0-11ec-bbcd-86463b2cbda2________.jpeg"
+}
+]
+}

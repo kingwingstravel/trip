@@ -1,0 +1,504 @@
+{
+"wolt:kishlak": [
+{
+"name": "ЗАКУСКИ 🍤",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c354f500-d897-11e9-a685-0a5864600e54_assorti_konskoe.jpeg"
+},
+{
+"name": "САЛАТЫ 🥗",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/fc3cf2bc-d894-11e9-bf6a-0a586460109e_salat_koktem.jpeg"
+},
+{
+"name": "СУПЫ 🍲",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/216055f4-d898-11e9-aa7b-0a58646aa7db_shurva.jpeg"
+},
+{
+"name": "ГОРЯЧИЕ БЛЮДА 🥩",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/e908fcde-d896-11e9-900e-0a58646b5008_guiru_lagman.jpeg"
+},
+{
+"name": "КАВКАЗСКИЕ ШАШЛЫКИ 🍢",
+"desc": "",
+"img": null
+},
+{
+"name": "ГАРНИРЫ 🍚",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682c509b7957faa8599cb035"
+},
+{
+"name": "МУЧНЫЕ ИЗДЕЛИЯ🥟",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f7d8f82a-d898-11e9-bdf2-0a586460076f_cheburek_s_myasom.jpeg"
+},
+{
+"name": "ДЕСЕРТЫ 🍰",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/80a17b28-d902-11e9-80fb-0a58646a21bc_chak_chak_sgushenka.jpeg"
+},
+{
+"name": "НАПИТКИ🍹",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c97199b2-d904-11e9-b76f-0a586460076f_mors.jpeg"
+},
+{
+"name": "Ти-бон стейк",
+"desc": "",
+"img": null
+},
+{
+"name": "Малибу",
+"desc": "копченая курица, помидоры, огурцы свежие, кукуруза, сыр, сухарики, заправляется майонезом",
+"img": null
+},
+{
+"name": "Гнездо глухаря",
+"desc": "",
+"img": null
+},
+{
+"name": "Самса с мясом тыквой 1шт",
+"desc": "С мясом или с мясом и тыквой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/50b829aa-d896-11e9-b58a-0a5864693191_samsa_s_myasom.jpeg"
+},
+{
+"name": "Нью -Йорк стейк",
+"desc": "",
+"img": null
+},
+{
+"name": "Самса с мясом 1 шт",
+"desc": "С мясом или с мясом и тыквой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/50b829aa-d896-11e9-b58a-0a5864693191_samsa_s_myasom.jpeg"
+},
+{
+"name": "Куриная грудка под сливочном соусе",
+"desc": "Жарится на гриле с шампиньонами в сливочном соусе",
+"img": null
+},
+{
+"name": "Рамен с телятиной",
+"desc": "",
+"img": null
+},
+{
+"name": "Рамен с курицей",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/683057cbc1dac14301be2071"
+},
+{
+"name": "Цезарь",
+"desc": "Обжаренное куриное филе, капуста «Айсберг», салат свежий, помидоры «Черри», соус «Цезарь».",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/0f110702-d895-11e9-a11a-0a5864600e53_salat_cezar.jpeg"
+},
+{
+"name": "Коктем",
+"desc": "Сыр фета, цветная капуста, помидоры свежие, маслины, капуста брокколи масло оливки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/fc3cf2bc-d894-11e9-bf6a-0a586460109e_salat_koktem.jpeg"
+},
+{
+"name": "Лагман",
+"desc": "Среднеазиатское блюдо, основным составляющим компонентом является лапша с овощами и мясом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c61fad4e-d896-11e9-b1ea-0a5864693b39_domashnii_lagman.jpeg"
+},
+{
+"name": "Гуйру лагман",
+"desc": "Крупнонарезанная лапша с жаренные овощами и мясом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/e908fcde-d896-11e9-900e-0a58646b5008_guiru_lagman.jpeg"
+},
+{
+"name": "Цомян",
+"desc": "Гуйру мелконарезанными мясом и лагманом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/1357ca92-d897-11e9-8e22-0a5864693191_comyan.jpeg"
+},
+{
+"name": "Бешбармак из конины",
+"desc": "Казахское блюдо с казы, жая.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/48492ed0-d897-11e9-9cca-0a58646ae175_beshbarmak.jpeg"
+},
+{
+"name": "Филе куриное по-хорезмийски",
+"desc": "Филе обжаривается с грибочками, овощами в сметанном соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/71050b96-d897-11e9-bd1d-0a5864690267_file_kurinoe.jpeg"
+},
+{
+"name": "Ассорти конское",
+"desc": "Казы, жая.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c354f500-d897-11e9-a685-0a5864600e54_assorti_konskoe.jpeg"
+},
+{
+"name": "Кавказская закуска",
+"desc": "Помидоры, огурцы, перец, зелень, оливки, брынза",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f31f3a84-d897-11e9-b251-0a58646aa7db_kavkazskaya_zakuska.jpeg"
+},
+{
+"name": "Шурва",
+"desc": "Наваристый суп из мяса, картофеля, моркови, специй.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/216055f4-d898-11e9-aa7b-0a58646aa7db_shurva.jpeg"
+},
+{
+"name": "Нарын с казы",
+"desc": "Домашняя лапша с кониной",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/47a6ce3c-d898-11e9-9f46-0a586460076f_naryn_s_kazy.jpeg"
+},
+{
+"name": "Чак-чак со сгущенкой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/80a17b28-d902-11e9-80fb-0a58646a21bc_chak_chak_sgushenka.jpeg"
+},
+{
+"name": "Чизкейк Испанский",
+"desc": "",
+"img": null
+},
+{
+"name": "Чизкейк RIO",
+"desc": "",
+"img": null
+},
+{
+"name": "Казан кебаб",
+"desc": "Мясо, обжаренное в казане с картофелем.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4e700ec0-d903-11e9-a87d-0a58646a21bc_kazan_kebab.jpeg"
+},
+{
+"name": "Морс, 1 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c97199b2-d904-11e9-b76f-0a586460076f_mors.jpeg"
+},
+{
+"name": "Компот, 1 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6105ac00-d905-11e9-94f2-0a586460076f_kompot.jpeg"
+},
+{
+"name": "Кишлак",
+"desc": "Вырезка конины нарезается пластинами, обжаривается с грибочками, болгарским перцем, помидорами.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/75dc04ca-d906-11e9-bae2-0a58646a21bd_kishlak.jpeg"
+},
+{
+"name": "Из свежих овощей",
+"desc": "Свежие огурцы, помидоры, лук, сметана или масло",
+"img": "https://imageproxy.wolt.com/assets/6ae44af954222e513014852d"
+},
+{
+"name": "Шах рисабз",
+"desc": "Свекла, курага, яблоко, грецкий орех",
+"img": "https://imageproxy.wolt.com/assets/6ae44ae854222e5130148523"
+},
+{
+"name": "Оливье",
+"desc": "Классический салат из мяса, картошки, яйца, огурцы маринованные, майонез",
+"img": null
+},
+{
+"name": "Мясной с овощами",
+"desc": "Отварное мясо говядины, салат, перец болгарский, огурцы, помидоры с заправкой из \"соевого соуса\" и перчика чили",
+"img": "https://imageproxy.wolt.com/assets/6ae44af554222e5130148529"
+},
+{
+"name": "Шеф",
+"desc": "Шампиньоны, брынза,помидоры черри,кинза,масло оливковое.",
+"img": null
+},
+{
+"name": "Рахат",
+"desc": "Куриный филе , шампиньоны и огурцы маринованные,  зеленый лук. \nЗаправляется майонезом",
+"img": null
+},
+{
+"name": "Салат с рукколой и креветками",
+"desc": "Руккола,  креветки, помидоры \"Черри\", сыр пармезан, кедровые орешки, бальзамик, масло оливковое.",
+"img": null
+},
+{
+"name": "Цезарь с семгой",
+"desc": "Семга малосольная, яйца перепелок, капуста \"Айсберг\" салат свежий, помидоры \"Черри\", соус \"Цезарь\"",
+"img": null
+},
+{
+"name": "Греческий",
+"desc": "Помидоры, свежие огурцы, сладкий репчатый лук, сладкий перец, фета, маслины, листья салата",
+"img": null
+},
+{
+"name": "Теплый салат",
+"desc": "Вырезка конины, баклажан, перец болгарский, помидоры черри, перец чили, соевый соус",
+"img": null
+},
+{
+"name": "Русская закуска",
+"desc": "Традиционная закуска",
+"img": "https://imageproxy.wolt.com/assets/6ae44adc54222e5130148520"
+},
+{
+"name": "Ассорти рыбное",
+"desc": "семга и эскалар малосольные.",
+"img": null
+},
+{
+"name": "Мини чебуреки",
+"desc": "",
+"img": null
+},
+{
+"name": "Сорпа из перепелки",
+"desc": "перепелка, перепелиное яйцо, овощи",
+"img": null
+},
+{
+"name": "Балык сорпа",
+"desc": "Уха из семги с морковь, картофель, зелень, специи",
+"img": null
+},
+{
+"name": "Сорпа с баурсаками",
+"desc": "Насыщенный бульон из мяса с овощами, подается с баурсаками",
+"img": null
+},
+{
+"name": "Чучвара с бульоном",
+"desc": "Пельмешки восточные",
+"img": null
+},
+{
+"name": "Лапша куриная по-домашнему",
+"desc": "суп из куриного бульона с лапшой, курицей.",
+"img": null
+},
+{
+"name": "Чечевичный",
+"desc": "крем суп из чечевицы",
+"img": null
+},
+{
+"name": "Аччи-чук",
+"desc": "Классический салат к плову.",
+"img": "https://imageproxy.wolt.com/assets/6ae44ae2cc148cc674c68669"
+},
+{
+"name": "Куырдак",
+"desc": "Мелконарезанное мясо, печень, легкое, сердце, почки барашка обжариваются с картофелем в топленом курдючном масле.",
+"img": null
+},
+{
+"name": "Красный Бархат",
+"desc": "",
+"img": null
+},
+{
+"name": "Ковурма лагман",
+"desc": "Лагман жареный с мясом и овощами.",
+"img": null
+},
+{
+"name": "Ганфан",
+"desc": "Гуйру с рисом на гарнир",
+"img": null
+},
+{
+"name": "Манты с начинкой на выбор",
+"desc": "Традиционное мясное блюдо центральной Азии",
+"img": null
+},
+{
+"name": "Хычины с сыром",
+"desc": "",
+"img": null
+},
+{
+"name": "Хачапури с сыром",
+"desc": "",
+"img": null
+},
+{
+"name": "Баурсак",
+"desc": "",
+"img": null
+},
+{
+"name": "Лаваш",
+"desc": "",
+"img": null
+},
+{
+"name": "Лепешка",
+"desc": "",
+"img": null
+},
+{
+"name": "Кумыс 1 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Шубат 1 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Шашлык из баранины",
+"desc": "Мякоть баранины",
+"img": null
+},
+{
+"name": "Люля-кебаб",
+"desc": "",
+"img": null
+},
+{
+"name": "Жигяр-кебаб",
+"desc": "Печень в оболочке",
+"img": null
+},
+{
+"name": "Из курицы",
+"desc": "",
+"img": null
+},
+{
+"name": "Из Семги",
+"desc": "",
+"img": null
+},
+{
+"name": "Из шампиньонов",
+"desc": "",
+"img": null
+},
+{
+"name": "Из куриных крылышкек",
+"desc": "",
+"img": null
+},
+{
+"name": "Из овощей",
+"desc": "",
+"img": null
+},
+{
+"name": "Соус красный",
+"desc": "",
+"img": null
+},
+{
+"name": "Чак-чак с мёдом",
+"desc": "",
+"img": null
+},
+{
+"name": "Мясо Марракеш",
+"desc": "Вырезка конины, нарезается соломкой, обжаривается и тушится в дом. сметане альпен блю и цветной капустой.",
+"img": null
+},
+{
+"name": "Мясо на сковороде",
+"desc": "Мясо говядины, зелёный лук и репчатый, специй.",
+"img": null
+},
+{
+"name": "Сёмга жаренная на гриле",
+"desc": "Стейк сёмги поливается соком лимона, маринуется в специях и жарится на гриле.",
+"img": null
+},
+{
+"name": "Овощи на гриле",
+"desc": "",
+"img": null
+},
+{
+"name": "Рис припущенные",
+"desc": "",
+"img": null
+},
+{
+"name": "Картофель по-домашнему",
+"desc": "",
+"img": null
+},
+{
+"name": "Фри",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682c509b7957faa8599cb035"
+},
+{
+"name": "Картофельное пюре",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682d70fdd430555470cd9065"
+},
+{
+"name": "Хачапури по-Мегрельски",
+"desc": "",
+"img": null
+},
+{
+"name": "Свекла с рукколой и сыром",
+"desc": "Свекла, руккола, творожный сыр,мед,горчица, кедр.орешки",
+"img": null
+},
+{
+"name": "Coca-cola",
+"desc": "",
+"img": null
+},
+{
+"name": "Red Bull 0.25",
+"desc": "",
+"img": null
+},
+{
+"name": "Piko",
+"desc": "На выбор указать в коментарий",
+"img": null
+},
+{
+"name": "Tassay",
+"desc": "",
+"img": null
+},
+{
+"name": "Радужная форель",
+"desc": "",
+"img": null
+},
+{
+"name": "Фри с мясом",
+"desc": "",
+"img": null
+},
+{
+"name": "Торт Швейцарский",
+"desc": "",
+"img": null
+},
+{
+"name": "Торт Шпинатный",
+"desc": "",
+"img": null
+},
+{
+"name": "Ассорти из мяса на садже",
+"desc": "Вырезка конины , говядина, курица с овощами, готовятся на садже специальной сковороде на углях",
+"img": null
+},
+{
+"name": "Муровейник",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/6ae44aed54222e5130148524"
+},
+{
+"name": "Баклажаны  в кисло-сладком соусе",
+"desc": "Салат с рукколой и баклажанами, заправленный кисло-сладким соусом.",
+"img": "https://imageproxy.wolt.com/assets/6ae44af154222e5130148527"
+},
+{
+"name": "Рамен с креветками",
+"desc": "",
+"img": null
+}
+]
+}

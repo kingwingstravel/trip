@@ -1,0 +1,319 @@
+{
+"wolt:dadiani": [
+{
+"name": "ШАШЛЫКИ 🍢",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca36d"
+},
+{
+"name": "ХАЧАПУРИ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/d0c49972-fe9c-11ee-80d3-823b51498501_l.7d380304cc5c180cd76fb24aa455b3b4.jpg"
+},
+{
+"name": "ХИНКАЛИ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/163ac958-fe99-11ee-8298-a6c80f0daf4c_______________.jpg"
+},
+{
+"name": "ЗАКУСКИ 🥬",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/2346e9d2-fe9a-11ee-a5e1-363837c1d7ec_l.f63cec9f5672c7d33ca1514609b138fb.jpg"
+},
+{
+"name": "САЛАТЫ  🥗",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc650"
+},
+{
+"name": "ГАРНИРЫ 🍟",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/ea5a217a-fe99-11ee-8411-8e7fc600b115_l.a4f3227c37322e7a6a28d170abfd9972.jpg"
+},
+{
+"name": "ГОРЯЧИЕ БЛЮДА 🥘",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc652"
+},
+{
+"name": "СУПЫ 🍲",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/4adfc5a0-fe99-11ee-aa4a-66c4a0e9aa2a________.jpg"
+},
+{
+"name": "ВЫПЕЧКА 🥐",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca373"
+},
+{
+"name": "НАПИТКИ🥤",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5e37f3946b679ecb57f8"
+},
+{
+"name": "Столовые приборы",
+"desc": "Столовые приборы из категории \"Другие\" не видны в меню, но доступны как опция при заказе.",
+"img": "https://imageproxy.wolt.com/assets/689b5a63c67a5c9ffb507963"
+},
+{
+"name": "Лобио",
+"desc": "Закуска из фасоли в грузинских специях",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/2346e9d2-fe9a-11ee-a5e1-363837c1d7ec_l.f63cec9f5672c7d33ca1514609b138fb.jpg"
+},
+{
+"name": "Сациви",
+"desc": "Нежная курица под традиционным грузинским соусом баже, который готовится из грецких орехов\nсо специями и пряностями",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/04795d5a-fe9a-11ee-a6aa-6eb32b95ab26_l.2d5ffe799638bf0822a3944ae986d557.jpg"
+},
+{
+"name": "Долма",
+"desc": "Нежные листья винограда завернутые в говяжий  фарш и мацони",
+"img": null
+},
+{
+"name": "Баклажан рулетики",
+"desc": "Баклажан, орехи, мацони",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/18886b6a-fe9a-11ee-b3ed-3eee90838aa2______.jpg"
+},
+{
+"name": "Овощной салат по-грузински",
+"desc": "Свежие помидоры, огурцы, ореховая заправка , зелень",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/d0e3807e-fe99-11ee-9f38-823b51498501_l.d875b80ae2ac16a65515c640dd6f0afc.jpg"
+},
+{
+"name": "Теплый салат с баклажанами",
+"desc": "Баклажан, черри, вырезка, кинза, азиатская заправка",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc64e"
+},
+{
+"name": "Салат с томатами и имеретинским сыром",
+"desc": "Помидоры черри, имеретинский сыр, маслины, зелень",
+"img": null
+},
+{
+"name": "Цезарь",
+"desc": "Свежие листья айсберга, черри, куриное филе, сухари, перепеленные яйца, сыр пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/2adb9a86-fe99-11ee-8734-e2edd024a9d6_______.jpg"
+},
+{
+"name": "Аджапсандал",
+"desc": "Баклажаны, помидор, фасоль, светофор",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/1f3c0a5e-fe9d-11ee-89ad-22938643f9a2____________.jpg"
+},
+{
+"name": "Нежный салат с копченной сулугуни",
+"desc": "Копченый сулугуни, огурцы, шампиньоны, гранат, майонезная заправка",
+"img": null
+},
+{
+"name": "Ачи-чук",
+"desc": "Узбекский салат из сочных томатов",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/daee84d8-fe99-11ee-854d-e28c45fbe044_l.09883cb14e09dd003f526077fae2d22c.jpg"
+},
+{
+"name": "Греческий",
+"desc": "Томаты, сладкий перец, огурцы, ,брынза, маслины, \nзаправленный оливковым маслом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/2a03376e-fe9d-11ee-b025-e64f50b4bd84_l.c78cbe012f422381f3126fb81e26c67c.jpg"
+},
+{
+"name": "Сёмга с овощами",
+"desc": "",
+"img": null
+},
+{
+"name": "Метехи",
+"desc": "Светофор, мясо говядины, томаты, лук, микс салата",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc64b"
+},
+{
+"name": "Картофельные дольки",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/ea5a217a-fe99-11ee-8411-8e7fc600b115_l.a4f3227c37322e7a6a28d170abfd9972.jpg"
+},
+{
+"name": "Картофель фри",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5e13029ecc21f8aaa123"
+},
+{
+"name": "Рис",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5ec7a13adb2733dca376"
+},
+{
+"name": "Овощи на мангале",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca370"
+},
+{
+"name": "Шкмерули",
+"desc": "Цыпленок в чесночно-сливочном соусе",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc652"
+},
+{
+"name": "Чахохбили",
+"desc": "Цыпленок томленый с луком и грузинскими специями",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc651"
+},
+{
+"name": "Чашашули",
+"desc": "Тушеная телятина в собственном соку с томатами",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca375"
+},
+{
+"name": "Джигари",
+"desc": "Жареная печень с луком и грузинскими специями",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc648"
+},
+{
+"name": "Чакапули",
+"desc": "Томленая баранина в пиве 0% с тархуном",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca374"
+},
+{
+"name": "Оджахури",
+"desc": "Картофель жареный в глиняной кеци с мясом и специями, с овощами",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc64d"
+},
+{
+"name": "Сёмга в  икорно-сливочном соусе",
+"desc": "Стейк семги, микс салата, лимон, икра",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/353ccf94-fe9f-11ee-9bad-22938643f9a2_________________________________.jpg"
+},
+{
+"name": "Хашлама",
+"desc": "Говяжья грудинка, картофель, томаты, болгарский перец, зелень",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/4adfc5a0-fe99-11ee-aa4a-66c4a0e9aa2a________.jpg"
+},
+{
+"name": "Харчо",
+"desc": "Суп из говядины с рисом, грецкими орехами и с грузинскими специями",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/3e7478dc-fe9a-11ee-9196-ea5c65f8006d_l.14b6775c22bd44e34555083599e51bbd.jpg"
+},
+{
+"name": "Лапша по-домашнему",
+"desc": "Куриная грудинка, лапша, бульон",
+"img": null
+},
+{
+"name": "Имеретинский",
+"desc": "Мацони, с щедрой начинкой из имеретинского сыра",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/d0c49972-fe9c-11ee-80d3-823b51498501_l.7d380304cc5c180cd76fb24aa455b3b4.jpg"
+},
+{
+"name": "Мегрельский",
+"desc": "Хачапури с двойной порцией сыра",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/4f8f298c-fe9a-11ee-908a-22938643f9a2_l.871be734aececa9ca76dbc3feebd8c5e.jpg"
+},
+{
+"name": "Аджарский",
+"desc": "Хачапури в форме лодочки с хрустящими бортами, сыр и желток",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/c8bb0144-fe9c-11ee-8eee-7a3da95a1d10_l.09c99e8f4c3f57c63877ad961e66481e.jpg"
+},
+{
+"name": "Кубдари",
+"desc": "Традиционный грузинский пирог с рубленым мясом и приправами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/e1215594-fe9c-11ee-8dc1-b64dd5900aff_l.48d862c80a412c506b9f9e9dcbd68973.jpg"
+},
+{
+"name": "Хинкали с говядиной",
+"desc": "",
+"img": null
+},
+{
+"name": "Хинкали с грибами",
+"desc": "",
+"img": null
+},
+{
+"name": "Хинкали по-батумски",
+"desc": "Томатный соус с хинкали",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/163ac958-fe99-11ee-8298-a6c80f0daf4c_______________.jpg"
+},
+{
+"name": "Хинкали по-тбилиси",
+"desc": "Белый сливочный соус, хинкали с грибами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/836277e2-fe99-11ee-a8e5-e2edd024a9d6____________.jpg"
+},
+{
+"name": "Говядина кусковой",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca36d"
+},
+{
+"name": "Люля кебаб",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc64a"
+},
+{
+"name": "Окорочка",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/ce448786-fe9a-11ee-87d5-3eee90838aa2_l.4ab09c1a85eb8094027dccf6bfb06631.jpg"
+},
+{
+"name": "Корейка",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca36c"
+},
+{
+"name": "Семечки",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca371"
+},
+{
+"name": "Куриные крылышки",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6d3e3ae32f33ffc649"
+},
+{
+"name": "Люля по-аджарский",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6528cecf696e338948ca9e1c/c68d2f3e-fe9a-11ee-a02a-7203cae9dd6c_l.24daeb4cdf1eec77beb8227154183884.jpg"
+},
+{
+"name": "Утиное филе",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca372"
+},
+{
+"name": "Хлебная корзина 0.5",
+"desc": "",
+"img": null
+},
+{
+"name": "Хлебная корзина",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5d6da13adb2733dca373"
+},
+{
+"name": "Сoca-cola 1l",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5e37f3946b679ecb57f8"
+},
+{
+"name": "Coca -cola 500 ml",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5e42029ecc21f8aaa124"
+},
+{
+"name": "Натахтари",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5ea0029ecc21f8aaa126"
+},
+{
+"name": "Компот домашний 1.5l",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/660d5e883db4e718749c97ac"
+},
+{
+"name": "Соки в ассортименте",
+"desc": "",
+"img": null
+},
+{
+"name": "Столовые приборы",
+"desc": "Если вы хотите заказать столовые приборы, пожалуйста, включите этот пункт в заказ. Ресторан подберет подходящие столовые приборы для вашего блюда, если они есть в наличии.",
+"img": "https://imageproxy.wolt.com/assets/689b5a63c67a5c9ffb507963"
+}
+]
+}

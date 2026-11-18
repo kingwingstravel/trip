@@ -1,0 +1,639 @@
+{
+"wolt:wok-wok": [
+{
+"name": "ПРИБОРЫ 🍽",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682c6c630c78421ac092d53e"
+},
+{
+"name": "САЛАТЫ 🥗",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/b5d8d650-ff06-11ed-819d-fab68aa60d9c_img_1052.jpg"
+},
+{
+"name": "ЗАКУСКИ 🍤",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/a330a2d6-fe06-11ed-bd9e-168c3e1b1cca_________.jpg"
+},
+{
+"name": "СУПЫ 🥘",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/82fafbcc-ff07-11ed-aa93-d23495340f96_img_1062.jpg"
+},
+{
+"name": "ГОРЯЧИЕ БЛЮДА 🍲",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/308d4c1a-ff06-11ed-b0ee-e233bbd89ba3_img_1056.jpg"
+},
+{
+"name": "ВОК, ЛАПША И РИС 🥡",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/5067c4c6-0c78-11eb-8ba8-52fb2f4fb784_____________________________.jpeg"
+},
+{
+"name": "НА ПАРУ 🥟",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/1251ccc6-ff06-11ed-b818-e233bbd89ba3_img_1058.jpg"
+},
+{
+"name": "Гарниры",
+"desc": "",
+"img": null
+},
+{
+"name": "КЛАССИЧЕСКИЕ РОЛЛЫ 🍣",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c8b7c4fe-fe1e-11ed-aea1-62cc215aade3_______________.jpg"
+},
+{
+"name": "СУШИ 🍣",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d8b32714-fe1d-11ed-b381-e68002e7b822______________.jpg"
+},
+{
+"name": "САШИМИ 🦪",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6138148c-fe0a-11ed-8b11-7a12aeeedfcd_dsc09156.jpg"
+},
+{
+"name": "РОЛЛЫ 🍱",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c7810a2a-6c0d-11ee-93c9-9ee96842691a_dsc08897.jpg"
+},
+{
+"name": "СЕТЫ 🍱",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/e3be7ed6-fe1f-11ed-b61e-8a587efb3536_____1.jpg"
+},
+{
+"name": "ДЕСЕРТЫ 🍰",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/ebf6bbd4-ff02-11ed-aa74-7216be76673f____.jpg"
+},
+{
+"name": "НАПИТКИ 🥤",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/fdd974a8-12c0-11eb-bfab-1639cc4b504c_7up_glss_250ml.jpeg"
+},
+{
+"name": "Гарниры ",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682c34967957faa8599ca587"
+},
+{
+"name": "Мохито клубничный",
+"desc": "250 мл",
+"img": null
+},
+{
+"name": "Гедза с говядиной",
+"desc": "",
+"img": null
+},
+{
+"name": "Личи-маракуйя",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Морс клюква-апельсин",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Сингапурша даындалған кеспе/лапша по-Сингапурски",
+"desc": "",
+"img": null
+},
+{
+"name": "Том ям с морепродуктами",
+"desc": "",
+"img": null
+},
+{
+"name": "Лимонад киви-лайм",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Картофельные шарики",
+"desc": "",
+"img": null
+},
+{
+"name": "Курица в соусе яннем",
+"desc": "",
+"img": null
+},
+{
+"name": "Спайси асшаяндар қосылған ролл/Ролл с креветками спайси",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/6895d20a27c08002435f85ce"
+},
+{
+"name": "Сколько приборов положить?",
+"desc": "Свайпните вправо чтобы добавить",
+"img": "https://imageproxy.wolt.com/assets/682c6c630c78421ac092d53e"
+},
+{
+"name": "Сарымсақ қосылған қияр/Огурцы с чесноком",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/b5d8d650-ff06-11ed-819d-fab68aa60d9c_img_1052.jpg"
+},
+{
+"name": "Баклажан салаты/Салат из баклажан",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/67b84efe6fd75b44fc40c5db"
+},
+{
+"name": "Кешью жаңғағы қосылған микс салат/Микс салатов с орехами",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/cc5fa5ac-ff06-11ed-a323-0ea65d8f851a_img_1053.jpg"
+},
+{
+"name": "Нок ты",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/afd43dc2-0c78-11eb-97ac-f606a71d5251_______.jpeg"
+},
+{
+"name": "Қытайша әзірленген сиыр еті қосылған тоқаштар/Пампушки с говядиной по-Китайски",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/a330a2d6-fe06-11ed-bd9e-168c3e1b1cca_________.jpg"
+},
+{
+"name": "Албырт қосылған Бао бургері/Бао бургер лосось",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/1fdefd74-fe0b-11ed-ae35-c6a6d5383aec___________________990_.jpg"
+},
+{
+"name": "Буланған брокколи/Жареная брокколи",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c4195e96-fe35-11ed-9832-7621e8469438_img_1045.jpg"
+},
+{
+"name": "Ащы-қышқыл сорпа/Суп остро-кислый",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/82fafbcc-ff07-11ed-aa93-d23495340f96_img_1062.jpg"
+},
+{
+"name": "Асшаяндары қосылған том ям/Том ям с креветками",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/8e2741d2-fe07-11ed-9491-f6f8dbbee425_______.jpg"
+},
+{
+"name": "Фо Бо сорпасы/Суп фо бо",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/48a045b6-0c7c-11eb-a779-9a9cc0efb8b6______.jpeg"
+},
+{
+"name": "Албырт балағы қосылған мисо сорпасы/Суп мисо с лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/cc0e4da0-fe21-11ed-a6c5-4a940fa91ce7_____.jpg"
+},
+{
+"name": "Тауық еті қосылған рамён/Рамён с курицей",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/bea36f5c-fe1b-11ed-81fe-fe76cda458fd____________.jpg"
+},
+{
+"name": "Бейжін сиыр еті/Говядина по-Пекински",
+"desc": "Подается с тонкими тонко раскатанными лепешками приготовленными на пару",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/308d4c1a-ff06-11ed-b0ee-e233bbd89ba3_img_1056.jpg"
+},
+{
+"name": "Бұрыш қосылған тауық еті/Курица с перцем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/bdd1477e-fe03-11ed-b3a3-92493c0ab49f_dsc04801.jpg"
+},
+{
+"name": "Пеште пісірілген сиыр еті/Говядина на жаровне",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/b3c6b73c-ff07-11ed-a870-d6b657577b25_img_1063.jpg"
+},
+{
+"name": "Асжапырақпен фаршталған тауық төс еті/Грудка  со шпинатом в сливочном соусе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/0c820ff0-0c78-11eb-9529-a220a2b909ef___________________________.jpeg"
+},
+{
+"name": "Қышқыл-тәтті тұздық қосылған тауық еті/Курица в кисло-сладком соусе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/f7be5286-fe05-11ed-9e8d-168c3e1b1cca_dsc03306.jpg"
+},
+{
+"name": "Қызыл карри қосылған тауық еті/Курица с красным карри",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/fb87e9b0-fe03-11ed-88fd-2ad7b3cdc757_dsc04862.jpg"
+},
+{
+"name": "Сиыр еті қосылған удон кеспесі/Лапша удон с говядиной",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/2696251c-0c7c-11eb-a20a-feb70b2a30cb__________________.jpeg"
+},
+{
+"name": "Көкөністер қосылған покум паб/Покум паб с овощами",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/f686f35e-0c78-11eb-b2a7-320f12f1c15c_____________________890_.jpeg"
+},
+{
+"name": "Асжапырақ пен тауық етінен жасалған кеспе/Лапша из шпината с куриным филе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/4fd9d192-fe16-11ed-ae6b-fa1739940183_dsc03292.jpg"
+},
+{
+"name": "Асжапырақ пен сиыр етінен жасалған кеспе/Лапша из шпината с говядиной",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/5067c4c6-0c78-11eb-8ba8-52fb2f4fb784_____________________________.jpeg"
+},
+{
+"name": "Тауық еті қосылған кеспе/Лапша удон с курицей",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/71152100-0c78-11eb-bdbd-c2230901c522_______________________1390_.jpeg"
+},
+{
+"name": "Пад тай",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/b0087378-d9fa-11ee-adc1-e2800eeb9e57_file.__1_.png"
+},
+{
+"name": "Тауық еті қосылған покум паб/Покум паб с курицей",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/e8f2c16e-0c78-11eb-8ea6-9ee5c697a368_____________________.jpeg"
+},
+{
+"name": "Асшаян қосылған покум паб/Покум паб с креветками",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d8a0676c-0c78-11eb-87db-169a6ec00d39________________________1495_.jpeg"
+},
+{
+"name": "Буда піскен маньтоу/Маньтоу на пару",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/1251ccc6-ff06-11ed-b818-e233bbd89ba3_img_1058.jpg"
+},
+{
+"name": "Сиыр еті қосылған дим сам/Дим самы с говядиной",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/bdaca34a-0c77-11eb-8055-d2f7327ed522_____________________.jpeg"
+},
+{
+"name": "Балмұздақ қосылған шоколадты муале/Шоколадный муале с шариком мороженого",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6f50bce0-0c7c-11eb-9daf-967b11e2d6ad________________________________________890_.jpeg"
+},
+{
+"name": "Мин вода Асу 0,5",
+"desc": "",
+"img": null
+},
+{
+"name": "RedBull",
+"desc": "250 мл",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6a9472be-12c1-11eb-84a1-d269d2875a7f_red_bull.jpeg"
+},
+{
+"name": "Швепс",
+"desc": "250 мл",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/759e077e-12c1-11eb-9f63-0a0d91588a52______.jpeg"
+},
+{
+"name": "Қияр қосылған ролл/Ролл с огурцом",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c8b7c4fe-fe1e-11ed-aea1-62cc215aade3_______________.jpg"
+},
+{
+"name": "Жыланбалық пен қияр қосылған ролл/Ролл с угрем и огурцом",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d994e3f6-fe1e-11ed-a05d-4e380c17188e_______________________.jpg"
+},
+{
+"name": "Албырт қосылған ролл/Ролл с лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/e8b66f6c-fe1e-11ed-8632-1ea2d3ce6d14_______________.jpg"
+},
+{
+"name": "Асшаян суши/Суши креветка",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d8b32714-fe1d-11ed-b381-e68002e7b822______________.jpg"
+},
+{
+"name": "Жыланбалық суши/Суши угорь",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c7d35220-fe1d-11ed-ab9e-32b890810820___________.jpg"
+},
+{
+"name": "Албырт суши/Суши лосось",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/4b6faee0-fe1d-11ed-8dc3-5eacbf386802_dsc09185.jpg"
+},
+{
+"name": "Спайси асшаян/Спайси креветка",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/0f098408-fe1d-11ed-aa88-1eda7da10b32_dsc09179.jpg"
+},
+{
+"name": "Ұшатын балық уылдырығы/Икра летучей рыбы",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/cc0e3612-fe1c-11ed-a494-9e075bb5630e_dsc09208.jpg"
+},
+{
+"name": "Спайси жыланбалық/Спайси угорь",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/853d0db2-fe1c-11ed-a846-3ee72b15e009_dsc09205.jpg"
+},
+{
+"name": "Спайси албырт/Спайси лосось",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/96ca4e6e-fe1c-11ed-9b32-fe76cda458fd_dsc09177.jpg"
+},
+{
+"name": "Көмештелген спайси жыланбалық/Запеченный спайси угорь",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/454d0d7c-fe1e-11ed-8519-1ef33445a3b7_________________.jpg"
+},
+{
+"name": "Көмештелген спайси албырт/Запеченный спайси лосось",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6315838e-fe1e-11ed-9bf5-62cc215aade3__________________.jpg"
+},
+{
+"name": "Көмештелген спайси асшаян/Запеченная спайси креветка",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/74af7a1e-fe1e-11ed-950a-9e075bb5630e________________.jpg"
+},
+{
+"name": "Жыланбалық сашими/Сашими угорь",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6138148c-fe0a-11ed-8b11-7a12aeeedfcd_dsc09156.jpg"
+},
+{
+"name": "Албырт сашими/Сашими лосось",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/3a200d28-fe0a-11ed-914d-c6afaf5e86ac_dsc09148.jpg"
+},
+{
+"name": "Асшаян сашими/Сашими креветка",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/72cc2c6a-fe0a-11ed-bed2-06cc2b021e3b_dsc09155.jpg"
+},
+{
+"name": "Чука салаты/Чука салат",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/649f35ce-0c7c-11eb-a733-72f622b9e3e3___________.jpeg"
+},
+{
+"name": "Классикалық Филадельфия/Филадельфия классик",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c7810a2a-6c0d-11ee-93c9-9ee96842691a_dsc08897.jpg"
+},
+{
+"name": "Филадельфия",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/9f7c2dd4-0c7a-11eb-9bae-46c728af0fb4__________________2190___3_.jpeg"
+},
+{
+"name": "Қуырылған албырт қосылған темпура роллы/Темпура с жареным лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/1201d022-0c79-11eb-9386-16eedc6c49e2_______________________________1390___5_.jpeg"
+},
+{
+"name": "Асшаян қосылған пеппер роллы/Пеппер с креветкой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/c36f6dc0-0c78-11eb-984c-06e96de89498_____________________1990__2_.jpeg"
+},
+{
+"name": "Албырт пен асшаян қосылған пештелген роллы/Запеченный с лососем и креветкой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/39a6f1de-0c79-11eb-a59f-2a675e6a58cf_________________________________________2390___1_.jpeg"
+},
+{
+"name": "Албырт қосылған Канада роллы/Канада  с лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/716026ae-0c79-11eb-8c85-1635b457e0c5_______________________2390___4_.jpeg"
+},
+{
+"name": "Асшаян қосылған Калифорния роллы/Калифорния с креветкой",
+"desc": "Начинка на выбор",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/842a64e6-fe09-11ed-a185-a2d817788717_____________________________2290___2_.jpg"
+},
+{
+"name": "Вулкан",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/1e5e6a1a-0c79-11eb-9d83-ae84e6608f80_____________1990__1_.jpeg"
+},
+{
+"name": "Сет №1",
+"desc": "Филадельфия роллы-1,қуырлған албырт қосылған темпура роллы-1,жыланбалық пен қияр қосылған ролл-1,суши спайси албырт 2 дана.\nРолл филадельфия-1\nРолл темпура с жареным лососем-1\nРолл с угрем и огурцом-1\nСуши спайси лосось- 2шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/e3be7ed6-fe1f-11ed-b61e-8a587efb3536_____1.jpg"
+},
+{
+"name": "Сет №2",
+"desc": "Албырт қосылған Канада роллы-1,албырт қосылған темпура роллы-1,қияр қосылған ролл-1,суши спайси албырт 2 дана.\nРолл канада с лососем-1\nРолл темпура с лососем-1\nРолл с огурцом-1\nСуши спайси лосось -2 шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/2d15abf4-fe20-11ed-88d1-9e075bb5630e_____2.jpg"
+},
+{
+"name": "Сет №3",
+"desc": "Асшаян қосылған пеппер роллы-1,жыланбалық қосылған темпура роллы-1,албырт қосылған ролл-1,асшаян суши 2 дана.\nРолл пеппер с креветками-1\nРолл темпура с угрем-1\nРолл с лососем-1\nСуши креветка -2шт",
+"img": "https://imageproxy.wolt.com/assets/68975ddd27c08002435fa517"
+},
+{
+"name": "Sprite 0,25",
+"desc": "250 мл",
+"img": null
+},
+{
+"name": "Coca Cola  0.25",
+"desc": "250 мл",
+"img": null
+},
+{
+"name": "Эби темпура спайси",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/15867054-6556-11ec-abb2-06134617ce9b_dscf7689.jpeg"
+},
+{
+"name": "Фри картобы/Картофель фри",
+"desc": "",
+"img": null
+},
+{
+"name": "Күріш/Рис",
+"desc": "",
+"img": null
+},
+{
+"name": "Картоп шарлары/Картофельные шарики",
+"desc": "",
+"img": null
+},
+{
+"name": "Күркетауық етінен салаты/Салат с индейкой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/be7e157e-fe14-11ed-b934-160bc5d03eef_img_1041.jpg"
+},
+{
+"name": "Азиялық тұздықтағы тофу қосылған асшаяндар/Креветки с тофу в азиатском соусе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d448e608-fe06-11ed-914f-f6f8dbbee425_____________________________________________1_.jpg"
+},
+{
+"name": "Зімбір-кокос тұздығындағы албырт балығы/Лосось в имбирном-кокосовом соусе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/3f0a34c2-fe04-11ed-bb82-be872a518e8c___________________________________2_.jpg"
+},
+{
+"name": "Тауық қосылған удон соба/Удон соба с курицей",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/6ed3c81e-fe16-11ed-b7ea-4686db41b9cb_dsc03277.jpg"
+},
+{
+"name": "Қуырылған рамён/Жареный рамен",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/757bad74-fe18-11ed-b070-8e171e8865b2______________.jpg"
+},
+{
+"name": "Албырт қосылған темпура роллы/Ролл темпура с лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/d9febfa2-fe09-11ed-be9c-a2d817788717________________________1790___3_.jpg"
+},
+{
+"name": "Жыланбалық қосылған темпура роллы/Ролл темпура с угрем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/eb485624-fe09-11ed-8c92-923692adfa97______________________1790___4_.jpg"
+},
+{
+"name": "Ірімшік қосылған темпура роллы/Ролл темпура с сыром",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/e1c50cb8-6554-11ec-b5c1-fa34c00a12b3_dscf3010.jpeg"
+},
+{
+"name": "Coca Cola zero 0.25",
+"desc": "",
+"img": null
+},
+{
+"name": "Күркетауық косылған қуырылған дим сам/Жареные дим самы с индейкой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/799818fe-6556-11ec-b5c1-fa34c00a12b3_dscf7630.jpeg"
+},
+{
+"name": "Чапчхэ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/ec46d550-fe18-11ed-b188-9e6e26c734eb_________2_.jpg"
+},
+{
+"name": "Сиыр еті қосылған рамэн/Рамэн с говядиной",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/7eee77d0-fe1b-11ed-a056-962ebebd0c1a____________.jpg"
+},
+{
+"name": "Тәтті және ащы тұздықтағы эноки/Эноки в сладко-остром соусе",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/66dc6844-fe09-11ed-8859-d645a60d7175______.jpg"
+},
+{
+"name": "Coca Cola 1lt",
+"desc": "",
+"img": null
+},
+{
+"name": "Пеште пісірілген рибай/Рибай на жаровне",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/0f0abaa0-fe1b-11ed-a5b2-962ebebd0c1a______.jpg"
+},
+{
+"name": "Манго-иаракуйя тұздығы қосылған чиа/Чиа с соусом манго-маракуйя",
+"desc": "",
+"img": null
+},
+{
+"name": "Ағаш саңырауқұлақтары қосылған салат/Салат с древесными грибами",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/0613f7f4-9277-11ee-8b55-9eb3811db444___________________.jpg"
+},
+{
+"name": "Ролл жиынтығы/Ролл ассорти",
+"desc": "Рис, нори, сыр кремето, огурцы, креветки, семга, угорь",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/50f5d37a-f8a0-11ee-8b62-62fed6dc735b_img_2879.jpeg"
+},
+{
+"name": "Албырт қосылған ірімшікті ролл/Сырный ролл с лососем",
+"desc": "Рис нори шапочка из сыра ( пармезан, Гауда) унаги соус миндальные лепестки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f805e20162de7f89e97168c/890a741e-f8a0-11ee-ad6d-3e7b0746ac79_img_2880.jpeg"
+},
+{
+"name": "Персиковый айс ти",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Мохито классический",
+"desc": "250 мл",
+"img": null
+},
+{
+"name": "Тофу қосылған токпокки/Токпокки с тофу",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/67b682ab2501ae1129add3ab"
+},
+{
+"name": "Морс смородина-мята",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Манго шейк 350мл",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/681a0ca3053a9d8ed402bbf8"
+},
+{
+"name": "Таңқурай пюресі қосылған наполеон/наполеон с малиновым пюре",
+"desc": "",
+"img": null
+},
+{
+"name": "Морс ягодный микс",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Ягодный айс ти",
+"desc": "1л",
+"img": null
+},
+{
+"name": "Пеште пісірілген тауық еті/Курица на жаровне",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/694953de6e37f9d39e3b20aa"
+},
+{
+"name": "Курица в соусе терияки",
+"desc": "",
+"img": null
+},
+{
+"name": "Манго-маракуйя шейк 350мл",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/681a0cb78ef332d6fcc7b2de"
+},
+{
+"name": "Ірімшікті рамён/Сырный рамён",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/67b84f0436b6224d022dde9e"
+},
+{
+"name": "Терияки тауық салаты/Салат с курицей терияки",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/694953e86e37f9d39e3b20b0"
+},
+{
+"name": "Рис",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/682c34967957faa8599ca587"
+},
+{
+"name": "Лимонный айс ти",
+"desc": "1л",
+"img": null
+}
+]
+}

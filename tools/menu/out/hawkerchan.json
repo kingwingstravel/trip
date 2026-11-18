@@ -1,0 +1,329 @@
+{
+"wolt:hawker-chan": [
+{
+"name": "ПРИБОРЫ 🍽",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/67c1c0e95522eb19503dfdd3"
+},
+{
+"name": "Сеты🍱",
+"desc": "На компанию",
+"img": "https://imageproxy.wolt.com/assets/671f3994e667bf2c4b03e029"
+},
+{
+"name": "Комбо Double",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/678f7d432e7be8646181a72d"
+},
+{
+"name": "БЛЮДА ИЗ КУРИЦЫ 🍗",
+"desc": "Стоимость включает дополнительные 150 тг за упаковку.",
+"img": "https://imageproxy.wolt.com/assets/674eb3964b80e20da9347670"
+},
+{
+"name": "БЛЮДА ИЗ КОНИНЫ🥩",
+"desc": "Стоимость включает дополнительные 150 тг за упаковку.",
+"img": "https://imageproxy.wolt.com/assets/67c58bf1ca21df22e0c8de59"
+},
+{
+"name": "САЛАТЫ 🥗",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/a0ac6e6e-538d-11ee-9510-8a9eff8f5a16______new.jpg"
+},
+{
+"name": "СУПЫ 🍜",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/1bf83446-a13b-11ed-9b3f-be3ed5b5c9ec_chicken_noodle_.jpeg"
+},
+{
+"name": "MINI Салаты",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/303b2fb4-d86a-11ee-a2ea-563d914d56c8_cucumbers_mini.jpg"
+},
+{
+"name": "Детское Меню🧸",
+"desc": "Стоимость включает дополнительные 150 тг за упаковку.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/b7614ad2-a685-11ec-8bb4-fa32109938d5_untitled_6.jpeg"
+},
+{
+"name": "ДОПОЛНИТЕЛЬНЫЕ ПОРЦИИ ➕",
+"desc": "Стоимость включает дополнительные 100 тг за упаковку.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/399f4414-bd94-11e9-b112-0a586466b095_HawkeerChan_18.jpeg"
+},
+{
+"name": "ФИРМЕННЫЕ ЧАИ",
+"desc": "Фирменные чаи",
+"img": "https://imageproxy.wolt.com/assets/6764f111b2a1aa1c381a507d"
+},
+{
+"name": "НАПИТКИ 🥤",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/442f3382-7e70-11eb-8d3c-ea178e34ba7e_screen_shot_2021_03_06_at_17.19.43.jpeg"
+},
+{
+"name": "Black Pepper Chicken c картофелем",
+"desc": "Кусочки куриного филе в панировке со сладким перцем, в фирменном чёрно-перечном соусе со сливками.  На гарнир обжаренный картофель с фирменными специями",
+"img": "https://imageproxy.wolt.com/assets/67c5a70cca21df22e0c8e2b6"
+},
+{
+"name": "Вода минеральная Borjomi 0.33",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/674eaf88b0720b5361a4bd77"
+},
+{
+"name": "Лапша",
+"desc": "Лапша яичная из твердых сортов пшеницы изготовлена специально для Hawker Chan. Подается под фирменным соевым соусом. Традиционная подгарнировка из слегка острого соуса Самбал чили белачан и свежих огурцов.",
+"img": "https://imageproxy.wolt.com/assets/678faa1b1071bf3f91ab1c23"
+},
+{
+"name": "Сок Piko 200 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/d730c30a-bd95-11e9-b9b8-0a586465d691_Hawker_2.jpeg"
+},
+{
+"name": "Курица с лапшой",
+"desc": "Фирменная курочка сварена в Сингапурском соусе с азиатскими специями. Мягкая и сочная. Лапша подаётся с острым соусом Самбал Чили Белачан и свежими огурцами. Хит продаж в Казахстане.",
+"img": "https://imageproxy.wolt.com/assets/67c586f55522eb19503e293e"
+},
+{
+"name": "Чикен райс",
+"desc": "Чикен райс является национальным блюдом Сингапура. Чикен райс от Hawker Chan получил звезду Мишлена за невероятный вкус, сочность и нежность курицы, сваренной в соевом соусе. Подается с рисом и соевыми бобами.",
+"img": "https://imageproxy.wolt.com/assets/67c587c87342e30a2232fc68"
+},
+{
+"name": "Курица с картофелем",
+"desc": "Фирменная курочка сварена в Сингапурском соусе с азиатскими специями. Мягкая и сочная курица подается с картофелем, приготовленным по-домашнему.",
+"img": "https://imageproxy.wolt.com/assets/67c587feca21df22e0c8ddf1"
+},
+{
+"name": "Спайси чикен с рисом и жареным яйцом",
+"desc": "Нежное филе курицы обжаривается с луком, огурцом и полу-горьким перцем в фирменном остром соусе из Сингапура. Подаётся с рисом и жареным яйцом.",
+"img": "https://imageproxy.wolt.com/assets/678faae71071bf3f91ab1c4a"
+},
+{
+"name": "Проросшая фасоль",
+"desc": "Слегка приваренные ростки фасоли подаются с фирменным соевым соусом и чесночными чипсами.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/ce91deae-538d-11ee-a443-723bbcf4b09f__________________new.jpg"
+},
+{
+"name": "Картофель",
+"desc": "Отварной картофель, слегка обжаренный перед подачей.",
+"img": "https://imageproxy.wolt.com/assets/678fa9cf2e7be8646181ae0e"
+},
+{
+"name": "Каркаде",
+"desc": "На выбор: 300 мл / 500 мл / 1 л. Прохладный чай из цветков гибискуса. Без кофеина.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/61cf048c-bd95-11e9-bd13-0a586466fd36_Hawker.jpeg"
+},
+{
+"name": "Фрайд райс с курицей по-гонконски",
+"desc": "Пикантное, сытное и недорогое блюдо является одним из самых популярных в Азии. Жареный рис с курицей и овощами можно заказать любой остроты.",
+"img": "https://imageproxy.wolt.com/assets/678fab8dfce7b07119608ed5"
+},
+{
+"name": "Минеральная вода без газа, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f5dd434-bd96-11e9-83bb-0a5864652f5b_Hawker_3.jpeg"
+},
+{
+"name": "Рис",
+"desc": "Отварной рис с пряным соевым соусом.",
+"img": "https://imageproxy.wolt.com/assets/678fa9e42e7be8646181ae12"
+},
+{
+"name": "Курица",
+"desc": "Гордость Hawker Chan. Отведайте разные части курицы в одной порции: филе грудки, ножка, крылышко и спинка.",
+"img": "https://imageproxy.wolt.com/assets/678faafd1071bf3f91ab1c4c"
+},
+{
+"name": "Компот",
+"desc": "На выбор: 300 мл / 500 мл / 1 л. Прохладный напиток из микса сухофруктов по-Алматински.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/9003b53c-bd95-11e9-a5bd-0a586466ce8b_Hawker_1.jpeg"
+},
+{
+"name": "ПРИБОРЫ",
+"desc": "Спасибо, что без лишнего пластика! Одноразовые приборы берите, только если под рукой нет своих.",
+"img": null
+},
+{
+"name": "Минеральная вода газированная, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/845b289e-e79f-11e9-bfa4-0a5864605aa2_Bonaqua_500ml.jpeg"
+},
+{
+"name": "Чикен карри с рисом",
+"desc": "Kурица в панировке с картофелем и помидорами в остром соусе карри на основе кокосового молока с рисом на гарнир",
+"img": "https://imageproxy.wolt.com/assets/678fabcc2e7be8646181ae7b"
+},
+{
+"name": "Coca-Cola, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f842356a-3b8a-11ea-acc2-0a58646e9c87_cola__1_.jpeg"
+},
+{
+"name": "Fanta, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/20d8c714-3b8b-11ea-b31b-0a586472c70d_Fanta_500ml__2_.jpeg"
+},
+{
+"name": "Sprite, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/387d900c-3b8b-11ea-b387-0a5864722831_sprite.jpeg"
+},
+{
+"name": "Булочки 2 шт",
+"desc": "Две мягкие булочки хорошо дополнят любое блюдо.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/558b9420-a56f-11ea-94b6-0a5864783337________.jpeg"
+},
+{
+"name": "Фрайд райс с овощами по-гонконски",
+"desc": "Пикантное, сытное и недорогое блюдо является одним из самых популярных в Азии. Жареный рис с овощами можно заказать любой остроты.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/8f09bb2e-d869-11ee-9a19-f656a82cf02f_new_fried_rice_nb.jpg"
+},
+{
+"name": "Coca Cola No Sugar, 500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/b8e3dc3c-7e70-11eb-a58e-fe4ded75b3c4_ccns.jpeg"
+},
+{
+"name": "Слайсы с лапшой",
+"desc": "Отварная мякоть конины тушится в фирменном сладковатом соусе и поливается небольшим количеством острого соуса. Подается с фирменной лапшой.",
+"img": "https://imageproxy.wolt.com/assets/67c58c0aca21df22e0c8de5a"
+},
+{
+"name": "Слайсы с картофелем",
+"desc": "Отварная мякоть конины тушится в фирменном сладковатом соусе и поливается небольшим количеством острого соуса. Подается с картофелем.",
+"img": "https://imageproxy.wolt.com/assets/67c58c1cca21df22e0c8de5b"
+},
+{
+"name": "Слайсы с рисом",
+"desc": "Отварная мякоть конины тушится в фирменном сладковатом соусе и поливается небольшим количеством острого соуса. Подается с фирменным рисом.",
+"img": "https://imageproxy.wolt.com/assets/67c58bf1ca21df22e0c8de59"
+},
+{
+"name": "Фрайд райс с мясом",
+"desc": "Пикантное, сытное и недорогое блюдо является одним из самых популярных в Азии. Жареный рис с яйцом, говядиной и овощами можно заказать любой остроты.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/d463069a-d868-11ee-8fd5-46f5391d443c_new_fried_rice_nb.jpg"
+},
+{
+"name": "Куриный суп лапша",
+"desc": "Согреет зимой. Подходит для детей.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/1bf83446-a13b-11ed-9b3f-be3ed5b5c9ec_chicken_noodle_.jpeg"
+},
+{
+"name": "Суп лапша с мясом",
+"desc": "Любителям супа посвящается!",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/79282c20-a13b-11ed-b53a-eada18a27823_beef_soup.jpeg"
+},
+{
+"name": "Тайский молочный чай",
+"desc": "Тайский чай с ванильным ароматом, молоко, сгущённое молоко",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/442f3382-7e70-11eb-8d3c-ea178e34ba7e_screen_shot_2021_03_06_at_17.19.43.jpeg"
+},
+{
+"name": "Соевое яйцо",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/f42e3d04-d869-11ee-bee9-929602178d9d_egg_mini.jpg"
+},
+{
+"name": "Битые огурцы",
+"desc": "Легкий и освежающий салат, с оттенком остроты.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/0539d0ba-a13c-11ed-bab9-7eb987f033e2_cuc.jpeg"
+},
+{
+"name": "Азиатская Морковка",
+"desc": "Хрустящая морковча",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/d6ebcc4a-a13b-11ed-8334-4e3d357a030a_carrot.jpeg"
+},
+{
+"name": "Жареный Баклажан",
+"desc": "Баклажан в кляре под соусом свит чили",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/1bf6951c-d869-11ee-90ec-f656a82cf02f__________.jpg"
+},
+{
+"name": "Красная Капуста",
+"desc": "Хрустящая капуста, кинза, оливковое масло, тыквенные семечки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/2e857202-d869-11ee-8eb1-cad0627a805b_red_cabbage_nb.jpg"
+},
+{
+"name": "Филе с рисом",
+"desc": "Куриное филе с рисом, свежей морковкой, огурцами и кукурузой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/b7614ad2-a685-11ec-8bb4-fa32109938d5_untitled_6.jpeg"
+},
+{
+"name": "Сет на двоих",
+"desc": "Половина курицы, рис, лапша, компот из сухофруктов (300 мл), каркаде (300 мл)",
+"img": "https://imageproxy.wolt.com/assets/671f3994e667bf2c4b03e029"
+},
+{
+"name": "San Pellegrino 330 мл",
+"desc": "Сокосодержащая газированная вода Премиум класса",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/73f396e0-2894-11ef-89b0-065fa295a0e5_ee11c7b0_8332_4eac_8ffe_8157aaee1255.jpg"
+},
+{
+"name": "Coca-cola стекло 0,25",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/e5e4ddda-2890-11ef-ad0d-e68fb2abab45_f69b4005_b3ed_4b4f_97bb_fe3c49faccd2.jpg"
+},
+{
+"name": "Курица в кисло-сладком соусе с рисом",
+"desc": "Обжаренные кусочки куриного филе со сладким перцем и кусочками ананаса, в фирменном кисло-сладком соусе, с зеленым луком и кунжутом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/b391b5ec-d868-11ee-a144-e6bf60478a73_sweet_and_sour_chicken_nb.jpg"
+},
+{
+"name": "Битые огурцы mini",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/303b2fb4-d86a-11ee-a2ea-563d914d56c8_cucumbers_mini.jpg"
+},
+{
+"name": "Проросшая фасоль mini",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/00ab9cd8-d86b-11ee-b421-625cc9f787b9_bean_sprouts_mini.jpg"
+},
+{
+"name": "Красная капуста mini",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/52fb719e-d86a-11ee-b059-6a30bcfa9825_red_cabbage_mini.jpg"
+},
+{
+"name": "Азиатская морковь mini",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/76088474-d86a-11ee-92c8-0e1ac2586050_carrots_mini.jpg"
+},
+{
+"name": "Комбо Double Чикен Райс",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/678f7d432e7be8646181a72d"
+},
+{
+"name": "Double Курица с Лапшой",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/678f7d781071bf3f91ab14f5"
+},
+{
+"name": "Double Курица с Картофелем",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/678f7d94fce7b0711960872b"
+},
+{
+"name": "Лимонад Borjomi",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5d524b8cfbe8cc43d9998bc6/3cbdc308-2894-11ef-beb7-82aa086a9aff_a307e041_2338_43fd_8beb_75018f98627f.jpg"
+},
+{
+"name": "Coca-cola zero стекло 0,25",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/6a155986bc58fc8ba2f495d6"
+},
+{
+"name": "Black Pepper Chicken c рисом",
+"desc": "Кусочки куриного филе в панировке со сладким перцем, в фирменном чёрно-перечном соусе со сливками.  С рисом",
+"img": "https://imageproxy.wolt.com/assets/67c5a7207342e30a22330177"
+},
+{
+"name": "Fuse tea",
+"desc": "",
+"img": "https://imageproxy.wolt.com/assets/67c686ab5522eb19503e3bef"
+}
+]
+}

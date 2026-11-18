@@ -1,0 +1,884 @@
+{
+"wolt:masisso": [
+{
+"name": "ГОВЯДИНА 🍗",
+"desc": "ГОВЯДИНА 🍗",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11a717e-fd70-11ee-aada-0eba3ade2105_cf9e7b8b_4339_436b_ae98_aa4ca9d82c48.jpg"
+},
+{
+"name": "СВИНИНА 🍗",
+"desc": "СВИНИНА 🍗",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11f8826-fd70-11ee-aada-0eba3ade2105_f347cdaf_01d1_4150_a42a_aa6ca546fe75.jpg"
+},
+{
+"name": "КОНИНА 🍗",
+"desc": "КОНИНА 🍗",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f121ed14-fd70-11ee-aada-0eba3ade2105_5e4fcbf9_52fc_496c_aca6_68dbfbf67080.jpg"
+},
+{
+"name": "БАРАНИНА 🍗",
+"desc": "БАРАНИНА 🍗",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1234588-fd70-11ee-aada-0eba3ade2105_c28632c3_2b10_4966_8d29_66a4b57641f4.jpg"
+},
+{
+"name": "АССОРТИ 🍴",
+"desc": "АССОРТИ 🍴",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f12478a4-fd70-11ee-aada-0eba3ade2105_f21053f2_6fa1_436e_9383_26f740779bcc.jpg"
+},
+{
+"name": "САЛАТЫ 🥗",
+"desc": "САЛАТЫ 🥗",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/0ffda898-fe13-11ee-b4de-52209594585f_b426f07b_87f6_4de2_8b29_0b44eddc188b.jpg"
+},
+{
+"name": "РОЛЛЫ 🍣",
+"desc": "РОЛЛЫ 🍣",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/100d9140-fe13-11ee-b4de-52209594585f_9990b25e_5d70_47bf_aa22_fe7fcd6ecdf1.jpg"
+},
+{
+"name": "СУПЫ 🍜",
+"desc": "СУПЫ 🍜",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1614194-fd70-11ee-aada-0eba3ade2105_90014abb_82d4_4419_b542_76bba7f977fc.jpg"
+},
+{
+"name": "ЛАПША И ТОППАБ 🍝",
+"desc": "ЛАПША И ТОППАБ 🍝",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f192dec0-fd70-11ee-aada-0eba3ade2105_1a6a0238_992a_41a2_8b5d_483ed7bfb6e6.jpg"
+},
+{
+"name": "БЛЮДА НА КОМПАНИЮ 👨‍👩‍👦",
+"desc": "БЛЮДА НА КОМПАНИЮ 👨‍👩‍👦",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f085d604-fd70-11ee-984f-0e033977f922_55b3fd6c_77a0_4210_8f73_88b3111c3144.jpg"
+},
+{
+"name": "ГОРЯЧИЕ БЛЮДА 🍱",
+"desc": "ГОРЯЧИЕ БЛЮДА 🍱",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f099e770-fd70-11ee-984f-0e033977f922_61cb0a56_5fbb_43eb_beae_9b330f126a49.jpg"
+},
+{
+"name": "МОРЕПРОДУКТЫ И РЫБА🍤",
+"desc": "МОРЕПРОДУКТЫ И РЫБА🍤",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b43b66-fd70-11ee-984f-0e033977f922_0e7980f5_e774_4a62_a493_1bd2649212d5.jpg"
+},
+{
+"name": "ГАРНИРЫ 🍚",
+"desc": "ГАРНИРЫ 🍚",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c1fc4c-fd70-11ee-a527-0e033977f922_fe2a2b89_309a_468a_bd82_99a99d7c7cc8.jpg"
+},
+{
+"name": "ПИЦЦА 🍕",
+"desc": "ПИЦЦА 🍕",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c70b7e-fd70-11ee-a527-0e033977f922_ab65097f_0937_4df8_b69b_d59ee0afca2c.jpg"
+},
+{
+"name": "ПАСТА 🍝",
+"desc": "ПАСТА 🍝",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d39722-fd70-11ee-a527-0e033977f922_f3f498a4_21b1_4634_9fb3_0ae479753246.jpg"
+},
+{
+"name": "НАПИТКИ 🥤",
+"desc": "НАПИТКИ 🥤",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e1e8a4-fd70-11ee-a527-0e033977f922_1424b10b_f445_4fe2_ba2c_539541940c07.jpg"
+},
+{
+"name": "Тынсим пульгони",
+"desc": "Тонко нарезанное маринованное филе говядины",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11a717e-fd70-11ee-aada-0eba3ade2105_cf9e7b8b_4339_436b_ae98_aa4ca9d82c48.jpg"
+},
+{
+"name": "LA Кальби",
+"desc": "Маринованные ребра мраморной говядины распилленые поперек",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11bc59c-fd70-11ee-aada-0eba3ade2105_900cd87f_eadc_4674_b5ba_51f6cab55f1d.jpg"
+},
+{
+"name": "Чадольбаги",
+"desc": "Тонко нарезанная грудинка с прослойками жира",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11cf750-fd70-11ee-aada-0eba3ade2105_f11745cf_84a0_4add_96cc_fba36e3e923d.jpg"
+},
+{
+"name": "Тынсим",
+"desc": "Антрекот без косточки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11e5c80-fd70-11ee-aada-0eba3ade2105_bb25f715_e69d_495e_8c60_e49e6fa67669.jpg"
+},
+{
+"name": "Моксаль",
+"desc": "Шейка с прослойками жира",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f11f8826-fd70-11ee-aada-0eba3ade2105_f347cdaf_01d1_4150_a42a_aa6ca546fe75.jpg"
+},
+{
+"name": "Самгепсаль",
+"desc": "Тонко нарезанная грудинка с прослойками жира",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f120bb42-fd70-11ee-aada-0eba3ade2105_8c49d10f_551f_4c4a_be6a_82501bac6429.jpg"
+},
+{
+"name": "Жая ",
+"desc": "Тонко нарезанное филе конины",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f121ed14-fd70-11ee-aada-0eba3ade2105_5e4fcbf9_52fc_496c_aca6_68dbfbf67080.jpg"
+},
+{
+"name": "Маринованное филе ягненка",
+"desc": "Маринованное филе ягненка",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1234588-fd70-11ee-aada-0eba3ade2105_c28632c3_2b10_4966_8d29_66a4b57641f4.jpg"
+},
+{
+"name": "Ассорти из говядины, баранины, конины",
+"desc": "Филе ягненка, чадольбаги, жая. Подается с корзиной зелени, с кунжутным маслом и соусом, с чесноком и перцем",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f12478a4-fd70-11ee-aada-0eba3ade2105_f21053f2_6fa1_436e_9383_26f740779bcc.jpg"
+},
+{
+"name": "Ассорти из свинины",
+"desc": "Моксаль, самгёпсаль, моксаль маринованный. Подается с корзиной зелени, с кунжутным маслом и соусом, с чесноком и перцем",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f125bb7e-fd70-11ee-aada-0eba3ade2105_71c14aa9_2584_4f0b_b6bd_ecf6fe1ba2aa.jpg"
+},
+{
+"name": "Ассорти из говядины",
+"desc": "Тынсим, чадольбаги, тынсим пульгоги. Подается с корзиной зелени, с кунжутным маслом и соусом, с чесноком и перцем",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f127219e-fd70-11ee-aada-0eba3ade2105_e3557836_7dc3_4903_8387_0ee94e73a86e.jpg"
+},
+{
+"name": "Свежие овощи",
+"desc": "Свежие овощи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/0ffda898-fe13-11ee-b4de-52209594585f_b426f07b_87f6_4de2_8b29_0b44eddc188b.jpg"
+},
+{
+"name": "Феличита",
+"desc": "Шпинат, перепиленные яйца, помидоры черри, руккола, куриная печень, лист салата, оливковая заправка",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/10099112-fe13-11ee-b4de-52209594585f_4f11370f_e55c_4879_ba72_0e8b49ea3870.jpg"
+},
+{
+"name": "Зеленый салат",
+"desc": "Листья салата, айсберг, лола росса, руккола, лук, черри, оливковое масло,бальзамическиий дрессинг",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f128bb58-fd70-11ee-aada-0eba3ade2105_e5f62b89_a0e9_4d2c_9a37_175156250cd8.jpg"
+},
+{
+"name": "Салат \"Салантин\"",
+"desc": "Кинза свежая, тубу, соевый соус, специи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/100adc84-fe13-11ee-b4de-52209594585f_41fe4094_862d_4941_bb31_ed8b08a4fcbf.jpg"
+},
+{
+"name": "Салат Меги-ча",
+"desc": "Салат из морской капусты с мясом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f129f900-fd70-11ee-aada-0eba3ade2105_dd8c1f91_e085_41fe_b8a3_fc5c5db0bd82.jpg"
+},
+{
+"name": "Фунчеза",
+"desc": "Салат из фунчезы с мясом и овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/100c4f4c-fe13-11ee-b4de-52209594585f_937f13b6_6d08_4651_916a_dd9e4a82e57e.jpg"
+},
+{
+"name": "Огурцы с мясом",
+"desc": "Огурцы с мясом заправленные специями",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f12b47ce-fd70-11ee-aada-0eba3ade2105_0417e37b_63f8_4f5a_b423_8fdcdf435745.jpg"
+},
+{
+"name": "Салат со шпинатом с говяжьей ветчиной ",
+"desc": "Шпинат, грибы, сыр Пармезан, ветчина говяжья, соевый соус, чеснок, лимон",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f12d4d08-fd70-11ee-aada-0eba3ade2105_4945d604_049e_4623_b305_8d0cce2f1f7c.jpg"
+},
+{
+"name": "Салат Косари-ча",
+"desc": "Салат из папоротника с говядиной\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f12f2114-fd70-11ee-aada-0eba3ade2105_7724533e_a006_4ebf_b7e2_d3b7e417c25b.jpg"
+},
+{
+"name": "Хе из требухи",
+"desc": "Говяжий рубец маринованный в уксусе, приправленный авторскими специями\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1305e8a-fd70-11ee-aada-0eba3ade2105_91b662e6_82a5_452e_9842_e6a05e3a7ac2.jpg"
+},
+{
+"name": "Салат Хе из рыбы",
+"desc": "Маринованное в уксусе филе судака, овощи приправленные специями\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f131876a-fd70-11ee-aada-0eba3ade2105_b43b276e_01c0_4fa8_8674_b527775fbbdf.jpg"
+},
+{
+"name": "Грибной салат",
+"desc": "Грибы, ветчина, красный лук, майонез, листья салата",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f132ac76-fd70-11ee-aada-0eba3ade2105_f5cc7aea_18f7_4ad9_98d1_92f4d14267f8.jpg"
+},
+{
+"name": "Цезарь с креветками",
+"desc": "Айсберг, помидоры черри, гренки, сыр пармезан и соус цезарь с креветками",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1343316-fd70-11ee-aada-0eba3ade2105_49c8f88f_eded_4d3d_9085_52adb787be68.jpg"
+},
+{
+"name": "Салат Хе из мяса",
+"desc": "Маринованное в уксусе говядина, овощи приправленные специями\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f135b9e8-fd70-11ee-aada-0eba3ade2105_d53147cd_9083_4728_95f4_7f7489a01557.jpg"
+},
+{
+"name": "Коннамуль ча",
+"desc": "Салат из пророщенных бобов и листа салата\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1373c82-fd70-11ee-aada-0eba3ade2105_8b612ea1_bec6_46b6_9cdc_ba9715ba6d32.jpg"
+},
+{
+"name": "Кимчи",
+"desc": "Острый салат из корейской капусты\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1395440-fd70-11ee-aada-0eba3ade2105_b1d9f299_4689_4c13_a407_c518bf8f116b.jpg"
+},
+{
+"name": "Хе из кальмара",
+"desc": "кальмары,морковь,специй",
+"img": null
+},
+{
+"name": "Цезарь с курицей",
+"desc": "Айсберг, помидоры черри, гренки, сыр пармезан и соус цезарь. Обжаренное на гриле филе курицы.\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f13b5efc-fd70-11ee-aada-0eba3ade2105_aaced540_5615_4c07_b3d3_e4b8ec9bee4a.jpg"
+},
+{
+"name": "Цезарь с семгой",
+"desc": "Айсберг, помидоры черри, гренки, сыр пармезан заправлен соусом цезарь. Обжаренные на гриле семга\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f13fe4ae-fd70-11ee-aada-0eba3ade2105_a0040eae_f274_480e_8efd_8f01d5a88a58.jpg"
+},
+{
+"name": "Салат со шпинатом с беконом",
+"desc": "Шпинат, грибы, сыр Пармезан, бекон, соевый соус, чеснок, лимон\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f142d268-fd70-11ee-aada-0eba3ade2105_39ca39a1_57c7_4308_89e5_7c689e1f28eb.jpg"
+},
+{
+"name": "Дракон",
+"desc": "Угорь, крабовый микс, авокадо, огурец, майонез, тобико",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/100d9140-fe13-11ee-b4de-52209594585f_9990b25e_5d70_47bf_aa22_fe7fcd6ecdf1.jpg"
+},
+{
+"name": "Америка",
+"desc": "Лосось, угорь, огурец, сыр, тобико",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/100eece8-fe13-11ee-b4de-52209594585f_e37d95e4_9753_44f2_80d9_24da90637ac4.jpg"
+},
+{
+"name": "Филадельфия De Luxe",
+"desc": "Лосось, сыр, огурцы, авокадо",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f145c5fe-fd70-11ee-aada-0eba3ade2105_e731b582_2b9a_4155_8dbb_e33e49be8f41.jpg"
+},
+{
+"name": "Кимпаб из говядины",
+"desc": "Нежные ломтики говядины, тщательно нарезанные и маринованные в сочетании с ароматными специями, сочетаются с свежими овощами и ароматным рисом, создавая насыщенный вкусовой букет\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f148d1ea-fd70-11ee-aada-0eba3ade2105_a46a061a_ef70_438e_a48e_92f803fc4c18.jpg"
+},
+{
+"name": "Унаги темпура ролл",
+"desc": "Угорь, рис, нори, огурец\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f14a0c0e-fd70-11ee-aada-0eba3ade2105_d7a8ec7d_604f_4367_8d7c_9946907949d4.jpg"
+},
+{
+"name": "Филадельфия Gold",
+"desc": "Сыр, угорь, авокадо, тобико, огурцы, красная икра",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/10106e42-fe13-11ee-b4de-52209594585f_089cead5_49b8_4d2d_935a_bce1fb11dd93.jpg"
+},
+{
+"name": "Капа Каппа маки ролл",
+"desc": "Огурец, кунжут, рис, нори\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f14b49ac-fd70-11ee-aada-0eba3ade2105_b3f3d7b7_a2b1_492f_a6c5_53a9b1ede0e5.jpg"
+},
+{
+"name": "Криспи Эби",
+"desc": "Креветки, авокадо, тобико, листья",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/1011f424-fe13-11ee-b4de-52209594585f_93884cc2_f18d_44f6_b7b6_7bddfb896311.jpg"
+},
+{
+"name": "Калифорния ролл",
+"desc": "Снежный краб, огурцы, сыр, нори, рис, авокадо",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f14e2e38-fd70-11ee-aada-0eba3ade2105_b6184fa4_4548_4ec2_a653_cf2a34cc184e.jpg"
+},
+{
+"name": "Унаги маки ролл",
+"desc": "Угорь, кунжут, рис, нори\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f15376fe-fd70-11ee-aada-0eba3ade2105_88c168cb_61db_45de_bdaa_8a38462bb257.jpg"
+},
+{
+"name": "Саке маки ролл",
+"desc": "Семга, рис, нори\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f155b1f8-fd70-11ee-aada-0eba3ade2105_1b68efa7_2e92_491b_a7ae_0befe5e67913.jpg"
+},
+{
+"name": "Сяке Темпура",
+"desc": "Лосось, рис, нори, огурец\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f157547c-fd70-11ee-aada-0eba3ade2105_d7f9bc66_482a_4680_8216_ea73b9372fe8.jpg"
+},
+{
+"name": "Филадельфия Classic",
+"desc": "Лосось, сыр, нори, рис\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f158a37c-fd70-11ee-aada-0eba3ade2105_c24a50cd_bab3_4361_9947_beaacc3705eb.jpg"
+},
+{
+"name": "Кимпаб с семгой",
+"desc": "Нежные лососевые полоски, тонко нарезанные и маринованные в изысканных приправах, сочетаются с свежими овощами и ароматным рисом, создавая уникальное сочетание вкусов и текстур\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f15ac9a4-fd70-11ee-aada-0eba3ade2105_7ac0c0cf_a7d4_4bab_8395_7dc10e188a77.jpg"
+},
+{
+"name": "Кимпаб с овощами",
+"desc": "Тонко нарезанные и тщательно отобранные овощи, такие как морковь, огурцы, и перец, аккуратно скручиваются вместе с ароматным рисом\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f15e1f14-fd70-11ee-aada-0eba3ade2105_e45e4639_b5ad_47f6_b81f_b78d60ecf833.jpg"
+},
+{
+"name": "Суп Филини",
+"desc": "Куриная грудка, морковь, лук, лапша Филини",
+"img": null
+},
+{
+"name": "Суп Хемуль твендян тиге",
+"desc": "Не острый суп из морепродуктов (кальмары, мидии, креветки, осьминог, моркской коктейль, минтай)",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1614194-fd70-11ee-aada-0eba3ade2105_90014abb_82d4_4419_b542_76bba7f977fc.jpg"
+},
+{
+"name": "Суп Кальбитан",
+"desc": "Не острый суп из говяжьих ребрышек с крахмальной лапшой\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f162a408-fd70-11ee-aada-0eba3ade2105_bbdadb32_0cf2_4cd2_84a9_2db4cfd4ebee.jpg"
+},
+{
+"name": "Сиряги тямури из говядины",
+"desc": "Суп из говядины с добавлением соевой пасты и сушеных листьев пекинской капусты",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f169c396-fd70-11ee-aada-0eba3ade2105_e5aea536_50f1_4221_a072_433e89ae5ce3.jpg"
+},
+{
+"name": "Кальбитим",
+"desc": "Супчик из говяжьих ребрышек тушенных с овощами в сладком соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f16bcfd8-fd70-11ee-aada-0eba3ade2105_c9c04b11_9597_452c_b40c_562be1178a49.jpg"
+},
+{
+"name": "Хемулькочудян тиге",
+"desc": "Острый суп из морепродуктов (кальмары, мидии, креветки, осьминог, моркской коктейль, минтай)",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f16ece0e-fd70-11ee-aada-0eba3ade2105_6eb91970_11e3_40e9_91df_f15f22777b3c.jpg"
+},
+{
+"name": "Угоди кальбитан",
+"desc": "Суп из говяжьих ребрышек с добавлением соевой пасты, пекинской капусты и тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/101334e2-fe13-11ee-b4de-52209594585f_be1480fa_9667_475b_b552_da9d30eacf1c.jpg"
+},
+{
+"name": "Юккедян",
+"desc": "Пряный суп из говядины с овощами: папоротник, грибы, пророщенные бобы",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1734614-fd70-11ee-aada-0eba3ade2105_b278fb85_d1ca_477c_9df6_612d00e712f8.jpg"
+},
+{
+"name": "Том ям с креветками",
+"desc": "Креветки, кальмар,грибы, лайм, кокосовое молоко, рыбный соус, травы и специи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1765520-fd70-11ee-aada-0eba3ade2105_19444a9c_7523_4a70_9ca2_c3f7a84ed44b.jpg"
+},
+{
+"name": "Миёккук из говядины",
+"desc": "Суп из говядины и морской капусты",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f179f66c-fd70-11ee-aada-0eba3ade2105_c1cc74ab_6015_4124_a72b_ad413668f7f7.jpg"
+},
+{
+"name": "Чамчи кимчи тиге",
+"desc": "Острый суп с тунцом, кимчи, тофу с добавлением острой соевой пасты кочудян",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f17da5c8-fd70-11ee-aada-0eba3ade2105_cf3ef759_c837_4e04_83a3_dfe634302144.jpg"
+},
+{
+"name": "Твендян тиге с говядиной",
+"desc": "Суп из говядины с добавлением соевой пасты, овощей и тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f17fb1ec-fd70-11ee-aada-0eba3ade2105_3d5d2960_56bf_4a8f_bf58_af2256dc6a45.jpg"
+},
+{
+"name": "Кимчи тиге из говядины",
+"desc": "Острый суп из говядины с добавлением кимчи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f18277ba-fd70-11ee-aada-0eba3ade2105_7b653800_a383_497e_bcaf_3c26342e74c2.jpg"
+},
+{
+"name": "Мисо суп",
+"desc": "Рыбный бульон с морскими водорослями, тофу, с добавлением мисо пасты",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/10147852-fe13-11ee-b4de-52209594585f_33595007_d681_4641_baf8_73db61dcbaef.jpg"
+},
+{
+"name": "Сиряги тямури из свинины",
+"desc": "Суп из говядины с добавлением соевой пасты и сушеных листьев пекинской капусты\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1875208-fd70-11ee-aada-0eba3ade2105_ed090387_b501_4455_9ed9_730acfff4a19.jpg"
+},
+{
+"name": "Кимчи тиге из свинины",
+"desc": "Кимчи тиге из свинины",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f18a250a-fd70-11ee-aada-0eba3ade2105_55532650_06c8_45c4_9dd2_4c236b10019b.jpg"
+},
+{
+"name": "Суп Миёккук из свинины",
+"desc": "Морские водоросли, тофу, свинина \n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/1015b21c-fe13-11ee-b4de-52209594585f_29d52951_1f1d_4f93_b499_b543df98988b.jpg"
+},
+{
+"name": "Куксу горячий пшеничной лапшой ",
+"desc": "Лапша с овощами, мясом с бульоном\n\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f18d5c16-fd70-11ee-aada-0eba3ade2105_a7e0c671_5283_4a30_94a6_febf4e1f0cab.jpg"
+},
+{
+"name": "Куксу гречневой лапшой ",
+"desc": "Лапша с овощами, мясом с бульоном\n\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f18eac56-fd70-11ee-aada-0eba3ade2105_4ddede0a_fe62_489a_a195_0ee80374bf48.jpg"
+},
+{
+"name": "Рамен с морепродуктами",
+"desc": "Рамен с морепродуктами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f192dec0-fd70-11ee-aada-0eba3ade2105_1a6a0238_992a_41a2_8b5d_483ed7bfb6e6.jpg"
+},
+{
+"name": "Куксу с домашней лапшой",
+"desc": "Лапша с овощами, мясом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f194148e-fd70-11ee-aada-0eba3ade2105_ade03f55_f2bc_4a8e_b909_3e5dcff00036.jpg"
+},
+{
+"name": "Чампон",
+"desc": "Острый суп с морепродуктами, овощами и лапшой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f195506a-fd70-11ee-aada-0eba3ade2105_36215c62_8831_43ab_8181_7487bf85bb7f.jpg"
+},
+{
+"name": "Пулькоги топпаб",
+"desc": "Маринованная говядина, обжаренная с луком, подается с рисом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f196a56e-fd70-11ee-aada-0eba3ade2105_e002a6f6_f0a5_4016_bced_20c37e0bb341.jpg"
+},
+{
+"name": "Одино топпаб",
+"desc": "Кальмары, обжаренная в острой пасте с овощами, подается с рисом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f19a9b06-fd70-11ee-aada-0eba3ade2105_ef13d64f_db05_42c7_a942_9d4b27eed455.jpg"
+},
+{
+"name": "Куксу холодное пшеничной лапшой",
+"desc": "Лапша с овощами, мясом с бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f07c4b66-fd70-11ee-984f-0e033977f922_86468fd0_6b79_42f5_9447_b65fc9675e89.jpg"
+},
+{
+"name": "Джеюк топпаб с говядиной",
+"desc": "Говядина, обжаренная в соевой пасте с овощами, подается с рисом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f19dd05a-fd70-11ee-aada-0eba3ade2105_85ffe96c_c089_48ee_b8a7_ddf88c3e8acb.jpg"
+},
+{
+"name": "Рамен с сыром",
+"desc": "Лапша, лук, грибы шиитаке , гибы вешенки , яйцо, нори, сыр сливочный\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1a0984e-fd70-11ee-aada-0eba3ade2105_113527a3_4fd7_4e81_b973_add257dd2cb4.jpg"
+},
+{
+"name": "Чаджянмён ",
+"desc": "Лапша с овощами, мясом с соусом чаджан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1a36664-fd70-11ee-aada-0eba3ade2105_bcaf4a41_0d8f_4f70_91e4_921261672546.jpg"
+},
+{
+"name": "Янгоги топпаб",
+"desc": "Тонко нарезанная жареная баранина с зеленым луком , маринованная в устричном соусе, подается с рисом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/0537567a-02d2-11ef-901b-9e2b7e0d5bde_e371fa46_711e_4126_85ae_318a428406de.jpg"
+},
+{
+"name": "Рамен с говядиной",
+"desc": "Филе говядины, лапша собственного приготовления с овощами, грибами и яйцом в наваристом бульоне\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0819fe4-fd70-11ee-984f-0e033977f922_f3cd3ac6_9311_4631_b730_d21fe8765be6.jpg"
+},
+{
+"name": "Рамен с курицей",
+"desc": "Филе курицы, лапша собственного приготовления с грибами вешенками, древесными грибами, имбирем маринованным и шпинатом в наваристом бульоне\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0831cd4-fd70-11ee-984f-0e033977f922_00aa40ff_2b4a_41de_a935_54562d61cc73.jpg"
+},
+{
+"name": "Джеюк топпаб со свининой",
+"desc": "Говядина, обжаренная в соевой пасте с овощами, подается с рисом и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f1a74662-fd70-11ee-aada-0eba3ade2105_9fab2a66_6597_47a7_b517_4d01409156b9.jpg"
+},
+{
+"name": "Кимичихэм чонголь (2-3 персон)",
+"desc": "Острый суп из кимчи, сосисок и ветчины с овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f085d604-fd70-11ee-984f-0e033977f922_55b3fd6c_77a0_4210_8f73_88b3111c3144.jpg"
+},
+{
+"name": "Такторитан (2-3 персон)",
+"desc": "Острая тушеная курица с овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0873792-fd70-11ee-984f-0e033977f922_6ba7194b_38e0_47c9_a500_56309aa885a4.jpg"
+},
+{
+"name": "Суп Хемультан (2-3 персон)",
+"desc": "Суп из морепродуктов: кальмары, мидии, креветки, беби осьминоги, морской коктейль и минтай",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0897c6e-fd70-11ee-984f-0e033977f922_075ee71a_6c3e_4bfd_bf8c_7acb1a60f963.jpg"
+},
+{
+"name": "Кимичихэм чонголь (3-5 персон)",
+"desc": "Острый суп из кимчи, сосисок и ветчины с овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f08b0048-fd70-11ee-984f-0e033977f922_3e746dc5_2083_49aa_b209_fc9d1266f117.jpg"
+},
+{
+"name": "Тансуюк из говядины",
+"desc": "Мясо, обжаренное в кляре с ксило-сладким соусом из овощей и фруктов",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/0538d766-02d2-11ef-901b-9e2b7e0d5bde_e989daff_7b0f_424c_8ed7_69233ddb29c2.jpg"
+},
+{
+"name": "Такторитан 3-5",
+"desc": "Острая тушеная курица с овощами",
+"img": null
+},
+{
+"name": "Гопчан денголь (3-5 персон)",
+"desc": "Острый суп из говяжьей требухи и ливера с овощами и приправами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f08d2e9a-fd70-11ee-984f-0e033977f922_438f9377_fe6c_4753_9ccf_33a9821cdbb7.jpg"
+},
+{
+"name": "Угоди кальбитан (3-5 персон)",
+"desc": "Суп из говяжьих ребрышек с добавлением соевой пасты, пекинской капусты и тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f08f5f3a-fd70-11ee-984f-0e033977f922_7abdcc66_00c3_4fca_907c_1e48d87b3b30.jpg"
+},
+{
+"name": "Тубу кимчи с говядиной",
+"desc": "Острая говядина, обжаренная в острой соевой пасте с кимчи, подается с тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f090be02-fd70-11ee-984f-0e033977f922_33c1dbbf_fb96_473a_882f_b7d3d2cb31cb.jpg"
+},
+{
+"name": "Одино сомён",
+"desc": "Кальмары, обжаренные в острой соевой пасте, подается с лапшой и овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f091fd94-fd70-11ee-984f-0e033977f922_2ed3a239_b5c7_46b2_b7ec_95f10b737355.jpg"
+},
+{
+"name": "Тансуюк из курицы",
+"desc": "Мясо, обжаренное в кляре с ксило-сладким соусом из овощей и фруктов",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/053a0f96-02d2-11ef-901b-9e2b7e0d5bde_ecb22fea_02b8_4825_ae89_ca5a139c2f5a.jpg"
+},
+{
+"name": "Суп Хемультан (3-5 персон)",
+"desc": "Суп из морепродуктов: кальмары, мидии, креветки, беби осьминоги, морской коктейль и минтай",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0932a0c-fd70-11ee-984f-0e033977f922_9cc48cf2_c9b4_4a78_ba07_4c9df762493b.jpg"
+},
+{
+"name": "Угоди кальбитан (2-3 персон)",
+"desc": "Суп из говяжьих ребрышек с добавлением соевой пасты, пекинской капусты и тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0954be8-fd70-11ee-984f-0e033977f922_4632773b_a31d_48f3_a9a2_bcc8046fb44b.jpg"
+},
+{
+"name": "Гопчан денголь (2-3 персон)",
+"desc": "Острый суп из говяжьей требухи и ливера с овощами и приправами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0977918-fd70-11ee-984f-0e033977f922_ff14247b_ed54_466b_b251_b2e272b4c194.jpg"
+},
+{
+"name": "Тубу кимчи со свининой",
+"desc": "Острая свинина, обжаренная в острой соевой пасте с кимчи, подается с тофу",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f098c886-fd70-11ee-984f-0e033977f922_be0ccb5f_cd3c_4393_ab52_a0660bd7fb04.jpg"
+},
+{
+"name": "Яннем чикен",
+"desc": "Курица в кляре и в кисло-сладком соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f099e770-fd70-11ee-984f-0e033977f922_61cb0a56_5fbb_43eb_beae_9b330f126a49.jpg"
+},
+{
+"name": "Говядина с зеленым луком",
+"desc": "грудинка мраморной говядины,обжаренная с зеленым луком",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f09b1d66-fd70-11ee-984f-0e033977f922_07d17e3f_787d_45f6_beb9_2eb41c069c7a.jpg"
+},
+{
+"name": "Янгоги поккым",
+"desc": "Тонко нарезанная жареная баранина с зеленым луком, маринованная в устричном соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f09c2a30-fd70-11ee-984f-0e033977f922_998c79ce_c1ff_4fc0_8263_32a0ae61f0d0.jpg"
+},
+{
+"name": "Крылышки с картофелем фри",
+"desc": "В фирменой панировке",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f09d5888-fd70-11ee-984f-0e033977f922_9e6103e9_beb8_4f9a_a8e3_173cd299ec64.jpg"
+},
+{
+"name": "Тубу поккым с говядиной",
+"desc": "Говядина, обжаренная с тофу и овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f09e7d6c-fd70-11ee-984f-0e033977f922_ea33d498_a79f_443d_9f9e_973b43cb00a9.jpg"
+},
+{
+"name": "Конина с зеленым луком",
+"desc": "Тонко нарезанная, маринованная в устричном соусе жареная конина",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/053b4708-02d2-11ef-901b-9e2b7e0d5bde_017b2adf_5cdb_410f_9bfb_5d6b6ed25caf.jpg"
+},
+{
+"name": "Требуха жареная с овощами",
+"desc": "Требуха жареная с овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f09fce10-fd70-11ee-984f-0e033977f922_ebfe15b0_3ee6_4b5c_b23a_2b89530098d3.jpg"
+},
+{
+"name": "Тори Терияки",
+"desc": "Курица в соусе терияки, подается с рисом\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a0faa6-fd70-11ee-984f-0e033977f922_408a83f3_d376_453b_8783_bd0b36349794.jpg"
+},
+{
+"name": "Пегодя дрожжевые",
+"desc": "Дрожжевые пегоди, фаршированные мясом, капустой и луком (3 шт, 25-30 мин)",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a23c7c-fd70-11ee-984f-0e033977f922_5c9717f2_f8a9_4460_aa15_55a4e0174592.jpg"
+},
+{
+"name": "Сунде",
+"desc": "Свиная кровяная колбаска",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/053c8406-02d2-11ef-901b-9e2b7e0d5bde_dfa285a4_bd96_4a63_874a_6c1a27eec56d.jpg"
+},
+{
+"name": "Хе из бараньих ребрышек",
+"desc": "антрекот из баранины с луком,перцем,приправлено уксусом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/053de72e-02d2-11ef-901b-9e2b7e0d5bde_3e7c39a2_d84a_4a10_9f83_4c2ea294c174.jpg"
+},
+{
+"name": "Кимчи поккымпаб с говядиной",
+"desc": "Рис, обжаренный с кимчи, мясом в острой пасте",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a38686-fd70-11ee-984f-0e033977f922_3bb4ad28_8fca_49fc_b4fa_7084ae8f26dc.jpg"
+},
+{
+"name": "Баранина Дубанджанг",
+"desc": "Баранина, грибы, сладкий перец, репчатый лук, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a50902-fd70-11ee-984f-0e033977f922_f7c251d3_f5c3_4c62_8dda_6af5fe5e874c.jpg"
+},
+{
+"name": "Перец жаренный с мраморной говядиной",
+"desc": "Перец жаренный с мраморной говядиной",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/04744736-0091-11ef-a186-da509dbed555_a7ecfea0_779a_4504_94f3_b4361a42a34f.jpg"
+},
+{
+"name": "Токпокки острые",
+"desc": "Рисовые палочки, тушенные в сладко-кислом соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a67ee0-fd70-11ee-984f-0e033977f922_3fdb9f3a_4d1e_4da6_9df4_852470adb985.jpg"
+},
+{
+"name": "Камди пегодя",
+"desc": "Крахмальные пегодя, фаршированные мясом, капустой, луком",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a7e730-fd70-11ee-984f-0e033977f922_9b03b9b9_5533_4e6d_9f73_52b5b2c522da.jpg"
+},
+{
+"name": "Пулькоги с фунчезой",
+"desc": "Маринованная говядина, обжаренная с луком и фунчезой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0a94db4-fd70-11ee-984f-0e033977f922_5167050d_14a6_4242_b53f_11f8d2bdda6a.jpg"
+},
+{
+"name": "Пулькоги",
+"desc": "Маринованная говядина, обжаренная с луком, подается на жаровне",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0aacfb8-fd70-11ee-984f-0e033977f922_a7fdd8a6_0b72_46a4_8a3d_bcb39787de2e.jpg"
+},
+{
+"name": "Токпокки не острые",
+"desc": "Рисовые палочки и мясо тушенные в неостром соевом соусе с овощами",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ac29bc-fd70-11ee-984f-0e033977f922_00e15122_96a2_43e4_8a10_4a1c155ecb19.jpg"
+},
+{
+"name": "Кунманду (6 шт)",
+"desc": "Жареные манты из говядины по-корейски\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ad7808-fd70-11ee-984f-0e033977f922_8c19edd6_d65a_4b64_a995_4fe3ff73ac1b.jpg"
+},
+{
+"name": "Тубу жареное с мясом",
+"desc": "Тубу жареное с мясом",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/0475fc52-0091-11ef-a186-da509dbed555_56c72ece_2c80_4aef_b236_d5f3236a0be8.jpg"
+},
+{
+"name": "Канпунги",
+"desc": "Курица в кляре и в остром устричном соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/053f2fb2-02d2-11ef-901b-9e2b7e0d5bde_9545a789_259e_4dd9_9d6e_fcf14f2072cd.jpg"
+},
+{
+"name": "Токпокки с сыром",
+"desc": "Рисовые палочки с сыром в сладко-остром соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0aebd12-fd70-11ee-984f-0e033977f922_bc2d00da_f3fc_4719_b209_406bac303d00.jpg"
+},
+{
+"name": "Тольсот пибимпаб",
+"desc": "Рис с заправленными салатами, говядиной,  яйцом в горячем горшке, подается с острой соевой пастой и бульоном",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b03cfa-fd70-11ee-984f-0e033977f922_7ab48fde_49b9_4b43_9da8_e914357e2a5a.jpg"
+},
+{
+"name": "Яннем чикен крылышки",
+"desc": "в кисло-сладком соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/054079e4-02d2-11ef-901b-9e2b7e0d5bde_85d19c47_3045_4550_8624_764fb1e2e93d.jpg"
+},
+{
+"name": "Кимчи поккымпаб со свининой ",
+"desc": "Рис, обжаренный с кимчи, мясом в острой пасте\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b1905a-fd70-11ee-984f-0e033977f922_1aacc8b9_b18c_42a5_b618_fe22be137dff.jpg"
+},
+{
+"name": "Тубу поккым со свининой",
+"desc": "Говядина, обжаренная с тофу и овощами\n\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b2eb12-fd70-11ee-984f-0e033977f922_42283090_0e63_45e2_9de3_587c52625390.jpg"
+},
+{
+"name": "Одино поккым",
+"desc": "Кальмары, обжаренные в острой соевой пасте",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b43b66-fd70-11ee-984f-0e033977f922_0e7980f5_e774_4a62_a493_1bd2649212d5.jpg"
+},
+{
+"name": "Дорадо в хрустящей корочке",
+"desc": "Дорадо, кляр, соус терияки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b5bd24-fd70-11ee-984f-0e033977f922_2cc0bc14_55f1_4825_8a90_cf4f4240b49c.jpg"
+},
+{
+"name": "Креветки к пиву",
+"desc": "Это блюдо отличается сочным и нежным мясом креветок, а также легким ароматом жареной корочки, создавая насыщенный вкус и приятное текстурное сочетание\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0b730e6-fd70-11ee-984f-0e033977f922_e93db51b_0d0b_4dd4_bf99_0256729bb79b.jpg"
+},
+{
+"name": "Скумбрия жареная",
+"desc": "Блюдо, в котором сочетаются нежное мясо скумбрии и хрустящая золотистая корочка, образующаяся при жарке на сковороде\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0baeda8-fd70-11ee-a527-0e033977f922_e44d02fd_36de_487e_8bd4_80753256744b.jpg"
+},
+{
+"name": "Креветки в соусе чили",
+"desc": "Сочные креветки, обжаренные или вареные в пикантном и ароматном соусе на основе перчиков чили\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0bcee8c-fd70-11ee-a527-0e033977f922_c0072bb5_acfb_4195_8b73_0aca6ebb5b4a.jpg"
+},
+{
+"name": "Рыбные палочки с фри",
+"desc": "Рыбные палочки с фри",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0be2716-fd70-11ee-a527-0e033977f922_f9478bbd_85b6_4a77_8a40_d2704e5da44b.jpg"
+},
+{
+"name": "Семга нежная",
+"desc": "кусочки семги с грибами и помидорами в сливочном соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0bf8340-fd70-11ee-a527-0e033977f922_956ded0c_ae47_490d_9bd6_27b745cd05d5.jpg"
+},
+{
+"name": "Скумбрия на пару",
+"desc": "Скумбрия на пару",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c0afcc-fd70-11ee-a527-0e033977f922_73cdbd58_ab77_40a5_a449_e59872b0fc6e.jpg"
+},
+{
+"name": "Овощи гриль",
+"desc": "Овощи гриль часто подаются как самостоятельное блюдо или в качестве гарнира к мясу или рыбе, добавляя блюду аромат и вкус жареных овощей\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c1fc4c-fd70-11ee-a527-0e033977f922_fe2a2b89_309a_468a_bd82_99a99d7c7cc8.jpg"
+},
+{
+"name": "Пампушки на пару ",
+"desc": "Имеют мягкую текстуру и воздушную структуру, благодаря чему они становятся идеальным дополнением к супам, борщам или другим блюдам. Варка на пару делает пампушки более диетическими и здоровыми, сохраняя их аромат и вкус\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c325e0-fd70-11ee-a527-0e033977f922_97e1c2e4_bc5e_4823_bd1f_411c02f2fe0a.jpg"
+},
+{
+"name": "Картофель фри",
+"desc": "Классическое закусочное блюдо, которое представляет собой кусочки картофеля, нарезанные тонкими палочками и жаренные до золотистой корочки во фритюре\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c4567c-fd70-11ee-a527-0e033977f922_3e55963d_ae66_40b1_8a61_f3b7d5c49467.jpg"
+},
+{
+"name": "Рис",
+"desc": "Обладает нежной текстурой и мягким вкусом, который может служить основой для различных блюд\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c584de-fd70-11ee-a527-0e033977f922_54b7b3cc_6cc2_47e3_a9b0_b52d8118ab4e.jpg"
+},
+{
+"name": "Пицца Прошутто",
+"desc": "Ветчина говяжья, грибы шампиньоны, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c70b7e-fd70-11ee-a527-0e033977f922_ab65097f_0937_4df8_b69b_d59ee0afca2c.jpg"
+},
+{
+"name": "Пицца Маргарита",
+"desc": "Хрустящее тесто, покрытое аппетитным томатным соусом и обильно украшенное свежими кусочками белого сыра, ароматным базиликом и сочными дольками помидоров\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0c936e2-fd70-11ee-a527-0e033977f922_86fe22c8_2bef_414b_98de_0dd9e7c7a53a.jpg"
+},
+{
+"name": "Пицца Сицилийская",
+"desc": "Куриная грудка, грибы шампиноны, ананас консервированный, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0cb6bc4-fd70-11ee-a527-0e033977f922_a35db9eb_007f_4a30_bbd2_ab0ccc71abb0.jpg"
+},
+{
+"name": "Пицца Пепперони",
+"desc": "Салями, сыр моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ccbf10-fd70-11ee-a527-0e033977f922_766070dd_8ef9_49f0_8caa_412c5335b757.jpg"
+},
+{
+"name": "Пицца Тексана",
+"desc": "Говядина, грибы, шампиньоны, помидоры черри, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ce20f8-fd70-11ee-a527-0e033977f922_4ebccf64_5d8b_48b0_b65d_87dcff90671a.jpg"
+},
+{
+"name": "Пицца Ди Маре",
+"desc": "Семга, маслины, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0cf6f12-fd70-11ee-a527-0e033977f922_47c454d3_c767_4851_abf8_8c9ba2663cab.jpg"
+},
+{
+"name": "Пицца Романьола",
+"desc": "Куриная грудка, болгарский перец, маслины, помидоры черри, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d0bdcc-fd70-11ee-a527-0e033977f922_44152aba_3d14_4dca_aaf1_2eccb9515ada.jpg"
+},
+{
+"name": "Пицца Ортолана",
+"desc": "Грибы шампиньоны, болгарский перец, помидоры черри, брокколи, сыр Моцарелла",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d21532-fd70-11ee-a527-0e033977f922_0bc12032_1333_4cde_acb0_1da891f93288.jpg"
+},
+{
+"name": "Паста Дель Ностримо",
+"desc": "Фетучини, семга, сливочный соус, брокколи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d39722-fd70-11ee-a527-0e033977f922_f3f498a4_21b1_4634_9fb3_0ae479753246.jpg"
+},
+{
+"name": "Паста Фрутти ди Маре",
+"desc": "Феттучини, морепродукты, томатный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d4dcea-fd70-11ee-a527-0e033977f922_db27c16a_c6e8_456a_9ca0_57de0dd55c99.jpg"
+},
+{
+"name": "Паста Фунги с ветчиной",
+"desc": "Феттучини, грибы шампиньоны, сливочный соус, ветчина, сыр Пармеан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d62708-fd70-11ee-a527-0e033977f922_a481a71a_6984_4d4b_b867_57df22d55293.jpg"
+},
+{
+"name": "Паста Болоньезе",
+"desc": "Спагетти, соус Болоньезе, говяжий фарш, сыр Пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d792a0-fd70-11ee-a527-0e033977f922_9160e22c_cba8_4780_8cc8_55e86ebe5953.jpg"
+},
+{
+"name": "Паста Абруццо",
+"desc": "Феттучини, говядина бонфиле, сливочный соус, помидоры черри, сыр пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0d9025c-fd70-11ee-a527-0e033977f922_249cafb7_da44_49e4_8eb7_5c74c16aa40a.jpg"
+},
+{
+"name": "Паста Ди поло",
+"desc": "Фетучини, филе куриное, сливочный соус, цукини, сыр пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0da3820-fd70-11ee-a527-0e033977f922_9fb99665_07c8_40fa_a1cf_4893a63087a4.jpg"
+},
+{
+"name": "Паста Карбонара с беконом",
+"desc": "Спагетти, бекон, соус из яиц, сливки, сыр Пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0db904e-fd70-11ee-a527-0e033977f922_53cf594c_6a39_4beb_82c4_e5ae3c2bad23.jpg"
+},
+{
+"name": "Паста Фунги Classic",
+"desc": "Фетучини, грибы шампиньоны, сливочный соус, сыр Пармезан",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ddacd0-fd70-11ee-a527-0e033977f922_4420f457_3add_4e9e_8b6e_9279c52219c1.jpg"
+},
+{
+"name": "Паста Карбонара с говяжьей ветчиной",
+"desc": "Спагетти, ветчина из говядины, соус из яиц, сливки, сыр Пармезан\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e023de-fd70-11ee-a527-0e033977f922_88930a71_0cef_408c_b9f5_0c8a0fa9b290.jpg"
+},
+{
+"name": "Набеглави (500 мл.)",
+"desc": "Натуральная углекисло-гидрокарбонатная натриевая вода из экологически чистой среды",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e1e8a4-fd70-11ee-a527-0e033977f922_1424b10b_f445_4fe2_ba2c_539541940c07.jpg"
+},
+{
+"name": "Сок Gracio в ассортименте (1 л.)",
+"desc": "Натуральный сок на основе нектаров\n",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e35eaa-fd70-11ee-a527-0e033977f922_c675f7c3_2ae1_4457_b122_7c5322ba7067.jpg"
+},
+{
+"name": "Mirinda/7UP/Pepsi (250 мл.)",
+"desc": "Газированные напитки без алкоголя",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e4d014-fd70-11ee-a527-0e033977f922_c65cc3d5_dc8b_4a0e_ac8c_5984f367901b.jpg"
+},
+{
+"name": "Вода Асу (1 л.)",
+"desc": "Минеральная вода ",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e66aaa-fd70-11ee-a527-0e033977f922_7a5654e5_f5f1_44fe_8da9_c9030275efc8.jpg"
+},
+{
+"name": "Энергетический напиток Red Bull (250 мл.)",
+"desc": "С его основой в инновационных формулах и утонченном дизайне, он представляет собой идеальное сочетание стимулирующих ингредиентов, призванных подарить энергию и вдохновение",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e7db4c-fd70-11ee-a527-0e033977f922_93457459_8b25_4d39_941c_8311f8ece4e8.jpg"
+},
+{
+"name": "Мохито",
+"desc": "Классический кубинский коктейль, освежающий и ароматный. Он состоит из свежей мяты, лайма, сахара, содовой и льда",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0e961ba-fd70-11ee-a527-0e033977f922_5a427c04_d712_4376_8105_ffa0c88419ce.jpg"
+},
+{
+"name": "Домашний цитрусовый лимонад (0,5 л.)",
+"desc": "Домашний цитрусовый лимонад (0,5 л.)",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0eaec2e-fd70-11ee-a527-0e033977f922_0764ca9a_f104_471b_adb7_e1fe851d4cbb.jpg"
+},
+{
+"name": "Молочный коктейль ",
+"desc": "Это не только вкусное угощение, но и источник питательных веществ для наших друзей с ограниченными возможностями. С его нежной текстурой и богатым витаминным составом, он помогает поддерживать здоровье и повышать энергию",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ec7b84-fd70-11ee-a527-0e033977f922_b6de4ded_40c8_4c18_b00a_a38790e41d86.jpg"
+},
+{
+"name": "​Тоник (250 мл.)",
+"desc": "Тонизирующий напиток, хорошее дополнение к алкоголю",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0edcea8-fd70-11ee-a527-0e033977f922_e7890ffc_2efc_43e5_aca7_726ad675a256.jpg"
+},
+{
+"name": "Лимонад Тархун (0,5 л.)",
+"desc": "Лимонад без алкоголя со вкусом тархуна",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f0ef37b6-fd70-11ee-a527-0e033977f922_4647e5cb_b47c_491b_b186_c1ad00d8d367.jpg"
+},
+{
+"name": "Твендян тиге со свининой",
+"desc": "Твендян тиге со свининой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f3cc70c0e063987c3b6184f/f17fb1ec-fd70-11ee-aada-0eba3ade2105_3d5d2960_56bf_4a8f_bf58_af2256dc6a45.jpg"
+}
+]
+}

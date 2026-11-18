@@ -1,0 +1,444 @@
+{
+"wolt:turandot": [
+{
+"name": "ПРИБОРЫ 🍽",
+"desc": "",
+"img": null
+},
+{
+"name": "САЛАТЫ И ЗАКУСКИ 🥗",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6e874e8e-ddbe-11e9-bc4a-0a58646b804e_shpinat_v_chesnochnom_souse.jpeg"
+},
+{
+"name": "ГОРЯЧИЕ САЛАТЫ 🍲",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5ffd96f6-ddbf-11e9-bfd8-0a5864688a5b_rybnye_palochki.jpeg"
+},
+{
+"name": "СУПЫ 🥘",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2d9e6ca2-deab-11e9-9f7d-0a58646c0160_sup_kung_fu.jpeg"
+},
+{
+"name": "ЛАПША И ЛАГМАНЫ 🍜",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/eb2c7d22-deab-11e9-acf9-0a58646005a9_gan_fan_s_govyadinoi.jpeg"
+},
+{
+"name": "МЯСО И ТОФУ 🍖",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2a6f7188-deac-11e9-9ffd-0a58646c3126_govyadina_po_piratski.jpeg"
+},
+{
+"name": "МОРЕПРОДУКТЫ 🦐",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/de3f4cf4-deae-11e9-808b-0a58646010f5_krevetki_na_shampure.jpeg"
+},
+{
+"name": "ГАРНИРЫ 🍚",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/63faf88c-deb1-11e9-9344-0a58646b5295_pampushki_na_paru.jpeg"
+},
+{
+"name": "НАПИТКИ 🍹",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/1f85de32-deb2-11e9-8b05-0a58646c0160_DSCF1060.jpeg"
+},
+{
+"name": "Шпинат в имбирном соусе",
+"desc": "Шпинат, имбирь",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6e874e8e-ddbe-11e9-bc4a-0a58646b804e_shpinat_v_chesnochnom_souse.jpeg"
+},
+{
+"name": "Салат из кальмаров",
+"desc": "Кальмары, морковь, перец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/a0cbbda8-ddbe-11e9-9153-0a5864688a5b_salat_iz_kalmarov.jpeg"
+},
+{
+"name": "Салат Тигр",
+"desc": "Помидоры, лук репчатый, перец, кинза",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f8714438-ddbe-11e9-bfd8-0a5864688a5b_salat_tigr.jpeg"
+},
+{
+"name": "Салат вегетарианский",
+"desc": "Брокколи, капуста цветная, морковь, грибы древесные",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/e8347fcc-ddbe-11e9-a835-0a5864688a5b_salat_vegetarianskii.jpeg"
+},
+{
+"name": "Бобовые ростки",
+"desc": "Бобовые ростки, перец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c81e015e-ddbe-11e9-9276-0a58646010e4_bobovye_rostki.jpeg"
+},
+{
+"name": "Фунчоза со шпинатом",
+"desc": "Фунчоза, шпинат",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4bb92700-ddbf-11e9-80c8-0a58646b804e_funcheza_gostepriimstvo.jpeg"
+},
+{
+"name": "Огурцы в чесночном соусе",
+"desc": "Огурцы, чеснок",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/1fc3de7e-ddbf-11e9-a79e-0a58646b804e_ogurcy_v_chesnochnom.jpeg"
+},
+{
+"name": "Фуджу (спаржа с овощами)",
+"desc": "Спаржа, помидоры, огурцы, морковь",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2e1c2d3c-ddbf-11e9-ba19-0a58646b804e_fudzhu.jpeg"
+},
+{
+"name": "Говяжьи палочки хрустящие",
+"desc": "Говядина, чеснок, лук зеленый, перец чили",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/7eeedc32-ddbf-11e9-9497-0a58646b804e_govyazhie_palochki.jpeg"
+},
+{
+"name": "Рыбные палочки в кисло-сладком соусе",
+"desc": "Филе судака, соус кисло-сладкий",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5ffd96f6-ddbf-11e9-bfd8-0a5864688a5b_rybnye_palochki.jpeg"
+},
+{
+"name": "Мойва на шпажках",
+"desc": "Рыба мойва",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/947eb374-ddbf-11e9-b3cb-0a58646b804e_moiva_na_shpazhkah.jpeg"
+},
+{
+"name": "Фунчоза \"Гостеприимство\"",
+"desc": "Фунчеза, перец, яйца, бобовые ростки",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/bfe9ea38-ddbf-11e9-9b27-0a58646010e4_funcheza_gostepriimstvo.jpeg"
+},
+{
+"name": "Брокколи в чесночном соусе",
+"desc": "Брокколи, чеснок",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/022a3d94-deab-11e9-906f-0a5864688a6a_brokkoli_v_chesnochnom.jpeg"
+},
+{
+"name": "Баклажаны с рыбным привкусом",
+"desc": "Баклажаны, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/07db6de4-deab-11e9-8496-0a58646018fb_baklazhany_s_rybnym.jpeg"
+},
+{
+"name": "Шпинат в чесночном соусе",
+"desc": "Шпинат, чеснок",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/132bebce-deab-11e9-b62f-0a58646005a9_shpinat_v_chesnochnom_souse.jpeg"
+},
+{
+"name": "Суп \"Кунг Фу\"",
+"desc": "Помидоры, тофу, грибы вешенки, перец, яйца",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2d9e6ca2-deab-11e9-9f7d-0a58646c0160_sup_kung_fu.jpeg"
+},
+{
+"name": "Суп \"Дары моря\"",
+"desc": "Кальмары, осьминоги, мидии, крабовые палочки, каракатица, филе креветок, грибы пряные",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/49ade378-deab-11e9-95f6-0a58646010f5_sup_dary_morya.jpeg"
+},
+{
+"name": "Ган-фан с говядиной",
+"desc": "Рис, говядина, полугорький перец, корейская капуста, свежие помидоры, репчатый лук",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/eb2c7d22-deab-11e9-acf9-0a58646005a9_gan_fan_s_govyadinoi.jpeg"
+},
+{
+"name": "Вегетарианский ган-фан",
+"desc": "Рис, древесные грибы, сельдерей, полугорький перец, корейская капуста, свежие помидоры, репчатый лук",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f541d3ac-deab-11e9-89b9-0a58646c3616_vegetarianskii_gan_fan.jpeg"
+},
+{
+"name": "Говядина по-пиратски",
+"desc": "Томленые говяжьи ребра, подаются в фольге",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2a6f7188-deac-11e9-9ffd-0a58646c3126_govyadina_po_piratski.jpeg"
+},
+{
+"name": "Бифштекс по-китайски",
+"desc": "Говядина, яйцо, брокколи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/33d5b994-deac-11e9-a1c8-0a58646b6b6e_bifshteks_po_kitaiski.jpeg"
+},
+{
+"name": "Креветки с кешью в кисло-сладком соусе",
+"desc": "Филе креветок, орех кешью, перец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/652b8d94-deb0-11e9-b000-0a58646c383e_krevetki_s_keshiyu.jpeg"
+},
+{
+"name": "Говядина с древесными грибами",
+"desc": "Говядина, древесные грибы, перец чили",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/3db8729e-deac-11e9-a5a5-0a58646c0160_govyadina_s_drevesnymi_gribami.jpeg"
+},
+{
+"name": "Мясо по-сычуански",
+"desc": "Говядина, капуста пекинская",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/483103a8-deac-11e9-a2ac-0a58646010f5_myaso_po_sychuanski.jpeg"
+},
+{
+"name": "Говядина острая с перцем и луком",
+"desc": "Говядина, лук репчатый, перец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/57e949f4-deac-11e9-8b31-0a58646c3616_govyadina_ostraya_s_percem.jpeg"
+},
+{
+"name": "Говядина жареная в остром соусе",
+"desc": "Говядина, лук репчатый, перец, грибы древесные",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/620c3194-deac-11e9-bb81-0a58646c383e_govyadina_zharenaya_v_ostrom_souse.jpeg"
+},
+{
+"name": "Говядина с лепешками",
+"desc": "Говядина, бобовые ростки, перец, лук, лепешки из дрожжевого теста",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/6a72de50-deac-11e9-bee4-0a58646c3126_govyadina_s_lepeshkami.jpeg"
+},
+{
+"name": "Баранина с зеленым луком",
+"desc": "Баранина, лук зеленый",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/a3946122-deac-11e9-96cc-0a58646b9a48_baranina_s_zelenym_lukom.jpeg"
+},
+{
+"name": "Шашлык по-китайски",
+"desc": "Баранина, лук репчатый",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/ae8dc262-deac-11e9-aa92-0a58646005a9_shashlyk_po_kitaiski.jpeg"
+},
+{
+"name": "Мин Лу",
+"desc": "Филе судака, грибы пряные",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/b6abaf96-deb0-11e9-bad8-0a58646bba4d_min_lu.jpeg"
+},
+{
+"name": "Печеные морепродукты",
+"desc": "Мидии, кальмары, осьминоги, крабовые палочки, каракатица, филе креветок",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4da4d594-deb1-11e9-af9e-0a58646005a9_moreprodukty_pechenye.jpeg"
+},
+{
+"name": "Креветки, жареные на шампуре",
+"desc": "Креветки в кляре",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/de3f4cf4-deae-11e9-808b-0a58646010f5_krevetki_na_shampure.jpeg"
+},
+{
+"name": "Филе креветок с брокколи",
+"desc": "Филе креветок, брокколи",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/d160b4cc-deaf-11e9-ac0f-0a5864600a0a_file_krevetok_s_brokkoli.jpeg"
+},
+{
+"name": "Креветки \"Син Фа\"",
+"desc": "Креветки в сухарях, соус кисло-сладкий",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/e3e080a0-deaf-11e9-bea1-0a58646c372a_krevetki_sin_fa.jpeg"
+},
+{
+"name": "Хрустящие бараньи ребрышки",
+"desc": "Бараньи ребрышки, лук репчатый",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/98c666c8-deac-11e9-8169-0a58646c3b2c_baranii_rebryshki.jpeg"
+},
+{
+"name": "Дуфу печеная",
+"desc": "Тофу, перец, лук репчатый",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/eee28cd4-dead-11e9-9e88-0a58646005a9_dufu_pechenaya.jpeg"
+},
+{
+"name": "Печеная баранина",
+"desc": "Баранина, лук репчатый, перец, морковь",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/c7b59cf6-deac-11e9-b186-0a58646005a9_baranina_pechenaya.jpeg"
+},
+{
+"name": "Печеная говядина",
+"desc": "Говядина, лук репчатый, перец, морковь",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/90553de8-deac-11e9-a318-0a58646018fb_govyadina_pechenaya.jpeg"
+},
+{
+"name": "Печеная конина",
+"desc": "Конина, перец, грибы вешенки, капуста пекинская",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/ecfa6186-deac-11e9-b7bb-0a58646005a9_konina_pechenaya.jpeg"
+},
+{
+"name": "Пампушки на пару",
+"desc": "Пампушки из дрожжевого теста",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/63faf88c-deb1-11e9-9344-0a58646b5295_pampushki_na_paru.jpeg"
+},
+{
+"name": "Печеные осьминоги",
+"desc": "Осьминоги, перец, чеснок, зеленый лук и бамбук",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f0fb42d8-deb0-11e9-9384-0a58646010f5_osminogi_pechenye.jpeg"
+},
+{
+"name": "Рис отварной",
+"desc": "Рис отварной",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/8bdf2832-deb1-11e9-9265-0a58646b5295_ris_otvarnoi.jpeg"
+},
+{
+"name": "Пампушки жареные",
+"desc": "Пампушки из дрожжевого теста",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/7b79e3d8-deb1-11e9-81de-0a58646c3616_pampushki_zharennye.jpeg"
+},
+{
+"name": "Pepsi, 1 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/1f85de32-deb2-11e9-8b05-0a58646c0160_DSCF1060.jpeg"
+},
+{
+"name": "Цветная капуста фри",
+"desc": "Капуста цветная, кляр",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/b639599a-deb1-11e9-b7bb-0a58646005a9_cvetnaya_kapusta_fri.jpeg"
+},
+{
+"name": "Mirinda, 1 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2db2bdd6-deb2-11e9-bd1f-0a58646c3126_DSCF1062.jpeg"
+},
+{
+"name": "Рис жареный",
+"desc": "Рис, огурец, морковь, горошек консервированый, яйцо",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/adc0ed32-deb1-11e9-8b19-0a5864600a0a_ris_zharennyi.jpeg"
+},
+{
+"name": "Сколько приборов положить?",
+"desc": "Свайпните вправо, чтобы добавить",
+"img": null
+},
+{
+"name": "7 up, 1 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/498b7bb0-deb2-11e9-8c8d-0a58646005a9_DSCF1061.jpeg"
+},
+{
+"name": "БАКЛАЖАНЫ ПО ДОМАШНЕМУ",
+"desc": "Баклажаны по домашнему рецепту",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/49263e32-7e0b-11ea-8976-0a58647f8dfc_548.jpeg"
+},
+{
+"name": "БАКЛАЖАНЫ С КИСЛО-ГОРЬКИМ ПРИВКУСОМ",
+"desc": "Очищенные баклажаны с перцем, чесноком с кисло-горьким привкусом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/c96b2972-7e0b-11ea-9caa-0a5864653534_59.jpeg"
+},
+{
+"name": "БАКЛАЖАНЫ ЖАРЕНЫЕ",
+"desc": "Перец, помидоры, баклажаны нарезают кубиками и обжареные с зеленым луком, чесноком в томатном соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/0f0cb2ac-7e0c-11ea-86e7-0a58647f8dfc_190.jpeg"
+},
+{
+"name": "\"РЫБА В ПЕСКЕ\"",
+"desc": "Филе судака обжаривается в панировочных сухарях",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/b38744a4-7e0d-11ea-9de9-0a58647f8dfc_38.jpeg"
+},
+{
+"name": "КРАХМАЛЬНЫЕ НИТИ",
+"desc": "Салат из тонкой фунчезы, моркови, перца и чеснока",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/2ec2b4d2-7e0e-11ea-a841-0a58647e8c0b_55.jpeg"
+},
+{
+"name": "БАРАНИНА С ГРИБАМИ",
+"desc": "Мякоть баранины обжареная с перцем,вешенками, чесноком и специями.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/796b7a64-7e0e-11ea-86d0-0a5864670605_91.jpeg"
+},
+{
+"name": "БАКЛАЖАНЫ С МЯСОМ",
+"desc": "Баклажан в кляре фаршированый мясом, обжареный в остром соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/ba954178-7e0e-11ea-8c83-0a5864670605_11.jpeg"
+},
+{
+"name": "САЛАТ ДРЕВЕСНЫХ ГРИБОВ",
+"desc": "Салат из древесных грибов",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/fe34859c-7e0e-11ea-85ae-0a5864670507_514.jpeg"
+},
+{
+"name": "ГОВЯЖЬИ ПАЛОЧКИ В КИСЛО-СЛАДКОМ СОУСЕ",
+"desc": "Кусочки говядины обжаренные в кляре в кисло-сладком соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/569a0e5a-7e0f-11ea-9956-0a5864670605_66.jpeg"
+},
+{
+"name": "ГУЙРУ",
+"desc": "Мякоть говядины обжаренная с помидорами, перцем, репчатым луком и древесными грибами.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/f12b5e7e-7e0f-11ea-9d19-0a58647e8c0b_75.jpeg"
+},
+{
+"name": "\"ИПИН МИН ЛУ\" (АССОРТИ МОРЕПРОДУКТОВ)",
+"desc": "Коктейль из морепродуктов обжареные с крабовыми палочками, пряными грибами, зеленым луком и чесноком.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/8d5c61bc-7e10-11ea-912a-0a58647e8c0b_121.jpeg"
+},
+{
+"name": "ФИЛЕ РЫБЫ ЖАРЕНОЕ",
+"desc": "Филе судака обжареное с огурцом, перцем, древесными грибами, бамбуком и зеленью.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/130bf098-7e11-11ea-b7d4-0a5864670605_132.jpeg"
+},
+{
+"name": "РЫБА РУБЛЕНАЯ С ПЕРЦЕМ",
+"desc": "Рубленное филе судака обжареное с зеленым луком, чесноком и перцем.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/3f245080-7e11-11ea-894d-0a5864670605_133.jpeg"
+},
+{
+"name": "ГРИБЫ \"ЗОЛОТАЯ ИГЛА",
+"desc": "Маринованые грибы золотая игла с перцем и зеленым луком.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/9e4cb012-98f0-11ea-aeda-0a5864726b09_60.jpeg"
+},
+{
+"name": "ОГУРЦЫ С ИНДИЙСКИЙ ОРЕХОМ",
+"desc": "Огурцы с индийским орехом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/7cc70d9c-98f1-11ea-a281-0a586472620b_30.jpeg"
+},
+{
+"name": "ГРИБЫ В ЛУКОВОМ СОУСЕ",
+"desc": "Отварные пряные грибы в луковом соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/86e6bc40-98f2-11ea-8282-0a5864726d04_34.jpeg"
+},
+{
+"name": "КАРТОФЕЛЬ ПАЙ С ОСТРЫМ ПЕРЦЕМ",
+"desc": "Нарезанный тонкой соломкой картофель слегка обжареные с перцем, зеленым луком, чесноком, перцем чили.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/1b74630c-98f4-11ea-bac9-0a58647f88b9_192.jpeg"
+},
+{
+"name": "БАКЛАЖАНЫ С ЧЕСНОКОМ",
+"desc": "Баклажаны в чесночном соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/e727228c-98f4-11ea-9f5e-0a5864710035_513.jpeg"
+},
+{
+"name": "РИС ЖАРЕНЫЙ С КРЕВЕТКАМИ",
+"desc": "Рис обжаривают с креветками и яйцом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/99b0877a-98f7-11ea-b2dc-0a5864725f13_220__1_.jpeg"
+},
+{
+"name": "СВЕЖИЕ ОВОЩИ",
+"desc": "Свежие огурцы,помидоры и зеленым горошком",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/4b0bfb9a-f03f-11eb-8d15-828fa5c09fd0_54.jpeg"
+},
+{
+"name": "РЫБНЫЕ ПАЛОЧКИ В КИСЛО-СЛАДКОМ СОУСЕ",
+"desc": "Филе судака обжаренное в кляре в кисло-сладком соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/3e33bfec-f040-11eb-8274-c27dfc8fcd71_22__1_.jpeg"
+},
+{
+"name": "КРЕВЕТКИ ЖАРЕНЫЕ",
+"desc": "Креветки (в панцире) жареные со специями",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/1cc042e4-f041-11eb-8b0b-82cf612ad39d_5.jpeg"
+},
+{
+"name": "СЕЛЬДЕРЕЙ С ИНДИЙСКИМ ОРЕХОМ",
+"desc": "Салат из сельдерея с индийским орехом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/b7689598-f042-11eb-9691-828fa5c09fd0_9.jpeg"
+},
+{
+"name": "СУДАК В ОСТРОМ СОУСЕ",
+"desc": "Филе судака обжареное с овощами, древесными грибами в остром соусе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/1ef2bbb2-f043-11eb-9bd5-a6091fa84a6f_18.jpeg"
+},
+{
+"name": "МЯСО С ПЕРЦЕМ",
+"desc": "Кусочки говядины обжаривают с перцем, с добавлением специй.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/5cbf0e78-f043-11eb-92e1-c27dfc8fcd71_71.jpeg"
+},
+{
+"name": "КАЛЬМАРЫ ЖАРЕНЫЕ ОТСТРЫЕ",
+"desc": "Кальмары обжареные до румяной корочки с зеленым луком, чесноком, перцем чили и кунжутными семечками.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/8cc58c4a-f044-11eb-8eef-22176231e746_141.jpeg"
+},
+{
+"name": "КАРТОФЕЛЬ ПАЙ С ОСТРЫМ ПЕРЦЕМ",
+"desc": "Нарезанный тонкой соломкой картофель слегка обжареные с перцем, зеленым луком, чесноком, перцем чили.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/10a5a7ca-f045-11eb-924f-eecb7e29ea58_192__1_.jpeg"
+},
+{
+"name": "ФАСОЛЬ ЖАРЕНАЯ ОСТРАЯ",
+"desc": "Зеленая стручковая фасоль обжаривается с перцем, зеленым луком,чесноком, перцем чили и посыпается кунжутными семечками.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/472912dc-f045-11eb-83a7-8a27b84ab1fb_193.jpeg"
+},
+{
+"name": "САЛАТ ВЕГЕТАРИАНСКИЙ ГОРЯЧИЙ",
+"desc": "Горячий салат из ошпаренных овощей(морковь, цветная капуста, стручковая фасоль,древесные грибы) с добавлением зеленого лука, обжареные со специями.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/827a8e24-f045-11eb-b320-8e33cd05c24b_187.jpeg"
+},
+{
+"name": "БАРАНЬИ РЕБРЫШКИ ПОД СОУСОМ",
+"desc": "Бараньи ребрышки обжареная с перцем, репчатым луком и чесноком, в томатном соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5e83727d18c7373876bc0754/f9d2dc06-f045-11eb-956e-eecb7e29ea58_90.jpeg"
+}
+]
+}

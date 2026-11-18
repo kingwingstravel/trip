@@ -1,0 +1,404 @@
+{
+"wolt:bangkok": [
+{
+"name": "роль",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/678237c4-b46a-11ea-85cc-16904a8dbea9___________________.jpeg"
+},
+{
+"name": "Суши",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f043549a-c01d-11e9-b269-0a586467b226________________.jpeg"
+},
+{
+"name": "наборы",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/be856410-3467-11eb-8c2e-8e6bbb5a8286_117._______________.jpeg"
+},
+{
+"name": "Мак",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/19d6e3a8-c01e-11e9-9bee-0a5864677f7a______________.jpeg"
+},
+{
+"name": "Основные блюда",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/f0413cd2-cd8c-11ea-b528-229b0ea7ca70_dscf3750.jpeg"
+},
+{
+"name": "Постные блюда",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/8c7f77a4-3dee-11eb-954d-d2f0e53732f9______________.jpeg"
+},
+{
+"name": "предсердия",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/207316c4-c01d-11e9-bad6-0a586467aa46_____________.jpeg"
+},
+{
+"name": "Рисовая лапша",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/79acfbf4-80a3-11eb-8031-2ef0a62295ea______________.jpeg"
+},
+{
+"name": "рис",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/68c6d3ac-c01d-11e9-be8d-0a586467aa46______________.jpeg"
+},
+{
+"name": "сочный",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4bb1698e-c01e-11e9-a2ab-0a586467cb09__________________________.jpeg"
+},
+{
+"name": "напитки",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/19bae1dc-7834-11ec-9da3-96b5755e5cdf__________________.jpeg"
+},
+{
+"name": "Атрия с овощами",
+"desc": "Овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/2807344c-c01d-11e9-995d-0a586467b11a_________________.jpeg"
+},
+{
+"name": "Гейша Маки",
+"desc": "Икра лососевая, сливочный сыр, тобико, 6 шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/99fb4a48-3dee-11eb-a6ee-729644160bcc___________.jpeg"
+},
+{
+"name": "Угорь нигири",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f553401c-c01d-11e9-b662-0a5864678042__________________.jpeg"
+},
+{
+"name": "Том ям с грибами и курицей",
+"desc": "Кокосовое молоко, куриная грудка, грибы",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4bb1698e-c01e-11e9-a2ab-0a586467cb09__________________________.jpeg"
+},
+{
+"name": "Гункан Тобико",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/07891c2a-c01e-11e9-a71b-0a586467ca0c____________________.jpeg"
+},
+{
+"name": "Рис с морепродуктами",
+"desc": "Креветки, осьминоги, кальмары, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/4ae14796-c01d-11e9-8436-0a5864601859_________________________.jpeg"
+},
+{
+"name": "Atria с фирменной курицей",
+"desc": "Куриное мясо, овощи, сливочный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/f0413cd2-cd8c-11ea-b528-229b0ea7ca70_dscf3750.jpeg"
+},
+{
+"name": "Том ям с морепродуктами",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/54a18b0a-c01e-11e9-a35f-0a586467c716___________________________.jpeg"
+},
+{
+"name": "рис вперемешку с мясом",
+"desc": "Говядина, курица, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/620a0750-c01d-11e9-8046-0a586460055a____________.jpeg"
+},
+{
+"name": "Острый суп из говядины",
+"desc": "Грибы, морковь, зеленый лук, говядина, рис, лайм, кунжут",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/353c474c-120b-11eb-960f-92c48743ddf7_10_.jpeg"
+},
+{
+"name": "Смешанный набор II",
+"desc": "Филадельфия классик, нигири с угрем 2 шт, лосось Гункан острый 2 шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/a41aca52-3467-11eb-8ea8-b61ee4daa4f9_111._______________2.jpeg"
+},
+{
+"name": "Пад Тай с креветками",
+"desc": "Креветки, куриная грудка, яйцо, рисовая атрия, арахис, специальный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/e6b0b040-c01c-11e9-af4b-0a586467818f___________________.jpeg"
+},
+{
+"name": "Атрия с морепродуктами",
+"desc": "Креветки, кальмары, осьминоги, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f6d39622-c01c-11e9-b84c-0a5864678572________________________.jpeg"
+},
+{
+"name": "Атрия с говядиной",
+"desc": "Говядина, органическое мясо, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/0d6356a2-c01d-11e9-82f5-0a586460077d_______________.jpeg"
+},
+{
+"name": "Роль овощей",
+"desc": "Нори, рис, соус манго, огурец, сатацу, черри, листья салата, авокадо, зеленый лук, кунжут",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/6d0c4f5a-3466-11eb-91ff-9e26169aee39_03.________________.jpeg"
+},
+{
+"name": "Угорь скумбрия",
+"desc": "6 шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/ad446076-3dee-11eb-b678-d2f0e53732f9________________.jpeg"
+},
+{
+"name": "Холодный чай 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/4dcdf95a-7834-11ec-9542-86d5c2a4fa36_fuse_tea________________.jpeg"
+},
+{
+"name": "Филадельфия Классик",
+"desc": "Нори, рис, сливочный сыр, огурец, авокадо, лосось, соус унаги",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/fab8484a-3dee-11eb-81ba-22144b5ace57_05.___________________.jpeg"
+},
+{
+"name": "Смешанный набор I",
+"desc": "Нигири с лососем (2 шт), мак с лососем, калифорнийская классика.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/13e709c4-0eeb-11eb-bbe4-7a5f1394be2f______________i.jpeg"
+},
+{
+"name": "Калифорния с лососем",
+"desc": "Икра летучей рыбы, лосось, авокадо, огурец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/8afa79be-b46a-11ea-b206-ea20af6e19af____________________.jpeg"
+},
+{
+"name": "Филадельфия ночью",
+"desc": "Лосось, сливочный сыр, огурец, икра летучей рыбы, авокадо",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/4ad9fdc4-81aa-11eb-8bc1-ae1a5ec1a727_dscf4157.jpeg"
+},
+{
+"name": "Атрия с куриным мясом",
+"desc": "Куриная грудка, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/207316c4-c01d-11e9-bad6-0a586467aa46_____________.jpeg"
+},
+{
+"name": "Фанта 0,33 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/2c7d82ca-7834-11ec-9d88-2ac0439cf63a_fanta_0.33.jpeg"
+},
+{
+"name": "Рис с креветками",
+"desc": "Рис, овощи, креветки, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/3a346aba-06d8-11eb-8fb9-8e1ed4340a6c_07.jpeg"
+},
+{
+"name": "Лосось сет",
+"desc": "Саллио Ролл, Филадельфия Классик, Огуречный Мак, Гункан Пикантный Лосось 2шт",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/0bfdaae6-3467-11eb-9824-9e26169aee39_112.______________.jpeg"
+},
+{
+"name": "Калифорния Классик",
+"desc": "Краб, огурец, авокадо, икра летучей рыбы",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/678237c4-b46a-11ea-85cc-16904a8dbea9___________________.jpeg"
+},
+{
+"name": "Салли Ролл",
+"desc": "Рисовая тарелка, рис, сливочный сыр, креветки, лосось, красная тобико, острый майонез",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/23d5f6f6-3466-11eb-ac4e-9e8753c40e8f_01._sallyo_roll.jpeg"
+},
+{
+"name": "Атриум смешанный с мясом",
+"desc": "Говядина, курица, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/162aaba0-c01d-11e9-9a3a-0a586467af41___________.jpeg"
+},
+{
+"name": "Рис с говядиной",
+"desc": "Говядина, органическое мясо, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5bdd71a0-c01d-11e9-ba68-0a586467b11a________________.jpeg"
+},
+{
+"name": "Рисовая лапша с говядиной",
+"desc": "Рисовая атрия, говядина, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/a6b98e32-80a3-11eb-93c3-5253fc5c8e54______________.jpeg"
+},
+{
+"name": "Черная пятница набор",
+"desc": "Филадельфия Классик, Калифорния Классик, Овощной ролл, Ролл Дракон, Маки с огурцом, Маки с авокадо, Нигири с креветками 1шт, Нигири с лососем 1шт, Острый лосось Гункан 2шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/301aec5e-3467-11eb-b867-b61ee4daa4f9_114._black_friday_____.jpeg"
+},
+{
+"name": "Рисовая лапша с морепродуктами",
+"desc": "Рисовая атрия, овощи, морепродукты, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/b92faa92-80a3-11eb-a703-2eb0be648783_________________________.jpeg"
+},
+{
+"name": "Atria с брендовыми товарами",
+"desc": "Говядина, овощи, сливочный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/03dd1eba-c01d-11e9-8d5a-0a586467aa46________.jpeg"
+},
+{
+"name": "Филадельфийское седло",
+"desc": "Лосось, угорь, сливочный сыр, огурец",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/1f08cdbc-b46c-11ea-82ff-02e9cdb0cc17_________________.jpeg"
+},
+{
+"name": "Основной набор",
+"desc": "Лосось Филадельфия, лосось Калифорния, ролл Канада.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/c66f7a1e-0eea-11eb-9346-42a3dc75cc26_____________.jpeg"
+},
+{
+"name": "Вкусный набор",
+"desc": "Ролл Дракон, Овощной ролл, Саллио Ролл, Авокадо Маки, Гункан Пикантный Лосось 2 шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/4a33affe-3467-11eb-9d00-2a52426bffa0_115.______________.jpeg"
+},
+{
+"name": "Пикантный набор",
+"desc": "Калифорния Классик, Драгон Ролл, Мак с авокадо",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/1e224e98-3467-11eb-bef4-2a52426bffa0_113._______________.jpeg"
+},
+{
+"name": "Рис с курицей",
+"desc": "Куриная грудка, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/68c6d3ac-c01d-11e9-be8d-0a586467aa46______________.jpeg"
+},
+{
+"name": "Огуречный мак (натощак)",
+"desc": "6 шт. пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/bb7f26b2-3dee-11eb-9b07-0aaf9c8745fd______________1_.jpeg"
+},
+{
+"name": "Лосось нигири",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/f043549a-c01d-11e9-b269-0a586467b226________________.jpeg"
+},
+{
+"name": "Макарон с лососем",
+"desc": "6 шт.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/19d6e3a8-c01e-11e9-9bee-0a5864677f7a______________.jpeg"
+},
+{
+"name": "Авокадо Маки (натощак)",
+"desc": "6 шт. пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/8c7f77a4-3dee-11eb-954d-d2f0e53732f9______________.jpeg"
+},
+{
+"name": "Рисовая лапша с овощами (натощак)",
+"desc": "Атриум из риса, овощей, соуса, натощак",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/79acfbf4-80a3-11eb-8031-2ef0a62295ea______________.jpeg"
+},
+{
+"name": "Острый куриный суп",
+"desc": "Грибы, морковь, зеленый лук, куриное мясо, рис, лайм, кунжут",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/1c98146e-120b-11eb-a654-da66c6d8eb00_09_.jpeg"
+},
+{
+"name": "Атрия с креветками",
+"desc": "Атрия, креветки, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/d59049d0-06d7-11eb-9769-168fb7f3f69a_03.jpeg"
+},
+{
+"name": "Рис с овощами (пост)",
+"desc": "Рис, овощи, пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/68c6d3ac-c01d-11e9-be8d-0a586467aa46______________.jpeg"
+},
+{
+"name": "Креветки нигири",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/fa17d478-c01d-11e9-b8c9-0a586467ca0c________________.jpeg"
+},
+{
+"name": "Атрия с фирменными овощами",
+"desc": "Овощи, сливочный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/03dd1eba-c01d-11e9-8d5a-0a586467aa46________.jpeg"
+},
+{
+"name": "Фирменный МИКС Atria",
+"desc": "Говядина, курица, овощи, сливочный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/03dd1eba-c01d-11e9-8d5a-0a586467aa46________.jpeg"
+},
+{
+"name": "Рисовая лапша с мясной смесью",
+"desc": "Рисовая атрия, мясо говядины и курицы, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/90499282-80a3-11eb-a10a-6a54e8ece9e4______________.jpeg"
+},
+{
+"name": "Сет Бангкок",
+"desc": "Ролл Саллио, Ролл Дракон, Мак с лососем",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/5ddd9bc8-3467-11eb-b7ce-aa9a6ddbbd5c_116.______________.jpeg"
+},
+{
+"name": "Канада роль",
+"desc": "Угорь, авокадо, огурец, сливочный сыр",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/ec411fd8-b46b-11ea-8b53-fef3b0a5ef05____________.jpeg"
+},
+{
+"name": "Боржоми 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/45f3e6f4-7834-11ec-b5c2-369c7689620b________.jpeg"
+},
+{
+"name": "Пад Тай с курицей",
+"desc": "Куриная грудка, яйцо, рисовая атрио, арахис, специальный соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/ef22eeaa-c01c-11e9-a602-0a586467aa46_______________.jpeg"
+},
+{
+"name": "Спрайт 0,33 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/35445a50-7834-11ec-935c-86d5c2a4fa36_____________.jpeg"
+},
+{
+"name": "Бакинская вода 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/3de771ba-7834-11ec-80a2-5ef5aa7e9dfe___________0.5.jpeg"
+},
+{
+"name": "роль дракона",
+"desc": "Нори, рис, сливочный сыр красный тобико, угорь, огурец, креветки, соус унаги",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/616f9ee0-3466-11eb-8810-569407b9b511_02.____________.jpeg"
+},
+{
+"name": "Футомаки с товарным рынком",
+"desc": "Говяжья вырезка, сливочный сыр, рис, огурец, зеленый лук, салатный лист",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/63f0a5dc-d0c6-11ea-999a-86c11296fa27_________________________.jpeg"
+},
+{
+"name": "Рисовая лапша с креветками",
+"desc": "Рисовая атрия, креветки, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/b23c7db4-06d7-11eb-9103-6a35688df230_02.jpeg"
+},
+{
+"name": "Рисовая лапша с курицей",
+"desc": "Рисовая атрия, куриное мясо, овощи, соус",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/60e0a22e-80a3-11eb-a36c-5a3346b842cf_____________________.jpeg"
+},
+{
+"name": "Гункан с пряным лососем",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/2ae64894-6258-11ec-bde9-f6a74524a2da_____________________.jpeg"
+},
+{
+"name": "Пиво Корона Экстра 0,330 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/74cd8a50-a36f-11ec-a373-96434d8cfb4e_______.jpeg"
+},
+{
+"name": "Пиво Хайнекен 0,330 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/8452d20a-a36f-11ec-964d-9636410c6f77__________.jpeg"
+},
+{
+"name": "Натуральный сок Сандора 0,500 мл",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/4e623d88-a370-11ec-9da4-9636410c6f77________.jpeg"
+},
+{
+"name": "Авокадо Маки (натощак)",
+"desc": "6 шт. пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/8c7f77a4-3dee-11eb-954d-d2f0e53732f9______________.jpeg"
+},
+{
+"name": "Огуречный мак (натощак)",
+"desc": "6 шт. пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5f4e20580cea45b30e9ae505/bb7f26b2-3dee-11eb-9b07-0aaf9c8745fd______________1_.jpeg"
+},
+{
+"name": "Рисовая лапша с овощами (натощак)",
+"desc": "Атриум из риса, овощей, соуса, натощак",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/79acfbf4-80a3-11eb-8031-2ef0a62295ea______________.jpeg"
+},
+{
+"name": "Рис с овощами (пост)",
+"desc": "Рис, овощи, пост",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/68c6d3ac-c01d-11e9-be8d-0a586467aa46______________.jpeg"
+},
+{
+"name": "Овощной рулет (натощак)",
+"desc": "Нори, рис, соус манго, огурец, сатацу, черри, салатный лист, авокадо, зеленый лук, кунжут, постный",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5c1a039d5441c5000b3165f9/6d0c4f5a-3466-11eb-91ff-9e26169aee39_03.________________.jpeg"
+}
+]
+}

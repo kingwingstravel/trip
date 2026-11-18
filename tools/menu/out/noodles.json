@@ -1,0 +1,294 @@
+{
+"wolt:noodles": [
+{
+"name": "ПРИБОРЫ",
+"desc": "",
+"img": null
+},
+{
+"name": "КОМБО NOODLES ",
+"desc": "",
+"img": null
+},
+{
+"name": "БЛЮДА ИЗ ЛАПШЫ ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/328ebe46-9446-11ea-bb57-0a5864676d21_img_6453.jpeg"
+},
+{
+"name": "РИС",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/876893ca-2595-11eb-a0ad-0a369cc68a7b_noodles.jpeg"
+},
+{
+"name": "САЛАТЫ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/a6999ffc-1ee8-11ed-aa73-626da902d7f2_greek_salad.jpeg"
+},
+{
+"name": "СУПЫ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/99736658-fe67-11ea-a920-8eb67204de06_noodles_offer.jpeg"
+},
+{
+"name": "НАПИТКИ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/cc9ecc82-f147-11ec-b577-7e51bdd9e45d_latvia_coca_cola_regular_500ml_nrpet_1_54491472.jpeg"
+},
+{
+"name": "Алкогольные напитки",
+"desc": "",
+"img": null
+},
+{
+"name": "Wolt Specials",
+"desc": "",
+"img": null
+},
+{
+"name": "Александр Бир",
+"desc": "",
+"img": null
+},
+{
+"name": "Яблочный сидр",
+"desc": "",
+"img": null
+},
+{
+"name": "Красное вино Шираз",
+"desc": "",
+"img": null
+},
+{
+"name": "Белое вино Шардоне",
+"desc": "",
+"img": null
+},
+{
+"name": "ПРИБОРЫ",
+"desc": "",
+"img": null
+},
+{
+"name": "1. Гречневая лапша \"Соба\" с курицей и овощами",
+"desc": "Японская лапша Соба с курицей и овощами, смешанная с соусом хойсин",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/328ebe46-9446-11ea-bb57-0a5864676d21_img_6453.jpeg"
+},
+{
+"name": "2. Яичная лапша с креветками",
+"desc": "Креветки варят в чесночном масле, затем добавляют яичную лапшу с овощным ассорти.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/0f6a7e64-9446-11ea-bfe0-0a5864705318_img_6471.jpeg"
+},
+{
+"name": "3. Рисовая лапша с курицей и овощами",
+"desc": "Куриное филе приготовленное с овощами и рисовой лапшой в нашем остром соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/474db006-e911-11ea-a46e-a22161de4e27_noodles_13.jpeg"
+},
+{
+"name": "4. Тайский стир фрай из говядины и базилика",
+"desc": "Нежные филе говядины обжаренные со свежими овощами, смешанными с вермишелевой и свежим листом базилика.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/6428462a-9446-11ea-8c30-0a5864702226_img_6466.jpeg"
+},
+{
+"name": "5. ЛАПША СО СВИНИНОЙ И СОУСОМ ХОЙ СИН",
+"desc": "Лапша, свинина, овощи, зелень, соус хой Син",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/e2b2b918-9445-11ea-96f6-0a5864705f02_img_6505.jpeg"
+},
+{
+"name": "6. Лапша «Ло-мейн»",
+"desc": "Яйца лапша смешанная чесночно-соевым соусом с отборными свежими овощами, посыпанная свежим зеленым луком. ",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/af266f0a-98ea-11ea-ab70-0a58646e687b_veg_noodles_.jpeg"
+},
+{
+"name": "7. Яичная лапша с овощами",
+"desc": "Яичная лапша с перцем, морковью, капустой и зеленой фасолью в легком соевом соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/bb05813e-9445-11ea-ad0f-0a5864702227_img_6513.jpeg"
+},
+{
+"name": "8. Острая Лапша с Курицей ",
+"desc": "Яичная лапша паприка, Чили, морковь, капуста, зеленая фасоль, соевый соус, куриное филе",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/8d8f48e8-9445-11ea-a059-0a58647f847c_img_6518.jpeg"
+},
+{
+"name": "9. Китайская лапша с говядиной и брокколи",
+"desc": "Нежные кусочки говядины, приготовленные в устрично-соевом соусе с чесноком и имбирем. Смешанные со свежем брокколи и рисовой лапшой.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/66322b0a-e911-11ea-b83c-5a553660c034_dals_kitchen_package2.jpeg"
+},
+{
+"name": "10. Индонезийский жареный рис",
+"desc": "Традиционное блюдо из риса в Индонезии (Наси Горенг). Рис, лук, перц чили и томатное пюре, соевый соус, жареное яйцо.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/876893ca-2595-11eb-a0ad-0a369cc68a7b_noodles.jpeg"
+},
+{
+"name": "11. Жареный рис с Тофу и Чесночным Соусом",
+"desc": "Кусочки тофу, приготовленные с рисом и овощами в сладко-пряном соусе, кленовым сиропом и кунжутом.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/2b0e574a-9445-11ea-a6c9-0a58646d7a81_img_6538.jpeg"
+},
+{
+"name": "12. Жареный рис со свининой в бальзамическом соусе",
+"desc": "Простое блюдо из свинины и риса, приготовленное в бальзамическом соусе Хой Син со свежей морковью и грибами.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/f0913a38-98ea-11ea-96e6-0a58646e617e_pork_stir_fry_.jpeg"
+},
+{
+"name": "13. Жареный рис со свининой",
+"desc": "Нежные кусочки свинины, приготовленные с имбирем и чесночным маслом, с рисом и зеленым горошком в соевом соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/f3f3053a-9444-11ea-b4f4-0a5864701d30_img_6530.jpeg"
+},
+{
+"name": "14. Жареный рис с говядиной",
+"desc": "Рис, приготовленный с кусочками нежирной говядины в соевом соусе.",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/d689b0a2-9444-11ea-ac0d-0a5864705318_img_6525.jpeg"
+},
+{
+"name": "Кока-Кола 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/cc9ecc82-f147-11ec-b577-7e51bdd9e45d_latvia_coca_cola_regular_500ml_nrpet_1_54491472.jpeg"
+},
+{
+"name": "Кока-Кола Zero 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/d8e1be0a-f147-11ec-ac9d-4e3e4c3e7065_latvia_coca_cola_zero_500ml_nrpet_1_5000112614152.jpeg"
+},
+{
+"name": "Спрайт 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/deadf2cc-f147-11ec-9cb8-eecf400bf4bb_latvia_sprite_500ml_nrpet_1_54491069.jpeg"
+},
+{
+"name": "Фанта 0,5 л",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/e649f814-f147-11ec-a572-9e297b0b2e3f_latvia_fanta_orange_500ml_nrpet_1_54491625.jpeg"
+},
+{
+"name": "Вода  0,5 л",
+"desc": "",
+"img": null
+},
+{
+"name": "15. Красный тайский суп карри с лапшой ",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/99736658-fe67-11ea-a920-8eb67204de06_noodles_offer.jpeg"
+},
+{
+"name": "16. Китайский Куриный Суп С Лапшой",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/6efbd93c-2595-11eb-8da5-46441a6a4755_salad___soup_10.jpeg"
+},
+{
+"name": "17. Острый томатно-рисовый суп",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/e6f7bd1e-94ec-11ea-a763-0a58646d7aa1_spicy_tomato_and_rice_soup.jpeg"
+},
+{
+"name": "Комбо 1 ",
+"desc": "- Рисовая лапша с курицей и овощами\n- Жареный рис с Тофу и Чесночным Соусом",
+"img": null
+},
+{
+"name": "Комбо 2 ",
+"desc": "- Яичная лапша с креветками\n- Яичная лапша с овощами\n- Рис стир-фрай с говядиной и овощами",
+"img": null
+},
+{
+"name": "Комбо 3 ",
+"desc": "- Лапша «Ло-мейн»\n- Острая Лапша с Курицей \n- Жареный рис со свининой\n- Тайский суп с лапшой \"Красный Карри\"",
+"img": null
+},
+{
+"name": "A Le Coq Premium 0,0% 0.5л",
+"desc": "",
+"img": null
+},
+{
+"name": "Вода газированная 0,5 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Греческий салат",
+"desc": "Сыр Фета, помидоры, огурцы, красный лук, маслины, базилик, оливковое масло",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/a6999ffc-1ee8-11ed-aa73-626da902d7f2_greek_salad.jpeg"
+},
+{
+"name": "Салат Панир",
+"desc": "Свежий микс зелени с домашним индийским свежим паниром и специями с медово-горчичной заправкой",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/c6cfa618-1ee8-11ed-bad8-de48e133316d_paneer_salad.jpeg"
+},
+{
+"name": "Мексиканский салат",
+"desc": "Черная фасоль, сладкая кукуруза, руккола, красный лук и заправка из лайма",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/e45a07b4-1ee8-11ed-9e63-865ed87dc446_mexican_salad.jpeg"
+},
+{
+"name": "Салат из макарон с оливками, руккола",
+"desc": "Паста с миксом оливок, рукколой и соусом песто",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/0ea86132-1ee9-11ed-bc50-a69366a3a2ab_pasta_salad_olives_rucola.jpeg"
+},
+{
+"name": "Салат с тофу",
+"desc": "Рубленый тофу, маринованный и приготовленный в соусе хойсин, и смесь листьев салата с помидорами черри, огурцом, сладким перцем и нарезанным базиликом с кунжутно-соевой заправкой",
+"img": null
+},
+{
+"name": "Редбулл оригинал",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/844063b4-ac69-11ed-86b6-eef27c254d8e_original.jpeg"
+},
+{
+"name": "Редбулл без сахара",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/99fc8732-ac69-11ed-b88d-1eedef8aaac7_sf.jpeg"
+},
+{
+"name": "Редбулл Красное издание",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/b564bd14-ac69-11ed-a422-521beef5ed6f_red_edition.jpeg"
+},
+{
+"name": "Редбулл Желтое издание",
+"desc": "",
+"img": "https://wolt-menu-images-cdn.wolt.com/menu-images/5eba6512e17740e128f14d57/e5123df2-ac69-11ed-bc10-02e96eac58e0_yellow_edition.jpeg"
+},
+{
+"name": "Cappy Яблоко Груша 0,5 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Cappy Персик Дыня 0,5 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Cappy Мульти Фруктовый 0,5 л",
+"desc": "",
+"img": null
+},
+{
+"name": "Квас A. Le Coq Классический",
+"desc": "",
+"img": null
+},
+{
+"name": "Бальзамический свиной шпик с жареным рисом + кола / Cola Zero",
+"desc": "",
+"img": null
+},
+{
+"name": "Пиво премиум-класса Ale Coq",
+"desc": "",
+"img": null
+},
+{
+"name": "Жареная лапша Lo Mein x 2 + Кола / Кола Зеро x 2",
+"desc": "",
+"img": null
+},
+{
+"name": "Просекко Брют",
+"desc": "",
+"img": null
+}
+]
+}
