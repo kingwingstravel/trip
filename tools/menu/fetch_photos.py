@@ -46,7 +46,23 @@ def glovo_items(html):
 mode = sys.argv[1] if len(sys.argv)>1 else 'auto'
 want_path='tools/menu/want.json'
 if mode=='auto':
-    mode = 'images' if os.path.exists(want_path) and os.path.exists(f'{OUT}/.lists_done') else 'lists'
+    mode = 'search' if os.path.exists('tools/menu/search.json') else ('images' if os.path.exists(want_path) and os.path.exists(f'{OUT}/.lists_done') else 'lists')
+if mode=='search':
+    qs=json.load(open('tools/menu/search.json'))
+    found={}
+    for rid,q in qs.items():
+        for api in [f'https://restaurant-api.wolt.com/v1/pages/search?q={q}&lat=43.2380&lon=76.9450',
+                    f'https://consumer-api.wolt.com/v1/pages/search?q={q}&lat=43.2380&lon=76.9450']:
+            r=get(api); log.append(f'search {rid} {q} {r.status_code if r else None}')
+            if r is None or not r.ok: continue
+            txt=r.text
+            slugs=re.findall(r'"slug"\s*:\s*"([^"]+)"',txt)
+            names=re.findall(r'"name"\s*:\s*"([^"]+)"',txt)
+            found[rid]={'slugs':list(dict.fromkeys(slugs))[:12],'names':list(dict.fromkeys(names))[:12]}
+            log.append('   '+json.dumps(found[rid],ensure_ascii=False)); break
+        time.sleep(1)
+    json.dump(found,open(f'{OUT}/search.json','w'),ensure_ascii=False,indent=1)
+    open(f'{OUT}/log.txt','w').write('\n'.join(log)); print('\n'.join(log)); sys.exit(0)
 if mode=='lists':
     for rid,s in src.items():
         res={}
