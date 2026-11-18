@@ -18,7 +18,7 @@ jobs:
       - name: Commit
         run: |
           git config user.name "menu-bot"; git config user.email "menu-bot@users.noreply.github.com"
-          git add menu/img tools/menu/out || true
+          git add menu/img tools/menu/out 2>/dev/null || true; git add -f tools/menu/out || true
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -q -m "menu photos (auto)"
           git pull -q --rebase origin main

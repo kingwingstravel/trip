@@ -1,1 +1,23 @@
-{"test":[{"wolt":"kishlak"}]}
+{
+ "kishlak":    {"glovo":["kishlak-ala","kishlak-almaty-ala","kishlak-restaurant-ala"], "wolt":["kishlak"]},
+ "abay":       {"glovo":["abay-ala","abai-ala","restoran-abay-ala"], "wolt":["abay","abai"]},
+ "vakhtanguri":{"glovo":["vakhtanguri-ala","vahtanguri-ala"], "wolt":["vakhtanguri","vahtanguri"]},
+ "paradise":   {"glovo":["paradise-ala","paradise-restaurant-ala"], "wolt":["paradise","paradise-dostyk"]},
+ "turandot":   {"glovo":["turandot-ala","turandot-almaty-ala"], "wolt":["turandot","turandot-abay"]},
+ "navat":      {"glovo":["navat-ala"], "wolt":["navat","navat-dostyk"]},
+ "jzpeking":   {"glovo":["jz-peking-duck-ala","j-z-peking-duck-ala","peking-duck-ala"], "wolt":["jzpekingduck","jz-peking-duck"]},
+ "harbin":     {"glovo":["harbin-ala","kharbin-ala"], "wolt":["harbin"]},
+ "zhibek":     {"glovo":[], "wolt":[]},
+ "tal":        {"glovo":["tal-ala","tal-restaurant-ala"], "wolt":["tal"]},
+ "carne":      {"glovo":["carne-ala","carne-steak-ala"], "wolt":["carne"]},
+ "yug":        {"glovo":["yug-ala","ug-ala","yug-restaurant-ala"], "wolt":["yug"]},
+ "tomyumbar":  {"glovo":["tom-yum-bar-ala"], "wolt":["tomyumbar","tom-yum-bar"]},
+ "dadiani":    {"glovo":["dadiani-ala"], "wolt":["dadiani"]},
+ "sandyq":     {"glovo":["sandyq-ala","sandyk-ala"], "wolt":["sandyq"]},
+ "wokwok":     {"glovo":["wok-wok-ala","wokwok-ala"], "wolt":["wokwok","wok-wok"]},
+ "masisso":    {"glovo":["masisso-ala"], "wolt":["masisso"]},
+ "koreanhouse":{"glovo":["korean-house-ala"], "wolt":["koreanhouse","korean-house"]},
+ "hawkerchan": {"glovo":["hawker-chan-ala"], "wolt":["hawkerchan","hawker-chan"]},
+ "bangkok":    {"glovo":["bangkok-ala","bangkok-thai-cafe-ala"], "wolt":["bangkok","bangkokthaicafe"]},
+ "noodles":    {"glovo":["noodles-ala"], "wolt":["noodles","noodles-almaty"]}
+}
