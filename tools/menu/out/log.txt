@@ -1,113 +1,32 @@
-wolt kishlak kishlak 200
-   items 100
-glovo kishlak kishlak-ala 200 148701
-   items 0
-glovo kishlak kishlak-almaty-ala 200 150334
-   items 0
-glovo kishlak kishlak-restaurant-ala 200 150523
-   items 0
-wolt abay abay None
-wolt abay abai None
-glovo abay abay-ala 200 148495
-   items 0
-glovo abay abai-ala 200 149855
-   items 0
-glovo abay restoran-abay-ala 200 150290
-   items 0
-wolt vakhtanguri vakhtanguri 200
-   items 32
-glovo vakhtanguri vakhtanguri-ala 200 150189
-   items 0
-glovo vakhtanguri vahtanguri-ala 200 150132
-   items 0
-wolt paradise paradise 200
-   items 35
-glovo paradise paradise-ala 200 148713
-   items 0
-glovo paradise paradise-restaurant-ala 200 150580
-   items 0
-wolt turandot turandot 200
-   items 88
-glovo turandot turandot-ala 200 148713
-   items 0
-glovo turandot turandot-almaty-ala 200 150378
-   items 0
-wolt navat navat None
-wolt navat navat-dostyk None
-glovo navat navat-ala 200 1132690
-   items 0
-wolt jzpeking jzpekingduck None
-wolt jzpeking jz-peking-duck 200
-   items 145
-glovo jzpeking jz-peking-duck-ala 200 150334
-   items 0
-glovo jzpeking j-z-peking-duck-ala 200 149092
-   items 0
-glovo jzpeking peking-duck-ala 200 150576
-   items 0
-wolt harbin harbin None
-glovo harbin harbin-ala 200 149943
-   items 0
-glovo harbin kharbin-ala 200 149987
-   items 0
-wolt tal tal None
-glovo tal tal-ala 200 149798
-   items 0
-glovo tal tal-restaurant-ala 200 150334
-   items 0
-wolt carne carne None
-glovo carne carne-ala 200 149899
-   items 0
-glovo carne carne-steak-ala 200 150189
-   items 0
-wolt yug yug None
-glovo yug yug-ala 200 149798
-   items 0
-glovo yug ug-ala 200 149754
-   items 0
-glovo yug yug-restaurant-ala 200 150334
-   items 0
-wolt tomyumbar tomyumbar 200
-   items 102
-glovo tomyumbar tom-yum-bar-ala 200 697654
-   items 0
-wolt dadiani dadiani 200
-   items 63
-glovo dadiani dadiani-ala 200 148652
-   items 0
-wolt sandyq sandyq None
-glovo sandyq sandyq-ala 200 149943
-   items 0
-glovo sandyq sandyk-ala 200 149943
-   items 0
-wolt wokwok wokwok None
-wolt wokwok wok-wok 200
-   items 127
-glovo wokwok wok-wok-ala 200 796017
-   items 0
-glovo wokwok wokwok-ala 200 149943
-   items 0
-wolt masisso masisso 200
-   items 176
-glovo masisso masisso-ala 200 148652
-   items 0
-wolt koreanhouse koreanhouse None
-wolt koreanhouse korean-house 200
-   items 0
-glovo koreanhouse korean-house-ala 200 148918
-   items 0
-wolt hawkerchan hawkerchan None
-wolt hawkerchan hawker-chan 200
-   items 65
-glovo hawkerchan hawker-chan-ala 200 148870
-   items 0
-wolt bangkok bangkok 200
-   items 80
-glovo bangkok bangkok-ala 200 149987
-   items 0
-glovo bangkok bangkok-thai-cafe-ala 200 150479
-   items 0
-wolt noodles noodles 200
-   items 58
-glovo noodles noodles-ala 200 148652
-   items 0
+search abay Абай None
+search abay Абай None
+search harbin Харбин None
+search harbin Харбин None
+search tal Тал None
+search tal Тал None
+search carne Carne None
+search carne Carne None
+search yug ЮГ None
+search yug ЮГ None
+search sandyq Sandyq None
+search sandyq Sandyq None
+search koreanhouse Korean House None
+search koreanhouse Korean House None
+search paradise Paradise None
+search paradise Paradise None
+search bangkok Bangkok None
+search bangkok Bangkok None
+search noodles Noodles None
+search noodles Noodles None
+search wokwok Wok Wok None
+search wokwok Wok Wok None
+search vakhtanguri Вахтангури None
+search vakhtanguri Вахтангури None
+search dadiani Дадиани None
+search dadiani Дадиани None
+search hawkerchan Hawker Chan None
+search hawkerchan Hawker Chan None
+search masisso Masisso None
+search masisso Masisso None
+search navat Navat None
+search navat Navat None
