@@ -28,20 +28,12 @@ def walk_wolt(j):
             for v in o: rec(v)
     rec(j); return items
 def glovo_items(html):
+    import html as H
     items=[]; seen=set()
-    # product objects in embedded JSON: "name":"...", ... "imageUrl":"..."  (order varies) — scan windows
-    for m in re.finditer(r'https:\\?/\\?/glovo\.dhmedia\.io\\?/image\\?/[^"\'\s\\]+(?:\\?/[^"\'\s\\]+)*', html):
-        pass
-    for m in re.finditer(r'\{[^{}]{0,4000}?"imageUrl"\s*:\s*"([^"]+)"[^{}]{0,4000}?\}', html):
-        blk=m.group(0)
-        n=re.search(r'"name"\s*:\s*"((?:[^"\\]|\\.)*)"', blk)
-        d=re.search(r'"description"\s*:\s*"((?:[^"\\]|\\.)*)"', blk)
-        if not n: continue
-        try: name=json.loads('"'+n.group(1)+'"'); desc=json.loads('"'+d.group(1)+'"') if d else ''
-        except Exception: continue
-        img=m.group(1).replace('\\u002F','/').replace('\\/','/')
+    for m in re.finditer(r'<img alt="([^"]*)"[^>]*?src="(https://glovo\.dhmedia\.io/image/(?:menus-glovo|global-menu-service)[^"]+)"', html):
+        name=H.unescape(m.group(1)); img=H.unescape(m.group(2))
         if (name,img) in seen: continue
-        seen.add((name,img)); items.append({'name':name,'desc':desc,'img':img})
+        seen.add((name,img)); items.append({'name':name,'desc':'','img':img})
     return items
 mode = sys.argv[1] if len(sys.argv)>1 else 'auto'
 want_path='tools/menu/want.json'
@@ -80,7 +72,6 @@ if mode=='lists':
             r=get(u); log.append(f'glovo {rid} {slug} {r.status_code if r else None} {len(r.text) if r else 0}')
             if r is not None and r.ok:
                 it=glovo_items(r.text); log.append(f'   items {len(it)}')
-                if not it: open(f'{OUT}/{rid}_glovo_raw.html','w').write(r.text[:3000000])
                 if it: res['glovo:'+slug]=it; break
             time.sleep(1)
         json.dump(res, open(f'{OUT}/{rid}.json','w'), ensure_ascii=False, indent=0)
