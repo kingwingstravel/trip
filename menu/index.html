@@ -98,6 +98,8 @@ button{cursor:pointer}
 .zoom{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:60;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px;cursor:zoom-out}
 .zoom.on{display:flex}
 .zoom img{max-width:min(92vw,640px);max-height:75vh;border-radius:12px;background:#fff}
+.zoom.page img{max-width:96vw;max-height:86vh}
+.pgb{border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:8px;font-size:12px;padding:2px 7px;margin-left:6px;vertical-align:1px;cursor:zoom-in}
 .zoom div{color:#fff;font-size:18px;font-weight:600;text-align:center}
 [hidden]{display:none!important}
 .empty{padding:40px;text-align:center;color:var(--mute)}
@@ -255,7 +257,8 @@ function cardHTML(it){
     : `<button class="add" data-a="+" data-k="${it.k}">+ Добавить</button>`;
   const tip = it.d ? `<b>${it.ds==='w'?'Состав (с сайта доставки ресторана)':'Состав (меню ресторана)'}</b>${esc(it.d)}` : (it.h ? `<b>Подсказка</b>${esc(it.h)}` : '');
   const info = tip ? `<button class="info" type="button" aria-label="Что это">i<span class="tip">${tip}</span></button>` : '';
-  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}</div><div class="cw">${esc(it.w||'')}</div><div class="cf"><span class="pr">${fmt(it.p)}</span>${ctl}</div></div></div>`;
+  const pgb = it.pg ? `<button class="pgb" type="button" data-pg="${it.k}" title="Фото блюда на странице меню ресторана">📖 в меню</button>` : '';
+  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}${pgb}</div><div class="cw">${esc(it.w||'')}</div><div class="cf"><span class="pr">${fmt(it.p)}</span>${ctl}</div></div></div>`;
 }
 function renderMenu(){
   const r=R(), qq=$('q').value.trim().toLowerCase();
@@ -293,7 +296,8 @@ function setQ(k,q){
   renderPanel(); renderTabs();
 }
 $('menu').addEventListener('click', e=>{
-  const z=e.target.closest('[data-z]'); if(z){ const it=itemByKey(z.dataset.z); $('zImg').src=it.i; $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
+  const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); $('zImg').src=it.pg; $('zCap').textContent=it.n+' — страница меню ресторана'; $('zoom').classList.add('on','page'); return; }
+  const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page'); const it=itemByKey(z.dataset.z); $('zImg').src=it.i; $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
   const b=e.target.closest('button[data-a]'); if(!b) return;
   const k=b.dataset.k, q=ord(S.r).q[k]||0;
   setQ(k, b.dataset.a==='+' ? q+1 : q-1);
