@@ -1,0 +1,29 @@
+name: Menu originals
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/menu/src_job.json', 'tools/menu/menu_src.py', '.github/workflows/menu-src.yml']
+concurrency: { group: menu-src, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils unzip p7zip-full >/dev/null
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -q pillow==11.* requests
+      - run: python tools/menu/menu_src.py
+      - name: Push results to branch menu-src (not the website)
+        run: |
+          cd /tmp/menu_out
+          git init -q -b menu-src
+          git config user.name "menu-bot"; git config user.email "menu-bot@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth=1 origin menu-src; then git reset -q --soft FETCH_HEAD; fi
+          git add -A
+          git commit -q -m "menu originals $(date -u +%F_%H%M)" || echo "nothing"
+          git push -q origin menu-src
