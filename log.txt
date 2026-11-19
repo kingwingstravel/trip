@@ -1,0 +1,7 @@
+download status 200 type application/octet-stream
+size 783083300
+/tmp/w/arc.bin: Zip archive data, at least v2.0 to extract, compression method=deflate
+
+Files: 35
+Size:       908702228
+Compressed: 783083300
