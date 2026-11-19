@@ -100,6 +100,9 @@ button{cursor:pointer}
 .zoom.on{display:flex}
 .zoom img{max-width:min(92vw,640px);max-height:75vh;border-radius:12px;background:#fff}
 .zoom.page img{max-width:96vw;max-height:86vh}
+#zWrap{position:relative;display:inline-block;line-height:0}
+#zBox{display:none;position:absolute;border:3px solid #e3261b;border-radius:8px;box-shadow:0 0 0 9999px rgba(0,0,0,.28);pointer-events:none}
+.zoom.page.hb #zBox{display:block}
 .pgb{border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:8px;font-size:12px;padding:2px 7px;margin-left:6px;vertical-align:1px;cursor:zoom-in}
 .zoom div{color:#fff;font-size:18px;font-weight:600;text-align:center}
 [hidden]{display:none!important}
@@ -239,10 +242,10 @@ button{cursor:pointer}
 <button class="mbar" id="mbar"><span id="mCount">Заказ пуст</span><span id="mSum"></span></button>
 <div class="shade" id="shade"></div>
 <div class="toast" id="toast"></div>
-<div class="zoom" id="zoom"><img id="zImg" alt=""><div id="zCap"></div></div>
+<div class="zoom" id="zoom"><div id="zWrap"><img id="zImg" alt=""><i id="zBox"></i></div><div id="zCap"></div></div>
 <div class="printout" id="printout"></div>
 
-<script>if(location.protocol==="file:")document.write('<script src="data.js"><\/script>');else document.write('<script src="data.js?v='+Date.now()+'"><\/script>');</script>
+<script>if(location.protocol==="file:")document.write('<script src="data.js"><\/script>');else document.write('<script src="data.js?v='+Math.floor(Date.now()/300000)+'"><\/script>');</script>
 <script>/* офлайн-копия: если есть интернет — берём самое свежее меню с сайта */
 if(location.protocol==='file:' && navigator.onLine){ window.MENU_LOCAL_VER=window.MENU_VER; document.write('<script src="https://trip.kingwingstravel-dmc.com/menu/data.js?t='+Date.now()+'"><\/script>'); }
 </script>
@@ -337,8 +340,8 @@ function setQ(k,q){
   renderPanel(); renderTabs();
 }
 $('menu').addEventListener('click', e=>{
-  const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); pack('pages-'+S.r, ()=>{ $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.pg)}; $('zImg').src=imgSrc(it.pg); $('zCap').textContent=it.n+' — страница меню ресторана'; $('zoom').classList.add('on','page'); }); return; }
-  const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page'); const it=itemByKey(z.dataset.z); $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.i)}; $('zImg').src=imgSrc(it.i); $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
+  const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); pack('pages-'+S.r, ()=>{ $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.pg)}; const zb=$('zBox'), b=it.pb; $('zoom').classList.toggle('hb',!!b); if(b){ zb.style.left=(b[0]*100)+'%'; zb.style.top=(b[1]*100)+'%'; zb.style.width=((b[2]-b[0])*100)+'%'; zb.style.height=((b[3]-b[1])*100)+'%'; } $('zImg').src=imgSrc(it.pg); $('zCap').textContent=it.n+(b?' — обведено красным на странице меню':' — страница меню ресторана'); $('zoom').classList.add('on','page'); }); return; }
+  const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page','hb'); const it=itemByKey(z.dataset.z); $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.i)}; $('zImg').src=imgSrc(it.i); $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
   const b=e.target.closest('button[data-a]'); if(!b) return;
   const k=b.dataset.k, q=ord(S.r).q[k]||0;
   setQ(k, b.dataset.a==='+' ? q+1 : q-1);
