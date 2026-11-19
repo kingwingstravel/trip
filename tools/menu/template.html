@@ -197,7 +197,7 @@ button{cursor:pointer}
       </div>
     </details>
     <section class="plan" id="plan"></section>
-    <input type="file" id="fOpen" accept=".txt,text/plain" hidden>
+    <input type="file" id="fOpen" accept=".pdf,.txt,application/pdf,text/plain" hidden>
     <div class="bar">
       <input class="search" id="q" type="search" placeholder="Поиск: блюдо или продукт (например, креветки, рис)…">
       <div class="chips" id="chips"></div>
@@ -254,7 +254,7 @@ window.KWIMG = window.KWIMG||{};
 function imgSrc(p){ if(!p) return p; return KWIMG[p] || p; }
 function imgErr(el,p){ if(OFF && p && !el.dataset.t){ el.dataset.t=1; el.src=ONLINE+p; return; } if(el.id!=='zImg' && el.parentNode) el.parentNode.remove(); }
 const packs={};
-function pack(name,cb){ if(!OFF||packs[name]==='ok'){cb();return;} if(packs[name]){packs[name].push(cb);return;} packs[name]=[cb]; const sc=document.createElement('script'); sc.src='imgpack/'+name+'.js'; const done=()=>{const l=packs[name]; packs[name]='ok'; l.forEach(f=>f());}; sc.onload=done; sc.onerror=done; document.head.appendChild(sc); }
+function pack(name,cb){ if(!OFF||packs[name]==='ok'){cb();return;} if(packs[name]){packs[name].push(cb);return;} packs[name]=[cb]; const done=()=>{const l=packs[name]; packs[name]='ok'; l.forEach(f=>f());}; const load=(i)=>{ const sc=document.createElement('script'); sc.src='imgpack/'+name+(i>1?'.'+i:'')+'.js'; sc.onload=()=>{ const n=(window.KWMORE||{})[name]||0; if(i<=n) load(i+1); else done(); }; sc.onerror=done; document.head.appendChild(sc); }; load(1); }
 let S = {r: DATA[0].id, info:{group:'',date:'',meal:'',pax:''}, orders:{}, plan:[], edit:null};
 try{ const s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(s&&s.orders){S=Object.assign(S,s);} }catch(e){}
 if(!Array.isArray(S.plan)) S.plan=[];
@@ -442,7 +442,7 @@ function renderPlan(){
   sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
     h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
   if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
-  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить в папку группы</button><button id="pOpen">📂 Открыть файл группы</button><button id="pEN">📋 Всё меню партнёру (EN)</button><button id="pPrint">🖨 Печать программы</button></div>`;
+  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pOpen">📂 Открыть файл группы</button><button id="pEN">📋 Всё меню партнёру (EN)</button><button id="pPrint">🖨 Печать</button></div>`;
   $('plan').innerHTML=h;
 }
 $('plan').addEventListener('click', e=>{
@@ -456,7 +456,7 @@ $('plan').addEventListener('click', e=>{
 $('bPlan').onclick=()=>{
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
   const e={id:S.edit||Date.now().toString(36), date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, disc:+c.o.disc||0, svc:+c.o.svc||0,
-    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||''}))};
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))};
   const i=S.plan.findIndex(x=>x.id===e.id); if(i>=0) S.plan[i]=e; else S.plan.push(e);
   const was=S.edit; S.edit=null; c.o.q={}; save(); renderAll();
   toast(was?'Изменения сохранены в программе':'Добавлено в программу группы');
@@ -486,20 +486,79 @@ function planPartner(){
   return sortedPlan().map(e=>{ let h=(en[e.meal]||'Meal'); if(e.date) h+=' · '+new Date(e.date+'T00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'}); h+=' · '+e.en+' ('+e.cen+')'; return h+'\n'+e.lines.map(l=>'• '+(l.e||l.n)).join('\n'); }).join('\n\n');
 }
 const MARK='=== KW-MENU-DATA (не менять эту часть) ===';
+function loadScript(src){ return new Promise((ok,no)=>{ const sc=document.createElement('script'); sc.src=src; sc.onload=ok; sc.onerror=no; document.head.appendChild(sc); }); }
+const packP = name => new Promise(r=>pack(name,r));
+function sqJpeg(src){ return new Promise(res=>{ if(!src){res(null);return;} const im=new Image(); let done=false; const fin=v=>{ if(!done){done=true;res(v);} };
+  if(!/^data:/.test(src)) im.crossOrigin='anonymous';
+  im.onload=()=>{ try{ const S=240, c=document.createElement('canvas'); c.width=c.height=S; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,S,S); const k=Math.max(S/im.width,S/im.height), w=im.width*k, h=im.height*k; x.drawImage(im,(S-w)/2,(S-h)/2,w,h); fin(c.toDataURL('image/jpeg',.82)); }catch(e){ fin(null); } };
+  im.onerror=()=>fin(null); setTimeout(()=>fin(null),5000); im.src=src; }); }
+function findImg(e,l){ if(l.i) return l.i; const Rr=DATA.find(r=>r.id===e.r); let f=''; if(Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n && it.i) f=it.i; })); return f; }
+function b64u(str){ return btoa(unescape(encodeURIComponent(str))); }
+function ub64(b){ return decodeURIComponent(escape(atob(b))); }
+async function makePDF(){
+  if(!window.jspdf) await loadScript('pdflib.js');
+  const plan=sortedPlan(); for(const id of [...new Set(plan.map(e=>e.r))]) await packP(id);
+  const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'}); doc.setFont('dv','normal');
+  const L=14, R=196, W=210, H=297; let y=16; const g=S.info.group||GP||'';
+  const need=h=>{ if(y+h>H-14){ doc.addPage(); y=16; } };
+  const txt=(t,x,yy,o)=>doc.text(String(t),x,yy,o||{});
+  doc.setFont('dv','bold'); doc.setFontSize(15); doc.setTextColor(15,61,62); txt('King Wings Travel — питание группы',L,y); y+=7;
+  doc.setFont('dv','normal'); doc.setFontSize(11); doc.setTextColor(29,29,27); if(g){ txt(g,L,y); y+=5.5; }
+  doc.setFontSize(9); doc.setTextColor(119,115,107); txt('Сохранено: '+new Date().toLocaleString('ru-RU'),L,y); y+=8;
+  let all=0;
+  for(const e of plan){
+    const x=eTot(e), pax=parseInt(e.pax)||0; all+=x.tot;
+    need(30); doc.setDrawColor(200,150,62); doc.setLineWidth(.6); doc.line(L,y-4.5,R,y-4.5);
+    doc.setFont('dv','bold'); doc.setFontSize(12); doc.setTextColor(29,29,27);
+    txt((e.date?new Date(e.date+'T00:00').toLocaleDateString('ru-RU'):'без даты')+' · '+(e.meal||'приём пищи ?')+' · '+e.rname+(pax?' · '+pax+' гост.':''),L,y); y+=6;
+    doc.setFont('dv','normal'); doc.setFontSize(8); doc.setTextColor(119,115,107);
+    txt('Блюдо',L+20,y); txt('Кол-во',150,y,{align:'right'}); txt('Цена',172,y,{align:'right'}); txt('Сумма',R,y,{align:'right'}); y+=2;
+    for(const l of e.lines){
+      const im=await sqJpeg(imgSrc(findImg(e,l)));
+      doc.setFontSize(10); const nm=doc.splitTextToSize(l.n,105); const th=nm.length*4.4+(l.w?4:0)+3; const rh=Math.max(im?19:0,th);
+      need(rh+2);
+      if(im){ try{ doc.addImage(im,'JPEG',L,y+1,17,17); }catch(err){} }
+      doc.setFont('dv','bold'); doc.setTextColor(29,29,27); doc.text(nm,L+20,y+5);
+      let yy=y+5+(nm.length-1)*4.4;
+      if(l.w){ doc.setFont('dv','normal'); doc.setFontSize(8.5); doc.setTextColor(119,115,107); txt(l.w,L+20,yy+4); }
+      doc.setFont('dv','normal'); doc.setFontSize(10); doc.setTextColor(29,29,27);
+      txt(String(l.q),150,y+5,{align:'right'}); txt(plain(l.p),172,y+5,{align:'right'}); txt(plain(l.p*l.q),R,y+5,{align:'right'});
+      y+=rh+1; doc.setDrawColor(230,225,214); doc.setLineWidth(.2); doc.line(L,y,R,y); y+=1;
+    }
+    need(22); y+=4; doc.setFontSize(10);
+    const row=(a,b,bold)=>{ doc.setFont('dv',bold?'bold':'normal'); txt(a,150,y,{align:'right'}); txt(b,R,y,{align:'right'}); y+=5; };
+    row('Блюда и напитки:',plain(x.sum)+' тг');
+    if(e.disc) row('Скидка '+e.disc+'%:','−'+plain(x.disc)+' тг');
+    if(e.svc) row('Обслуживание '+e.svc+'%:',plain(x.svc)+' тг');
+    doc.setFontSize(11.5); row('Итого:',plain(x.tot)+' тг',true); doc.setFontSize(10);
+    if(pax) row('На человека ('+pax+'):',plain(x.tot/pax)+' тг');
+    y+=8;
+  }
+  if(plan.length>1){ need(12); doc.setFont('dv','bold'); doc.setFontSize(13); doc.setTextColor(15,61,62); txt('Всего по программе:',150,y,{align:'right'}); txt(plain(all)+' тг',R,y,{align:'right'}); }
+  const n=doc.getNumberOfPages(); for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont('dv','normal'); doc.setFontSize(8); doc.setTextColor(150,150,150); txt('King Wings Travel · '+(g||'')+' · стр. '+i+' из '+n,W/2,H-7,{align:'center'}); }
+  doc.setProperties({title:'Питание — '+(g||'группа'), author:'King Wings Travel', subject:'Программа питания группы', keywords:'KWMENU1:'+b64u(JSON.stringify({v:1,group:g,plan:S.plan}))});
+  return doc.output('blob');
+}
 async function saveFile(){
   if(!S.plan.length){ toast('Программа пуста — сначала добавьте приём пищи'); return; }
-  const name='Питание — '+String(S.info.group||GP||'группа').replace(/[\\/:*?"<>|]/g,' ').trim()+'.txt';
-  const txt='\ufeff'+planText()+'\n\n'+MARK+'\n'+JSON.stringify({v:1,group:S.info.group||GP,plan:S.plan});
-  if(window.showSaveFilePicker){ try{ const h=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'Текст',accept:{'text/plain':['.txt']}}]}); const w=await h.createWritable(); await w.write(txt); await w.close(); toast('Сохранено: '+h.name); return; }catch(err){ if(err && err.name==='AbortError') return; } }
-  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'})); a.download=name; document.body.appendChild(a); a.click(); a.remove();
-  toast('Файл в «Загрузках» — перенесите его в папку группы');
+  const name='Питание — '+String(S.info.group||GP||'группа').replace(/[\\/:*?"<>|]/g,' ').trim()+'.pdf';
+  let handle=null;
+  if(window.showSaveFilePicker){ try{ handle=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]}); }catch(err){ if(err && err.name==='AbortError') return; handle=null; } }
+  toast('Готовлю PDF с фото…');
+  let blob; try{ blob=await makePDF(); }catch(err){ toast('Не получилось сделать PDF'); return; }
+  if(handle){ try{ const w=await handle.createWritable(); await w.write(blob); await w.close(); toast('Сохранено: '+handle.name); return; }catch(err){} }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  toast('PDF в «Загрузках» — перенесите его в папку группы');
 }
 $('fOpen').onchange=async e=>{
   const f=e.target.files[0]; e.target.value=''; if(!f) return;
-  const t=await f.text(); const i=t.indexOf(MARK); if(i<0){ toast('Это не файл питания группы'); return; }
-  try{ const d=JSON.parse(t.slice(i+MARK.length).trim()); if(!Array.isArray(d.plan)) throw 0;
-    S.plan=d.plan; if(d.group && !S.info.group) S.info.group=d.group; $('fGroup').value=S.info.group||''; S.edit=null; save(); renderAll(); toast('Открыто: '+d.plan.length+' приёмов пищи');
-  }catch(err){ toast('Не удалось прочитать файл'); }
+  let d=null;
+  try{
+    if(/\.pdf$/i.test(f.name) || f.type==='application/pdf'){ const t=new TextDecoder('latin1').decode(await f.arrayBuffer()); const m=t.match(/KWMENU1:([A-Za-z0-9+\/=]+)/); if(m) d=JSON.parse(ub64(m[1])); }
+    else { const t=await f.text(); const i=t.indexOf(MARK); if(i>=0) d=JSON.parse(t.slice(i+MARK.length).trim()); }
+  }catch(err){ d=null; }
+  if(!d || !Array.isArray(d.plan)){ toast('Это не файл питания группы'); return; }
+  S.plan=d.plan; if(d.group && !S.info.group) S.info.group=d.group; $('fGroup').value=S.info.group||''; S.edit=null; save(); renderAll(); toast('Открыто: '+d.plan.length+' приёмов пищи');
 };
 function printPlan(){
   if(!S.plan.length){ toast('Программа пуста'); return; }
