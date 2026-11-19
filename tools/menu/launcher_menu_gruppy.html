@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Меню группы — King Wings</title></head>
+<body style="font:18px Arial,sans-serif;padding:32px;color:#1d1d1b">
+<p>🍽 Открываю меню этой группы…</p>
+<p id="m" style="color:#77736b;font-size:15px"></p>
+<script>
+/* Ярлык King Wings. Само меню (программа) лежит в: Туризм / Файл для шаблона не трогать / KW Меню.
+   Этот файл ничего не хранит — его можно копировать в папку любой группы. */
+(function(){
+  var href = location.href.split('#')[0].split('?')[0];
+  var parts = decodeURIComponent(href).split('/');
+  var group = parts[parts.length-2] || '';
+  var online = 'https://trip.kingwingstravel-dmc.com/menu/?g=' + encodeURIComponent(group);
+  var m = document.getElementById('m');
+  function goOnline(){ m.innerHTML = 'Офлайн-меню не найдено на компьютере — открываю онлайн. <a href="'+online+'">Открыть</a>'; location.replace(online); }
+  var i = href.lastIndexOf('/1.b2b/');
+  if (location.protocol !== 'file:' || i < 0) { goOnline(); return; }
+  var app = href.slice(0, i) + '/' + encodeURIComponent('Файл для шаблона не трогать') + '/' + encodeURIComponent('KW Меню') + '/';
+  var probe = new Image();
+  probe.onload = function(){ location.replace(app + 'index.html?g=' + encodeURIComponent(group)); };
+  probe.onerror = goOnline;
+  probe.src = app + 'icon-192.png';
+})();
+</script>
+</body></html>

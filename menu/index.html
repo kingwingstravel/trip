@@ -53,6 +53,7 @@ button{cursor:pointer}
 .details summary::-webkit-details-marker{display:none}
 .details summary b{color:var(--ink)}
 .dgrid{display:grid;grid-template-columns:2fr 1.2fr 1.2fr 1fr;gap:12px;padding:0 16px 16px}
+.dgrid input,.dgrid select{min-width:0;width:100%}
 @media(max-width:700px){.dgrid{grid-template-columns:1fr 1fr}}
 .dgrid label{font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:4px}
 .dgrid input,.dgrid select{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;font-size:16px}
@@ -104,6 +105,21 @@ button{cursor:pointer}
 [hidden]{display:none!important}
 .empty{padding:40px;text-align:center;color:var(--mute)}
 
+/* group program */
+.plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 14px}
+.plan h4{margin:0 0 8px;font-size:17px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.plan h4 small{font-weight:400;color:var(--mute);font-size:13px}
+.plan .pe{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:14px}
+.plan .pe.ed{background:#fff8e6}
+.plan .pe b{font-weight:700}
+.plan .pe .m{color:var(--mute)}
+.plan .pe button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 8px;font-size:13px}
+.plan .pt{border-top:1px solid var(--line);padding-top:8px;margin-top:4px;font-weight:700;display:flex;justify-content:space-between}
+.plan .pb{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.plan .pb button{border:1px solid var(--brand);background:#fff;color:var(--brand);border-radius:9px;padding:7px 10px;font-size:13px;font-weight:600}
+.plan .pb button.pri{background:var(--brand);color:#fff}
+.plan .hint{color:var(--mute);font-size:13px}
+.gname{display:inline-block;background:var(--gold);color:#1d1d1b;border-radius:8px;padding:2px 9px;font-weight:700;font-size:14px;margin-left:6px}
 /* order panel */
 .panel{position:sticky;top:14px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;max-height:calc(100vh - 28px)}
 .ph1{padding:16px 18px 10px;border-bottom:1px solid var(--line)}
@@ -176,10 +192,12 @@ button{cursor:pointer}
       <div class="dgrid">
         <label>Группа<input id="fGroup" placeholder="например, Sanjar 25 pax"></label>
         <label>Дата<input id="fDate" type="date"></label>
-        <label>Приём пищи<select id="fMeal"><option value="">—</option><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Кофе-брейк</option></select></label>
+        <label>Приём пищи<select id="fMeal"><option value="">—</option><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Кофе-брейк</option><option>Ланч-бокс</option><option>Ужин (прощальный)</option></select></label>
         <label>Гостей<input id="fPax" type="number" min="0" inputmode="numeric" placeholder="0"></label>
       </div>
     </details>
+    <section class="plan" id="plan"></section>
+    <input type="file" id="fOpen" accept=".txt,text/plain" hidden>
     <div class="bar">
       <input class="search" id="q" type="search" placeholder="Поиск: блюдо или продукт (например, креветки, рис)…">
       <div class="chips" id="chips"></div>
@@ -201,7 +219,8 @@ button{cursor:pointer}
       <div class="tr big"><span>Итого</span><span id="tTot">0 ₸</span></div>
       <div class="tr pp" id="rowPP" hidden><span id="lPP">На человека</span><span id="tPP"></span></div>
       <div class="btns">
-        <button class="btn pri wide" id="bRest">📋 Скопировать заказ для ресторана</button>
+        <button class="btn pri wide" id="bPlan">➕ В программу группы</button>
+        <button class="btn wide" id="bRest">📋 Скопировать заказ для ресторана</button>
         <button class="btn" id="bPart">📋 Меню партнёру (EN)</button>
         <button class="btn" id="bPrint">🖨 Печать / PDF</button>
         <button class="btn ghost wide" id="bClear">Очистить этот заказ</button>
@@ -218,16 +237,30 @@ button{cursor:pointer}
 <div class="printout" id="printout"></div>
 
 <script src="data.js"></script>
+<script>/* офлайн-копия: если есть интернет — берём самое свежее меню с сайта */
+if(location.protocol==='file:' && navigator.onLine){ window.MENU_LOCAL_VER=window.MENU_VER; document.write('<script src="https://trip.kingwingstravel-dmc.com/menu/data.js?t='+Date.now()+'"><\/script>'); }
+</script>
 <script>
 const DATA = window.MENU_DATA || [];
 const UPDATED = "19.11.2026";
 const NOIMG = '<div class="ni"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="26" r="14"/><circle cx="24" cy="26" r="8"/><path d="M6 8v12M10 8v12M8 20v20M40 8c-3 3-4 8-4 12h4v20"/></svg></div>';
 
 // ---------- state ----------
-let S = {r: DATA[0].id, info:{group:'',date:'',meal:'',pax:''}, orders:{}};
-try{ const s=JSON.parse(localStorage.getItem('kw_menu_v1')||'null'); if(s&&s.orders){S=Object.assign(S,s);} }catch(e){}
+const ONLINE='https://trip.kingwingstravel-dmc.com/menu/';
+const OFF = location.protocol==='file:';
+const GP = (new URLSearchParams(location.search).get('g')||'').trim();
+const SKEY = 'kw_menu_v1'+(GP?'|g:'+GP:'');
+window.KWIMG = window.KWIMG||{};
+function imgSrc(p){ if(!p) return p; return KWIMG[p] || p; }
+function imgErr(el,p){ if(OFF && p && !el.dataset.t){ el.dataset.t=1; el.src=ONLINE+p; return; } if(el.id!=='zImg' && el.parentNode) el.parentNode.remove(); }
+const packs={};
+function pack(name,cb){ if(!OFF||packs[name]==='ok'){cb();return;} if(packs[name]){packs[name].push(cb);return;} packs[name]=[cb]; const sc=document.createElement('script'); sc.src='imgpack/'+name+'.js'; const done=()=>{const l=packs[name]; packs[name]='ok'; l.forEach(f=>f());}; sc.onload=done; sc.onerror=done; document.head.appendChild(sc); }
+let S = {r: DATA[0].id, info:{group:'',date:'',meal:'',pax:''}, orders:{}, plan:[], edit:null};
+try{ const s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(s&&s.orders){S=Object.assign(S,s);} }catch(e){}
+if(!Array.isArray(S.plan)) S.plan=[];
+if(GP && !S.info.group) S.info.group=GP;
 if(!DATA.find(r=>r.id===S.r)) S.r=DATA[0].id;
-function save(){ try{localStorage.setItem('kw_menu_v1',JSON.stringify(S));}catch(e){} }
+function save(){ try{localStorage.setItem(SKEY,JSON.stringify(S));}catch(e){} }
 function ord(id){ const R=DATA.find(r=>r.id===id); if(!S.orders[id]) S.orders[id]={q:{},disc:0,svc:R.svc}; return S.orders[id]; }
 
 // index items
@@ -245,12 +278,12 @@ function renderTabs(){
     return `<button class="rtab ${r.id===S.r?'on':''}" data-r="${r.id}">${esc(r.name)}${n?`<span class="dot">${n}</span>`:''}</button>`;
   }).join('');
 }
-$('rtabs').onclick = e => { const b=e.target.closest('.rtab'); if(!b) return; S.r=b.dataset.r; $('q').value=''; save(); renderAll(); window.scrollTo(0,0); };
+$('rtabs').onclick = e => { const b=e.target.closest('.rtab'); if(!b) return; S.r=b.dataset.r; $('q').value=''; save(); pack(S.r, ()=>{ renderAll(); window.scrollTo(0,0); }); };
 
 // ---------- menu ----------
 function cardHTML(it){
   const q = ord(S.r).q[it.k]||0;
-  const ph = it.i ? `<div class="ph" data-z="${it.k}"><img loading="lazy" src="${esc(it.i)}" alt="" onerror="this.parentNode.remove()"></div>` : '';
+  const ph = it.i ? `<div class="ph" data-z="${it.k}"><img loading="lazy" src="${esc(imgSrc(it.i))}" alt="" onerror="imgErr(this,'${esc(it.i)}')"></div>` : '';
   const tags = (it.pork?'<span class="tag pk">свинина</span>':'') + (it.m===1?'<span class="tag">⭐ хит</span>':'') + (it.m===2||it.m===3?'<span class="tag">✅ ели группы</span>':'');
   const ctl = q>0
     ? `<div class="step"><button data-a="-" data-k="${it.k}" aria-label="минус">−</button><input data-k="${it.k}" type="number" min="0" inputmode="numeric" value="${q}"><button data-a="+" data-k="${it.k}" aria-label="плюс">+</button></div>`
@@ -296,8 +329,8 @@ function setQ(k,q){
   renderPanel(); renderTabs();
 }
 $('menu').addEventListener('click', e=>{
-  const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); $('zImg').src=it.pg; $('zCap').textContent=it.n+' — страница меню ресторана'; $('zoom').classList.add('on','page'); return; }
-  const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page'); const it=itemByKey(z.dataset.z); $('zImg').src=it.i; $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
+  const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); pack('pages-'+S.r, ()=>{ $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.pg)}; $('zImg').src=imgSrc(it.pg); $('zCap').textContent=it.n+' — страница меню ресторана'; $('zoom').classList.add('on','page'); }); return; }
+  const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page'); const it=itemByKey(z.dataset.z); $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.i)}; $('zImg').src=imgSrc(it.i); $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
   const b=e.target.closest('button[data-a]'); if(!b) return;
   const k=b.dataset.k, q=ord(S.r).q[k]||0;
   setQ(k, b.dataset.a==='+' ? q+1 : q-1);
@@ -324,6 +357,7 @@ function renderPanel(){
   const c=calc(), r=R();
   $('pTitle').textContent = 'Заказ · '+r.name;
   $('pMeta').textContent = metaText() || 'Группа и дата не указаны';
+  $('bPlan').textContent = S.edit ? '💾 Сохранить изменения в программе' : '➕ В программу группы';
   $('lines').innerHTML = c.lines.length ? c.lines.map(l=>`<div class="ln"><div class="n">${esc(l.it.n)}</div><div class="s">${fmt(l.s)}</div><div class="c"><div class="mini"><button data-a="-" data-k="${l.it.k}">−</button><span>${l.q}</span><button data-a="+" data-k="${l.it.k}">+</button></div>× ${fmt(l.it.p)}<button class="rm" data-rm="${l.it.k}">убрать</button></div></div>`).join('')
     : '<div class="noitems">Нажмите «+ Добавить» у блюда —<br>оно появится здесь</div>';
   $('fDisc').value = c.o.disc||0; $('fSvc').value = c.o.svc||0;
@@ -345,7 +379,7 @@ function renderPanelKeep(){ const c=calc(); $('tDisc').textContent=c.disc?('− 
 
 // details
 const fields={fGroup:'group',fDate:'date',fMeal:'meal',fPax:'pax'};
-Object.entries(fields).forEach(([id,k])=>{ $(id).value=S.info[k]||''; $(id).oninput=e=>{ S.info[k]=e.target.value; save(); renderPanel(); }; });
+Object.entries(fields).forEach(([id,k])=>{ $(id).value=S.info[k]||''; $(id).oninput=e=>{ S.info[k]=e.target.value; save(); renderPanel(); if(k==='group') renderPlan(); }; });
 if(Object.values(S.info).some(v=>v)) $('det').open=true;
 
 // ---------- texts ----------
@@ -392,9 +426,94 @@ $('zoom').onclick=()=>$('zoom').classList.remove('on');
 $('mbar').onclick=()=>{ $('panel').classList.add('open'); $('shade').classList.add('open'); };
 $('shade').onclick=$('closeP').onclick=()=>{ $('panel').classList.remove('open'); $('shade').classList.remove('open'); };
 
-if(location.protocol==='file:'){ const a=$('dl'); a.textContent='Офлайн-версия · '+UPDATED; a.removeAttribute('href'); a.style.opacity=.7; }
-function renderAll(){ renderTabs(); renderMenu(); renderPanel(); }
-renderAll();
+if(OFF){ const a=$('dl'); const fresh = window.MENU_LOCAL_VER!==undefined && window.MENU_VER!==window.MENU_LOCAL_VER; a.textContent = 'Офлайн · меню от '+(window.MENU_VER||UPDATED)+(fresh?' (свежее, из интернета)':''); a.removeAttribute('href'); a.style.opacity=.8; }
+if(GP){ const b=document.querySelector('.brand'); const g=document.createElement('span'); g.className='gname'; g.textContent='Группа: '+GP; b.appendChild(g); document.title='Меню · '+GP; }
+
+// ---------- group program ----------
+const MEALS=['Завтрак','Кофе-брейк','Обед','Ланч-бокс','Ужин','Ужин (прощальный)'];
+const dRU = d => d ? new Date(d+'T00:00').toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'}) : 'без даты';
+function sortedPlan(){ return S.plan.slice().sort((a,b)=> (a.date||'9999').localeCompare(b.date||'9999') || (MEALS.indexOf(a.meal)-MEALS.indexOf(b.meal))); }
+function eTot(e){ const sum=e.lines.reduce((a,l)=>a+l.p*l.q,0), disc=sum*(+e.disc||0)/100, svc=(sum-disc)*(+e.svc||0)/100; return {sum,disc,svc,tot:sum-disc+svc}; }
+function renderPlan(){
+  const g = S.info.group||GP;
+  let h=`<h4>📅 Программа питания${g?' · '+esc(g):''} <small>все обеды и ужины группы по датам</small></h4>`;
+  if(!S.plan.length) h+=`<div class="hint">Пока пусто. Выберите ресторан и блюда, укажите дату и приём пищи (✎ выше) и нажмите справа «➕ В программу группы».</div>`;
+  let all=0;
+  sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
+    h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
+  if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
+  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить в папку группы</button><button id="pOpen">📂 Открыть файл группы</button><button id="pEN">📋 Всё меню партнёру (EN)</button><button id="pPrint">🖨 Печать программы</button></div>`;
+  $('plan').innerHTML=h;
+}
+$('plan').addEventListener('click', e=>{
+  const op=e.target.closest('[data-op]'); if(op){ openEntry(op.dataset.op); return; }
+  const del=e.target.closest('[data-del]'); if(del){ if(!del.dataset.sure){ del.dataset.sure=1; del.textContent='точно?'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.sure; del.textContent='✕'; } },3000); return; } S.plan=S.plan.filter(x=>x.id!==del.dataset.del); if(S.edit===del.dataset.del) S.edit=null; save(); renderPlan(); renderPanel(); return; }
+  if(e.target.id==='pSave') saveFile();
+  if(e.target.id==='pOpen') $('fOpen').click();
+  if(e.target.id==='pEN') copy(planPartner());
+  if(e.target.id==='pPrint') printPlan();
+});
+$('bPlan').onclick=()=>{
+  const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
+  const e={id:S.edit||Date.now().toString(36), date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, disc:+c.o.disc||0, svc:+c.o.svc||0,
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||''}))};
+  const i=S.plan.findIndex(x=>x.id===e.id); if(i>=0) S.plan[i]=e; else S.plan.push(e);
+  const was=S.edit; S.edit=null; c.o.q={}; save(); renderAll();
+  toast(was?'Изменения сохранены в программе':'Добавлено в программу группы');
+  $('plan').scrollIntoView({behavior:'smooth',block:'start'});
+};
+function openEntry(id){
+  const e=S.plan.find(x=>x.id===id); if(!e) return;
+  const Rr=DATA.find(r=>r.id===e.r); if(!Rr){ toast('Этого ресторана больше нет в меню'); return; }
+  S.r=e.r; const o=ord(e.r); o.q={}; o.disc=e.disc; o.svc=e.svc; const miss=[];
+  e.lines.forEach(l=>{ let f=null; Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(it.n===l.n && (!f || (it.p===l.p && f.p!==l.p))) f=it; })); if(f) o.q[f.k]=(o.q[f.k]||0)+l.q; else miss.push(l.n); });
+  S.info.date=e.date; S.info.meal=e.meal; S.info.pax=e.pax; ['fDate','fMeal','fPax'].forEach(id=>$(id).value=S.info[fields[id]]||''); $('det').open=true;
+  S.edit=id; save(); pack(S.r, renderAll);
+  toast(miss.length ? 'Нет в меню сейчас: '+miss.join(', ') : 'Открыто — правьте и нажмите «Сохранить изменения»');
+  window.scrollTo(0,0);
+}
+function planText(){
+  const g=S.info.group||GP||'—'; let t=`Питание группы: ${g}\nСохранено: ${new Date().toLocaleString('ru-RU')}\n`; let all=0;
+  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0; all+=x.tot;
+    t+=`\n${e.date?new Date(e.date+'T00:00').toLocaleDateString('ru-RU'):'без даты'} · ${e.meal||'приём пищи ?'} · ${e.rname}${pax?' · гостей '+pax:''}\n`;
+    e.lines.forEach((l,i)=>{ t+=`  ${i+1}. ${l.n}${l.w?' ('+l.w+')':''} — ${l.q} × ${plain(l.p)} = ${plain(l.p*l.q)} тг\n`; });
+    t+=`  Итого: ${plain(x.tot)} тг`+(e.disc?` (скидка ${e.disc}%)`:'')+(e.svc?` (обслуживание ${e.svc}%)`:'')+(pax?` · на человека ${plain(x.tot/pax)} тг`:'')+'\n'; });
+  t+=`\nВСЕГО по программе: ${plain(all)} тг\n`; return t;
+}
+function planPartner(){
+  if(!S.plan.length) return '';
+  const en={'Завтрак':'Breakfast','Обед':'Lunch','Ужин':'Dinner','Кофе-брейк':'Coffee break','Ланч-бокс':'Lunch box','Ужин (прощальный)':'Farewell dinner'};
+  return sortedPlan().map(e=>{ let h=(en[e.meal]||'Meal'); if(e.date) h+=' · '+new Date(e.date+'T00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'}); h+=' · '+e.en+' ('+e.cen+')'; return h+'\n'+e.lines.map(l=>'• '+(l.e||l.n)).join('\n'); }).join('\n\n');
+}
+const MARK='=== KW-MENU-DATA (не менять эту часть) ===';
+async function saveFile(){
+  if(!S.plan.length){ toast('Программа пуста — сначала добавьте приём пищи'); return; }
+  const name='Питание — '+String(S.info.group||GP||'группа').replace(/[\\/:*?"<>|]/g,' ').trim()+'.txt';
+  const txt='\ufeff'+planText()+'\n\n'+MARK+'\n'+JSON.stringify({v:1,group:S.info.group||GP,plan:S.plan});
+  if(window.showSaveFilePicker){ try{ const h=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'Текст',accept:{'text/plain':['.txt']}}]}); const w=await h.createWritable(); await w.write(txt); await w.close(); toast('Сохранено: '+h.name); return; }catch(err){ if(err && err.name==='AbortError') return; } }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'})); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  toast('Файл в «Загрузках» — перенесите его в папку группы');
+}
+$('fOpen').onchange=async e=>{
+  const f=e.target.files[0]; e.target.value=''; if(!f) return;
+  const t=await f.text(); const i=t.indexOf(MARK); if(i<0){ toast('Это не файл питания группы'); return; }
+  try{ const d=JSON.parse(t.slice(i+MARK.length).trim()); if(!Array.isArray(d.plan)) throw 0;
+    S.plan=d.plan; if(d.group && !S.info.group) S.info.group=d.group; $('fGroup').value=S.info.group||''; S.edit=null; save(); renderAll(); toast('Открыто: '+d.plan.length+' приёмов пищи');
+  }catch(err){ toast('Не удалось прочитать файл'); }
+};
+function printPlan(){
+  if(!S.plan.length){ toast('Программа пуста'); return; }
+  let all=0, h=`<h1>King Wings Travel — питание группы${(S.info.group||GP)?' · '+esc(S.info.group||GP):''}</h1>`;
+  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0; all+=x.tot;
+    h+=`<h2 style="font-size:14pt;margin:6mm 0 2mm">${e.date?new Date(e.date+'T00:00').toLocaleDateString('ru-RU'):'без даты'} · ${esc(e.meal||'')} · ${esc(e.rname)}${pax?' · '+pax+' гост.':''}</h2><table><tr><th>Блюдо</th><th class="r">Кол-во</th><th class="r">Цена</th><th class="r">Сумма</th></tr>`;
+    e.lines.forEach(l=>{ h+=`<tr><td>${esc(l.n)}${l.w?' <small>('+esc(l.w)+')</small>':''}</td><td class="r">${l.q}</td><td class="r">${plain(l.p)}</td><td class="r">${plain(l.p*l.q)}</td></tr>`; });
+    h+=`</table><p>Итого: <b>${plain(x.tot)} тг</b>${e.disc?` · скидка ${e.disc}%`:''}${e.svc?` · обслуживание ${e.svc}%`:''}${pax?` · на человека ${plain(x.tot/pax)} тг`:''}</p>`; });
+  h+=`<p style="font-size:15pt"><b>Всего по программе: ${plain(all)} тг</b></p>`;
+  $('printout').innerHTML=h; window.print();
+}
+
+function renderAll(){ renderTabs(); renderMenu(); renderPanel(); renderPlan(); }
+pack(S.r, renderAll);
 </script>
 </body>
 </html>
