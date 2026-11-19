@@ -56,15 +56,33 @@ for fi,p in enumerate(files):
                 d=f'{OUT}/crops/{fi:03d}'; os.makedirs(d,exist_ok=True)
                 fn=f'{fi:03d}/{pno+1:03d}_{k:02d}.jpg'; im.save(f'{OUT}/crops/{fn}',quality=82)
                 # caption region: the photo itself grown a bit, plus a band below and to the sides
-                g=fitz.Rect(b.x0-b.width*0.6,b.y0-b.height*0.35,b.x1+b.width*0.6,b.y1+b.height*0.9)&pr
+                g=fitz.Rect(b.x0-b.width*0.8,b.y0-b.height*0.5,b.x1+b.width*0.8,b.y1+b.height*1.0)&pr
+                lines=[]
                 if has_text:
-                    cap=' '.join(w[4] for w in words if fitz.Rect(w[:4]).intersects(g))
+                    for bl in page.get_text('dict',clip=g)['blocks']:
+                        for ln in bl.get('lines',[]):
+                            tx=' '.join(sp['text'] for sp in ln['spans']).strip()
+                            if tx: lines.append([tx]+[round(v) for v in ln['bbox']])
                     src='text'
                 else:
-                    gp=page.get_pixmap(clip=g,dpi=200)
-                    cap=ocr(Image.open(io.BytesIO(gp.tobytes('png'))).convert('L')); src='ocr'
+                    z=200/72; gp=page.get_pixmap(clip=g,dpi=200)
+                    gi=Image.open(io.BytesIO(gp.tobytes('png'))).convert('L')
+                    try:
+                        dd=pytesseract.image_to_data(gi,lang='rus+eng',config='--psm 11',output_type=pytesseract.Output.DICT)
+                        grp={}
+                        for j,wt in enumerate(dd['text']):
+                            if not wt.strip() or float(dd['conf'][j])<30: continue
+                            key=(dd['block_num'][j],dd['par_num'][j],dd['line_num'][j])
+                            x0=g.x0+dd['left'][j]/z; y0=g.y0+dd['top'][j]/z; x1=x0+dd['width'][j]/z; y1=y0+dd['height'][j]/z
+                            if key in grp:
+                                a=grp[key]; a[0]+=' '+wt; a[1]=min(a[1],x0); a[2]=min(a[2],y0); a[3]=max(a[3],x1); a[4]=max(a[4],y1)
+                            else: grp[key]=[wt,x0,y0,x1,y1]
+                        lines=[[a[0]]+[round(v) for v in a[1:]] for a in grp.values()]
+                    except Exception as e: lines=[]
+                    src='ocr'
+                cap=' | '.join(l[0] for l in lines)
                 crops.append({'f':fi,'file':rel,'page':pno+1,'img':fn,'bbox':[round(x) for x in b],'page_wh':[round(pr.width),round(pr.height)],
-                              'cap':re.sub(r'\s+',' ',cap).strip()[:600],'src':src})
+                              'cap':re.sub(r'\s+',' ',cap).strip()[:1500],'lines':lines,'src':src})
                 n_ok+=1
         log.append(f'{rel}: {len(doc)} pages, {n_ok} photos')
     elif ext=='.docx':
