@@ -446,15 +446,13 @@ function renderPlan(){
   const g = S.info.group||GP;
   const st=S.set, ck=(k,t)=>`<label><input type="checkbox" data-set="${k}" ${st[k]?'checked':''}> ${t}</label>`;
   let h=`<h4>📅 Программа питания${g?' · '+esc(g):''} <small>все обеды и ужины группы по датам</small><button class="gear" id="pGear" title="Что показывать в PDF">⚙ PDF</button></h4>`;
-  if(setsOpen) h+=`<div class="sets"><div class="row"><b>Быстро:</b><button data-pre="us" class="${st.lang==='ru'&&st.price&&st.qty?'on':''}">Для нас и ресторана (RU, с ценами)</button><button data-pre="partner" class="${st.lang==='en'&&!st.price&&!st.qty?'on':''}">Для партнёра (English, без цен)</button></div>
-    <div class="row"><b>Язык PDF:</b><button data-lang="ru" class="${st.lang==='ru'?'on':''}">Русский</button><button data-lang="en" class="${st.lang==='en'?'on':''}">English</button></div>
-    ${ck('price','Цены и суммы')}${ck('qty','Количество')}${ck('photo','Фото блюд')}${ck('rest','Название ресторана (если выкл. — «Ресторан китайской кухни» и т.п.)')}</div>`;
+  if(setsOpen) h+=`<div class="sets"><b>Что показывать в PDF:</b>${ck('photo','Фото блюд')}${ck('rest','Название ресторана (если выкл. — «Ресторан китайской кухни» и т.п.)')}</div>`;
   if(!S.plan.length) h+=`<div class="hint">Пока пусто. Выберите ресторан и блюда, укажите дату и приём пищи (✎ выше) и нажмите справа «➕ В программу группы».</div>`;
   let all=0;
   sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
     h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
   if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
-  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы${(st.lang!=='ru'||!st.price||!st.qty)?' — '+(st.lang==='en'?'English':'RU')+(st.price?'':', без цен'):''}</button><button id="pOpen">📂 Открыть файл группы</button><button id="pEN">📋 Всё меню партнёру (EN)</button><button id="pPrint">🖨 Печать</button></div>`;
+  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English)</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button></div>`;
   $('plan').innerHTML=h;
 }
 $('plan').addEventListener('change', e=>{ const c=e.target.closest('[data-set]'); if(c){ S.set[c.dataset.set]=c.checked?1:0; save(); renderPlan(); } });
@@ -462,11 +460,9 @@ $('plan').addEventListener('click', e=>{
   const op=e.target.closest('[data-op]'); if(op){ openEntry(op.dataset.op); return; }
   const del=e.target.closest('[data-del]'); if(del){ if(!del.dataset.sure){ del.dataset.sure=1; del.textContent='точно?'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.sure; del.textContent='✕'; } },3000); return; } S.plan=S.plan.filter(x=>x.id!==del.dataset.del); if(S.edit===del.dataset.del) S.edit=null; save(); renderPlan(); renderPanel(); return; }
   if(e.target.id==='pGear'){ setsOpen=!setsOpen; renderPlan(); return; }
-  const pre=e.target.closest('[data-pre]'); if(pre){ S.set = pre.dataset.pre==='partner' ? {lang:'en',price:0,qty:0,photo:1,rest:1} : {lang:'ru',price:1,qty:1,photo:1,rest:1}; save(); renderPlan(); return; }
-  const lg=e.target.closest('[data-lang]'); if(lg){ S.set.lang=lg.dataset.lang; save(); renderPlan(); return; }
-  if(e.target.id==='pSave') saveFile();
+  if(e.target.id==='pSave') saveFile('us');
+  if(e.target.id==='pPartner') saveFile('partner');
   if(e.target.id==='pOpen') $('fOpen').click();
-  if(e.target.id==='pEN') copy(planPartner());
   if(e.target.id==='pPrint') printPlan();
 });
 $('bPlan').onclick=()=>{
@@ -569,7 +565,11 @@ async function makePDF(){
   doc.setProperties(props);
   return doc.output('blob');
 }
-async function saveFile(){
+async function saveFile(mode){
+  const keep=S.set; S.set=Object.assign({},keep, mode==='partner'?{lang:'en',price:0,qty:0}:{lang:'ru',price:1,qty:1});
+  try{ await saveFile2(); } finally { S.set=keep; }
+}
+async function saveFile2(){
   if(!S.plan.length){ toast('Программа пуста — сначала добавьте приём пищи'); return; }
   const gn=String(S.info.group||GP||'группа').replace(/[\\/:*?"<>|]/g,' ').trim(); const name=(S.set.price&&S.set.qty&&S.set.lang==='ru') ? 'Питание — '+gn+'.pdf' : (S.set.lang==='en'?'Meal plan — '+gn+(S.set.price?'':' (partner)')+'.pdf':'Питание — '+gn+' (без цен).pdf');
   let handle=null;
