@@ -258,13 +258,13 @@ function cardHTML(it){
   const tip = it.d ? `<b>${it.ds==='w'?'Состав (с сайта доставки ресторана)':'Состав (меню ресторана)'}</b>${esc(it.d)}` : (it.h ? `<b>Подсказка</b>${esc(it.h)}` : '');
   const info = tip ? `<button class="info" type="button" aria-label="Что это">i<span class="tip">${tip}</span></button>` : '';
   const pgb = it.pg ? `<button class="pgb" type="button" data-pg="${it.k}" title="Фото блюда на странице меню ресторана">📖 в меню</button>` : '';
-  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}${pgb}</div><div class="cw">${esc(it.w||'')}</div><div class="cf"><span class="pr">${fmt(it.p)}</span>${ctl}</div></div></div>`;
+  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}${pgb}</div><div class="cw">${esc(it.w||'')}</div><div class="cf"><span class="pr">${it.p?fmt(it.p):'<small style="font-weight:600;color:#b3402f">цена — уточнить</small>'}</span>${ctl}</div></div></div>`;
 }
 function renderMenu(){
   const r=R(), qq=$('q').value.trim().toLowerCase();
   const nd=r.sections.reduce((a,s)=>a+s.items.length,0);
   let info=`<div class="rinfo"><b>${esc(r.name)}</b> · ${esc(r.city)}${r.kind?' · '+esc(r.kind):''} · ${nd} позиций · обслуживание ${r.svc}%</div>`;
-  const w=[]; if(/wolt|2gis|доставк/i.test(r.note||'')) w.push('Цены этого ресторана в нашей базе взяты с доставки / 2ГИС, а не из меню зала — уточните у ресторана.'); if(/обслуживание уточнить/i.test(r.note||'')) w.push('Процент обслуживания нужно уточнить у ресторана.'); if(/ЗАПАСНОЙ/.test(r.note||'')) w.push('Запасной вариант: ресторан то работает, то нет.');
+  const w=[]; if(/wolt|2gis|доставк/i.test(r.note||'')) w.push('Цены этого ресторана в нашей базе взяты с доставки / 2ГИС, а не из меню зала — уточните у ресторана.'); if(/обслуживание уточнить/i.test(r.note||'')) w.push('Процент обслуживания нужно уточнить у ресторана.'); if(/ЗАПАСНОЙ/.test(r.note||'')) w.push('Запасной вариант: ресторан то работает, то нет.'); if(/название ресторана уточнить/.test(r.note||'')) w.push('Новый ресторан из вашего PDF-меню: точное название и процент обслуживания уточнить. Код блюда (A1, B5…) указан под названием — по нему удобно заказывать.');
   if(w.length) info+=`<div class="warn">⚠ ${w.map(esc).join('<br>⚠ ')}</div>`;
   $('rinfo').innerHTML=info;
   let html='', chips='';
