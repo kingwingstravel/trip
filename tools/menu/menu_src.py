@@ -1,49 +1,91 @@
-"""Download the owner's archive of original restaurant menus from Drive (temporary link access),
-unpack, and prepare: inventory + page previews (step=inventory). Results go to branch menu-src."""
-import json, os, re, subprocess, zipfile, shutil, glob, io
+"""Original restaurant menus (owner's archive) -> dish photo crops + caption text.
+Step 1: get originals (Drive link, or artifact restored into /tmp/w/x).
+Step 2: for every PDF page, every placed photo -> crop (rendered region) + nearby text
+        (text layer, else OCR rus+eng). DOCX: embedded images + following paragraph.
+Output (branch menu-src): inventory.json, crops/<file>/<page>_<n>.jpg, crops.json.
+Prices are never taken from here (owner rule)."""
+import json, os, re, subprocess, glob, io
 import requests
 from PIL import Image
 job=json.load(open('tools/menu/src_job.json'))
 OUT='/tmp/menu_out'; os.makedirs(OUT,exist_ok=True)
-W='/tmp/w'; os.makedirs(W,exist_ok=True)
+W='/tmp/w'; X=f'{W}/x'; os.makedirs(X,exist_ok=True)
 log=[]
-def sh(c): 
+def sh(c):
     r=subprocess.run(c,shell=True,capture_output=True); return (r.stdout+r.stderr).decode('utf-8','replace')
-# --- download
-fid=job['drive_id']; arc=f'{W}/arc.bin'
-s=requests.Session()
-u=f'https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t'
-with s.get(u,stream=True,timeout=600) as r:
-    log.append(f'download status {r.status_code} type {r.headers.get("content-type")}')
-    with open(arc,'wb') as f:
-        for ch in r.iter_content(1<<20): f.write(ch)
-log.append(f'size {os.path.getsize(arc)}')
-log.append(sh(f'file {arc}'))
-# --- unpack (zip; nested zips too)
-X=f'{W}/x'; os.makedirs(X,exist_ok=True)
-log.append(sh(f'7z x -y -o{X} {arc} | tail -3'))
-for z in glob.glob(f'{X}/**/*.zip',recursive=True):
-    log.append(sh(f'7z x -y -o"{z}_x" "{z}" | tail -2'))
-files=[p for p in glob.glob(f'{X}/**/*',recursive=True) if os.path.isfile(p)]
-inv=[]
-os.makedirs(f'{OUT}/prev',exist_ok=True)
-for i,p in enumerate(sorted(files)):
-    rel=os.path.relpath(p,X); ext=os.path.splitext(p)[1].lower(); size=os.path.getsize(p)
-    e={'i':i,'path':rel,'ext':ext,'size':size}
+have=[p for p in glob.glob(f'{X}/**/*',recursive=True) if os.path.isfile(p)]
+if not have:
+    arc=f'{W}/arc.bin'
+    u=f"https://drive.usercontent.google.com/download?id={job['drive_id']}&export=download&confirm=t"
+    with requests.get(u,stream=True,timeout=900) as r:
+        log.append(f'download {r.status_code} {r.headers.get("content-type")}')
+        with open(arc,'wb') as f:
+            for ch in r.iter_content(1<<20): f.write(ch)
+    log.append(f'size {os.path.getsize(arc)} '+sh(f'file {arc}').strip())
+    sh(f'7z x -y -o{X} {arc}'); os.remove(arc)
+else:
+    log.append(f'restored {len(have)} files from artifact')
+files=sorted(p for p in glob.glob(f'{X}/**/*',recursive=True) if os.path.isfile(p))
+import fitz, pytesseract
+def ocr(img):
+    try: return pytesseract.image_to_string(img,lang='rus+eng',config='--psm 6')
+    except Exception as e: return ''
+crops=[]; os.makedirs(f'{OUT}/crops',exist_ok=True)
+for fi,p in enumerate(files):
+    rel=os.path.relpath(p,X); ext=os.path.splitext(p)[1].lower()
     if ext=='.pdf':
-        info=sh(f'pdfinfo "{p}"'); m=re.search(r'Pages:\s+(\d+)',info); e['pages']=int(m.group(1)) if m else None
-        txt=sh(f'pdftotext -l 3 "{p}" - | head -c 600'); e['text']=re.sub(r'\s+',' ',txt)[:400]
-        e['imgs']=sh(f'pdfimages -list "{p}" | tail -n +3 | wc -l').strip()
-        # previews of every page, small
-        d=f'{OUT}/prev/{i:03d}'; os.makedirs(d,exist_ok=True)
-        sh(f'pdftoppm -r 40 -jpeg -jpegopt quality=60 "{p}" "{d}/p"')
-    elif ext in ('.jpg','.jpeg','.png','.webp','.heic'):
+        try: doc=fitz.open(p)
+        except Exception as e: log.append(f'open fail {rel} {e}'); continue
+        n_ok=0
+        for pno,page in enumerate(doc):
+            pr=page.rect; parea=pr.width*pr.height
+            words=page.get_text('words')
+            has_text=len(words)>5
+            infos=page.get_image_info(xrefs=True)
+            seen=[]
+            for k,inf in enumerate(infos):
+                b=fitz.Rect(inf['bbox']) & pr
+                if b.is_empty: continue
+                a=b.width*b.height
+                if a<parea*0.006 or a>parea*0.55 or b.width<50 or b.height<50: continue
+                if any(abs(b.x0-s.x0)<3 and abs(b.y0-s.y0)<3 for s in seen): continue
+                seen.append(b)
+                pix=page.get_pixmap(clip=b,dpi=150)
+                im=Image.open(io.BytesIO(pix.tobytes('png'))).convert('RGB')
+                im.thumbnail((640,640))
+                d=f'{OUT}/crops/{fi:03d}'; os.makedirs(d,exist_ok=True)
+                fn=f'{fi:03d}/{pno+1:03d}_{k:02d}.jpg'; im.save(f'{OUT}/crops/{fn}',quality=82)
+                # caption region: the photo itself grown a bit, plus a band below and to the sides
+                g=fitz.Rect(b.x0-b.width*0.6,b.y0-b.height*0.35,b.x1+b.width*0.6,b.y1+b.height*0.9)&pr
+                if has_text:
+                    cap=' '.join(w[4] for w in words if fitz.Rect(w[:4]).intersects(g))
+                    src='text'
+                else:
+                    gp=page.get_pixmap(clip=g,dpi=200)
+                    cap=ocr(Image.open(io.BytesIO(gp.tobytes('png'))).convert('L')); src='ocr'
+                crops.append({'f':fi,'file':rel,'page':pno+1,'img':fn,'bbox':[round(x) for x in b],'page_wh':[round(pr.width),round(pr.height)],
+                              'cap':re.sub(r'\s+',' ',cap).strip()[:600],'src':src})
+                n_ok+=1
+        log.append(f'{rel}: {len(doc)} pages, {n_ok} photos')
+    elif ext=='.docx':
         try:
-            im=Image.open(p).convert('RGB'); e['wh']=im.size; im.thumbnail((360,360))
-            os.makedirs(f'{OUT}/prev',exist_ok=True); im.save(f'{OUT}/prev/{i:03d}.jpg',quality=60)
-        except Exception as ex: e['err']=str(ex)
-    inv.append(e)
-json.dump(inv,open(f'{OUT}/inventory.json','w'),ensure_ascii=False,indent=1)
-# keep the unpacked originals for the next step (cache between runs is not possible; save list only)
-open(f'{OUT}/log.txt','w').write('\n'.join(log))
-print('\n'.join(log)); print(len(inv),'files')
+            import docx
+            from docx.oxml.ns import qn
+            D=docx.Document(p); rels=D.part.rels; paras=D.paragraphs; n_ok=0
+            texts=[pp.text for pp in paras]
+            for i,pp in enumerate(paras):
+                for bl in pp._p.iter(qn('a:blip')):
+                    rid=bl.get(qn('r:embed'))
+                    if not rid or rid not in rels: continue
+                    data=rels[rid].target_part.blob
+                    try: im=Image.open(io.BytesIO(data)).convert('RGB')
+                    except Exception: continue
+                    if im.width<120 or im.height<120: continue
+                    im.thumbnail((640,640)); fn=f'{fi:03d}/d{i:04d}_{n_ok:03d}.jpg'
+                    os.makedirs(f'{OUT}/crops/{fi:03d}',exist_ok=True); im.save(f'{OUT}/crops/{fn}',quality=82)
+                    cap=' '.join(t for t in texts[max(0,i-2):i+4] if t.strip())
+                    crops.append({'f':fi,'file':rel,'page':i,'img':fn,'cap':re.sub(r'\s+',' ',cap)[:600],'src':'docx'}); n_ok+=1
+            log.append(f'{rel}: docx {n_ok} photos')
+        except Exception as e: log.append(f'docx fail {rel} {e}')
+json.dump(crops,open(f'{OUT}/crops.json','w'),ensure_ascii=False,indent=0)
+open(f'{OUT}/log.txt','w').write('\n'.join(log)); print('\n'.join(log)); print('crops',len(crops))

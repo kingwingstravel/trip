@@ -5,18 +5,36 @@ on:
     branches: [main]
     paths: ['tools/menu/src_job.json', 'tools/menu/menu_src.py', '.github/workflows/menu-src.yml']
 concurrency: { group: menu-src, cancel-in-progress: false }
-permissions: { contents: write }
+permissions: { contents: write, actions: read }
 jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils unzip p7zip-full >/dev/null
+      - run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils unzip p7zip-full tesseract-ocr tesseract-ocr-rus tesseract-ocr-eng >/dev/null
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install -q pillow==11.* requests
+      - run: pip install -q pillow==11.* requests pymupdf==1.24.* pytesseract python-docx
+      - id: job
+        run: echo "art=$(python -c "import json;print(json.load(open('tools/menu/src_job.json')).get('artifact_run',''))")" >> $GITHUB_OUTPUT
+      - name: Restore originals saved by an earlier run
+        if: steps.job.outputs.art != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: menu-originals
+          path: /tmp/w/x
+          run-id: ${{ steps.job.outputs.art }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: python tools/menu/menu_src.py
+      - name: Keep originals for later runs (90 days, private to the repo's Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: menu-originals
+          path: /tmp/w/x
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: ignore
       - name: Push results to branch menu-src (not the website)
         run: |
           cd /tmp/menu_out
