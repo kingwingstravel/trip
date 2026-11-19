@@ -1,5 +1,4 @@
-download 200 application/octet-stream
-size 783083300 /tmp/w/arc.bin: Zip archive data, at least v2.0 to extract, compression method=deflate
+restored 35 files from artifact
 Меню Ресторанов/Hawker Chan/0926 Menu ENG.pdf: 1 pages, 0 photos
 Меню Ресторанов/Hawker Chan/0926 Menu RUS.pdf: 1 pages, 0 photos
 Меню Ресторанов/MADO меню ЗИМА.pdf: 50 pages, 143 photos
