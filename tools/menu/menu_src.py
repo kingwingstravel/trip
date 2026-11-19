@@ -8,7 +8,7 @@ OUT='/tmp/menu_out'; os.makedirs(OUT,exist_ok=True)
 W='/tmp/w'; os.makedirs(W,exist_ok=True)
 log=[]
 def sh(c): 
-    r=subprocess.run(c,shell=True,capture_output=True,text=True); return r.stdout+r.stderr
+    r=subprocess.run(c,shell=True,capture_output=True); return (r.stdout+r.stderr).decode('utf-8','replace')
 # --- download
 fid=job['drive_id']; arc=f'{W}/arc.bin'
 s=requests.Session()
