@@ -242,7 +242,7 @@ button{cursor:pointer}
 <div class="zoom" id="zoom"><img id="zImg" alt=""><div id="zCap"></div></div>
 <div class="printout" id="printout"></div>
 
-<script src="data.js"></script>
+<script>if(location.protocol==="file:")document.write('<script src="data.js"><\/script>');else document.write('<script src="data.js?v='+Date.now()+'"><\/script>');</script>
 <script>/* офлайн-копия: если есть интернет — берём самое свежее меню с сайта */
 if(location.protocol==='file:' && navigator.onLine){ window.MENU_LOCAL_VER=window.MENU_VER; document.write('<script src="https://trip.kingwingstravel-dmc.com/menu/data.js?t='+Date.now()+'"><\/script>'); }
 </script>
