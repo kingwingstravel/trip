@@ -27,8 +27,11 @@ jobs:
           run-id: ${{ steps.job.outputs.art }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: python tools/menu/menu_src.py
-        if: ${{ !contains(github.event.head_commit.message, 'plates only') }}
+        if: ${{ !contains(github.event.head_commit.message, 'plates only') || contains(github.event.head_commit.message, 'labels only') }}
       - run: python tools/menu/plates.py
+        if: ${{ contains(github.event.head_commit.message, 'plates only') }}
+      - run: python tools/menu/labels.py
+        if: ${{ contains(github.event.head_commit.message, 'labels only') }}
       - name: Keep originals for later runs (90 days, private to the repo's Actions)
         uses: actions/upload-artifact@v4
         with:
@@ -37,14 +40,14 @@ jobs:
           retention-days: 90
           compression-level: 0
           if-no-files-found: ignore
-        if: ${{ !contains(github.event.head_commit.message, 'plates only') }}
+        if: ${{ !contains(github.event.head_commit.message, 'plates only') && !contains(github.event.head_commit.message, 'labels only') }}
       - name: Push results to branch menu-src (not the website)
         run: |
           cd /tmp/menu_out
           git init -q -b menu-src
           git config user.name "menu-bot"; git config user.email "menu-bot@users.noreply.github.com"
           git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          if git fetch -q --depth=1 origin menu-src; then git reset -q --soft FETCH_HEAD; fi
-          git add -A
+          if git fetch -q --depth=1 origin menu-src; then git reset -q FETCH_HEAD; fi
+          git add .
           git commit -q -m "menu originals $(date -u +%F_%H%M)" || echo "nothing"
           git push -q origin menu-src
