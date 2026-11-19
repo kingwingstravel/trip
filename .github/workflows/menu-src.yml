@@ -15,7 +15,7 @@ jobs:
       - run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils unzip p7zip-full tesseract-ocr tesseract-ocr-rus tesseract-ocr-eng >/dev/null
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install -q pillow==11.* requests pymupdf==1.24.* pytesseract python-docx
+      - run: pip install -q pillow==11.* requests pymupdf==1.24.* pytesseract python-docx opencv-python-headless numpy
       - id: job
         run: echo "art=$(python -c "import json;print(json.load(open('tools/menu/src_job.json')).get('artifact_run',''))")" >> $GITHUB_OUTPUT
       - name: Restore originals saved by an earlier run
@@ -27,6 +27,8 @@ jobs:
           run-id: ${{ steps.job.outputs.art }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: python tools/menu/menu_src.py
+        if: ${{ !contains(github.event.head_commit.message, 'plates only') }}
+      - run: python tools/menu/plates.py
       - name: Keep originals for later runs (90 days, private to the repo's Actions)
         uses: actions/upload-artifact@v4
         with:
@@ -35,6 +37,7 @@ jobs:
           retention-days: 90
           compression-level: 0
           if-no-files-found: ignore
+        if: ${{ !contains(github.event.head_commit.message, 'plates only') }}
       - name: Push results to branch menu-src (not the website)
         run: |
           cd /tmp/menu_out
