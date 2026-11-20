@@ -1,0 +1,28 @@
+name: Guide autopilot
+# Запасной путь путеводителей: каждое утро 06:15 по Алматы.
+# Работает, только если утренняя задача Claude молчит 2+ дня (иначе сразу выходит).
+# Ручной запуск: Actions → Guide autopilot → Run workflow (force = true — собрать прямо сейчас).
+on:
+  schedule:
+    - cron: '15 1 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Собрать сейчас, даже если Claude работает'
+        type: boolean
+        default: false
+concurrency: { group: guide-publish, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -q cryptography pillow
+      - name: Autopilot
+        env:
+          GUIDE_FEED: ${{ secrets.GUIDE_FEED }}
+        run: python3 tools/autopilot/autoguide.py ${{ inputs.force && '--force' || '' }}
