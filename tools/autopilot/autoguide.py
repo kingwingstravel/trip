@@ -475,6 +475,14 @@ def main():
     if LOCAL: feed = json.load(open(LOCAL))
     else:
         if not FEED: log('Нет секрета GUIDE_FEED — автопилот не настроен (см. ИНСТРУКЦИЯ.md).'); return 0
+        # 1) автозаполнение таблиц из файлов партнёров (Gemini, в Google-скрипте) — только пустые клетки
+        try:
+            todo = post({'op': 'filllist'}).get('list') or []
+            for it in todo[:15]:
+                r = post({'op': 'fill', 'folder': it['folder'], 'partner': it.get('partner', '')})
+                log('Автозаполнение', it.get('name'), ':', r.get('ok') or r.get('error'))
+        except Exception as e: log('Автозаполнение не удалось:', e)
+        # 2) данные всех таблиц
         feed = get_feed()
         if feed.get('error'): log('Google ответил:', feed['error']); return 1
     groups = feed.get('groups', [])
