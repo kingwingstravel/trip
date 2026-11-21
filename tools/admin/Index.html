@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#252E56;--deep:#2D3B62;--teal:#4EB1C1;--blue:#2667A8;--gold:#E9B13F;--bg:#F0F6FF;--line:#D3DFEE;--muted:#56607D;--ok:#1E8A5A;--bad:#B3261E;--card:#fff;--r:16px;--sh:0 1px 2px rgba(37,46,86,.06),0 8px 24px rgba(37,46,86,.06)}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--navy);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--navy);color:#fff;padding:22px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+.brand{font-weight:700;font-size:18px;padding:4px 12px 18px;letter-spacing:.01em}.brand small{display:block;font-weight:500;font-size:13px;color:#A9B6D6;letter-spacing:.06em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;color:#D7DEF0;cursor:pointer;border:0;background:none;text-align:left;width:100%;font-weight:500;transition:background .2s,color .2s}
+.nav:hover{background:rgba(255,255,255,.07);color:#fff}.nav.on{background:var(--teal);color:var(--navy);font-weight:700}
+.nav i{font-style:normal;width:22px;text-align:center}
+aside .grow{flex:1}.foot{font-size:13px;color:#A9B6D6;padding:8px 12px}
+main{padding:28px clamp(16px,4vw,44px) 110px;max-width:1100px;width:100%}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}.lead{color:var(--muted);margin:0 0 24px}
+h2{font-size:19px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:20px;border:1px solid rgba(211,223,238,.6)}
+.stat b{display:block;font-size:30px;line-height:1.1;margin:6px 0 2px}.stat small{color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:99px;background:#E7EEF9;color:var(--deep)}
+.pill.ok{background:#E3F5EC;color:var(--ok)}.pill.off{background:#F1F3F7;color:var(--muted)}.pill.warn{background:#FFF4DA;color:#8A5B00}.pill.bad{background:#FCE8E6;color:var(--bad)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor}.dot.live{animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(30,138,90,.5)}70%{box-shadow:0 0 0 8px rgba(30,138,90,0)}100%{box-shadow:0 0 0 0 rgba(30,138,90,0)}}
+.btn{border:0;border-radius:12px;padding:11px 18px;font-weight:600;cursor:pointer;background:#E7EEF9;color:var(--navy);transition:transform .12s,box-shadow .2s,background .2s;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:none}
+.btn.main{background:var(--gold);color:var(--navy);box-shadow:0 4px 14px rgba(233,177,63,.35)}.btn.dark{background:var(--navy);color:#fff}.btn.ghost{background:none;border:1px solid var(--line)}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.sp{flex:1}
+label.f{display:block;font-weight:600;margin:14px 0 6px}label.f small{font-weight:400;color:var(--muted);margin-left:6px}
+input.t,select.t,textarea.t{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff;transition:border .15s,box-shadow .15s}
+input.t:focus,select.t:focus,textarea.t:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px rgba(78,177,193,.18)}
+textarea.t{min-height:88px;resize:vertical}
+.sw{position:relative;width:52px;height:30px;flex:none}.sw input{opacity:0;width:0;height:0}
+.sw span{position:absolute;inset:0;background:#C9D4E6;border-radius:99px;transition:background .2s;cursor:pointer}
+.sw span:before{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw input:checked+span{background:var(--ok)}.sw input:checked+span:before{transform:translateX(22px)}
+.opt{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}.opt:last-child{border:0}
+.opt b{display:block}.opt small{color:var(--muted)}
+table.pr{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+table.pr th,table.pr td{padding:10px;text-align:center;border-bottom:1px solid var(--line)}table.pr tr:last-child td{border-bottom:0}
+table.pr th{background:#F6F9FE;font-size:14px;color:var(--deep)}table.pr td:first-child{font-weight:700;background:#F6F9FE}
+table.pr input{width:100%;max-width:120px;text-align:center;border:1.5px solid var(--line);border-radius:10px;padding:9px 6px;font-weight:600}
+table.pr input:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 3px rgba(78,177,193,.2)}
+table.pr input.warn{border-color:var(--gold);background:#FFFBEF}
+.list .item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.list .item:last-child{border:0}
+.item .tt{font-weight:600}.item small{color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;background:#E7EEF9;color:var(--deep);text-transform:uppercase}
+.tabs{display:flex;gap:6px;margin:6px 0 14px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 14px;font-weight:600;cursor:pointer}.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.day{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:#FBFDFF}.day b{color:var(--blue)}
+.view{animation:in .28s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;background:var(--navy);color:#fff;padding:13px 20px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:all .3s;z-index:50;max-width:90vw;white-space:pre-line}
+.toast.on{opacity:1;transform:translate(-50%,0)}.toast.bad{background:var(--bad)}
+.ov{position:fixed;inset:0;background:rgba(28,38,66,.45);display:none;align-items:center;justify-content:center;z-index:40;padding:16px}.ov.on{display:flex;animation:in .2s}
+.dlg{background:#fff;border-radius:20px;padding:24px;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.skel{height:90px;border-radius:var(--r);background:linear-gradient(90deg,#E6EDF8 25%,#F3F7FD 50%,#E6EDF8 75%);background-size:200% 100%;animation:sk 1.2s infinite}@keyframes sk{to{background-position:-200% 0}}
+.hint{font-size:14px;color:var(--muted);background:#F6F9FE;border-radius:12px;padding:10px 14px;margin:10px 0}
+.save{position:sticky;bottom:16px;display:flex;justify-content:flex-end;margin-top:18px}
+a{color:var(--blue)}
+@media (max-width:820px){
+  .app{grid-template-columns:1fr}
+  aside{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;flex-direction:row;padding:6px;z-index:30;justify-content:space-around;gap:0;padding-bottom:max(6px,env(safe-area-inset-bottom))}
+  .brand,.foot,aside .grow{display:none}
+  .nav{flex-direction:column;gap:2px;font-size:11px;padding:8px 4px;justify-content:center;text-align:center}.nav i{font-size:20px;width:auto}
+  h1{font-size:23px}main{padding-top:20px}
+  table.pr th,table.pr td{padding:7px 4px}table.pr input{padding:8px 2px}
+  .list .item{flex-wrap:wrap}.list .item>div{flex:1 1 60%;min-width:0}.list .item .sp{display:none}.list .item>.btn{flex:1}
+  .save{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">King Wings<small>Админка сайта</small></div>
+    <button class="nav on" data-v="home"><i>⌂</i><span>Главная</span></button>
+    <button class="nav" data-v="prices"><i>$</i><span>Цены</span></button>
+    <button class="nav" data-v="progs"><i>▤</i><span>Программы</span></button>
+    <button class="nav" data-v="sales"><i>✓</i><span>Продажи</span></button>
+    <button class="nav" data-v="google"><i>G</i><span>Google</span></button>
+    <button class="nav" data-v="groups"><i>✈</i><span>Группы</span></button>
+    <div class="grow"></div>
+    <button class="nav" data-v="key"><i>⚙︎</i><span>Ключ</span></button>
+    <div class="foot">Изменения на сайте через 2–3 минуты после «Сохранить».</div>
+  </aside>
+  <main id="m"><div class="skel"></div></main>
+</div>
+<div class="toast" id="toast"></div>
+<div class="ov" id="ov"><div class="dlg" id="dlg"></div></div>
+<script>
+const LN={en:'English',id:'Bahasa Indonesia',tr:'Türkçe',es:'Español',hi:'हिन्दी'},LANGS=['en','id','tr','es','hi'];
+const CN={KZ:'Казахстан',UZ:'Узбекистан',KG:'Кыргызстан',TJ:'Таджикистан',TM:'Туркменистан'};
+const GUESTS=['10','15','20','25','30','40'],COLS=[['3','bo','3★ · завтраки'],['3','fb','3★ · полное питание'],['4','bo','4★ · завтраки'],['4','fb','4★ · полное питание']];
+let S=null,view='home',cur=null,curLang='en',dirty=false;
+const $=s=>document.querySelector(s),m=$('#m');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function call(fn,...a){return new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(e=>no(e))[fn](...a))}
+function toast(t,bad){const e=$('#toast');e.textContent=t;e.className='toast on'+(bad?' bad':'');clearTimeout(e._t);e._t=setTimeout(()=>e.className='toast',bad?6000:2800)}
+function err(e){const s=String(e&&e.message||e);if(s.indexOf('NO_TOKEN')>=0){go('key');return}toast(s,1)}
+function dlg(html){$('#dlg').innerHTML=html;$('#ov').classList.add('on')}function close_(){$('#ov').classList.remove('on')}
+$('#ov').addEventListener('click',e=>{if(e.target.id==='ov')close_()});
+document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>go(b.dataset.v));
+function go(v){if(dirty&&!confirm('Есть несохранённые изменения. Уйти без сохранения?'))return;dirty=false;view=v;cur=null;
+ document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('on',b.dataset.v===v));render()}
+window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+
+async function load(force){if(S&&!force)return S;m.innerHTML='<div class="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>';
+ try{if(!await call('api_hasToken')){go('key');return null}S=await call('api_state');return S}catch(e){err(e);return null}}
+async function render(){
+ if(view==='key')return vKey();
+ if(view==='groups')return vGroups();
+ if(!await load())return;
+ ({home:vHome,prices:vPrices,progs:vProgs,sales:vSales,google:vGoogle})[view]()}
+
+function buildPill(){const b=S.build;if(!b)return'';
+ if(b.status!=='completed')return'<span class="pill warn"><span class="dot live"></span>Сайт обновляется…</span>';
+ return b.result==='success'?'<span class="pill ok"><span class="dot"></span>Сайт обновлён '+new Date(b.at).toLocaleString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</span>':'<span class="pill bad"><span class="dot"></span>Ошибка сборки — <a href="'+esc(b.url)+'" target="_blank">открыть</a></span>'}
+
+function vHome(){const st=S.settings.data,P=S.programs,vis=P.filter(p=>!p.hidden),pr=vis.filter(p=>p.prices).length,L=S.live||{};
+ const now=(L.now||[]).map(x=>(CN[x.c]||x.c)+(x.city?' ('+x.city+')':'')+(x.guests?', '+x.guests+' гостей':'')).join(' · ');
+ m.innerHTML=`<div class="view"><div class="row"><div><h1>Добрый день!</h1><p class="lead">Сайт программ для агентов · <a href="${S.site}" target="_blank">открыть сайт ↗</a></p></div><div class="sp"></div>${buildPill()}</div>
+ <div class="grid">
+  <div class="card stat"><small>Программ на сайте</small><b>${vis.length}</b><small>${P.length-vis.length?'скрыто: '+(P.length-vis.length):'все показаны'}</small></div>
+  <div class="card stat"><small>Цены заполнены</small><b>${pr} из ${vis.length}</b><small>${st.show_prices?'показываются агентам':'агентам пока не видны'}</small></div>
+  <div class="card stat"><small>Продажи</small><b style="font-size:22px">${st.show_book?'Бронь и цена':'Запрос цены'}</b><small>${st.pay_url?'оплата по ссылке включена':'оплата — по счёту'}</small></div>
+  <div class="card stat"><small>Google</small><b style="font-size:22px">${st.index?'<span style="color:var(--ok)">Показывается</span>':'Скрыт'}</b><small>${st.index?'страницы в поиске':'до готовности цепочки продаж'}</small></div>
+ </div>
+ <div class="card" style="margin-top:16px"><div class="row"><span class="pill ${(L.now||[]).length?'ok':'off'}"><span class="dot ${(L.now||[]).length?'live':''}"></span>Сейчас в пути</span><span class="sp"></span><small style="color:var(--muted)">обновлено ${esc(L.updated||'—')}</small></div>
+  <p style="margin:12px 0 0;font-weight:600">${(L.now||[]).length?esc(now):'Сейчас групп в пути нет'}</p><p style="margin:4px 0 0;color:var(--muted)">30 дней вперёд: ${(L.next30||{}).groups||0} групп(ы)</p></div>
+ <div class="card" style="margin-top:16px"><h2>Что сделать дальше</h2>${next(st,vis,pr)}</div></div>`;
+ m.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
+function next(st,vis,pr){const t=[];
+ if(pr<vis.length)t.push(['Вписать цены — '+(vis.length-pr)+' программ без цен','prices']);
+ if(pr&&!st.show_prices)t.push(['Включить показ цен агентам','sales']);
+ if(!st.bank_show)t.push(['Добавить реквизиты банка (USD)','sales']);
+ if(!st.index&&st.show_prices&&st.show_book)t.push(['Цепочка продаж готова — можно показать сайт в Google','google']);
+ return t.length?'<div class="list">'+t.map(x=>`<div class="item"><span class="tt">${esc(x[0])}</span><span class="sp"></span><button class="btn" data-go="${x[1]}">Открыть →</button></div>`).join('')+'</div>':'<p>Всё готово 🎉</p>'}
+
+/* ---------- Цены ---------- */
+async function vPrices(){const vis=S.programs;
+ m.innerHTML=`<div class="view"><h1>Цены</h1><p class="lead">Цена за 1 человека в USD для агента. Чем больше группа — тем ниже цена. Пустую строку можно не заполнять.</p>
+ <div class="card"><label class="f">Программа</label><select class="t" id="ps">${vis.map(p=>`<option value="${esc(p.path)}">${esc(p.title)}${p.hidden?' (скрыта)':''}${p.prices?' ✓':''}</option>`).join('')}</select>
+ <div id="pt" style="margin-top:18px"><div class="skel"></div></div></div></div>`;
+ const sel=$('#ps');if(cur&&cur.path)sel.value=cur.path;sel.onchange=()=>{if(dirty&&!confirm('Не сохранено. Переключить?')){sel.value=cur.path;return}dirty=false;openPrices(sel.value)};openPrices(sel.value)}
+async function openPrices(path){try{cur=await call('api_program',path)}catch(e){return err(e)}const pr=cur.data.prices||{};
+ $('#pt').innerHTML=`<div style="overflow-x:auto"><table class="pr"><tr><th>Гостей</th>${COLS.map(c=>`<th>${c[2]}</th>`).join('')}</tr>
+ ${GUESTS.map(g=>`<tr><td>от ${g}</td>${COLS.map(c=>{const v=((pr[c[0]]||{})[c[1]]||{})[g];return`<td><input inputmode="numeric" data-h="${c[0]}" data-m="${c[1]}" data-g="${g}" value="${v==null?'':v}" placeholder="—"></td>`}).join('')}</tr>`).join('')}</table></div>
+ <div class="hint">Пример: 25 гостей, 4★ с полным питанием — агент увидит цену из строки «от 25». Если строки нет — берётся ближайшая меньшая.</div>
+ <div class="save"><button class="btn ghost" id="pclr">Очистить</button>&nbsp;<button class="btn main" id="psv">Сохранить цены</button></div>`;
+ const ins=[...$('#pt').querySelectorAll('input')];ins.forEach(i=>i.oninput=()=>{dirty=true;i.value=i.value.replace(/[^\d]/g,'');chk()});chk();
+ $('#pclr').onclick=()=>{ins.forEach(i=>i.value='');dirty=true;chk()};
+ $('#psv').onclick=async()=>{const p={};ins.forEach(i=>{if(i.value){(p[i.dataset.h]=p[i.dataset.h]||{});(p[i.dataset.h][i.dataset.m]=p[i.dataset.h][i.dataset.m]||{});p[i.dataset.h][i.dataset.m][i.dataset.g]=+i.value}});
+  const d=cur.data;if(Object.keys(p).length)d.prices=p;else delete d.prices;
+  $('#psv').disabled=true;try{const r=await call('api_saveProgram',cur.path,cur.sha,d,'цены');cur.sha=r.sha;dirty=false;S=null;toast('Цены сохранены ✓ Сайт обновится через 2–3 минуты')}catch(e){err(e)}$('#psv').disabled=false}}
+function chk(){COLS.forEach(c=>{let prev=null;GUESTS.forEach(g=>{const i=document.querySelector(`input[data-h="${c[0]}"][data-m="${c[1]}"][data-g="${g}"]`);const v=+i.value||null;i.classList.toggle('warn',!!(v&&prev&&v>prev));i.title=v&&prev&&v>prev?'Дороже, чем для меньшей группы — проверьте':'';if(v)prev=v})})}
+
+/* ---------- Программы ---------- */
+function vProgs(){if(cur)return vEdit();const P=S.programs;
+ m.innerHTML=`<div class="view"><h1>Программы</h1><p class="lead">Показать или скрыть, порядок на каждом языке, тексты по дням.</p>
+ <div class="card list">${P.map((p,k)=>`<div class="item"><label class="sw" title="Показывать на сайте"><input type="checkbox" data-k="${k}" ${p.hidden?'':'checked'}><span></span></label>
+  <div><div class="tt">${esc(p.title)}</div><small>${p.days} дн. / ${p.nights} ноч. · ${p.countries.map(c=>CN[c]||c).join(', ')}${p.season?' · '+esc(p.season):''}</small><div class="chips" style="margin-top:6px">${p.langs.map(l=>`<span class="chip">${l}</span>`).join('')}${p.prices?'<span class="chip" style="background:#E3F5EC;color:var(--ok)">цены</span>':''}</div></div>
+  <span class="sp"></span><button class="btn ghost" data-dup="${k}" title="Сделать копию для новой программы">⧉ Копия</button><button class="btn" data-ed="${k}">Изменить</button></div>`).join('')}</div>
+ <div class="card" style="margin-top:16px"><h2>Порядок на сайте</h2><p style="color:var(--muted);margin-top:-6px">Меньшее число — выше. Пусто — общий порядок.</p><div style="overflow-x:auto"><table class="pr"><tr><th>Программа</th>${LANGS.map(l=>`<th>${l.toUpperCase()}</th>`).join('')}</tr>
+ ${P.map((p,k)=>`<tr><td style="text-align:left;font-weight:600">${esc(p.title)}</td>${LANGS.map(l=>`<td>${p.langs.includes(l)?`<input data-ok="${k}" data-l="${l}" value="${l==='en'?p.order:(p.orders[l]!=null?p.orders[l]:'')}" placeholder="—">`:'<small style="color:var(--muted)">нет</small>'}</td>`).join('')}</tr>`).join('')}</table></div>
+ <div class="save"><button class="btn main" id="osv">Сохранить порядок</button></div></div></div>`;
+ m.querySelectorAll('[data-ed]').forEach(b=>b.onclick=async()=>{try{cur=await call('api_program',P[b.dataset.ed].path);curLang=cur.data.en?'en':LANGS.find(l=>cur.data[l]);vEdit()}catch(e){err(e)}});
+ m.querySelectorAll('.sw input').forEach(i=>i.onchange=async()=>{const p=P[i.dataset.k];try{const c=await call('api_program',p.path);if(i.checked)delete c.data.hidden;else c.data.hidden=true;await call('api_saveProgram',p.path,c.sha,c.data,i.checked?'показать':'скрыть');p.hidden=!i.checked;toast(i.checked?'Программа будет на сайте ✓':'Программа скрыта ✓')}catch(e){i.checked=!i.checked;err(e)}});
+ m.querySelectorAll('[data-dup]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{await call('api_duplicate',P[b.dataset.dup].path);toast('Копия создана (скрыта). Измените её и включите.');S=null;await load(true);vProgs()}catch(e){err(e)}});
+ m.querySelectorAll('[data-ok]').forEach(i=>i.oninput=()=>{dirty=true;i.value=i.value.replace(/[^\d]/g,'')});
+ $('#osv').onclick=async()=>{$('#osv').disabled=true;try{for(const [k,p] of P.entries()){const ins=[...m.querySelectorAll(`[data-ok="${k}"]`)];const c=await call('api_program',p.path);let ch=false;
+   ins.forEach(i=>{const l=i.dataset.l,v=i.value===''?null:+i.value;if(l==='en'){if(v!=null&&v!==c.data.order){c.data.order=v;ch=true}}else{const key='order_'+l;if(v==null&&key in c.data){delete c.data[key];ch=true}else if(v!=null&&c.data[key]!==v){c.data[key]=v;ch=true}}});
+   if(ch)await call('api_saveProgram',p.path,c.sha,c.data,'порядок')}
+  dirty=false;S=null;toast('Порядок сохранён ✓')}catch(e){err(e)}$('#osv').disabled=false}}
+
+function vEdit(){const d=cur.data,L=LANGS.filter(l=>d[l]),x=d[curLang];
+ m.innerHTML=`<div class="view"><button class="btn ghost" id="back">← Все программы</button><h1 style="margin-top:14px">${esc((d.en||x).title)}</h1><p class="lead">${d.days} дней / ${d.nights} ночей · адрес: /programs/${esc(d.slug)}/ ${d.hidden?'· <span class="pill off">скрыта</span>':''}</p>
+ <div class="tabs">${L.map(l=>`<button class="tab ${l===curLang?'on':''}" data-l="${l}">${LN[l]}</button>`).join('')}</div>
+ <div class="card"><label class="f">Название</label><input class="t" data-f="title" value="${esc(x.title)}">
+  <label class="f">Заголовок для Google <small>до 60 знаков · <span id="seoN"></span></small></label><input class="t" data-f="seo" value="${esc(x.seo||'')}">
+  <label class="f">Коротко о программе</label><textarea class="t" data-f="sub">${esc(x.sub||'')}</textarea>
+  <label class="f">Кому подходит</label><input class="t" data-f="best" value="${esc(x.best||'')}">
+  <label class="f">Маршрут</label><input class="t" data-f="route" value="${esc(x.route||'')}">
+  <label class="f">Сезон</label><input class="t" data-f="season" value="${esc(x.season||'')}" placeholder="например: May–October"></div>
+ <div class="card" style="margin-top:16px"><h2>По дням</h2>${x.itinerary.map((dd,k)=>`<div class="day"><b>День ${k+1}</b><input class="t" style="margin:6px 0" data-day="${k}" data-p="0" value="${esc(dd[0])}"><textarea class="t" data-day="${k}" data-p="1">${esc(dd[1])}</textarea></div>`).join('')}
+  <div class="hint">Добавить или убрать день — напишите программисту или Claude: дни должны совпасть на всех языках.</div></div>
+ <div class="card" style="margin-top:16px"><div class="grid" style="grid-template-columns:1fr 1fr"><div><h2>Включено</h2><textarea class="t" style="min-height:170px" data-list="inc">${esc((x.inc||[]).join('\n'))}</textarea><small style="color:var(--muted)">одна строка — один пункт</small></div>
+  <div><h2>Не включено</h2><textarea class="t" style="min-height:170px" data-list="exc">${esc((x.exc||[]).join('\n'))}</textarea></div></div></div>
+ <div class="save"><button class="btn main" id="esv">Сохранить</button></div></div>`;
+ const seo=m.querySelector('[data-f="seo"]'),sn=()=>{const n=seo.value.length;$('#seoN').textContent=n+' знаков';$('#seoN').style.color=n>60?'var(--bad)':''};seo.addEventListener('input',sn);sn();
+ m.querySelectorAll('input,textarea').forEach(i=>i.addEventListener('input',()=>{dirty=true;pull()}));
+ $('#back').onclick=()=>{if(dirty&&!confirm('Не сохранено. Выйти?'))return;dirty=false;cur=null;vProgs()};
+ m.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{pull();curLang=t.dataset.l;vEdit()});
+ $('#esv').onclick=async()=>{pull();$('#esv').disabled=true;try{const r=await call('api_saveProgram',cur.path,cur.sha,cur.data,'тексты '+curLang);cur.sha=r.sha;dirty=false;S=null;toast('Сохранено ✓ Сайт обновится через 2–3 минуты')}catch(e){err(e)}$('#esv').disabled=false}}
+function pull(){const x=cur.data[curLang];m.querySelectorAll('[data-f]').forEach(i=>{const v=i.value.trim();if(v||x[i.dataset.f]!=null)x[i.dataset.f]=v;if(!v&&i.dataset.f==='season')delete x.season});
+ m.querySelectorAll('[data-day]').forEach(i=>{x.itinerary[+i.dataset.day][+i.dataset.p]=i.value.trim()});
+ m.querySelectorAll('[data-list]').forEach(i=>{x[i.dataset.list]=i.value.split('\n').map(s=>s.trim()).filter(Boolean)})}
+
+/* ---------- Продажи ---------- */
+function swRow(key,title,sub,on){return`<div class="opt"><label class="sw"><input type="checkbox" data-s="${key}" ${on?'checked':''}><span></span></label><div><b>${title}</b><small>${sub}</small></div></div>`}
+function vSales(){const st=S.settings.data,b=st.bank||{};
+ m.innerHTML=`<div class="view"><h1>Продажи</h1><p class="lead">Что агент видит на странице программы.</p>
+ <div class="card">${swRow('show_prices','Показывать цену','Агент сразу видит цену за человека, сумму за группу и депозит 30 %',st.show_prices)}
+  ${swRow('show_book','Кнопка «Забронировать»','Вместо «Получить цену» — бронь с готовой ценой (заявка приходит в WhatsApp)',st.show_book)}
+  <label class="f">Ссылка на оплату депозита <small>карта / счёт · пусто — кнопки нет</small></label><input class="t" data-s="pay_url" value="${esc(st.pay_url||'')}" placeholder="https://…"></div>
+ <div class="card" style="margin-top:16px"><h2>Реквизиты для перевода (USD)</h2>
+  ${[['beneficiary','Получатель'],['bin','БИН'],['bank','Банк'],['swift','SWIFT'],['iban_usd','Счёт (IBAN) USD'],['address','Адрес банка']].map(f=>`<label class="f">${f[1]}</label><input class="t" data-b="${f[0]}" value="${esc(b[f[0]]||'')}">`).join('')}
+  ${swRow('bank_show','Показывать реквизиты агентам','В блоке «Условия бронирования и оплаты»',st.bank_show)}</div>
+ <div class="hint">Условия оплаты на сайте: депозит 30 % (не возвращается), остаток 70 % за 30 дней до заезда; отмена 31+ дней — депозит, 15–30 дней — 50 %, 0–14 — 100 %.</div>
+ <div class="save"><button class="btn main" id="ssv">Сохранить</button></div></div>`;
+ m.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>dirty=true));m.querySelectorAll('.sw input').forEach(i=>i.addEventListener('change',()=>dirty=true));
+ $('#ssv').onclick=()=>saveSettings(st=>{m.querySelectorAll('[data-s]').forEach(i=>st[i.dataset.s]=i.type==='checkbox'?i.checked:i.value.trim());st.bank=st.bank||{};m.querySelectorAll('[data-b]').forEach(i=>st.bank[i.dataset.b]=i.value.trim());
+  if(st.bank_show&&!st.bank.iban_usd)throw new Error('Чтобы показать реквизиты, впишите счёт USD');if(st.show_book&&!st.show_prices)throw new Error('Кнопка брони работает только вместе с ценой — включите «Показывать цену»')},'продажи')}
+async function saveSettings(fn,what){const st=JSON.parse(JSON.stringify(S.settings.data));try{fn(st)}catch(e){return err(e)}
+ try{const r=await call('api_saveSettings',S.settings.sha,st,what);S.settings={sha:r.sha,data:st};dirty=false;toast('Сохранено ✓ Сайт обновится через 2–3 минуты')}catch(e){err(e)}}
+
+/* ---------- Google ---------- */
+function vGoogle(){const st=S.settings.data,P=S.programs.filter(p=>!p.hidden),pr=P.filter(p=>p.prices).length;
+ const ready=[[pr===P.length,'Цены у всех программ ('+pr+' из '+P.length+')'],[!!st.show_prices,'Цена показывается агентам'],[!!st.show_book,'Есть кнопка брони'],[!!(st.bank_show||st.pay_url),'Есть способ оплаты (реквизиты или ссылка)']];
+ const ok=ready.every(r=>r[0]);
+ m.innerHTML=`<div class="view"><h1>Показ в Google</h1><p class="lead">Правило: сайт идёт в Google, только когда цепочка «увидел → доверился → взял → оплатил» готова.</p>
+ <div class="card">${ready.map(r=>`<div class="opt"><span class="pill ${r[0]?'ok':'warn'}">${r[0]?'✓':'—'}</span><b>${esc(r[1])}</b></div>`).join('')}</div>
+ <div class="card" style="margin-top:16px">${swRow('index','Показывать сайт в Google',ok?'Всё готово — можно включать':'Сначала закройте пункты выше',st.index)}
+  <label class="f">Google Analytics 4 <small>номер «G-…»</small></label><input class="t" data-s="ga4_id" value="${esc(st.ga4_id||'')}" placeholder="G-XXXXXXXXXX">
+  <label class="f">Microsoft Clarity <small>номер проекта</small></label><input class="t" data-s="clarity_id" value="${esc(st.clarity_id||'')}"></div>
+ <div class="save"><button class="btn main" id="gsv">Сохранить</button></div></div>`;
+ m.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>dirty=true));
+ const sw=m.querySelector('[data-s="index"]');sw.onchange=()=>{dirty=true;if(sw.checked&&!ok){sw.checked=false;dlg(`<h2>Пока рано</h2><p>Сайт в Google без цен и оплаты приводит агентов, которые не могут купить — это вредит позициям и доверию.</p><div class="row"><span class="sp"></span><button class="btn" onclick="close_()">Понятно</button></div>`)}};
+ $('#gsv').onclick=()=>saveSettings(st=>{st.index=sw.checked;st.ga4_id=m.querySelector('[data-s="ga4_id"]').value.trim();st.clarity_id=m.querySelector('[data-s="clarity_id"]').value.trim();
+  if(st.ga4_id&&!/^G-[A-Z0-9]{6,}$/.test(st.ga4_id))throw new Error('Номер GA4 выглядит так: G-ABC123XYZ')},'Google')}
+
+/* ---------- Группы ---------- */
+async function vGroups(){m.innerHTML='<div class="view"><h1>Группы</h1><p class="lead">Текущие и будущие группы из папок «1. Confirmed». Только просмотр.</p><div class="skel"></div></div>';
+ let G;try{G=await call('api_groups')}catch(e){return err(e)}
+ m.querySelector('.skel').outerHTML=G.length?`<div class="card list">${G.map(g=>`<div class="item"><div style="flex:1;min-width:0"><div class="row" style="gap:8px">${g.now?'<span class="pill ok"><span class="dot live"></span>в пути</span>':''}<span class="tt">${esc(g.name)}</span></div>
+  <small>${esc(g.dates)} · ${esc(g.agent)} · ${esc(g.guests)} · ${esc(g.lang)}</small>
+  <div style="margin-top:6px">${g.link?`<a href="${esc(g.link)}" target="_blank">Путеводитель ↗</a> · PIN <b>${esc(g.pin)}</b>${g.staff?' · код гида <b>'+esc(g.staff)+'</b>':''}`:`<span class="pill ${g.publish?'warn':'off'}">${g.publish?'опубликуется утром':'не опубликован'}</span>`}</div></div>
+  <a class="btn ghost" href="${esc(g.sheet)}" target="_blank">Таблица</a></div>`).join('')}</div>`:'<div class="card">Текущих групп нет.</div>'}
+
+/* ---------- Ключ ---------- */
+function vKey(){m.innerHTML=`<div class="view"><h1>Ключ GitHub</h1><p class="lead">Нужен один раз: через него админка сохраняет изменения на сайт.</p>
+ <div class="card"><ol style="margin:0 0 10px;padding-left:20px;line-height:1.8"><li>github.com → аккаунт kingwingstravel → Settings → Developer settings → Fine-grained tokens → <b>Generate new token</b></li>
+ <li>Имя «Админка», срок — максимальный, Repository access: <b>Only select repositories → galeri</b></li><li>Permissions: <b>Contents — Read and write</b>, <b>Actions — Read</b> → Generate → скопировать</li></ol>
+ <label class="f">Ключ</label><input class="t" id="tk" type="password" autocomplete="off" placeholder="github_pat_…"><div class="save"><button class="btn main" id="tks">Сохранить ключ</button></div>
+ <div class="hint">Ключ хранится только в вашем Google-скрипте. Когда срок закончится, админка попросит новый.</div></div></div>`;
+ $('#tks').onclick=async()=>{$('#tks').disabled=true;try{await call('api_setToken',$('#tk').value);toast('Ключ принят ✓');S=null;go('home')}catch(e){err(e)}$('#tks').disabled=false}}
+render();
+</script>
+</body>
+</html>
