@@ -9,6 +9,7 @@ SETS = {
     'menu':    ('#1FA37F', '#0A4F3F', '#F4C95D', 'MENU'),
     'galeri':  ('#F39A2C', '#B0480A', '#FFF1CC', 'GALLERY'),
     'sales':   ('#2466D6', '#0B2A66', '#F4C95D', 'SALES'),
+    'site':    ('#7B3FC4', '#3A1670', '#F4C95D', 'WEBSITE'),
 }
 
 def hexc(h): return tuple(int(h[i:i+2], 16) for i in (1, 3, 5))
