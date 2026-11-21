@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KW Admin</title>
+<meta name="apple-mobile-web-app-title" content="KW Admin">
+<meta name="application-name" content="KW Admin">
+<meta name="theme-color" content="#8E1428">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<style>
+body{margin:0;font:17px/1.5 -apple-system,system-ui,Segoe UI,sans-serif;background:linear-gradient(#C41E3A,#780C1E);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.box{padding:28px;max-width:420px}img{width:120px;height:120px;border-radius:26px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+h1{font-size:24px;margin:18px 0 6px}p{opacity:.9;margin:6px 0}
+a.b{display:inline-block;margin-top:18px;background:#E9B13F;color:#3a1a00;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:14px}
+ol{text-align:left;background:rgba(0,0,0,.18);border-radius:14px;padding:14px 14px 14px 34px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="box">
+<img src="icon-512.png" alt="KW Admin">
+<h1>King Wings Admin</h1>
+<div id="go" hidden><p>Открываю админку…</p></div>
+<div id="setup">
+<a class="b" id="open" href="#">Открыть админку</a>
+<ol>
+<li>Нажмите в Safari «Поделиться» (квадрат со стрелкой).</li>
+<li>«На экран „Домой“» → «Добавить».</li>
+<li>Дальше открывайте админку с этого значка.</li>
+</ol>
+</div>
+</div>
+<script>
+var ADMIN='https://script.google.com/a/macros/kingwingstravel-dmc.com/s/AKfycbzPhQiJF8EU8QkKLMDfcOisBOx93nipoICWPf91SZi3BIbsJtDDDCh9T8rRz2pzPUqTUQ/exec';
+document.getElementById('open').href=ADMIN;
+if(/[?&]go=1/.test(location.search)){document.getElementById('setup').hidden=true;document.getElementById('go').hidden=false;location.replace(ADMIN);}
+else{try{history.replaceState(null,'','?go=1')}catch(e){}}  // значок на экране «Домой» сохранит адрес с ?go=1 и будет сразу открывать админку
+</script>
+</body>
+</html>
