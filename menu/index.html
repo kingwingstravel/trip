@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<meta name="kwver" content="202611220147">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -664,6 +665,10 @@ function printPlan(){
 
 function renderAll(){ renderTabs(); renderMenu(); renderPanel(); renderPlan(); }
 pack(S.r, renderAll);
+</script>
+<script>/* 22.11.2026: если браузер показал старую копию меню — тихо перезагрузить на свежую */
+(function(){ if(location.protocol==='file:') return; try{ const m=document.querySelector('meta[name=kwver]'); const mine=m&&m.content;
+ fetch(location.pathname,{cache:'no-cache'}).then(r=>r.text()).then(t=>{ const x=t.match(/name="kwver" content="(\d+)"/); if(x&&mine&&x[1]!==mine&&sessionStorage.getItem('kwrl')!==x[1]){ sessionStorage.setItem('kwrl',x[1]); location.reload(); } }).catch(()=>{}); }catch(e){} })();
 </script>
 </body>
 </html>
