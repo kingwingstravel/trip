@@ -182,6 +182,7 @@ button{cursor:pointer}
   .printout td,.printout th{border-bottom:1px solid #ccc;padding:2mm 1mm;text-align:left}
   .printout td.r,.printout th.r{text-align:right}
 }
+.pb .newg{margin-left:auto;background:#fff;color:#b42318;border:1px solid #f1b5ae}
 </style>
 </head>
 <body>
@@ -455,7 +456,7 @@ function renderPlan(){
   sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
     h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
   if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
-  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English)</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button></div>`;
+  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English)</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button><button id="pNew" class="newg" title="Стереть всё: программу, заказы во всех ресторанах, группу и даты">🆕 Новая группа (всё с нуля)</button></div>`;
   $('plan').innerHTML=h;
 }
 $('plan').addEventListener('change', e=>{ const c=e.target.closest('[data-set]'); if(c){ S.set[c.dataset.set]=c.checked?1:0; save(); renderPlan(); } });
@@ -467,6 +468,11 @@ $('plan').addEventListener('click', e=>{
   if(e.target.id==='pPartner') saveFile('partner');
   if(e.target.id==='pOpen') $('fOpen').click();
   if(e.target.id==='pPrint') printPlan();
+  if(e.target.id==='pNew'){ const b=e.target;
+    if(!b.dataset.sure){ b.dataset.sure=1; b.textContent='Стереть всё? Сначала сохраните PDF. Нажмите ещё раз'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.sure; b.textContent='🆕 Новая группа (всё с нуля)'; } },4000); return; }
+    S.plan=[]; S.orders={}; S.edit=null; S.info={group:GP||'',date:'',meal:'',pax:''};
+    Object.entries(fields).forEach(([id,k])=>{ $(id).value=S.info[k]||''; });
+    save(); renderAll(); toast('Чисто — можно начинать новую группу'); window.scrollTo({top:0,behavior:'smooth'}); }
 });
 $('bPlan').onclick=()=>{
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
