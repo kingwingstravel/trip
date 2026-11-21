@@ -18,8 +18,11 @@ var LANGS = ['en', 'id', 'tr', 'es', 'hi'];
 
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('King Wings · Админка')
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover');
+    .setTitle('King Wings Admin')
+    .setFaviconUrl('https://trip.kingwingstravel-dmc.com/tools/admin/icon-64.png')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover')
+    .addMetaTag('mobile-web-app-capable', 'yes')
+    .addMetaTag('apple-mobile-web-app-capable', 'yes');
 }
 
 /* ---------- GitHub ---------- */
