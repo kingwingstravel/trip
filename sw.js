@@ -1,4 +1,4 @@
-const C="kw-trip-v3";
+const C="kw-trip-v4";
 /* 16.11.2026: запросы к боту (фото, видео, проверка имени) НЕ трогаем и не кэшируем.
    Раньше при слабом интернете вместо списка видео отдавался сохранённый список фото (ignoreSearch: у бота один адрес). */
 const BOT=/(^|\.)script\.google\.com$|(^|\.)googleusercontent\.com$/;
@@ -18,6 +18,8 @@ self.addEventListener("fetch",e=>{
  if(e.request.method!=="GET")return;
  let u;try{u=new URL(e.request.url)}catch(x){return}
  if(BOT.test(u.hostname))return;
+ /* 22.11.2026: меню, сайт программ, админка и значки — не через этот кэш (иначе браузер показывал старую версию меню) */
+ if(u.origin===self.location.origin && /^\/(menu|programs|apps|admin)\//.test(u.pathname))return;
  const net=caches.open(C).then(c=>fetch(e.request).then(r=>{if(r.ok)c.put(e.request,r.clone());return r}));
  const old=()=>caches.match(e.request,{ignoreSearch:true});
  if(e.request.mode!=="navigate"){e.respondWith(net.catch(()=>old()));return}
