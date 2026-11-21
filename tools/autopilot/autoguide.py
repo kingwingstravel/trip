@@ -17,7 +17,7 @@ TOOLS = os.path.dirname(HERE)
 REPO = os.path.dirname(TOOLS)
 SITE = 'https://trip.kingwingstravel-dmc.com'
 ARGS = sys.argv[1:]
-FORCE, DRY = '--force' in ARGS, '--dry' in ARGS
+FORCE, DRY, CHECK = '--force' in ARGS, '--dry' in ARGS, '--check' in ARGS
 LOCAL = ARGS[ARGS.index('--local') + 1] if '--local' in ARGS else None
 NOW = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) + datetime.timedelta(hours=5)          # Алматы, UTC+5
 TODAY = NOW.date()
@@ -470,6 +470,17 @@ def claude_active():
     except Exception: return False
 
 def main():
+    if CHECK:   # проверка связи: только прочитать таблицы, ничего не публиковать и не заполнять
+        if not FEED: log('Нет секрета GUIDE_FEED'); return 1
+        f = get_feed()
+        if f.get('error'): log('Google ответил:', f['error']); return 1
+        gs = f.get('groups', [])
+        log(f'Связь с Google есть. Таблиц путеводителей: {len(gs)}, с галочкой «Опубликовать»: {sum(1 for g in gs if not g.get("error") and tru(C(g["g"], "B23")))}')
+        for g in gs: log(' -', g.get('name'), '— ошибка: ' + g['error'] if g.get('error') else '')
+        try: log('Автозаполнение (Gemini): групп с новыми файлами —', len(post({'op': 'filllist'}).get('list') or []))
+        except Exception as e: log('Список автозаполнения не получен:', e)
+        log('Claude работает' if claude_active() else 'Claude молчит 2+ дня — завтра автопилот возьмёт работу на себя')
+        return 0
     if not FORCE and not LOCAL and claude_active():
         log('Утренняя задача Claude работает (live.json свежий) — автопилот ничего не делает.'); return 0
     if LOCAL: feed = json.load(open(LOCAL))

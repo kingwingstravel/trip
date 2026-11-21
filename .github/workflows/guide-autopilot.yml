@@ -11,6 +11,10 @@ on:
         description: 'Собрать сейчас, даже если Claude работает'
         type: boolean
         default: false
+      check:
+        description: 'Только проверить связь с Google (ничего не публиковать)'
+        type: boolean
+        default: false
 concurrency: { group: guide-publish, cancel-in-progress: false }
 permissions: { contents: write }
 jobs:
@@ -25,4 +29,4 @@ jobs:
       - name: Autopilot
         env:
           GUIDE_FEED: ${{ secrets.GUIDE_FEED }}
-        run: python3 tools/autopilot/autoguide.py ${{ inputs.force && '--force' || '' }}
+        run: python3 tools/autopilot/autoguide.py ${{ inputs.check && '--check' || '' }} ${{ inputs.force && '--force' || '' }}
