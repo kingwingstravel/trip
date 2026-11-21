@@ -7,8 +7,9 @@ def gt(text):
     data = urllib.parse.urlencode({'q': text}).encode()
     req = urllib.request.Request('https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t', data=data,
                                  headers={'User-Agent': 'Mozilla/5.0', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'})
-    j = json.load(urllib.request.urlopen(req, timeout=30))
+    j = json.load(urllib.request.urlopen(req, timeout=15))
     return ''.join(x[0] for x in j[0])
+T0 = time.time()
 todo = [t for t in src if t not in done]
 grp, cur, n = [], [], 0
 for t in todo:
@@ -25,7 +26,10 @@ for g in grp:
                 for a in g: done[a] = gt(a).strip(); time.sleep(.2)
             break
         except Exception as e:
-            print('retry', e); time.sleep(3)
+            print('retry', e, flush=True); time.sleep(3)
+    json.dump(done, open(outp, 'w'), ensure_ascii=False, indent=0)
+    print(len(done), flush=True)
+    if time.time() - T0 > 600: print('time limit, saving'); break
     time.sleep(.3)
 json.dump(done, open(outp, 'w'), ensure_ascii=False, indent=0)
 print('translated', len(done), 'of', len(src))
