@@ -183,6 +183,7 @@ button{cursor:pointer}
   .printout td.r,.printout th.r{text-align:right}
 }
 #plan .pb button.newg{margin-left:auto;background:#fff!important;color:#b42318!important;border:1px solid #f1b5ae!important}
+.chooser{position:fixed;z-index:9999;background:#fff;border:1px solid #e3ddd0;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.18);padding:6px;display:flex;flex-direction:column;gap:4px;min-width:210px}.chooser button{font:inherit;font-size:15px;padding:11px 14px;border:0;background:#f6f3ec;color:#1d1d1b;border-radius:8px;text-align:left;cursor:pointer}.chooser button:hover{background:#ebe4d4}
 </style>
 </head>
 <body>
@@ -231,8 +232,8 @@ button{cursor:pointer}
       <div class="btns">
         <button class="btn pri wide" id="bPlan">➕ В программу группы</button>
         <button class="btn wide" id="bRest">📋 Скопировать заказ для ресторана</button>
-        <button class="btn" id="bPart">📄 Меню партнёру (EN, PDF с фото)</button>
-        <button class="btn" id="bPrint">🖨 Печать / PDF</button>
+        <button class="btn" id="bPart">📄 Меню партнёру (EN, с фото) ▾</button>
+        <button class="btn" id="bPrint">🖨 Печать / 💾 PDF ▾</button>
         <button class="btn ghost wide" id="bClear">Очистить этот заказ</button>
       </div>
       <div class="note">Цены — из базы King Wings (меню ресторанов). Фото — из меню ресторанов и с Glovo / Wolt, для наглядности.</div>
@@ -423,26 +424,40 @@ async function copy(s){
   catch(e){ const ta=document.createElement('textarea'); ta.value=s; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); toast('Скопировано');}catch(_){toast('Не удалось скопировать');} ta.remove(); }
 }
 $('bRest').onclick=()=>copy(textRest());
-$('bPart').onclick=async()=>{
+function curEntry(ours){ const c=calc(), r=R(); return {id:'cur', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:ours?(+c.o.disc||0):0, svc:ours?(+c.o.svc||0):0,
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))}; }
+function printBlob(blob){ const u=URL.createObjectURL(blob); const f=document.createElement('iframe'); f.style.cssText='position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0'; f.src=u;
+  f.onload=()=>setTimeout(()=>{ try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ window.open(u,'_blank'); } },400); document.body.appendChild(f); setTimeout(()=>f.remove(),120000); }
+async function saveBlob(blob,name){
+  if(window.showSaveFilePicker){ try{ const h=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]}); const w=await h.createWritable(); await w.write(blob); await w.close(); toast('Сохранено: '+h.name); return; }catch(err){ if(err && err.name==='AbortError') return; } }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); toast('PDF сохранён в «Загрузки»');
+}
+function choose(btn,items){ document.querySelectorAll('.chooser').forEach(x=>x.remove()); const m=document.createElement('div'); m.className='chooser';
+  items.forEach(([t,fn])=>{ const b=document.createElement('button'); b.type='button'; b.textContent=t; b.onclick=ev=>{ ev.stopPropagation(); m.remove(); fn(); }; m.appendChild(b); });
+  document.body.appendChild(m); const rc=btn.getBoundingClientRect(); const mh=m.offsetHeight, mw=m.offsetWidth;
+  let top=rc.bottom+6; if(top+mh>innerHeight-8) top=Math.max(8,rc.top-mh-6); let left=Math.min(rc.left, innerWidth-mw-8);
+  m.style.top=top+'px'; m.style.left=Math.max(8,left)+'px';
+  setTimeout(()=>document.addEventListener('click',function off(ev){ if(!m.contains(ev.target)){ m.remove(); document.removeEventListener('click',off); } }),0); }
+async function orderPDF(partner,mode){
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
-  const e={id:'cur', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:0, svc:0,
-    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))};
-  const keep=S.set; S.set=Object.assign({},keep,{lang:'en',price:0,qty:0});
+  const keep=S.set; S.set=Object.assign({},keep, partner?{lang:'en',price:0,qty:0}:{lang:'ru',price:1,qty:1});
   toast(S.set.photo?'Готовлю PDF с фото…':'Готовлю PDF…');
-  try{ const blob=await makePDF([e]); const g=String(S.info.group||GP||'').replace(/[\\/:*?"<>|]/g,' ').trim();
-    const name='Menu — '+(r.en||r.name)+(g?' — '+g:'')+(S.info.date?' '+S.info.date:'')+'.pdf';
-    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); toast('PDF для партнёра — в «Загрузках»'); }
+  try{ const blob=await makePDF([curEntry(!partner)]); const g=String(S.info.group||GP||'').replace(/[\\/:*?"<>|]/g,' ').trim();
+    const name=(partner?'Menu — '+(r.en||r.name):'Заказ — '+r.name)+(g?' — '+g:'')+(S.info.date?' '+S.info.date:'')+'.pdf';
+    if(mode==='print') printBlob(blob); else await saveBlob(blob,name); }
   catch(err){ toast('Не получилось сделать PDF'); }
   finally{ S.set=keep; }
-};
+}
+$('bPart').onclick=e=>{ e.stopPropagation(); choose(e.currentTarget,[['🖨 Печать',()=>orderPDF(true,'print')],['💾 Сохранить PDF',()=>orderPDF(true,'save')]]); };
 $('bClear').onclick=()=>{ const o=ord(S.r); if(!Object.keys(o.q).length) return; if(!$('bClear').dataset.sure){ $('bClear').dataset.sure=1; $('bClear').textContent='Точно очистить? Нажмите ещё раз'; setTimeout(()=>{delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ';},3000); return; } o.q={}; save(); delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ'; renderAll(); };
-$('bPrint').onclick=()=>{
+$('bPrint').onclick=e=>{ e.stopPropagation(); choose(e.currentTarget,[['🖨 Печать',()=>printOrder()],['💾 Сохранить PDF',()=>orderPDF(false,'save')]]); };
+function printOrder(){
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
   let h=`<h1>King Wings Travel — заказ · ${esc(r.name)}</h1><p>${esc(metaText())}</p><table><tr><th>Блюдо</th><th class="r">Кол-во</th><th class="r">Цена</th><th class="r">Сумма</th></tr>`;
   c.lines.forEach(l=>{ h+=`<tr><td>${esc(l.it.n)}${l.it.w?' <small>('+esc(l.it.w)+')</small>':''}</td><td class="r">${l.q}</td><td class="r">${plain(l.it.p)}</td><td class="r">${plain(l.s)}</td></tr>`; });
   h+=`</table><p>Блюда и напитки: <b>${plain(c.sum)} тг</b>${c.disc?`<br>Скидка ${c.o.disc}%: −${plain(c.disc)} тг`:''}${c.svc?`<br>Обслуживание ${c.o.svc}%: ${plain(c.svc)} тг`:''}<br><b style="font-size:16pt">Итого: ${plain(c.tot)} тг</b>${c.pax?`<br>На человека: ${plain(c.tot/c.pax)} тг`:''}</p><p>Просим проверить и подтвердить заказ.</p>`;
   $('printout').innerHTML=h; window.print();
-};
+}
 
 $('zoom').onclick=()=>$('zoom').classList.remove('on');
 // mobile sheet
@@ -467,7 +482,7 @@ function renderPlan(){
   sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
     h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
   if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
-  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English)</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button><button id="pNew" class="newg" title="Стереть всё: программу, заказы во всех ресторанах, группу и даты">🆕 Новая группа (всё с нуля)</button></div>`;
+  h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English) ▾</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button><button id="pNew" class="newg" title="Стереть всё: программу, заказы во всех ресторанах, группу и даты">🆕 Новая группа (всё с нуля)</button></div>`;
   $('plan').innerHTML=h;
 }
 $('plan').addEventListener('change', e=>{ const c=e.target.closest('[data-set]'); if(c){ S.set[c.dataset.set]=c.checked?1:0; save(); renderPlan(); } });
@@ -476,7 +491,7 @@ $('plan').addEventListener('click', e=>{
   const del=e.target.closest('[data-del]'); if(del){ if(!del.dataset.sure){ del.dataset.sure=1; del.textContent='точно?'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.sure; del.textContent='✕'; } },3000); return; } S.plan=S.plan.filter(x=>x.id!==del.dataset.del); if(S.edit===del.dataset.del) S.edit=null; save(); renderPlan(); renderPanel(); return; }
   if(e.target.id==='pGear'){ setsOpen=!setsOpen; renderPlan(); return; }
   if(e.target.id==='pSave') saveFile('us');
-  if(e.target.id==='pPartner') saveFile('partner');
+  if(e.target.id==='pPartner'){ e.stopPropagation(); choose(e.target,[['🖨 Печать',()=>planPartner('print')],['💾 Сохранить PDF',()=>saveFile('partner')]]); }
   if(e.target.id==='pOpen') $('fOpen').click();
   if(e.target.id==='pPrint') printPlan();
   if(e.target.id==='pNew'){ const b=e.target;
@@ -602,9 +617,14 @@ async function makePDF(planOverride){
   if(P && plan.length>1){ need(12); doc.setFont('dv','bold'); doc.setFontSize(13); doc.setTextColor(15,61,62); txt(T.all,150,y,{align:'right'}); txt(plain(all)+T.cur,R,y,{align:'right'}); }
   const n=doc.getNumberOfPages(); for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont('dv','normal'); doc.setFontSize(8); doc.setTextColor(150,150,150); txt('King Wings Travel'+(g?' · '+g:'')+' · '+T.page+' '+i+' '+T.of+' '+n,W/2,H-7,{align:'center'}); }
   const props={title:(EN?'Meal plan — ':'Питание — ')+(g||(EN?'group':'группа')), author:'King Wings Travel'};
-  if(P && Q) props.keywords='KWMENU1:'+b64u(JSON.stringify({v:1,group:g,plan:S.plan}));  // данные для повторного открытия — только в нашей версии (с ценами)
+  if(P && Q && !planOverride) props.keywords='KWMENU1:'+b64u(JSON.stringify({v:1,group:g,plan:S.plan}));  // данные для повторного открытия — только в нашей версии (с ценами)
   doc.setProperties(props);
   return doc.output('blob');
+}
+async function planPartner(mode){
+  if(!S.plan.length){ toast('Программа пуста — сначала добавьте приём пищи'); return; }
+  const keep=S.set; S.set=Object.assign({},keep,{lang:'en',price:0,qty:0}); toast(S.set.photo?'Готовлю PDF с фото…':'Готовлю PDF…');
+  try{ printBlob(await makePDF()); }catch(err){ toast('Не получилось сделать PDF'); } finally{ S.set=keep; }
 }
 async function saveFile(mode){
   const keep=S.set; S.set=Object.assign({},keep, mode==='partner'?{lang:'en',price:0,qty:0}:{lang:'ru',price:1,qty:1});
