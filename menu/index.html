@@ -231,7 +231,7 @@ button{cursor:pointer}
       <div class="btns">
         <button class="btn pri wide" id="bPlan">➕ В программу группы</button>
         <button class="btn wide" id="bRest">📋 Скопировать заказ для ресторана</button>
-        <button class="btn" id="bPart">📋 Меню партнёру (EN)</button>
+        <button class="btn" id="bPart">📄 Меню партнёру (EN, PDF с фото)</button>
         <button class="btn" id="bPrint">🖨 Печать / PDF</button>
         <button class="btn ghost wide" id="bClear">Очистить этот заказ</button>
       </div>
@@ -423,7 +423,18 @@ async function copy(s){
   catch(e){ const ta=document.createElement('textarea'); ta.value=s; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); toast('Скопировано');}catch(_){toast('Не удалось скопировать');} ta.remove(); }
 }
 $('bRest').onclick=()=>copy(textRest());
-$('bPart').onclick=()=>copy(textPartner());
+$('bPart').onclick=async()=>{
+  const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
+  const e={id:'cur', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:0, svc:0,
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))};
+  const keep=S.set; S.set=Object.assign({},keep,{lang:'en',price:0,qty:0});
+  toast(S.set.photo?'Готовлю PDF с фото…':'Готовлю PDF…');
+  try{ const blob=await makePDF([e]); const g=String(S.info.group||GP||'').replace(/[\\/:*?"<>|]/g,' ').trim();
+    const name='Menu — '+(r.en||r.name)+(g?' — '+g:'')+(S.info.date?' '+S.info.date:'')+'.pdf';
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); toast('PDF для партнёра — в «Загрузках»'); }
+  catch(err){ toast('Не получилось сделать PDF'); }
+  finally{ S.set=keep; }
+};
 $('bClear').onclick=()=>{ const o=ord(S.r); if(!Object.keys(o.q).length) return; if(!$('bClear').dataset.sure){ $('bClear').dataset.sure=1; $('bClear').textContent='Точно очистить? Нажмите ещё раз'; setTimeout(()=>{delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ';},3000); return; } o.q={}; save(); delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ'; renderAll(); };
 $('bPrint').onclick=()=>{
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
@@ -509,27 +520,44 @@ function planPartner(){
 const MARK='=== KW-MENU-DATA (не менять эту часть) ===';
 function loadScript(src){ return new Promise((ok,no)=>{ const sc=document.createElement('script'); sc.src=src; sc.onload=ok; sc.onerror=no; document.head.appendChild(sc); }); }
 const packP = name => new Promise(r=>pack(name,r));
-function sqJpeg(src){ return new Promise(res=>{ if(!src){res(null);return;} const im=new Image(); let done=false; const fin=v=>{ if(!done){done=true;res(v);} };
+function sqJpeg(src,SZ){ return new Promise(res=>{ if(!src){res(null);return;} const im=new Image(); let done=false; const fin=v=>{ if(!done){done=true;res(v);} };
   if(!/^data:/.test(src)) im.crossOrigin='anonymous';
-  im.onload=()=>{ try{ const S=240, c=document.createElement('canvas'); c.width=c.height=S; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,S,S); const k=Math.max(S/im.width,S/im.height), w=im.width*k, h=im.height*k; x.drawImage(im,(S-w)/2,(S-h)/2,w,h); fin(c.toDataURL('image/jpeg',.82)); }catch(e){ fin(null); } };
+  im.onload=()=>{ try{ const S=SZ||240, c=document.createElement('canvas'); c.width=c.height=S; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,S,S); const k=Math.max(S/im.width,S/im.height), w=im.width*k, h=im.height*k; x.drawImage(im,(S-w)/2,(S-h)/2,w,h); fin(c.toDataURL('image/jpeg',.82)); }catch(e){ fin(null); } };
   im.onerror=()=>fin(null); setTimeout(()=>fin(null),5000); im.src=src; }); }
+function findIt(e,l){ const Rr=DATA.find(r=>r.id===e.r); let f=null; if(Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n && (it.w||'')===(l.w||'')) f=it; })); if(!f && Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n) f=it; })); return f; }
 function findImg(e,l){ if(l.i) return l.i; const Rr=DATA.find(r=>r.id===e.r); let f=''; if(Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n && it.i) f=it.i; })); return f; }
 function b64u(str){ return btoa(unescape(encodeURIComponent(str))); }
 function ub64(b){ return decodeURIComponent(escape(atob(b))); }
 const MEN={'Завтрак':'Breakfast','Обед':'Lunch','Ужин':'Dinner','Кофе-брейк':'Coffee break','Ланч-бокс':'Lunch box','Ужин (прощальный)':'Farewell dinner'};
 function wEN(w){ return String(w).replace(/(\d)\s*гр\.?(?![а-яё])/g,'$1 g').replace(/(\d)\s*кг(?![а-яё])/g,'$1 kg').replace(/(\d)\s*г(?![а-яё])/g,'$1 g').replace(/(\d)\s*мл(?![а-яё])/g,'$1 ml').replace(/(\d)\s*л(?![а-яё])/g,'$1 l').replace(/(\d)\s*шт\.?/g,'$1 pcs').replace(/на\s+(\d+(?:[–-]\d+)?)\s*чел\.?/g,'for $1 people').replace(/чайник/g,'teapot').replace(/чашка/g,'cup').replace(/порц\.?(ия)?/g,'portion'); }
 function rInfo(e){ const Rr=DATA.find(r=>r.id===e.r)||{}; return {kind:e.kind||Rr.kind||'Ресторан', ken:e.ken||Rr.ken||'Restaurant'}; }
-async function makePDF(){
+// перевод описаний блюд RU→EN для «Меню партнёру» (Google Translate; без интернета — только название)
+let TRC={}; try{ TRC=JSON.parse(localStorage.getItem('kwtr')||'{}')||{}; }catch(e){}
+async function trPrep(plan){
+  const need=[]; plan.forEach(e=>e.lines.forEach(l=>{ const it=findIt(e,l); const t=it&&(it.d||it.h); if(t){ const k=t.replace(/\s+/g,' ').trim(); if(!TRC[k] && !need.includes(k)) need.push(k); } }));
+  if(!need.length || !navigator.onLine) return;
+  const groups=[]; let cur=[], n=0; need.forEach(t=>{ if(n+t.length>1500&&cur.length){groups.push(cur);cur=[];n=0;} cur.push(t); n+=t.length+1; }); if(cur.length) groups.push(cur);
+  for(const g of groups){
+    try{
+      const ctl=new AbortController(); setTimeout(()=>ctl.abort(),8000);
+      const r=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:'q='+encodeURIComponent(g.join('\n'))});
+      const j=await r.json(); const out=j[0].map(x=>x[0]).join('').split('\n');
+      if(out.length===g.length) g.forEach((t,i)=>{ TRC[t]=out[i].trim(); });
+    }catch(err){ break; }
+  }
+  try{ localStorage.setItem('kwtr',JSON.stringify(TRC)); }catch(e){}
+}
+async function makePDF(planOverride){
   if(!window.jspdf) await loadScript('pdflib.js');
   const st=S.set, EN=st.lang==='en', P=!!st.price, Q=!!st.qty, PH=!!st.photo;
   const T=EN?{title:'King Wings Travel — Meal plan',saved:'Prepared: ',dish:'Dish',qty:'Qty',price:'Price',sum:'Amount',food:'Food & drinks:',disc:'Discount',svc:'Service',tot:'Total:',pp:'Per person',all:'Total for the programme:',pax:' pax',nod:'date ?',nom:'meal ?',page:'page',of:'of',cur:' KZT'}
               :{title:'King Wings Travel — питание группы',saved:'Сохранено: ',dish:'Блюдо',qty:'Кол-во',price:'Цена',sum:'Сумма',food:'Блюда и напитки:',disc:'Скидка',svc:'Обслуживание',tot:'Итого:',pp:'На человека',all:'Всего по программе:',pax:' гост.',nod:'без даты',nom:'приём пищи ?',page:'стр.',of:'из',cur:' тг'};
-  const plan=sortedPlan(); if(PH) for(const id of [...new Set(plan.map(e=>e.r))]) await packP(id);
+  const PART=EN&&!P&&!Q; const plan=planOverride||sortedPlan(); if(PART) await trPrep(plan); if(PH) for(const id of [...new Set(plan.map(e=>e.r))]) await packP(id);
   const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'}); doc.setFont('dv','normal');
   const L=14, R=196, W=210, H=297; let y=16; const g=S.info.group||GP||'';
   const need=h=>{ if(y+h>H-14){ doc.addPage(); y=16; } };
   const txt=(t,x,yy,o)=>doc.text(String(t),x,yy,o||{});
-  const nx=PH?L+20:L, nw=(P?150:(Q?175:R))-nx-(Q?18:4);
+  const IM=PART?30:17; const nx=PH?L+IM+3:L, nw=(P?150:(Q?175:R))-nx-(Q?18:4);
   doc.setFont('dv','bold'); doc.setFontSize(15); doc.setTextColor(15,61,62); txt(T.title,L,y); y+=7;
   doc.setFont('dv','normal'); doc.setFontSize(11); doc.setTextColor(29,29,27); if(g){ txt(g,L,y); y+=5.5; }
   doc.setFontSize(9); doc.setTextColor(119,115,107); txt(T.saved+new Date().toLocaleDateString(EN?'en-GB':'ru-RU'),L,y); y+=8;
@@ -545,13 +573,17 @@ async function makePDF(){
     doc.setFont('dv','normal'); doc.setFontSize(8); doc.setTextColor(119,115,107);
     txt(T.dish,nx,y); const qx=P?150:R; if(Q) txt(T.qty,qx,y,{align:'right'}); if(P){ txt(T.price,172,y,{align:'right'}); txt(T.sum,R,y,{align:'right'}); } y+=2;
     for(const l of e.lines){
-      const im=PH?await sqJpeg(imgSrc(findImg(e,l))):null;
-      doc.setFontSize(10); doc.setFont('dv','bold'); const nm=doc.splitTextToSize(EN?(l.e||l.n):l.n,nw); const th=nm.length*4.4+(l.w?4:0)+3; const rh=Math.max(im?19:0,th);
+      const it=findIt(e,l)||{}; const im=PH?await sqJpeg(imgSrc(findImg(e,l)),PART?520:240):null;
+      const de=PART?(it.de||TRC[(it.d||it.h||'').replace(/\s+/g,' ').trim()]||''):''; 
+      doc.setFontSize(PART?11:10); doc.setFont('dv','bold'); const nm=doc.splitTextToSize(EN?(l.e||l.n):l.n,nw);
+      doc.setFont('dv','normal'); doc.setFontSize(8.8); const dl=de?doc.splitTextToSize(de,nw):[];
+      const th=nm.length*4.6+(l.w?4:0)+dl.length*3.8+(dl.length?1.5:0)+3; const rh=Math.max(im?IM+2:0,th);
       need(rh+2);
-      if(im){ try{ doc.addImage(im,'JPEG',L,y+1,17,17); }catch(err){} }
-      doc.setTextColor(29,29,27); doc.text(nm,nx,y+5);
-      const yy=y+5+(nm.length-1)*4.4;
-      if(l.w){ doc.setFont('dv','normal'); doc.setFontSize(8.5); doc.setTextColor(119,115,107); txt(EN?wEN(l.w):l.w,nx,yy+4); }
+      if(im){ try{ doc.addImage(im,'JPEG',L,y+1,IM,IM); }catch(err){} }
+      doc.setFont('dv','bold'); doc.setFontSize(PART?11:10); doc.setTextColor(29,29,27); doc.text(nm,nx,y+5);
+      let yy=y+5+(nm.length-1)*4.6;
+      if(l.w){ doc.setFont('dv','normal'); doc.setFontSize(8.5); doc.setTextColor(119,115,107); yy+=4; txt(EN?wEN(l.w):l.w,nx,yy); }
+      if(dl.length){ doc.setFont('dv','normal'); doc.setFontSize(8.8); doc.setTextColor(80,78,72); yy+=4.3; doc.text(dl,nx,yy); }
       doc.setFont('dv','normal'); doc.setFontSize(10); doc.setTextColor(29,29,27);
       if(Q) txt(String(l.q),qx,y+5,{align:'right'}); if(P){ txt(plain(l.p),172,y+5,{align:'right'}); txt(plain(l.p*l.q),R,y+5,{align:'right'}); }
       y+=rh+1; doc.setDrawColor(230,225,214); doc.setLineWidth(.2); doc.line(L,y,R,y); y+=1;
