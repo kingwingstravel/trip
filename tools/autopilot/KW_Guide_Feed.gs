@@ -185,6 +185,7 @@ var LANG_NAME = { id: 'Bahasa', en: '', ru: 'Русский', ms: 'Melayu', ko: 
 // список групп, которым нужно автозаполнение (новые файлы партнёра после прошлого заполнения или нет таблицы)
 function fillList_() {
   var out = [], props = PropertiesService.getScriptProperties();
+  if (!props.getProperty('GEMINI_KEY')) return out;   // без ключа Gemini автозаполнение выключено — ничего не создаём
   var today = new Date(); today.setHours(0, 0, 0, 0);
   var tops = DriveApp.getFoldersByName('1. Confirmed');
   while (tops.hasNext()) {
@@ -321,6 +322,7 @@ function clean_(s) {
 
 // заполнить одну группу. testFolderId — куда положить таблицу при проверке (иначе — в папку группы)
 function fillOne_(folderId, partner, testFolderId) {
+  if (!PropertiesService.getScriptProperties().getProperty('GEMINI_KEY')) throw new Error('нет GEMINI_KEY — автозаполнение выключено');
   var gf = DriveApp.getFolderById(folderId);
   var src = sources_(gf, 0, []);
   if (!src.length) return 'нет файлов';
