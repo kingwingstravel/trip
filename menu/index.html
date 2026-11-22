@@ -614,13 +614,13 @@ const packP = name => new Promise(r=>pack(name,r));
 function sqJpeg(src,SZ){ return new Promise(res=>{ if(!src){res(null);return;} const im=new Image(); let done=false; const fin=v=>{ if(!done){done=true;res(v);} };
   if(!/^data:/.test(src)) im.crossOrigin='anonymous';
   im.onload=()=>{ try{ const S=SZ||240, c=document.createElement('canvas'); c.width=c.height=S; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,S,S); const k=Math.max(S/im.width,S/im.height), w=im.width*k, h=im.height*k; x.drawImage(im,(S-w)/2,(S-h)/2,w,h); fin(c.toDataURL('image/jpeg',.82)); }catch(e){ fin(null); } };
-  im.onerror=()=>fin(null); setTimeout(()=>fin(null),5000); im.src=src; }); }
+  let tried=false; im.onerror=()=>{ if(OFF && !tried && !/^(data:|https?:)/.test(src)){ tried=true; im.crossOrigin='anonymous'; im.src=ONLINE+src; return; } fin(null); }; setTimeout(()=>fin(null),8000); im.src=src; }); }
 function findIt(e,l){ const Rr=DATA.find(r=>r.id===e.r); let f=null; if(Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n && (it.w||'')===(l.w||'')) f=it; })); if(!f && Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n) f=it; })); return f; }
 function findImg(e,l){ if(l.i) return l.i; const Rr=DATA.find(r=>r.id===e.r); let f=''; if(Rr) Rr.sections.forEach(sec=>sec.items.forEach(it=>{ if(!f && it.n===l.n && it.i) f=it.i; })); return f; }
 function b64u(str){ return btoa(unescape(encodeURIComponent(str))); }
 function ub64(b){ return decodeURIComponent(escape(atob(b))); }
 const MEN={'Завтрак':'Breakfast','Обед':'Lunch','Ужин':'Dinner','Кофе-брейк':'Coffee break','Ланч-бокс':'Lunch box','Ужин (прощальный)':'Farewell dinner'};
-function wEN(w){ return String(w).replace(/(\d)\s*гр\.?(?![а-яё])/g,'$1 g').replace(/(\d)\s*кг(?![а-яё])/g,'$1 kg').replace(/(\d)\s*г(?![а-яё])/g,'$1 g').replace(/(\d)\s*мл(?![а-яё])/g,'$1 ml').replace(/(\d)\s*л(?![а-яё])/g,'$1 l').replace(/(\d)\s*шт\.?/g,'$1 pcs').replace(/на\s+(\d+(?:[–-]\d+)?)\s*чел\.?/g,'for $1 people').replace(/чайник/g,'teapot').replace(/чашка/g,'cup').replace(/порц\.?(ия)?/g,'portion'); }
+function wEN(w){ return String(w).replace(/(\d)\s*гр\.?(?![а-яё])/g,'$1 g').replace(/(\d)\s*кг(?![а-яё])/g,'$1 kg').replace(/(\d)\s*г(?![а-яё])/g,'$1 g').replace(/(\d)\s*мл(?![а-яё])/g,'$1 ml').replace(/(\d)\s*л(?![а-яё])/g,'$1 L').replace(/(\d)\s*шт\.?/g,'$1 pcs').replace(/на\s+(\d+(?:[–-]\d+)?)\s*чел\.?/g,'for $1 people').replace(/чайник/g,'teapot').replace(/чашка/g,'cup').replace(/порц\.?(ия)?/g,'portion'); }
 function rInfo(e){ const Rr=DATA.find(r=>r.id===e.r)||{}; return {kind:e.kind||Rr.kind||'Ресторан', ken:e.ken||Rr.ken||'Restaurant'}; }
 // перевод описаний блюд RU→EN для «Меню партнёру» (Google Translate; без интернета — только название)
 let TRC={}; try{ TRC=JSON.parse(localStorage.getItem('kwtr')||'{}')||{}; }catch(e){}
