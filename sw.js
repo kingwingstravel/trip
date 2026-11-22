@@ -1,4 +1,4 @@
-const C="kw-trip-v4";
+const C="kw-trip-v5";
 /* 16.11.2026: запросы к боту (фото, видео, проверка имени) НЕ трогаем и не кэшируем.
    Раньше при слабом интернете вместо списка видео отдавался сохранённый список фото (ignoreSearch: у бота один адрес). */
 const BOT=/(^|\.)script\.google\.com$|(^|\.)googleusercontent\.com$/;
@@ -20,7 +20,9 @@ self.addEventListener("fetch",e=>{
  if(BOT.test(u.hostname))return;
  /* 22.11.2026: меню, сайт программ, админка и значки — не через этот кэш (иначе браузер показывал старую версию меню) */
  if(u.origin===self.location.origin && /^\/(menu|programs|apps|admin)\//.test(u.pathname))return;
- const net=caches.open(C).then(c=>fetch(e.request).then(r=>{if(r.ok)c.put(e.request,r.clone());return r}));
+ /* 23.11.2026: страница группы всегда проверяется заново (no-cache), иначе значок на экране iPhone долго показывал старую версию */
+ const req=e.request.mode==="navigate"?new Request(e.request.url,{cache:"no-cache",credentials:"same-origin"}):e.request;
+ const net=caches.open(C).then(c=>fetch(req).then(r=>{if(r.ok)c.put(e.request,r.clone());return r}));
  const old=()=>caches.match(e.request,{ignoreSearch:true});
  if(e.request.mode!=="navigate"){e.respondWith(net.catch(()=>old()));return}
  e.respondWith(new Promise(res=>{let done=false;const ok=r=>{if(!done&&r){done=true;res(r)}};
