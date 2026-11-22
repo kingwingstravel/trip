@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta name="kwver" content="202611221424">
+<meta name="kwver" content="202611221506">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -39,6 +39,21 @@ button{cursor:pointer}
 .rtab:hover{opacity:1;background:rgba(255,255,255,.16)}
 .rtab.on{background:var(--bg);color:var(--brand);opacity:1}
 .top{padding-bottom:12px}
+/* города (22.11.2026) */
+.city{display:inline-flex;gap:4px;margin-top:14px;padding:4px;border-radius:14px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.14)}
+.city button{border:0;background:transparent;color:#fff;opacity:.75;padding:8px 18px;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px;transition:background .15s,opacity .15s}
+.city button:hover{opacity:1}
+.city button i{font-style:normal;font-size:12px;font-weight:700;padding:1px 7px;border-radius:8px;background:rgba(255,255,255,.16)}
+.city button.on{opacity:1;background:var(--gold);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.city button.on i{background:rgba(255,255,255,.28)}
+body.kg .top{box-shadow:inset 0 -4px 0 var(--gold)}
+body.kg .rtab.on{color:#8a5a12}
+.pr.cv{position:relative;cursor:help;border-bottom:1px dotted rgba(0,0,0,.35)}
+.pr.cv .cvt{display:none;position:absolute;left:0;bottom:calc(100% + 6px);z-index:30;white-space:nowrap;background:#1d1d1b;color:#fff;font-size:13px;font-weight:600;padding:6px 10px;border-radius:9px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.pr.cv .cvt small{display:block;font-weight:400;opacity:.7;font-size:11px;white-space:normal;max-width:240px;margin-top:2px}
+.pr.cv:hover .cvt,.pr.cv.open .cvt{display:block}
+.tr.cvr{font-size:13px;color:var(--mute);justify-content:flex-end;text-align:right}
+
 .rinfo{font-size:14px;color:var(--mute);margin:0 0 10px}
 .rinfo b{color:var(--ink)}
 .warn{background:#fff4dc;border:1px solid #f0d9a6;color:#6b4e12;border-radius:10px;padding:8px 12px;font-size:14px;margin:0 0 10px}
@@ -190,9 +205,10 @@ button{cursor:pointer}
 <body>
 <header class="top">
   <div class="top-row">
-    <div class="brand">King Wings Travel<small>Меню ресторанов · для менеджера · обновлено 19.11.2026</small></div>
+    <div class="brand">King Wings Travel<small>Меню ресторанов · для менеджера · обновлено 22.11.2026</small></div>
     <a class="dl" id="dl" href="KW_Menu_offline.zip">⬇ Скачать для работы без интернета</a>
   </div>
+  <div class="city" id="city"></div>
   <nav class="rtabs" id="rtabs"></nav>
 </header>
 
@@ -230,6 +246,7 @@ button{cursor:pointer}
       <div class="tr"><span>Обслуживание, % <input id="fSvc" type="number" min="0" max="100" inputmode="decimal"></span><span id="tSvc">0 ₸</span></div>
       <div class="tr big"><span>Итого</span><span id="tTot">0 ₸</span></div>
       <div class="tr pp" id="rowPP" hidden><span id="lPP">На человека</span><span id="tPP"></span></div>
+      <div class="tr cvr" id="rowCV" hidden><span id="tCV"></span></div>
       <div class="btns">
         <button class="btn pri wide" id="bPlan">➕ В программу группы</button>
         <button class="btn wide" id="bRest">📋 Скопировать заказ для ресторана</button>
@@ -237,7 +254,7 @@ button{cursor:pointer}
         <button class="btn" id="bPrint">🖨 Печать / 💾 PDF ▾</button>
         <button class="btn ghost wide" id="bClear">Очистить этот заказ</button>
       </div>
-      <div class="note">Цены — из базы King Wings (меню ресторанов). Фото — из меню ресторанов и с Glovo / Wolt, для наглядности.</div>
+      <div class="note">Цены — из базы King Wings (меню ресторанов). Фото — из меню ресторанов и с Glovo / Wolt, для наглядности.<span id="cvNote"></span></div>
     </div>
   </aside>
 </div>
@@ -248,13 +265,14 @@ button{cursor:pointer}
 <div class="zoom" id="zoom"><div id="zWrap"><img id="zImg" alt=""><i id="zBox"></i></div><div id="zCap"></div></div>
 <div class="printout" id="printout"></div>
 
+<script>document.write('<script src="rates.js'+(location.protocol==="file:"?"":"?v="+Math.floor(Date.now()/600000))+'"><\/script>'); if(location.protocol==="file:"&&navigator.onLine) document.write('<script src="https://trip.kingwingstravel-dmc.com/menu/rates.js?t='+Date.now()+'"><\/script>');</script>
 <script>if(location.protocol==="file:")document.write('<script src="data.js"><\/script>');else document.write('<script src="data.js?v='+Math.floor(Date.now()/300000)+'"><\/script>');</script>
 <script>/* офлайн-копия: если есть интернет — берём самое свежее меню с сайта */
 if(location.protocol==='file:' && navigator.onLine){ window.MENU_LOCAL_VER=window.MENU_VER; document.write('<script src="https://trip.kingwingstravel-dmc.com/menu/data.js?t='+Date.now()+'"><\/script>'); }
 </script>
 <script>
 const DATA = window.MENU_DATA || [];
-const UPDATED = "19.11.2026";
+const UPDATED = "22.11.2026";
 const NOIMG = '<div class="ni"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="26" r="14"/><circle cx="24" cy="26" r="8"/><path d="M6 8v12M10 8v12M8 20v20M40 8c-3 3-4 8-4 12h4v20"/></svg></div>';
 
 // ---------- state ----------
@@ -280,14 +298,37 @@ function ord(id){ const R=DATA.find(r=>r.id===id); if(!S.orders[id]) S.orders[id
 // index items
 DATA.forEach(R=>{ let k=0; R.sections.forEach(sec=>sec.items.forEach(it=>{ it.k=R.id+'_'+(k++); it.sec=sec.t; })); });
 const R = ()=>DATA.find(r=>r.id===S.r);
-const fmt = n => Math.round(n).toLocaleString('ru-RU').replace(/ /g,' ') + ' ₸';
+// ---------- валюта и курс (22.11.2026) ----------
+const CUR={KZT:{s:'₸',t:'тг',en:' KZT'},KGS:{s:'сом',t:'сом',en:' KGS'}};
+const rcur = id => { const r=DATA.find(x=>x.id===id); return (r&&r.cur)||'KZT'; };
+const ecur = e => e.cur || rcur(e.r);
+const num = n => Math.round(n).toLocaleString('ru-RU').replace(/\u00a0/g,' ');
+const fmtC = (n,c) => num(n)+' '+CUR[c||'KZT'].s;
+const fmt = n => fmtC(n, rcur(S.r));
+const RT = window.KW_RATES || null;   // курс обменника МиГ (mig.kz): kgs — продажа сома, usd — покупка доллара
+function usd(v){ return '$'+(v>=100?num(v):v.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2})); }
+function conv(n,c){ if(c!=='KGS'||!RT||!RT.kgs||!RT.usd) return ''; const kzt=n*RT.kgs; return '≈ '+num(kzt)+' ₸ · ≈ '+usd(kzt/RT.usd); }
+function rateLine(){ return RT?('курс МиГ, '+(RT.d||'')+': 1 сом = '+String(RT.kgs).replace('.',',')+' ₸ · $1 = '+String(RT.usd).replace('.',',')+' ₸'):''; }
+function sumsBy(list){ const m={}; list.forEach(([v,c])=>{ m[c]=(m[c]||0)+v; }); return m; }
+function fmtSums(m,txt){ return Object.entries(m).map(([c,v])=>txt?num(v)+' '+CUR[c].t:fmtC(v,c)).join(' + '); }
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $ = id => document.getElementById(id);
 function itemByKey(k){ for(const r of DATA) for(const s of r.sections) for(const it of s.items) if(it.k===k) return it; }
 
 // ---------- tabs ----------
+const cityOf = r => (r.cur==='KGS' ? 'kg' : 'kz');
+const CITIES=[['kz','Алматы','₸'],['kg','Бишкек','сом']];
+function renderCity(){
+  const c=cityOf(R()); document.body.classList.toggle('kg', c==='kg');
+  $('city').innerHTML = CITIES.map(([id,t,cur])=>{ const n=DATA.filter(r=>cityOf(r)===id).length; return n?`<button class="${id===c?'on':''}" data-c="${id}" title="${n} ресторанов · цены в ${cur==='₸'?'тенге':'сомах'}">${t}<i>${cur}</i></button>`:''; }).join('');
+}
+$('city').onclick = e => { const b=e.target.closest('[data-c]'); if(!b) return; const c=b.dataset.c; if(cityOf(R())===c) return;
+  S.lastR=S.lastR||{}; S.lastR[cityOf(R())]=S.r;
+  const want=S.lastR[c]; const r=DATA.find(x=>x.id===want && cityOf(x)===c) || DATA.find(x=>cityOf(x)===c);
+  S.r=r.id; $('q').value=''; save(); pack(S.r, ()=>{ renderAll(); window.scrollTo(0,0); }); };
 function renderTabs(){
-  $('rtabs').innerHTML = DATA.map(r=>{
+  renderCity();
+  $('rtabs').innerHTML = DATA.filter(r=>cityOf(r)===cityOf(R())).map(r=>{
     const n = Object.values(ord(r.id).q).filter(x=>x>0).length;
     return `<button class="rtab ${r.id===S.r?'on':''}" data-r="${r.id}">${esc(r.name)}${n?`<span class="dot">${n}</span>`:''}</button>`;
   }).join('');
@@ -295,6 +336,7 @@ function renderTabs(){
 $('rtabs').onclick = e => { const b=e.target.closest('.rtab'); if(!b) return; S.r=b.dataset.r; $('q').value=''; save(); pack(S.r, ()=>{ renderAll(); window.scrollTo(0,0); }); };
 
 // ---------- menu ----------
+function prHTML(p){ const c=rcur(S.r), cv=conv(p,c); return cv?`<span class="pr cv" tabindex="0">${fmtC(p,c)}<span class="cvt">${cv}<small>${rateLine()}</small></span></span>`:`<span class="pr">${fmtC(p,c)}</span>`; }
 function cardHTML(it){
   const q = ord(S.r).q[it.k]||0;
   const ph = it.i ? `<div class="ph" data-z="${it.k}"><img loading="lazy" src="${esc(imgSrc(it.i))}" alt="" onerror="imgErr(this,'${esc(it.i)}')"></div>` : '';
@@ -305,13 +347,14 @@ function cardHTML(it){
   const tip = it.d ? `<b>${it.ds==='w'?'Состав (с сайта доставки ресторана)':'Состав (меню ресторана)'}</b>${esc(it.d)}` : (it.h ? `<b>Подсказка</b>${esc(it.h)}` : '');
   const info = tip ? `<button class="info" type="button" aria-label="Что это">i<span class="tip">${tip}</span></button>` : '';
   const pgb = it.pg ? `<button class="pgb" type="button" data-pg="${it.k}" title="Фото блюда на странице меню ресторана">📖 в меню</button>` : '';
-  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}${pgb}</div><div class="cw">${esc(it.w||'')}</div><div class="cf"><span class="pr">${it.p?fmt(it.p):'<small style="font-weight:600;color:#b3402f">цена — уточнить</small>'}</span>${ctl}</div></div></div>`;
+  return `<div class="card ${q>0?'sel':''}" id="c_${it.k}">${ph}<div class="cb"><div class="cn">${tags}${esc(it.n)}${info}${pgb}</div><div class="cw">${esc(it.w||'')}</div><div class="cf">${it.p?prHTML(it.p):'<span class="pr"><small style="font-weight:600;color:#b3402f">цена — уточнить</small></span>'}${ctl}</div></div></div>`;
 }
 function renderMenu(){
   const r=R(), qq=$('q').value.trim().toLowerCase();
   const nd=r.sections.reduce((a,s)=>a+s.items.length,0);
   let info=`<div class="rinfo"><b>${esc(r.name)}</b> · ${esc(r.city)}${r.kind?' · '+esc(r.kind):''} · ${nd} позиций · обслуживание ${r.svc}%</div>`;
   const w=[]; if(/wolt|2gis|доставк/i.test(r.note||'')) w.push('Цены этого ресторана в нашей базе взяты с доставки / 2ГИС, а не из меню зала — уточните у ресторана.'); if(/обслуживание уточнить/i.test(r.note||'')) w.push('Процент обслуживания нужно уточнить у ресторана.'); if(/ЗАПАСНОЙ/.test(r.note||'')) w.push('Запасной вариант: ресторан то работает, то нет.'); if(/название ресторана уточнить/.test(r.note||'')) w.push('Новый ресторан из вашего PDF-меню: точное название и процент обслуживания уточнить. Код блюда (A1, B5…) указан под названием — по нему удобно заказывать.');
+  if(r.cur==='KGS') info=info.replace('</div>',` · цены в <b>сомах</b>${RT?' — наведите или нажмите на цену: покажет ₸ и $':''}</div>`);
   if(w.length) info+=`<div class="warn">⚠ ${w.map(esc).join('<br>⚠ ')}</div>`;
   $('rinfo').innerHTML=info;
   let html='', chips='';
@@ -343,6 +386,7 @@ function setQ(k,q){
   renderPanel(); renderTabs();
 }
 $('menu').addEventListener('click', e=>{
+  const pc=e.target.closest('.pr.cv'); document.querySelectorAll('.pr.cv.open').forEach(x=>{ if(x!==pc) x.classList.remove('open'); }); if(pc){ pc.classList.toggle('open'); return; }
   const pgb=e.target.closest('[data-pg]'); if(pgb){ const it=itemByKey(pgb.dataset.pg); pack('pages-'+S.r, ()=>{ $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.pg)}; const zb=$('zBox'), b=it.pb; $('zoom').classList.toggle('hb',!!b); if(b){ zb.style.left=(b[0]*100)+'%'; zb.style.top=(b[1]*100)+'%'; zb.style.width=((b[2]-b[0])*100)+'%'; zb.style.height=((b[3]-b[1])*100)+'%'; } $('zImg').src=imgSrc(it.pg); $('zCap').textContent=it.n+(b?' — обведено красным на странице меню':' — страница меню ресторана'); $('zoom').classList.add('on','page'); }); return; }
   const z=e.target.closest('[data-z]'); if(z){ $('zoom').classList.remove('page','hb'); const it=itemByKey(z.dataset.z); $('zImg').dataset.t=''; $('zImg').onerror=function(){imgErr(this,it.i)}; $('zImg').src=imgSrc(it.i); $('zCap').textContent=it.n+' · '+fmt(it.p); $('zoom').classList.add('on'); return; }
   const b=e.target.closest('button[data-a]'); if(!b) return;
@@ -378,6 +422,7 @@ function renderPanel(){
   $('tSum').textContent=fmt(c.sum); $('tDisc').textContent=c.disc?('− '+fmt(c.disc)):fmt(0);
   $('tSvc').textContent=fmt(c.svc); $('tTot').textContent=fmt(c.tot);
   $('rowPP').hidden = !c.pax; if(c.pax){ $('lPP').textContent='На человека ('+c.pax+')'; $('tPP').textContent=fmt(c.tot/c.pax); }
+  cvRow(c);
   const n=c.lines.reduce((a,l)=>a+l.q,0);
   $('mCount').textContent = c.lines.length ? `🧾 ${c.lines.length} блюд · ${n} шт.` : 'Заказ пуст';
   $('mSum').textContent = c.lines.length ? fmt(c.tot)+' ›' : '';
@@ -389,7 +434,8 @@ $('lines').addEventListener('click', e=>{
 });
 $('fDisc').oninput = e=>{ ord(S.r).disc=Math.max(0,+e.target.value||0); save(); renderPanelKeep(); };
 $('fSvc').oninput = e=>{ ord(S.r).svc=Math.max(0,+e.target.value||0); save(); renderPanelKeep(); };
-function renderPanelKeep(){ const c=calc(); $('tDisc').textContent=c.disc?('− '+fmt(c.disc)):fmt(0); $('tSvc').textContent=fmt(c.svc); $('tTot').textContent=fmt(c.tot); $('rowPP').hidden=!c.pax; if(c.pax) $('tPP').textContent=fmt(c.tot/c.pax); $('mSum').textContent=c.lines.length?fmt(c.tot)+' ›':''; }
+function cvRow(c){ const cur=rcur(S.r), cv=conv(c.tot,cur); $('rowCV').hidden=!(cv&&c.lines.length); if(cv) $('tCV').innerHTML=esc(cv)+(c.pax?'<br>на человека '+esc(conv(c.tot/c.pax,cur)):'')+'<br><small>'+esc(rateLine())+'</small>'; $('cvNote').textContent = cur==='KGS' ? ' Цены этого ресторана — в сомах; ₸ и $ — примерно, по курсу обменника МиГ.' : ''; }
+function renderPanelKeep(){ const c=calc(); cvRow(c); $('tDisc').textContent=c.disc?('− '+fmt(c.disc)):fmt(0); $('tSvc').textContent=fmt(c.svc); $('tTot').textContent=fmt(c.tot); $('rowPP').hidden=!c.pax; if(c.pax) $('tPP').textContent=fmt(c.tot/c.pax); $('mSum').textContent=c.lines.length?fmt(c.tot)+' ›':''; }
 
 // details
 const fields={fGroup:'group',fDate:'date',fMeal:'meal',fPax:'pax'};
@@ -399,15 +445,15 @@ if(Object.values(S.info).some(v=>v)) $('det').open=true;
 // ---------- texts ----------
 const plain = n => Math.round(n).toLocaleString('ru-RU').replace(/ /g,' ');
 function textRest(){
-  const c=calc(), r=R(); if(!c.lines.length) return '';
+  const c=calc(), r=R(); if(!c.lines.length) return ''; const tg=CUR[r.cur||'KZT'].t;
   let t=`Заказ от King Wings Travel\nРесторан: ${r.name}\n`;
   const m=metaText(); if(m) t+=m+'\n';
-  t+='\n'; c.lines.forEach((l,i)=>{ t+=`${i+1}. ${l.it.n}${l.it.w?' ('+l.it.w+')':''} — ${l.q} × ${plain(l.it.p)} = ${plain(l.s)} тг\n`; });
-  t+=`\nБлюда и напитки: ${plain(c.sum)} тг\n`;
-  if(c.disc) t+=`Скидка ${c.o.disc}%: −${plain(c.disc)} тг\n`;
-  if(c.svc) t+=`Обслуживание ${c.o.svc}%: ${plain(c.svc)} тг\n`;
-  t+=`ИТОГО: ${plain(c.tot)} тг\n`;
-  if(c.pax) t+=`На человека: ${plain(c.tot/c.pax)} тг (${c.pax} гостей)\n`;
+  t+='\n'; c.lines.forEach((l,i)=>{ t+=`${i+1}. ${l.it.n}${l.it.w?' ('+l.it.w+')':''} — ${l.q} × ${plain(l.it.p)} = ${plain(l.s)} ${tg}\n`; });
+  t+=`\nБлюда и напитки: ${plain(c.sum)} ${tg}\n`;
+  if(c.disc) t+=`Скидка ${c.o.disc}%: −${plain(c.disc)} ${tg}\n`;
+  if(c.svc) t+=`Обслуживание ${c.o.svc}%: ${plain(c.svc)} ${tg}\n`;
+  t+=`ИТОГО: ${plain(c.tot)} ${tg}\n`;
+  if(c.pax) t+=`На человека: ${plain(c.tot/c.pax)} ${tg} (${c.pax} гостей)\n`;
   t+='\nПросим проверить и подтвердить заказ. Спасибо!';
   return t;
 }
@@ -425,7 +471,7 @@ async function copy(s){
   catch(e){ const ta=document.createElement('textarea'); ta.value=s; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); toast('Скопировано');}catch(_){toast('Не удалось скопировать');} ta.remove(); }
 }
 $('bRest').onclick=()=>copy(textRest());
-function curEntry(ours){ const c=calc(), r=R(); return {id:'cur', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:ours?(+c.o.disc||0):0, svc:ours?(+c.o.svc||0):0,
+function curEntry(ours){ const c=calc(), r=R(); return {id:'cur', cur:r.cur||'KZT', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:ours?(+c.o.disc||0):0, svc:ours?(+c.o.svc||0):0,
     lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))}; }
 function printBlob(blob){ const u=URL.createObjectURL(blob); const f=document.createElement('iframe'); f.style.cssText='position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0'; f.src=u;
   f.onload=()=>setTimeout(()=>{ try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ window.open(u,'_blank'); } },400); document.body.appendChild(f); setTimeout(()=>f.remove(),120000); }
@@ -453,10 +499,10 @@ $('bPart').onclick=e=>{ e.stopPropagation(); choose(e.currentTarget,[['🖨 Пе
 $('bClear').onclick=()=>{ const o=ord(S.r); if(!Object.keys(o.q).length) return; if(!$('bClear').dataset.sure){ $('bClear').dataset.sure=1; $('bClear').textContent='Точно очистить? Нажмите ещё раз'; setTimeout(()=>{delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ';},3000); return; } o.q={}; save(); delete $('bClear').dataset.sure; $('bClear').textContent='Очистить этот заказ'; renderAll(); };
 $('bPrint').onclick=e=>{ e.stopPropagation(); choose(e.currentTarget,[['🖨 Печать',()=>printOrder()],['💾 Сохранить PDF',()=>orderPDF(false,'save')]]); };
 function printOrder(){
-  const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
+  const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; } const tg=CUR[r.cur||'KZT'].t;
   let h=`<h1>King Wings Travel — заказ · ${esc(r.name)}</h1><p>${esc(metaText())}</p><table><tr><th>Блюдо</th><th class="r">Кол-во</th><th class="r">Цена</th><th class="r">Сумма</th></tr>`;
   c.lines.forEach(l=>{ h+=`<tr><td>${esc(l.it.n)}${l.it.w?' <small>('+esc(l.it.w)+')</small>':''}</td><td class="r">${l.q}</td><td class="r">${plain(l.it.p)}</td><td class="r">${plain(l.s)}</td></tr>`; });
-  h+=`</table><p>Блюда и напитки: <b>${plain(c.sum)} тг</b>${c.disc?`<br>Скидка ${c.o.disc}%: −${plain(c.disc)} тг`:''}${c.svc?`<br>Обслуживание ${c.o.svc}%: ${plain(c.svc)} тг`:''}<br><b style="font-size:16pt">Итого: ${plain(c.tot)} тг</b>${c.pax?`<br>На человека: ${plain(c.tot/c.pax)} тг`:''}</p><p>Просим проверить и подтвердить заказ.</p>`;
+  h+=`</table><p>Блюда и напитки: <b>${plain(c.sum)} ${tg}</b>${c.disc?`<br>Скидка ${c.o.disc}%: −${plain(c.disc)} ${tg}`:''}${c.svc?`<br>Обслуживание ${c.o.svc}%: ${plain(c.svc)} ${tg}`:''}<br><b style="font-size:16pt">Итого: ${plain(c.tot)} ${tg}</b>${c.pax?`<br>На человека: ${plain(c.tot/c.pax)} ${tg}`:''}</p><p>Просим проверить и подтвердить заказ.</p>`;
   $('printout').innerHTML=h; window.print();
 }
 
@@ -479,10 +525,10 @@ function renderPlan(){
   let h=`<h4>📅 Программа питания${g?' · '+esc(g):''} <small>все обеды и ужины группы по датам</small><button class="gear" id="pGear" title="Что показывать в PDF">⚙ PDF</button></h4>`;
   if(setsOpen) h+=`<div class="sets"><b>Что показывать в PDF:</b>${ck('photo','Фото блюд')}${ck('rest','Название ресторана (если выкл. — «Ресторан китайской кухни» и т.п.)')}</div>`;
   if(!S.plan.length) h+=`<div class="hint">Пока пусто. Выберите ресторан и блюда, укажите дату и приём пищи (✎ выше) и нажмите справа «➕ В программу группы».</div>`;
-  let all=0;
-  sortedPlan().forEach(e=>{ const t=eTot(e); all+=t.tot; const pax=parseInt(e.pax)||0;
+  const all=[];
+  sortedPlan().forEach(e=>{ const t=eTot(e), cu=ecur(e); all.push([t.tot,cu]); const pax=parseInt(e.pax)||0; const fmt=n=>fmtC(n,cu);
     h+=`<div class="pe ${S.edit===e.id?'ed':''}"><div><b>${dRU(e.date)}${e.meal?' · '+esc(e.meal):''}</b> · ${esc(e.rname)} <span class="m">· ${e.lines.length} ${(n=>n%10==1&&n%100!=11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'блюда':'блюд'))(e.lines.length)}${pax?' · '+pax+' гост.':''}</span></div><div><b>${fmt(t.tot)}</b>${pax?`<div class="m" style="font-size:12px">${fmt(t.tot/pax)} / чел.</div>`:''}</div><button data-op="${e.id}">✎ открыть</button><button data-del="${e.id}">✕</button></div>`; });
-  if(S.plan.length>1) h+=`<div class="pt"><span>Всего по программе</span><span>${fmt(all)}</span></div>`;
+  if(S.plan.length>1){ const m=sumsBy(all); h+=`<div class="pt"><span>Всего по программе</span><span>${fmtSums(m)}</span></div>`; if(m.KGS&&RT){ const kzt=(m.KZT||0)+m.KGS*RT.kgs; h+=`<div class="pt" style="font-size:13px;font-weight:400;color:var(--mute)"><span>≈ всё в тенге / долларах</span><span>≈ ${num(kzt)} ₸ · ≈ ${usd(kzt/RT.usd)}</span></div>`; } }
   h+=`<div class="pb"><button class="pri" id="pSave">💾 Сохранить PDF в папку группы</button><button id="pPartner">📄 Меню для партнёра (English) ▾</button><button id="pOpen">📂 Открыть файл группы</button><button id="pPrint">🖨 Печать</button><button id="pNew" class="newg" title="Стереть всё: программу, заказы во всех ресторанах, группу и даты">🆕 Новая группа (всё с нуля)</button></div>`;
   $('plan').innerHTML=h;
 }
@@ -503,7 +549,7 @@ $('plan').addEventListener('click', e=>{
 });
 $('bPlan').onclick=()=>{
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
-  const e={id:S.edit||Date.now().toString(36), date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:+c.o.disc||0, svc:+c.o.svc||0,
+  const e={id:S.edit||Date.now().toString(36), cur:r.cur||'KZT', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:+c.o.disc||0, svc:+c.o.svc||0,
     lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))};
   const i=S.plan.findIndex(x=>x.id===e.id); if(i>=0) S.plan[i]=e; else S.plan.push(e);
   const was=S.edit; S.edit=null; c.o.q={}; save(); renderAll();
@@ -521,12 +567,12 @@ function openEntry(id){
   window.scrollTo(0,0);
 }
 function planText(){
-  const g=S.info.group||GP||'—'; let t=`Питание группы: ${g}\nСохранено: ${new Date().toLocaleString('ru-RU')}\n`; let all=0;
-  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0; all+=x.tot;
+  const g=S.info.group||GP||'—'; let t=`Питание группы: ${g}\nСохранено: ${new Date().toLocaleString('ru-RU')}\n`; const all=[];
+  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0, tg=CUR[ecur(e)].t; all.push([x.tot,ecur(e)]);
     t+=`\n${e.date?new Date(e.date+'T00:00').toLocaleDateString('ru-RU'):'без даты'} · ${e.meal||'приём пищи ?'} · ${e.rname}${pax?' · гостей '+pax:''}\n`;
-    e.lines.forEach((l,i)=>{ t+=`  ${i+1}. ${l.n}${l.w?' ('+l.w+')':''} — ${l.q} × ${plain(l.p)} = ${plain(l.p*l.q)} тг\n`; });
-    t+=`  Итого: ${plain(x.tot)} тг`+(e.disc?` (скидка ${e.disc}%)`:'')+(e.svc?` (обслуживание ${e.svc}%)`:'')+(pax?` · на человека ${plain(x.tot/pax)} тг`:'')+'\n'; });
-  t+=`\nВСЕГО по программе: ${plain(all)} тг\n`; return t;
+    e.lines.forEach((l,i)=>{ t+=`  ${i+1}. ${l.n}${l.w?' ('+l.w+')':''} — ${l.q} × ${plain(l.p)} = ${plain(l.p*l.q)} ${tg}\n`; });
+    t+=`  Итого: ${plain(x.tot)} ${tg}`+(e.disc?` (скидка ${e.disc}%)`:'')+(e.svc?` (обслуживание ${e.svc}%)`:'')+(pax?` · на человека ${plain(x.tot/pax)} ${tg}`:'')+'\n'; });
+  t+=`\nВСЕГО по программе: ${fmtSums(sumsBy(all),1)}\n`; return t;
 }
 function planPartner(){
   if(!S.plan.length) return '';
@@ -577,9 +623,9 @@ async function makePDF(planOverride){
   doc.setFont('dv','bold'); doc.setFontSize(15); doc.setTextColor(15,61,62); txt(T.title,L,y); y+=7;
   doc.setFont('dv','normal'); doc.setFontSize(11); doc.setTextColor(29,29,27); if(g){ txt(g,L,y); y+=5.5; }
   doc.setFontSize(9); doc.setTextColor(119,115,107); txt(T.saved+new Date().toLocaleDateString(EN?'en-GB':'ru-RU'),L,y); y+=8;
-  let all=0;
+  const all=[];
   for(const e of plan){
-    const x=eTot(e), pax=parseInt(e.pax)||0, ri=rInfo(e); all+=x.tot;
+    const x=eTot(e), pax=parseInt(e.pax)||0, ri=rInfo(e); all.push([x.tot,ecur(e)]); T.cur=EN?CUR[ecur(e)].en:' '+CUR[ecur(e)].t;
     const dt=e.date?new Date(e.date+'T00:00').toLocaleDateString(EN?'en-GB':'ru-RU',EN?{weekday:'short',day:'numeric',month:'short',year:'numeric'}:{}):T.nod;
     const meal=e.meal?(EN?(MEN[e.meal]||e.meal):e.meal):T.nom;
     const rest=st.rest ? (EN?(e.en||e.rname)+' ('+(e.cen||'')+')':e.rname) : (EN?ri.ken:ri.kind);
@@ -615,7 +661,7 @@ async function makePDF(planOverride){
     }
     y+=8;
   }
-  if(P && plan.length>1){ need(12); doc.setFont('dv','bold'); doc.setFontSize(13); doc.setTextColor(15,61,62); txt(T.all,150,y,{align:'right'}); txt(plain(all)+T.cur,R,y,{align:'right'}); }
+  if(P && plan.length>1){ need(12); doc.setFont('dv','bold'); doc.setFontSize(13); doc.setTextColor(15,61,62); const m=sumsBy(all); txt(T.all,150,y,{align:'right'}); txt(Object.entries(m).map(([c,v])=>plain(v)+(EN?CUR[c].en:' '+CUR[c].t)).join(' + '),R,y,{align:'right'}); }
   const n=doc.getNumberOfPages(); for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont('dv','normal'); doc.setFontSize(8); doc.setTextColor(150,150,150); txt('King Wings Travel'+(g?' · '+g:'')+' · '+T.page+' '+i+' '+T.of+' '+n,W/2,H-7,{align:'center'}); }
   const props={title:(EN?'Meal plan — ':'Питание — ')+(g||(EN?'group':'группа')), author:'King Wings Travel'};
   if(P && Q && !planOverride) props.keywords='KWMENU1:'+b64u(JSON.stringify({v:1,group:g,plan:S.plan}));  // данные для повторного открытия — только в нашей версии (с ценами)
@@ -654,12 +700,12 @@ $('fOpen').onchange=async e=>{
 };
 function printPlan(){
   if(!S.plan.length){ toast('Программа пуста'); return; }
-  let all=0, h=`<h1>King Wings Travel — питание группы${(S.info.group||GP)?' · '+esc(S.info.group||GP):''}</h1>`;
-  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0; all+=x.tot;
+  const all=[]; let h=`<h1>King Wings Travel — питание группы${(S.info.group||GP)?' · '+esc(S.info.group||GP):''}</h1>`;
+  sortedPlan().forEach(e=>{ const x=eTot(e), pax=parseInt(e.pax)||0, tg=CUR[ecur(e)].t; all.push([x.tot,ecur(e)]);
     h+=`<h2 style="font-size:14pt;margin:6mm 0 2mm">${e.date?new Date(e.date+'T00:00').toLocaleDateString('ru-RU'):'без даты'} · ${esc(e.meal||'')} · ${esc(e.rname)}${pax?' · '+pax+' гост.':''}</h2><table><tr><th>Блюдо</th><th class="r">Кол-во</th><th class="r">Цена</th><th class="r">Сумма</th></tr>`;
     e.lines.forEach(l=>{ h+=`<tr><td>${esc(l.n)}${l.w?' <small>('+esc(l.w)+')</small>':''}</td><td class="r">${l.q}</td><td class="r">${plain(l.p)}</td><td class="r">${plain(l.p*l.q)}</td></tr>`; });
-    h+=`</table><p>Итого: <b>${plain(x.tot)} тг</b>${e.disc?` · скидка ${e.disc}%`:''}${e.svc?` · обслуживание ${e.svc}%`:''}${pax?` · на человека ${plain(x.tot/pax)} тг`:''}</p>`; });
-  h+=`<p style="font-size:15pt"><b>Всего по программе: ${plain(all)} тг</b></p>`;
+    h+=`</table><p>Итого: <b>${plain(x.tot)} ${tg}</b>${e.disc?` · скидка ${e.disc}%`:''}${e.svc?` · обслуживание ${e.svc}%`:''}${pax?` · на человека ${plain(x.tot/pax)} ${tg}`:''}</p>`; });
+  h+=`<p style="font-size:15pt"><b>Всего по программе: ${fmtSums(sumsBy(all),1)}</b></p>`;
   $('printout').innerHTML=h; window.print();
 }
 
