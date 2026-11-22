@@ -491,8 +491,21 @@ function curEntry(ours){ const c=calc(), r=R(); return {id:'cur', cur:r.cur||'KZ
     lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))}; }
 function printBlob(blob){ const u=URL.createObjectURL(blob); const f=document.createElement('iframe'); f.style.cssText='position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0'; f.src=u;
   f.onload=()=>setTimeout(()=>{ try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ window.open(u,'_blank'); } },400); document.body.appendChild(f); setTimeout(()=>f.remove(),120000); }
+// Папка группы: браузер запоминает, куда сохраняли PDF каждой группы (IndexedDB), и в следующий раз открывает окно сразу там.
+const FSDB='kw_menu_fs';
+function fsDb(){ return new Promise((ok,no)=>{ const r=indexedDB.open(FSDB,1); r.onupgradeneeded=()=>r.result.createObjectStore('h'); r.onsuccess=()=>ok(r.result); r.onerror=()=>no(r.error); }); }
+async function hGet(k){ try{ const db=await fsDb(); return await new Promise(ok=>{ const q=db.transaction('h').objectStore('h').get(k); q.onsuccess=()=>ok(q.result||null); q.onerror=()=>ok(null); }); }catch(e){ return null; } }
+async function hPut(k,v){ try{ const db=await fsDb(); db.transaction('h','readwrite').objectStore('h').put(v,k); }catch(e){} }
+function gKey(){ return String(S.info.group||GP||'').trim().toLowerCase(); }
+function gId(k){ let x=0; for(const ch of k) x=(x*31+ch.charCodeAt(0))>>>0; return 'kwg'+x.toString(36); }
+async function rememberFolder(h){ if(!h) return; const k=gKey(); if(k) await hPut('g:'+k,h); await hPut('last',h); }
+async function pickerWithStart(fn,opts){ const k=gKey(); const start=(k&&await hGet('g:'+k))||await hGet('last');
+  opts.id=gId(k||'-'); if(start) opts.startIn=start;
+  try{ return await fn(opts); }catch(err){ if(err && err.name==='AbortError') throw err; if(!start) throw err; delete opts.startIn; return await fn(opts); } }
+async function pickSave(name){ const h=await pickerWithStart(o=>showSaveFilePicker(o),{suggestedName:name,types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]}); await rememberFolder(h); return h; }
 async function saveBlob(blob,name){
-  if(window.showSaveFilePicker){ try{ const h=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]}); const w=await h.createWritable(); await w.write(blob); await w.close(); toast('Сохранено: '+h.name); return; }catch(err){ if(err && err.name==='AbortError') return; } }
+  if(window.showSaveFilePicker){ let h; try{ h=await pickSave(name); }catch(err){ if(err && err.name==='AbortError') return; h=null; }
+    if(h){ try{ const w=await h.createWritable(); await w.write(blob); await w.close(); toast('Сохранено: '+h.name); return; }catch(err){} } }
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); toast('PDF сохранён в «Загрузки»');
 }
 function choose(btn,items){ document.querySelectorAll('.chooser').forEach(x=>x.remove()); const m=document.createElement('div'); m.className='chooser';
@@ -555,7 +568,7 @@ $('plan').addEventListener('click', e=>{
   if(e.target.id==='pGear'){ setsOpen=!setsOpen; renderPlan(); return; }
   if(e.target.id==='pSave') saveFile('us');
   if(e.target.id==='pPartner'){ e.stopPropagation(); choose(e.target,[['🖨 Печать',()=>planPartner('print')],['💾 Сохранить PDF',()=>saveFile('partner')]]); }
-  if(e.target.id==='pOpen') $('fOpen').click();
+  if(e.target.id==='pOpen') openGroupFile();
   if(e.target.id==='pPrint') printPlan();
   if(e.target.id==='pNew'){ const b=e.target;
     if(!b.dataset.sure){ b.dataset.sure=1; b.textContent='Стереть всё? Сначала сохраните PDF. Нажмите ещё раз'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.sure; b.textContent='🆕 Новая группа (всё с нуля)'; } },4000); return; }
@@ -697,23 +710,28 @@ async function saveFile2(){
   if(!S.plan.length){ toast('Программа пуста — сначала добавьте приём пищи'); return; }
   const gn=String(S.info.group||GP||'группа').replace(/[\\/:*?"<>|]/g,' ').trim(); const name=(S.set.price&&S.set.qty&&S.set.lang==='ru') ? 'Питание — '+gn+'.pdf' : (S.set.lang==='en'?'Meal plan — '+gn+(S.set.price?'':' (partner)')+'.pdf':'Питание — '+gn+' (без цен).pdf');
   let handle=null;
-  if(window.showSaveFilePicker){ try{ handle=await showSaveFilePicker({suggestedName:name,id:'kwgroup',types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]}); }catch(err){ if(err && err.name==='AbortError') return; handle=null; } }
+  if(window.showSaveFilePicker){ try{ handle=await pickSave(name); }catch(err){ if(err && err.name==='AbortError') return; handle=null; } }
   toast(S.set.photo?'Готовлю PDF с фото…':'Готовлю PDF…');
   let blob; try{ blob=await makePDF(); }catch(err){ toast('Не получилось сделать PDF'); return; }
   if(handle){ try{ const w=await handle.createWritable(); await w.write(blob); await w.close(); toast('Сохранено: '+handle.name); return; }catch(err){} }
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove();
   toast('PDF в «Загрузках» — перенесите его в папку группы');
 }
-$('fOpen').onchange=async e=>{
-  const f=e.target.files[0]; e.target.value=''; if(!f) return;
+async function openGroupFile(){
+  if(!window.showOpenFilePicker){ $('fOpen').click(); return; }
+  let h; try{ [h]=await pickerWithStart(o=>showOpenFilePicker(o),{types:[{description:'PDF / TXT',accept:{'application/pdf':['.pdf'],'text/plain':['.txt']}}]}); }catch(err){ if(err && err.name==='AbortError') return; $('fOpen').click(); return; }
+  if(h) await openFile(await h.getFile(), h);
+}
+$('fOpen').onchange=async e=>{ const f=e.target.files[0]; e.target.value=''; if(f) await openFile(f,null); };
+async function openFile(f,h){
   let d=null;
   try{
     if(/\.pdf$/i.test(f.name) || f.type==='application/pdf'){ const t=new TextDecoder('latin1').decode(await f.arrayBuffer()); const m=t.match(/KWMENU1:([A-Za-z0-9+\/=]+)/); if(m) d=JSON.parse(ub64(m[1])); }
     else { const t=await f.text(); const i=t.indexOf(MARK); if(i>=0) d=JSON.parse(t.slice(i+MARK.length).trim()); }
   }catch(err){ d=null; }
   if(!d || !Array.isArray(d.plan)){ toast('Это не файл питания группы (открывается только наш PDF с ценами)'); return; }
-  S.plan=d.plan; if(d.group && !S.info.group) S.info.group=d.group; $('fGroup').value=S.info.group||''; S.edit=null; save(); renderAll(); toast('Открыто: '+d.plan.length+' приёмов пищи');
-};
+  S.plan=d.plan; if(d.group && !S.info.group) S.info.group=d.group; $('fGroup').value=S.info.group||''; S.edit=null; save(); renderAll(); await rememberFolder(h); toast('Открыто: '+d.plan.length+' приёмов пищи');
+}
 function printPlan(){
   if(!S.plan.length){ toast('Программа пуста'); return; }
   const all=[]; let h=`<h1>King Wings Travel — питание группы${(S.info.group||GP)?' · '+esc(S.info.group||GP):''}</h1>`;
