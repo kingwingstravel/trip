@@ -41,6 +41,7 @@ async function open_(pin,quiet){{try{{
  const key=await crypto.subtle.deriveKey({{name:"PBKDF2",salt:u(D.s),iterations:D.n,hash:"SHA-256"}},km,{{name:"AES-GCM",length:256}},false,["decrypt"]);
  const pt=await crypto.subtle.decrypt({{name:"AES-GCM",iv:u(D.i)}},key,u(D.c));
  try{{localStorage.setItem(K,pin)}}catch(e){{}}
+ try{{history.replaceState(null,"",location.pathname+"?p="+encodeURIComponent(pin))}}catch(e){{}}
  const html=new TextDecoder().decode(pt);document.open();document.write(html);document.close();return true;
 }}catch(e){{if(!quiet)document.getElementById("e").textContent="{wrongL}";return false}}}}
 document.getElementById("f").onsubmit=e=>{{e.preventDefault();document.getElementById("e").textContent="…";open_(document.getElementById("p").value.trim())}};
