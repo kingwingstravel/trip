@@ -1,1 +1,1 @@
-window.KW_RATES={"d": "21 ноября 2026 14:47", "kgs": 5.33, "kgsb": 4.93, "usd": 452.7, "usds": 455.3, "src": "mig.kz"};
+window.KW_RATES={"d": "22 ноября 2026 15:22", "kgs": 5.33, "kgsb": 4.93, "usd": 452.5, "usds": 455.1, "src": "mig.kz"};
