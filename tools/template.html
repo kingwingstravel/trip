@@ -925,11 +925,11 @@ function contactBtns(ph,c,m,cls){
  return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.6rem"><a class="btn ${cls||"primary"}" href="${tel(ph)}">📞 ${l.call}</a>${b2}</div><div class="small" style="margin-top:.3rem;font-variant-numeric:tabular-nums">${esc(ph)}</div>`;
 }
 function vPeople(d,l){
- const g=(G.guides||{})[d.c],dr=(G.drivers||{})[d.c];
+ const g=(G.guides||{})[d.g||d.c],dr=(G.drivers||{})[d.c];
  let out="";
  if(d.hotel!==null||g){
   const lbl=g&&g.label?tx(g.label):(d.c===(G.home||"kz")?l.guide:l.guideIn(cn(d.c)));
-  const pg=S.day>0?(G.guides||{})[DAYS[S.day-1].c]:null,isNew=g&&g.name&&(S.day===0||!pg||pg.name!==g.name);
+  const pg=S.day>0?(G.guides||{})[DAYS[S.day-1].g||DAYS[S.day-1].c]:null,isNew=g&&g.name&&(S.day===0||!pg||pg.name!==g.name);
   out+=`<section class="card"${isNew?' style="border:3px solid var(--gold)"':""}>${isNew?`<span class="pill" style="display:inline-block;margin-bottom:.6rem">${l.newGuide}</span>`:""}<div class="person"><div class="avatar" aria-hidden="true">G</div><div><div class="small">${lbl}</div><div style="font-size:1.25rem;font-weight:700">${g&&g.name?esc(g.name):l.guideTbc}</div>${g&&g.name?`<div class="small">${l.guideNote}</div>`:""}${g&&g.phone?contactBtns(g.phone,d.c,g.msg):""}</div></div></section>`;
  }
  if(dr&&dr.name)out+=`<section class="card"><div class="small">${l.driver}</div><div style="font-weight:700">${esc(dr.name)}${dr.car?" · "+esc(dr.car):""}</div>${dr.phone?contactBtns(dr.phone,d.c,dr.msg,"ghost"):""}</section>`;
@@ -996,9 +996,9 @@ function vToday(){
  const eve=diff<=0&&S.day===-diff&&nowH>=17;
  const top=diff>0?`<div class="countdown">${l.starts(diff)}</div>`:"";
  const plan=(d.plan||[]).map(p=>`<li><span class="tm">${esc(p[0]||"")}</span><span class="knot"><span></span><i></i></span><span class="tx">${esc(tx(p[1]))}</span></li>`).join("");
- const GS=G.guides||{},g0=GS[d.c],pg0=S.day>0?GS[DAYS[S.day-1].c]:null;
+ const GS=G.guides||{},g0=GS[d.g||d.c],pg0=S.day>0?GS[DAYS[S.day-1].g||DAYS[S.day-1].c]:null;
  const newG=!!(g0&&g0.name&&(S.day===0||!pg0||pg0.name!==g0.name));
- const nd=DAYS[S.day+1],ng=nd?GS[nd.c]:null;
+ const nd=DAYS[S.day+1],ng=nd?GS[nd.g||nd.c]:null;
  const nextG=ng&&ng.name&&(!g0||g0.name!==ng.name)?`<section class="card" style="border:3px solid var(--gold)"><span class="pill" style="display:inline-block;margin-bottom:.6rem">${l.nextGuide}</span><div class="person"><div class="avatar" aria-hidden="true">G</div><div><div class="small">${nd.c===(G.home||"kz")?l.guide:l.guideIn(cn(nd.c))}</div><div style="font-size:1.25rem;font-weight:700">${esc(ng.name)}</div>${ng.phone?contactBtns(ng.phone,nd.c,ng.msg):""}</div></div></section>`:"";
  const arrive=S.day===0||DAYS[S.day-1].c!==d.c,back=arrive&&DAYS.slice(0,S.day).some(x=>x.c===d.c),wk=(back?"welcomeBack_":"welcome_")+d.c;
  const welcome=arrive&&l[wk]?`<section class="card" style="border:3px solid var(--gold);text-align:center"><div style="font-size:1.25rem;font-weight:700;line-height:1.35">🌙 ${esc(l[wk])}</div></section>`:"";
