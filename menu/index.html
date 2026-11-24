@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta name="kwver" content="202611230038">
+<meta name="kwver" content="202611241626">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -213,7 +213,7 @@ body.th-kg .rtab.on{color:var(--brand)}
 <body>
 <header class="top">
   <div class="top-row">
-    <div class="brand">King Wings Travel<small>Меню ресторанов · для менеджера · обновлено 22.11.2026</small></div>
+    <div class="brand">King Wings Travel<small>Меню ресторанов · для менеджера · обновлено 24.11.2026</small></div>
     <a class="dl" id="dl" href="KW_Menu_offline.zip">⬇ Скачать для работы без интернета</a>
   </div>
   <div class="city" id="city"></div>
@@ -414,8 +414,8 @@ $('menu').addEventListener('change', e=>{ if(e.target.matches('.step input')) se
 // ---------- panel ----------
 function calc(){
   const o=ord(S.r); let sum=0, lines=[];
-  R().sections.forEach(sec=>sec.items.forEach(it=>{ const q=o.q[it.k]; if(q>0){ lines.push({it,q,s:q*it.p}); sum+=q*it.p; } }));
-  const disc = sum*(+o.disc||0)/100, svc=(sum-disc)*(+o.svc||0)/100, tot=sum-disc+svc;
+  let sb=0; R().sections.forEach(sec=>sec.items.forEach(it=>{ const q=o.q[it.k]; if(q>0){ lines.push({it,q,s:q*it.p}); sum+=q*it.p; if(!it.ns) sb+=q*it.p; } }));
+  const disc = sum*(+o.disc||0)/100, svc=sb*(1-(+o.disc||0)/100)*(+o.svc||0)/100, tot=sum-disc+svc;
   const pax = parseInt(S.info.pax)||0;
   return {lines,sum,disc,svc,tot,pax,o};
 }
@@ -488,7 +488,7 @@ async function copy(s){
 }
 $('bRest').onclick=()=>copy(textRest());
 function curEntry(ours){ const c=calc(), r=R(); return {id:'cur', cur:r.cur||'KZT', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:ours?(+c.o.disc||0):0, svc:ours?(+c.o.svc||0):0,
-    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))}; }
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||'', ns:l.it.ns?1:0}))}; }
 function printBlob(blob){ const u=URL.createObjectURL(blob); const f=document.createElement('iframe'); f.style.cssText='position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0'; f.src=u;
   f.onload=()=>setTimeout(()=>{ try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ window.open(u,'_blank'); } },400); document.body.appendChild(f); setTimeout(()=>f.remove(),120000); }
 // Папка группы: браузер запоминает, куда сохраняли PDF каждой группы (IndexedDB), и в следующий раз открывает окно сразу там.
@@ -547,7 +547,7 @@ if(GP){ const b=document.querySelector('.brand'); const g=document.createElement
 const MEALS=['Завтрак','Кофе-брейк','Обед','Ланч-бокс','Ужин','Ужин (прощальный)'];
 const dRU = d => d ? new Date(d+'T00:00').toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'}) : 'без даты';
 function sortedPlan(){ return S.plan.slice().sort((a,b)=> (a.date||'9999').localeCompare(b.date||'9999') || (MEALS.indexOf(a.meal)-MEALS.indexOf(b.meal))); }
-function eTot(e){ const sum=e.lines.reduce((a,l)=>a+l.p*l.q,0), disc=sum*(+e.disc||0)/100, svc=(sum-disc)*(+e.svc||0)/100; return {sum,disc,svc,tot:sum-disc+svc}; }
+function eTot(e){ const sum=e.lines.reduce((a,l)=>a+l.p*l.q,0), sb=e.lines.reduce((a,l)=>a+(l.ns?0:l.p*l.q),0), disc=sum*(+e.disc||0)/100, svc=sb*(1-(+e.disc||0)/100)*(+e.svc||0)/100; return {sum,disc,svc,tot:sum-disc+svc}; }
 function renderPlan(){
   const g = S.info.group||GP;
   const st=S.set, ck=(k,t)=>`<label><input type="checkbox" data-set="${k}" ${st[k]?'checked':''}> ${t}</label>`;
@@ -579,7 +579,7 @@ $('plan').addEventListener('click', e=>{
 $('bPlan').onclick=()=>{
   const c=calc(), r=R(); if(!c.lines.length){ toast('Сначала добавьте блюда'); return; }
   const e={id:S.edit||Date.now().toString(36), cur:r.cur||'KZT', date:S.info.date||'', meal:S.info.meal||'', pax:S.info.pax||'', r:r.id, rname:r.name, en:r.en||r.name, cen:r.cen||r.city, kind:r.kind||'', ken:r.ken||'', disc:+c.o.disc||0, svc:+c.o.svc||0,
-    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||''}))};
+    lines:c.lines.map(l=>({n:l.it.n, w:l.it.w||'', p:l.it.p, q:l.q, e:l.it.e||'', i:l.it.i||'', ns:l.it.ns?1:0}))};
   const i=S.plan.findIndex(x=>x.id===e.id); if(i>=0) S.plan[i]=e; else S.plan.push(e);
   const was=S.edit; S.edit=null; c.o.q={}; save(); renderAll();
   toast(was?'Изменения сохранены в программе':'Добавлено в программу группы');
