@@ -401,8 +401,28 @@ function bkRow_(r, i) {
     depPaid: bkDay_(r[12]), balPaid: bkDay_(r[13]), owner: String(r[14]), d: d, upd: r[16] instanceof Date ? r[16].toISOString() : '' };
 }
 function bkLog_(h, id, what, who) { h.appendRow([new Date(), id, who || who_(), what]); }
+// Группы из папок «1. Confirmed» на Диске → в «Брони» (один раз каждую, статус Confirmed). Раз в 30 минут или по кнопке.
+function bkFromDrive_(s, force) {
+  var c = CacheService.getScriptCache();
+  if (!force && c.get('gsync')) return 0;
+  c.put('gsync', '1', 1800);
+  var G = api_groups(), v = s.b.getDataRange().getValues(), have = {}, n = 0, tz = 'Asia/Almaty';
+  for (var i = 1; i < v.length; i++) { try { var d0 = JSON.parse(v[i][15] || '{}'); if (d0.src) have[d0.src] = 1; } catch (e) {} }
+  G.forEach(function (g) {
+    if (!g.folder || have[g.folder]) return;
+    var id = 'KW-' + Utilities.formatDate(new Date(g.start || Date.now()), tz, 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900);
+    var d = { src: g.folder, sheet: g.sheet, link: g.link, gpin: g.pin, staff: g.staff, lang: g.lang, guide: {}, transport: {}, hotels: [], docs: {}, contact: {}, note: 'Из папки «1. Confirmed» на Диске' };
+    s.b.appendRow([id, new Date(), g.now ? 'tour' : 'ok', g.agent || 'Агент не указан', '', '', g.name, parseInt(String(g.guests).replace(/\D+/g, ' '), 10) || 0,
+      g.start ? new Date(g.start) : '', g.end ? new Date(g.end) : '', 0, 0, '', '', '', JSON.stringify(d), new Date()]);
+    bkLog_(s.h, id, 'Добавлена из Диска (папка «1. Confirmed»)', 'Система'); n++;
+  });
+  return n;
+}
+function api_bookingsSync() { var s = bkSheets_(); return bkFromDrive_(s, true); }
 function api_bookings() {
-  var s = bkSheets_(), v = s.b.getDataRange().getValues(), out = [], today = bkDay_(new Date());
+  var s0 = bkSheets_(), added = 0;
+  try { added = bkFromDrive_(s0, false); } catch (e) {}
+  var s = s0, v = s.b.getDataRange().getValues(), out = [], today = bkDay_(new Date());
   for (var i = 1; i < v.length; i++) {
     if (!v[i][0]) continue;
     var x = bkRow_(v[i], i);
@@ -411,7 +431,7 @@ function api_bookings() {
     }
     out.push(x);
   }
-  return { list: out, today: today, sheet: s.ss.getUrl() + '#gid=' + s.b.getSheetId() };
+  return { list: out, today: today, added: added, sheet: s.ss.getUrl() + '#gid=' + s.b.getSheetId() };
 }
 function api_booking(id) {
   var s = bkSheets_(), v = s.b.getDataRange().getValues(), x = null;

@@ -305,7 +305,7 @@ const HELP={
  groups:['Группы','Текущие и будущие группы из папок «1. Confirmed»: ссылка на путеводитель, PIN для туристов и код для гида.'],
  sites:['Все сайты','Список всех сайтов, которые админка нашла сама, и как добавить новый.'],
  pins:['PIN агентов','Цены на сайте видят только агенты с PIN. Нажмите «Выдать PIN», впишите агентство — админка придумает PIN и даст готовое сообщение для WhatsApp.<br><br>Выключатель у PIN — включить или выключить его сразу. «Открытий» — сколько раз агент смотрел цены. Внизу журнал: кто, когда и какую программу смотрел, и неверные попытки.<br><br>Если увидели скриншот цен у конкурента — на нём водяной знак с агентством и PIN: выключите этот PIN.'],
- bookings:['Брони','Здесь все группы. Цвет — статус: синий — новая заявка, фиолетовый — отправили предложение, жёлтый — ждём депозит, зелёный — Confirmed, бирюзовый — группа в туре. Нажмите на группу — откроется карточка: оплата, гид, транспорт, отели, документы. Всё сохраняется сразу, кнопка «Сохранить» не нужна. Красный блок сверху — что горит: до тура меньше 30 дней, а что-то не готово. Заявки агентов с сайта (кнопка «Book this group») появляются здесь сами со статусом «Новая».'],
+ bookings:['Брони','Здесь все группы. Цвет — статус: синий — новая заявка, фиолетовый — отправили предложение, жёлтый — ждём депозит, зелёный — Confirmed, бирюзовый — группа в туре. Нажмите на группу — откроется карточка: оплата, гид, транспорт, отели, документы. Всё сохраняется сразу, кнопка «Сохранить» не нужна. Красный блок сверху — что горит: до тура меньше 30 дней, а что-то не готово. Заявки агентов с сайта (кнопка «Book this group») появляются здесь сами со статусом «Новая». Группы из папок «1. Confirmed» на Диске тоже подтягиваются сами (раз в 30 минут) или кнопкой «Подтянуть группы из Диска». Остальные группы добавьте кнопкой «＋ Новая группа».'],
  key:['Ключ GitHub','Ключ — это пропуск, через который админка сохраняет изменения на сайт. Вставляется один раз.']};
 function help(v){const h=HELP[v];if(!h)return;dlg(`<h2>${h[0]}</h2><p style="line-height:1.6">${h[1]}</p><div class="save" style="position:static"><button class="btn main" onclick="close_()">Понятно</button></div>`)}
 function qb(v){return `<button class="q" title="Подсказка" onclick="help('${v}')">?</button>`}
@@ -456,7 +456,9 @@ async function vBookings(){m.innerHTML=`<div class="view"><div class="row"><h1>�
   <div style="flex:1;min-width:0"><div class="tt">${p?'<span style="color:var(--bad)">⚠</span> ':''}${esc(x.agent)} · ${x.n} чел.</div><small>${esc(x.title||x.slug||'программа не выбрана')} · ${dates(x)}</small>
   ${['ok','tour'].includes(x.st)?`<div style="display:flex;align-items:center;gap:8px;margin-top:6px"><div style="flex:1;max-width:160px;height:6px;background:#E7EEF9;border-radius:3px"><div style="width:${r.n/6*100}%;height:6px;border-radius:3px;background:${r.n===6?'var(--ok)':'var(--gold)'}"></div></div><small>готово ${r.n} из 6</small></div>`:''}</div>
   ${stPill(x.st)}</div>`}).join(''):`<p style="margin:6px 0">${bkF==='arch'?'Архив пуст.':'Здесь пока пусто. Заявки с сайта появятся сами, или нажмите «＋ Новая группа».'}</p>`}</div>
- <p style="margin-top:14px"><a href="${esc(BK.sheet)}" target="_blank">Открыть таблицу броней ↗</a></p>`;
+ <div class="row" style="margin-top:14px"><button class="btn ghost" id="bsync">⟳ Подтянуть группы из Диска</button><a href="${esc(BK.sheet)}" target="_blank">Открыть таблицу броней ↗</a></div>`;
+ if(BK.added)toast('Из Диска добавлено групп: '+BK.added);
+ $('#bsync').onclick=async()=>{$('#bsync').disabled=true;try{const n=await call('api_bookingsSync');toast(n?'Добавлено групп из Диска: '+n:'Новых групп в Диске нет');vBookings()}catch(e){err(e);$('#bsync').disabled=false}};
  m.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{bkF=b.dataset.f;vBookings()});
  m.querySelectorAll('.bo').forEach(b=>b.onclick=()=>{view='bk:'+b.dataset.id;render();window.scrollTo(0,0)})}
 
@@ -491,6 +493,7 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   ${ln('Контакт',esc([d.contact.name,d.contact.wa,d.contact.email].filter(Boolean).join(' · ')||'—'),'grp')}
   ${ln('Ответственный',esc(x.owner||'—'),'grp')}
   ${d.note?ln('Заметка',esc(d.note),'grp'):''}
+  ${d.src?`<div class="kv"><div>Диск</div><div><a href="${esc(d.src)}" target="_blank">Папка ↗</a>${d.sheet?` · <a href="${esc(d.sheet)}" target="_blank">Таблица ↗</a>`:''}${d.link?` · <a href="${esc(d.link)}" target="_blank">Путеводитель ↗</a>`:''}</div></div>`:''}
   <button class="btn" data-a="grp" style="margin-top:10px">✎ Изменить данные группы</button></div>
  <div class="card"><h2>🕘 История</h2>${x.hist.length?'<div>'+x.hist.map(h=>`<div class="kv" style="padding:8px 0;align-items:flex-start"><small style="width:90px;flex:none">${h.at?new Date(h.at).toLocaleDateString('ru',{day:'numeric',month:'short'}):''}</small><div style="flex:1;min-width:0"><b>${esc(h.who)}</b> · ${esc(h.what)}</div></div>`).join('')+'</div>':'<p style="color:var(--muted)">Пока пусто.</p>'}</div>
  </div></div>`;
