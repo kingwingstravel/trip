@@ -14,7 +14,8 @@ var MAX_BAD_ALL = 40;       // неверных PIN всего за 15 мину�
 
 function doGet(e) {
   var out;
-  try { out = check_(e && e.parameter || {}); }
+  var p = e && e.parameter || {};
+  try { out = p.act === 'book' ? book_(p) : check_(p); }
   catch (x) { out = { ok: false, err: 'server' }; }
   return ContentService.createTextOutput(JSON.stringify(out)).setMimeType(ContentService.MimeType.JSON);
 }
@@ -58,4 +59,37 @@ function check_(p) {
 
 function log_(ss, pin, agent, prog, lang, res) {
   try { ss.getSheetByName('Журнал').appendRow([new Date(), pin, agent, prog, lang, res]); } catch (x) {}
+}
+
+// ---- Бронь с сайта: агент с PIN нажал «Book this group» → строка «Новая» в листе «Брони» ----
+var BK_HEAD = ['ID', 'Создано', 'Статус', 'Агентство', 'PIN', 'Программа', 'Название', 'Гостей', 'Начало', 'Конец',
+               'Сумма USD', 'Депозит USD', 'Депозит получен', 'Остаток получен', 'Ответственный', 'Детали', 'Обновлено'];
+function bkSheets_(ss) {
+  var b = ss.getSheetByName('Брони');
+  if (!b) { b = ss.insertSheet('Брони'); b.appendRow(BK_HEAD); b.setFrozenRows(1); b.getRange(1, 1, 1, BK_HEAD.length).setFontWeight('bold'); }
+  var h = ss.getSheetByName('История броней');
+  if (!h) { h = ss.insertSheet('История броней'); h.appendRow(['Когда', 'ID', 'Кто', 'Что']); h.setFrozenRows(1); h.getRange(1, 1, 1, 4).setFontWeight('bold'); }
+  return { b: b, h: h };
+}
+function book_(p) {
+  var cl = function (x, n) { return String(x || '').replace(/[\u0000-\u001f<>]/g, ' ').trim().slice(0, n || 120); };
+  var pin = String(p.pin || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12);
+  var cache = CacheService.getScriptCache(), k = 'bk' + pin, cnt = +(cache.get(k) || 0);
+  if (cnt >= 10) return { ok: false, err: 'locked' };
+  var ss = SpreadsheetApp.openById(SHEET_ID), v = ss.getSheetByName('PIN').getDataRange().getValues(), row = -1;
+  for (var i = 1; i < v.length; i++) if (String(v[i][0]).toUpperCase().trim() === pin) { row = i; break; }
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  if (row < 0 || !(v[row][6] === true || String(v[row][6]).toUpperCase() === 'TRUE') || (v[row][5] && new Date(v[row][5]) < today)) return { ok: false, err: 'bad' };
+  cache.put(k, String(cnt + 1), 3600);
+  var n = Math.max(1, Math.min(99, parseInt(p.n, 10) || 0)), pp = Math.max(0, Math.round(+p.pp || 0)), tot = pp * n;
+  var lock = LockService.getScriptLock(); lock.waitLock(10000);
+  try {
+    var s = bkSheets_(ss), id = 'KW-' + Utilities.formatDate(new Date(), 'Asia/Almaty', 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900);
+    var det = { contact: { name: cl(p.nm), email: cl(p.em), wa: cl(p.wa, 40) }, hotel: cl(p.h, 2), meals: cl(p.m, 3), month: cl(p.mo, 40), pp: pp, lang: cl(p.l, 3),
+                guide: {}, transport: {}, hotels: [], docs: {}, note: '' };
+    s.b.appendRow([id, new Date(), 'new', cl(p.ag) || String(v[row][1]), pin, cl(p.p, 80), cl(p.t, 160), n, '', '', tot, Math.round(tot * 0.3), '', '', '', JSON.stringify(det), new Date()]);
+    s.h.appendRow([new Date(), id, 'Сайт', 'Заявка по PIN ' + pin + (pp ? ' · ' + n + ' × ' + pp + ' $' : '')]);
+  } finally { lock.releaseLock(); }
+  log_(ss, pin, String(v[row][1]), cl(p.p, 80), cl(p.l, 3), 'заявка на бронь');
+  return { ok: true };
 }

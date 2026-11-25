@@ -379,3 +379,66 @@ function api_pinSet(row, field, value) {
   sh.getRange(row, col).setValue(field === 'until' ? (value ? new Date(value) : '') : value);
   return true;
 }
+
+
+/* ================= БРОНИ (CRM) ================= */
+// Лист «Брони» и «История броней» в той же таблице, что PIN. Заявки с сайта попадают туда сами (скрипт «KW Цены по PIN»).
+var BK_HEAD = ['ID', 'Создано', 'Статус', 'Агентство', 'PIN', 'Программа', 'Название', 'Гостей', 'Начало', 'Конец',
+               'Сумма USD', 'Депозит USD', 'Депозит получен', 'Остаток получен', 'Ответственный', 'Детали', 'Обновлено'];
+var BK_ST = { new: 'Новая', offer: 'Предложение отправлено', wait: 'Ждём депозит', ok: 'Confirmed', tour: 'В туре', done: 'Закрыто', lost: 'Отказ' };
+function bkSheets_() {
+  var ss = pinSS_(), b = ss.getSheetByName('Брони');
+  if (!b) { b = ss.insertSheet('Брони'); b.appendRow(BK_HEAD); b.setFrozenRows(1); b.getRange(1, 1, 1, BK_HEAD.length).setFontWeight('bold'); }
+  var h = ss.getSheetByName('История броней');
+  if (!h) { h = ss.insertSheet('История броней'); h.appendRow(['Когда', 'ID', 'Кто', 'Что']); h.setFrozenRows(1); h.getRange(1, 1, 1, 4).setFontWeight('bold'); }
+  return { ss: ss, b: b, h: h };
+}
+function bkDay_(x) { return x instanceof Date ? Utilities.formatDate(x, 'Asia/Almaty', 'yyyy-MM-dd') : String(x || ''); }
+function bkRow_(r, i) {
+  var d = {}; try { d = JSON.parse(r[15] || '{}'); } catch (e) {}
+  return { row: i + 1, id: String(r[0]), created: r[1] instanceof Date ? r[1].toISOString() : '', st: String(r[2] || 'new'), agent: String(r[3]), pin: String(r[4]),
+    slug: String(r[5]), title: String(r[6]), n: +r[7] || 0, start: bkDay_(r[8]), end: bkDay_(r[9]), total: +r[10] || 0, dep: +r[11] || 0,
+    depPaid: bkDay_(r[12]), balPaid: bkDay_(r[13]), owner: String(r[14]), d: d, upd: r[16] instanceof Date ? r[16].toISOString() : '' };
+}
+function bkLog_(h, id, what, who) { h.appendRow([new Date(), id, who || who_(), what]); }
+function api_bookings() {
+  var s = bkSheets_(), v = s.b.getDataRange().getValues(), out = [], today = bkDay_(new Date());
+  for (var i = 1; i < v.length; i++) {
+    if (!v[i][0]) continue;
+    var x = bkRow_(v[i], i);
+    if (x.st === 'ok' && x.start && x.start <= today && (!x.end || today <= x.end)) {   // начался тур → «В туре» сам
+      s.b.getRange(i + 1, 3).setValue('tour'); bkLog_(s.h, x.id, 'Confirmed → В туре (тур начался)', 'Система'); x.st = 'tour';
+    }
+    out.push(x);
+  }
+  return { list: out, today: today, sheet: s.ss.getUrl() + '#gid=' + s.b.getSheetId() };
+}
+function api_booking(id) {
+  var s = bkSheets_(), v = s.b.getDataRange().getValues(), x = null;
+  for (var i = 1; i < v.length; i++) if (String(v[i][0]) === id) { x = bkRow_(v[i], i); break; }
+  if (!x) throw new Error('Бронь не найдена');
+  var hv = s.h.getDataRange().getValues(), hist = [];
+  for (var k = hv.length - 1; k > 0; k--) if (String(hv[k][1]) === id) hist.push({ at: hv[k][0] instanceof Date ? hv[k][0].toISOString() : '', who: String(hv[k][2]), what: String(hv[k][3]) });
+  x.hist = hist; return x;
+}
+// o: {id?, st, agent, pin, slug, title, n, start, end, total, dep, depPaid, balPaid, owner, d}; what — текст для истории
+function api_bookingSave(o, what) {
+  var lock = LockService.getScriptLock(); lock.waitLock(10000);
+  try {
+    var s = bkSheets_(), v = s.b.getDataRange().getValues(), row = -1, old = null;
+    if (o.id) for (var i = 1; i < v.length; i++) if (String(v[i][0]) === o.id) { row = i + 1; old = bkRow_(v[i], i); break; }
+    if (o.id && row < 0) throw new Error('Бронь не найдена');
+    if (!String(o.agent || '').trim()) throw new Error('Впишите агентство');
+    var dt = function (x) { return x ? new Date(x + 'T00:00:00') : ''; };
+    var id = o.id || ('KW-' + Utilities.formatDate(new Date(), 'Asia/Almaty', 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900));
+    var st = BK_ST[o.st] ? o.st : 'new';
+    var vals = [id, old ? new Date(old.created || Date.now()) : new Date(), st, String(o.agent).trim(), String(o.pin || ''), String(o.slug || ''), String(o.title || ''),
+      Math.max(0, +o.n || 0), dt(o.start), dt(o.end), Math.max(0, +o.total || 0), Math.max(0, +o.dep || 0), dt(o.depPaid), dt(o.balPaid), String(o.owner || ''),
+      JSON.stringify(o.d || {}), new Date()];
+    if (row > 0) s.b.getRange(row, 1, 1, vals.length).setValues([vals]); else s.b.appendRow(vals);
+    if (!old) bkLog_(s.h, id, 'Создана вручную');
+    else if (old.st !== st) bkLog_(s.h, id, BK_ST[old.st] + ' → ' + BK_ST[st]);
+    if (what) bkLog_(s.h, id, what);
+    return id;
+  } finally { lock.releaseLock(); }
+}

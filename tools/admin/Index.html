@@ -83,6 +83,8 @@ a.btn{text-decoration:none}.site .ch{font-size:13px;color:var(--muted);border-to
 .todo .item b{display:block}.todo .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:17px}
 .gl .item img{width:64px;height:48px;object-fit:cover;border-radius:10px;background:var(--bg)}
 code.kb{background:#0F172A;color:#E2E8F0;display:block;padding:14px;border-radius:12px;font-size:13px;white-space:pre-wrap;overflow-x:auto}
+.kv{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.kv:last-of-type{border-bottom:0}.kv>div:first-child,.kv>div:nth-child(2):not(:last-child){flex:1;min-width:0}.kv>div:last-child{flex:none}
+.bk h2{margin-bottom:4px}.x2{border:0;background:#F1F3F7;color:var(--muted);width:36px;height:36px;border-radius:10px;cursor:pointer;flex:none}
 @media (max-width:820px){
   .sec,.nav.x{display:none}.nav.more{display:flex}
   .hello{padding:20px;border-radius:18px}.sites{grid-template-columns:1fr}
@@ -104,6 +106,7 @@ code.kb{background:#0F172A;color:#E2E8F0;display:block;padding:14px;border-radiu
   <aside>
     <div class="brand">King Wings<small>Админка сайта</small></div>
     <button class="nav on" data-v="hub"><i>⌂</i><span>Главная</span></button>
+    <button class="nav" data-v="bookings"><i>📋</i><span>Брони</span></button>
     <div class="sec">🧭 Сайт программ</div>
     <button class="nav x" data-v="home"><i>◎</i><span>Обзор</span></button>
     <button class="nav" data-v="prices"><i>$</i><span>Цены</span></button>
@@ -112,7 +115,7 @@ code.kb{background:#0F172A;color:#E2E8F0;display:block;padding:14px;border-radiu
     <button class="nav x" data-v="sales"><i>✓</i><span>Продажи</span></button>
     <button class="nav x" data-v="google"><i>G</i><span>Google</span></button>
     <div class="sec">Другие сайты</div>
-    <button class="nav" data-v="gallery"><i>📸</i><span>Галерея</span></button>
+    <button class="nav x" data-v="gallery"><i>📸</i><span>Галерея</span></button>
     <button class="nav" data-v="groups"><i>✈</i><span>Группы</span></button>
     <button class="nav x" data-v="sites"><i>◫</i><span>Все сайты</span></button>
     <div class="grow"></div>
@@ -151,6 +154,8 @@ async function render(){
  if(view==='gallery')return vGallery();
  if(view==='more')return vMore();
  if(view==='pins')return vPins();
+ if(view==='bookings')return vBookings();
+ if(view.indexOf('bk:')===0)return vBooking(view.slice(3));
  if(view.indexOf('site:')===0)return vSite(view.slice(5));
  if(!await load())return;
  ({home:vHome,prices:vPrices,progs:vProgs,sales:vSales,google:vGoogle})[view]()}
@@ -288,7 +293,7 @@ function vKey(){m.innerHTML=`<div class="view"><h1>Ключ GitHub${qb('key')}</
  <div class="hint">Ключ хранится только в вашем Google-скрипте. Когда срок закончится, админка попросит новый.</div></div></div>`;
  $('#tks').onclick=async()=>{$('#tks').disabled=true;try{await call('api_setToken',$('#tk').value);toast('Ключ принят ✓');S=null;go('home')}catch(e){err(e)}$('#tks').disabled=false}}
 /* ================= Версия 2: пульт всех сайтов ================= */
-const MORE=[['home','◎','Обзор сайта программ'],['pins','🔑','PIN агентов'],['sales','✓','Продажи'],['google','G','Google'],['sites','◫','Все сайты'],['key','⚙︎','Ключ GitHub']];
+const MORE=[['gallery','📸','Галерея'],['home','◎','Обзор сайта программ'],['pins','🔑','PIN агентов'],['sales','✓','Продажи'],['google','G','Google'],['sites','◫','Все сайты'],['key','⚙︎','Ключ GitHub']];
 const HELP={
  hub:['Главная','Здесь все сайты King Wings на одном экране. Зелёная метка — сайт работает и обновлён. Жёлтая — обновляется прямо сейчас. Красная — что-то сломалось: нажмите «Подробнее».<br><br>Новый сайт появится здесь сам, когда у него будет «паспорт» (файл kw-site.json). Делать ничего не надо.'],
  home:['Сайт программ','Короткий обзор: сколько программ показано, есть ли цены, включена ли бронь и виден ли сайт в Google. Внизу — что сделать дальше.'],
@@ -300,6 +305,7 @@ const HELP={
  groups:['Группы','Текущие и будущие группы из папок «1. Confirmed»: ссылка на путеводитель, PIN для туристов и код для гида.'],
  sites:['Все сайты','Список всех сайтов, которые админка нашла сама, и как добавить новый.'],
  pins:['PIN агентов','Цены на сайте видят только агенты с PIN. Нажмите «Выдать PIN», впишите агентство — админка придумает PIN и даст готовое сообщение для WhatsApp.<br><br>Выключатель у PIN — включить или выключить его сразу. «Открытий» — сколько раз агент смотрел цены. Внизу журнал: кто, когда и какую программу смотрел, и неверные попытки.<br><br>Если увидели скриншот цен у конкурента — на нём водяной знак с агентством и PIN: выключите этот PIN.'],
+ bookings:['Брони','Здесь все группы. Цвет — статус: синий — новая заявка, фиолетовый — отправили предложение, жёлтый — ждём депозит, зелёный — Confirmed, бирюзовый — группа в туре. Нажмите на группу — откроется карточка: оплата, гид, транспорт, отели, документы. Всё сохраняется сразу, кнопка «Сохранить» не нужна. Красный блок сверху — что горит: до тура меньше 30 дней, а что-то не готово. Заявки агентов с сайта (кнопка «Book this group») появляются здесь сами со статусом «Новая».'],
  key:['Ключ GitHub','Ключ — это пропуск, через который админка сохраняет изменения на сайт. Вставляется один раз.']};
 function help(v){const h=HELP[v];if(!h)return;dlg(`<h2>${h[0]}</h2><p style="line-height:1.6">${h[1]}</p><div class="save" style="position:static"><button class="btn main" onclick="close_()">Понятно</button></div>`)}
 function qb(v){return `<button class="q" title="Подсказка" onclick="help('${v}')">?</button>`}
@@ -416,6 +422,111 @@ function addPin(){dlg(`<h2>Выдать PIN</h2><label class="f">Агентст�
  <label class="f">Действует до <small>пусто — без срока</small></label><input class="t" id="pa4" type="date">
  <div class="row" style="margin-top:14px"><button class="btn main" id="pas">Выдать</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
  $('#pas').onclick=async()=>{$('#pas').disabled=true;try{const pin=await call('api_pinAdd',{agent:$('#pa1').value,country:$('#pa2').value,contact:$('#pa3').value,until:$('#pa4').value});showMsg(pin);toast('PIN '+pin+' выдан ✓');vPins()}catch(e){err(e);$('#pas').disabled=false}}}
+
+/* ---------- Брони (CRM) ---------- */
+const BST=[['new','Новая','#2667A8','#E6F0FB'],['offer','Предложение отправлено','#5B4BB7','#EEEDFE'],['wait','Ждём депозит','#8A5B00','#FFF4DA'],['ok','Confirmed','#1E8A5A','#E3F5EC'],['tour','В туре','#0E6F7E','#DDF3F6'],['done','Закрыто','#56607D','#F1F3F7'],['lost','Отказ','#B3261E','#FCE8E6']];
+const bst=k=>BST.find(s=>s[0]===k)||BST[0];
+const stPill=(k,big)=>{const s=bst(k);return `<span class="pill" style="background:${s[3]};color:${s[2]}${big?';font-size:15px;padding:8px 14px':''}"><span class="dot"></span>${s[1]}</span>`};
+const money=v=>(Math.round(+v||0)).toLocaleString('ru')+' $';
+const dshort=s=>s?new Date(s+'T00:00:00').toLocaleDateString('ru',{day:'numeric',month:'short'}):'';
+const dates=x=>x.start?dshort(x.start)+(x.end?' – '+dshort(x.end):''):'даты не выбраны';
+let BK=null,bkF='act';
+function bkD(x){const d=x.d||{};d.guide=d.guide||{};d.transport=d.transport||{};d.hotels=d.hotels||[];d.docs=d.docs||{};d.contact=d.contact||{};return d}
+function ready(x){const d=bkD(x);const it=[['Депозит',!!x.depPaid],['Остаток',!!x.balPaid],['Гид',!!d.guide.name],['Транспорт',!!d.transport.name],['Отели',d.hotels.length>0&&d.hotels.every(h=>h.ok)],['Документы',!!(d.docs.rooming&&d.docs.voucher&&d.docs.invoice)]];return{it,n:it.filter(i=>i[1]).length}}
+function daysTo(x,today){return x.start?Math.round((new Date(x.start)-new Date(today))/864e5):null}
+function probs(x,today){const p=[],dl=daysTo(x,today),d=bkD(x);if(dl===null||dl>30||dl<0)return p;
+ if(x.st==='wait')p.push('депозит не получен');
+ if(x.st==='ok'){if(!x.balPaid)p.push('остаток не оплачен');if(!d.guide.name)p.push('нет гида');if(!d.transport.name)p.push('нет транспорта');
+  const bad=d.hotels.filter(h=>!h.ok);if(!d.hotels.length)p.push('отели не внесены');else if(bad.length)p.push('не подтверждён отель: '+bad.map(h=>h.city).join(', '));
+  if(!(d.docs.rooming&&d.docs.voucher&&d.docs.invoice))p.push('документы не готовы')}
+ return p.length?['До тура '+dl+' дн.: '+p.join(', ')]:p}
+async function vBookings(){m.innerHTML=`<div class="view"><div class="row"><h1>📋 Брони ${qb('bookings')}</h1><span class="sp"></span><button class="btn main" id="bnew">＋ Новая группа</button></div><p class="lead">Все группы и их статус. Нажмите на группу, чтобы открыть карточку.</p><div id="bb"><div class="skel"></div></div></div>`;
+ $('#bnew').onclick=()=>bkEdit(null);
+ try{BK=await call('api_bookings')}catch(e){return err(e)}
+ if(!S)try{S=await call('api_state')}catch(e){}
+ const L=BK.list,t=BK.today,cnt=f=>L.filter(f).length;
+ const F={act:['Все активные',x=>!['done','lost'].includes(x.st)],new:['Новые',x=>['new','offer'].includes(x.st)],wait:['Ждём депозит',x=>x.st==='wait'],ok:['Confirmed',x=>x.st==='ok'],tour:['В туре',x=>x.st==='tour'],arch:['Архив',x=>['done','lost'].includes(x.st)]};
+ const hot=L.filter(x=>probs(x,t).length);
+ const list=L.filter(F[bkF][1]).sort((a,b)=>((a.st==='tour'?0:1)-(b.st==='tour'?0:1))||((a.start||'9')<(b.start||'9')?-1:(a.start||'9')>(b.start||'9')?1:0));
+ const kp=(k,c)=>{const s=bst(k==='new'?'new':k);return `<button class="card stat bf" data-f="${k}" style="text-align:left;cursor:pointer;border:2px solid ${bkF===k?s[2]:'transparent'}"><small>${F[k][0]}</small><b style="color:${s[2]}">${c}</b></button>`};
+ $('#bb').innerHTML=`${hot.length?`<div class="card" style="background:#FCE8E6;border:1.5px solid #F2B8B5;margin-bottom:16px"><b style="color:var(--bad)">⚠ Требует внимания: ${hot.length}</b>${hot.map(x=>`<div class="item bo" data-id="${esc(x.id)}" style="cursor:pointer;padding:8px 0;color:var(--bad)">${esc(x.agent)} — ${esc(probs(x,t)[0])} →</div>`).join('')}</div>`:''}
+ <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr));margin-bottom:16px">${kp('new',cnt(F.new[1]))}${kp('wait',cnt(F.wait[1]))}${kp('ok',cnt(F.ok[1]))}${kp('tour',cnt(F.tour[1]))}</div>
+ <div class="tabs"><button class="tab ${bkF==='act'?'on':''}" data-f="act">Все активные (${cnt(F.act[1])})</button><button class="tab ${bkF==='arch'?'on':''}" data-f="arch">Архив (${cnt(F.arch[1])})</button></div>
+ <div class="card list">${list.length?list.map(x=>{const r=ready(x),p=probs(x,t).length;return `<div class="item bo" data-id="${esc(x.id)}" style="cursor:pointer">
+  <div style="flex:1;min-width:0"><div class="tt">${p?'<span style="color:var(--bad)">⚠</span> ':''}${esc(x.agent)} · ${x.n} чел.</div><small>${esc(x.title||x.slug||'программа не выбрана')} · ${dates(x)}</small>
+  ${['ok','tour'].includes(x.st)?`<div style="display:flex;align-items:center;gap:8px;margin-top:6px"><div style="flex:1;max-width:160px;height:6px;background:#E7EEF9;border-radius:3px"><div style="width:${r.n/6*100}%;height:6px;border-radius:3px;background:${r.n===6?'var(--ok)':'var(--gold)'}"></div></div><small>готово ${r.n} из 6</small></div>`:''}</div>
+  ${stPill(x.st)}</div>`}).join(''):`<p style="margin:6px 0">${bkF==='arch'?'Архив пуст.':'Здесь пока пусто. Заявки с сайта появятся сами, или нажмите «＋ Новая группа».'}</p>`}</div>
+ <p style="margin-top:14px"><a href="${esc(BK.sheet)}" target="_blank">Открыть таблицу броней ↗</a></p>`;
+ m.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{bkF=b.dataset.f;vBookings()});
+ m.querySelectorAll('.bo').forEach(b=>b.onclick=()=>{view='bk:'+b.dataset.id;render();window.scrollTo(0,0)})}
+
+async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></div></div>';let x;try{x=await call('api_booking',id)}catch(e){return err(e)}
+ const d=bkD(x),r=ready(x),today=(BK&&BK.today)||new Date().toISOString().slice(0,10),pb=probs(x,today),rest=Math.max(0,x.total-x.dep);
+ const ok=v=>v?'<span style="color:var(--ok);font-weight:700">✓</span>':'<span style="color:#8A5B00">⏳</span>';
+ const ln=(a,b,act)=>`<div class="kv" ${act?`data-a="${act}" style="cursor:pointer"`:''}><div style="flex:1;min-width:0">${a}</div><div style="white-space:nowrap">${b}</div></div>`;
+ const tip=[];
+ if(x.depPaid&&['new','offer','wait'].includes(x.st))tip.push(`<div class="card" style="background:#E3F5EC;border:1.5px solid #A8DCC0"><b style="color:var(--ok)">💵 Депозит ${money(x.dep)} получен</b><p style="margin:4px 0 10px;color:var(--ok)">Перевести группу в Confirmed?</p><div class="row"><button class="btn" style="background:var(--ok);color:#fff" data-to="ok">Да, Confirmed</button></div></div>`);
+ if(x.st==='tour'&&x.end&&x.end<today)tip.push(`<div class="card" style="background:#F1F3F7"><b>Тур закончился ${dshort(x.end)}.</b><p style="margin:4px 0 10px">Все расчёты сделаны? Закройте группу.</p><button class="btn dark" data-to="done">Закрыть группу</button></div>`);
+ if(pb.length)tip.push(`<div class="card" style="background:#FCE8E6;border:1.5px solid #F2B8B5;color:var(--bad)"><b>⚠ ${esc(pb[0])}</b></div>`);
+ m.innerHTML=`<div class="view"><button class="btn ghost" id="bback">← Все брони</button>
+ <div class="card" style="margin-top:14px"><div class="row" style="align-items:flex-start"><div style="flex:1;min-width:0"><h1 style="margin:0">${esc(x.agent)}</h1><p style="margin:2px 0 0;color:var(--muted)">${esc(x.title||'программа не выбрана')} · ${x.n} гостей · ${dates(x)}</p></div></div>
+  <button class="btn" id="bst" style="width:100%;justify-content:space-between;margin-top:14px;background:${bst(x.st)[3]};color:${bst(x.st)[2]};border:2px solid ${bst(x.st)[2]};font-size:17px"><span>● ${bst(x.st)[1]}</span><span>Сменить ▾</span></button>
+  ${['ok','tour','wait'].includes(x.st)?`<div class="row" style="margin-top:14px"><b>Готовность</b><span class="sp"></span><b style="color:${r.n===6?'var(--ok)':'#8A5B00'}">${r.n} из 6</b></div><div style="height:10px;background:#E7EEF9;border-radius:5px;margin-top:6px"><div style="width:${r.n/6*100}%;height:10px;border-radius:5px;background:${r.n===6?'var(--ok)':'var(--gold)'}"></div></div>`:''}</div>
+ ${tip.map(h=>'<div style="margin-top:14px">'+h+'</div>').join('')}
+ <div class="grid" style="margin-top:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+ <div class="card bk"><h2>💵 Оплата</h2>
+  ${ln('Сумма группы',`<b>${money(x.total)}</b>`,'grp')}
+  ${ln(`Депозит 30% · ${money(x.dep)}`,x.depPaid?`<span style="color:var(--ok);font-weight:700">✓ ${dshort(x.depPaid)}</span>`:'<button class="btn" data-pay="dep">Получен</button>')}
+  ${ln(`Остаток · ${money(rest)}`,x.balPaid?`<span style="color:var(--ok);font-weight:700">✓ ${dshort(x.balPaid)}</span>`:'<button class="btn" data-pay="bal">Получен</button>')}</div>
+ <div class="card bk"><h2>👥 Команда</h2>
+  ${ln('🧑 Гид'+(d.guide.name?' · <b>'+esc(d.guide.name)+'</b><br><small>'+esc(d.guide.phone||'')+'</small>':''),d.guide.name?ok(1)+' <button class="btn ghost" data-a="guide">Изменить</button>':'<button class="btn main" data-a="guide">Назначить</button>')}
+  ${ln('🚌 Транспорт'+(d.transport.name?' · <b>'+esc(d.transport.name)+'</b><br><small>'+esc([d.transport.car,d.transport.phone].filter(Boolean).join(' · '))+'</small>':''),d.transport.name?ok(1)+' <button class="btn ghost" data-a="transport">Изменить</button>':'<button class="btn main" data-a="transport">Назначить</button>')}</div>
+ <div class="card bk"><h2>🏨 Отели</h2>
+  ${d.hotels.map((h,k)=>`<div class="kv"><label class="sw" title="Подтверждён"><input type="checkbox" data-h="${k}" ${h.ok?'checked':''}><span></span></label><div style="flex:1;min-width:0"><b>${esc(h.city)}</b> · ${+h.nights||0} ноч.<br><small>${esc(h.name||'')}${h.ok?' · <span style="color:var(--ok)">подтверждён</span>':' · <span style="color:var(--bad)">не подтверждён</span>'}</small></div><button class="x2" data-hd="${k}" aria-label="Удалить">✕</button></div>`).join('')||'<p style="color:var(--muted);margin:4px 0">Отели ещё не внесены.</p>'}
+  <button class="btn" data-a="hotel" style="margin-top:10px">＋ Отель</button></div>
+ <div class="card bk"><h2>📄 Документы</h2>
+  ${[['rooming','Rooming list'],['voucher','Ваучер'],['invoice','Инвойс']].map(([k,t])=>`<div class="kv"><label class="sw"><input type="checkbox" data-doc="${k}" ${d.docs[k]?'checked':''}><span></span></label><b>${t}</b></div>`).join('')}</div>
+ <div class="card bk"><h2>📝 Группа</h2>
+  ${ln('Агент',esc(x.agent)+(x.pin?' · PIN '+esc(x.pin):''),'grp')}
+  ${ln('Контакт',esc([d.contact.name,d.contact.wa,d.contact.email].filter(Boolean).join(' · ')||'—'),'grp')}
+  ${ln('Ответственный',esc(x.owner||'—'),'grp')}
+  ${d.note?ln('Заметка',esc(d.note),'grp'):''}
+  <button class="btn" data-a="grp" style="margin-top:10px">✎ Изменить данные группы</button></div>
+ <div class="card"><h2>🕘 История</h2>${x.hist.length?'<div>'+x.hist.map(h=>`<div class="kv" style="padding:8px 0;align-items:flex-start"><small style="width:90px;flex:none">${h.at?new Date(h.at).toLocaleDateString('ru',{day:'numeric',month:'short'}):''}</small><div style="flex:1;min-width:0"><b>${esc(h.who)}</b> · ${esc(h.what)}</div></div>`).join('')+'</div>':'<p style="color:var(--muted)">Пока пусто.</p>'}</div>
+ </div></div>`;
+ const sv=async(what,toastT)=>{try{await call('api_bookingSave',x,what);toast(toastT||'Сохранено ✓');BK=null;vBooking(id)}catch(e){err(e)}};
+ $('#bback').onclick=()=>go('bookings');
+ $('#bst').onclick=()=>dlg(`<h2>Статус группы</h2>${BST.map(s=>`<button class="btn" data-s="${s[0]}" style="width:100%;justify-content:flex-start;margin-bottom:8px;background:${s[3]};color:${s[2]};${s[0]===x.st?'border:2px solid '+s[2]:''}">● ${s[1]}${s[0]===x.st?' ✓':''}</button>`).join('')}<button class="btn ghost" style="width:100%" onclick="close_()">Отмена</button>`)||$('#dlg').querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{if(b.dataset.s===x.st)return close_();x.st=b.dataset.s;close_();sv('','Статус: '+bst(x.st)[1]+' ✓')});
+ m.querySelectorAll('[data-to]').forEach(b=>b.onclick=()=>{x.st=b.dataset.to;sv('','Статус: '+bst(x.st)[1]+' ✓')});
+ m.querySelectorAll('[data-pay]').forEach(b=>b.onclick=()=>{const k=b.dataset.pay;dlg(`<h2>${k==='dep'?'Депозит получен':'Остаток получен'}</h2><p>${money(k==='dep'?x.dep:rest)}</p><label class="f">Дата</label><input class="t" type="date" id="pd" value="${today}"><div class="row" style="margin-top:14px"><button class="btn main" id="pds">Сохранить</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+  $('#pds').onclick=()=>{x[k==='dep'?'depPaid':'balPaid']=$('#pd').value||today;close_();sv((k==='dep'?'Депозит получен':'Остаток получен')+' · '+money(k==='dep'?x.dep:rest))}});
+ m.querySelectorAll('[data-h]').forEach(i=>i.onchange=()=>{const h=d.hotels[i.dataset.h];h.ok=i.checked;sv('Отель '+h.city+(h.ok?' подтверждён':' — снято подтверждение'))});
+ m.querySelectorAll('[data-hd]').forEach(b=>b.onclick=()=>{const h=d.hotels[b.dataset.hd];if(!confirm('Убрать отель «'+h.city+'»?'))return;d.hotels.splice(b.dataset.hd,1);sv('Убран отель '+h.city)});
+ m.querySelectorAll('[data-doc]').forEach(i=>i.onchange=()=>{d.docs[i.dataset.doc]=i.checked;sv('')});
+ m.querySelectorAll('[data-a]').forEach(b=>b.onclick=e=>{e.stopPropagation();const a=b.dataset.a;
+  if(a==='grp')return bkEdit(x);
+  if(a==='hotel'){dlg(`<h2>Добавить отель</h2><label class="f">Город</label><input class="t" id="h1" placeholder="Самарканд"><label class="f">Ночей</label><input class="t" id="h2" type="number" min="1" value="1"><label class="f">Отель <small>необязательно</small></label><input class="t" id="h3"><div class="row" style="margin-top:14px"><button class="btn main" id="hs">Добавить</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+   $('#hs').onclick=()=>{const c=$('#h1').value.trim();if(!c)return toast('Впишите город',1);d.hotels.push({city:c,nights:+$('#h2').value||1,name:$('#h3').value.trim(),ok:false});close_();sv('Добавлен отель '+c)};return}
+  const g=d[a],T=a==='guide'?'Гид':'Транспорт';
+  dlg(`<h2>${T}</h2><label class="f">${a==='guide'?'Имя гида':'Водитель или компания'}</label><input class="t" id="g1" value="${esc(g.name||'')}">${a==='transport'?`<label class="f">Машина <small>например, автобус 30 мест</small></label><input class="t" id="g3" value="${esc(g.car||'')}">`:''}<label class="f">Телефон</label><input class="t" id="g2" type="tel" value="${esc(g.phone||'')}"><div class="row" style="margin-top:14px"><button class="btn main" id="gs">Сохранить</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+  $('#gs').onclick=()=>{g.name=$('#g1').value.trim();g.phone=$('#g2').value.trim();if(a==='transport')g.car=$('#g3').value.trim();close_();sv(T+': '+(g.name||'снят'))}})}
+
+function bkEdit(x){const nw=!x;x=x||{st:'new',agent:'',n:20,d:{}};const d=bkD(x),P=(S&&S.programs)||[];
+ dlg(`<h2>${nw?'Новая группа':'Данные группы'}</h2>
+ <label class="f">Агентство</label><input class="t" id="e1" value="${esc(x.agent)}" placeholder="PT Contoh Travel">
+ <label class="f">Программа</label>${P.length?`<select class="t" id="e2"><option value="">— выберите —</option>${P.map(p=>`<option value="${esc(p.slug)}" ${p.slug===x.slug?'selected':''}>${esc(p.title)}</option>`).join('')}</select>`:`<input class="t" id="e2t" value="${esc(x.title||'')}">`}
+ <div class="row" style="gap:10px"><div style="flex:1"><label class="f">Гостей</label><input class="t" id="e3" type="number" min="1" value="${x.n||''}"></div><div style="flex:1"><label class="f">Сумма группы, $</label><input class="t" id="e4" type="number" min="0" value="${x.total||''}"></div></div>
+ <div class="row" style="gap:10px"><div style="flex:1"><label class="f">Начало</label><input class="t" id="e5" type="date" value="${esc(x.start||'')}"></div><div style="flex:1"><label class="f">Конец</label><input class="t" id="e6" type="date" value="${esc(x.end||'')}"></div></div>
+ <label class="f">Контакт агента <small>имя, WhatsApp</small></label><input class="t" id="e7" value="${esc([d.contact.name,d.contact.wa].filter(Boolean).join(', '))}">
+ <label class="f">Ответственный <small>кто ведёт группу</small></label><input class="t" id="e8" value="${esc(x.owner||'')}">
+ <label class="f">Заметка <small>необязательно</small></label><textarea class="t" id="e9">${esc(d.note||'')}</textarea>
+ <p style="color:var(--muted);font-size:14px">Депозит считается сам: 30% от суммы.</p>
+ <div class="row" style="margin-top:6px"><button class="btn main" id="es">${nw?'Создать':'Сохранить'}</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+ $('#es').onclick=async()=>{const a=$('#e1').value.trim();if(!a)return toast('Впишите агентство',1);
+  x.agent=a;if($('#e2')){x.slug=$('#e2').value;const p=P.find(p=>p.slug===x.slug);x.title=p?p.title:''}else x.title=$('#e2t').value.trim();
+  x.n=+$('#e3').value||0;x.total=+$('#e4').value||0;x.dep=Math.round(x.total*.3);x.start=$('#e5').value;x.end=$('#e6').value;
+  const c=$('#e7').value.split(',');d.contact.name=(c[0]||'').trim();d.contact.wa=c.slice(1).join(',').trim();x.owner=$('#e8').value.trim();d.note=$('#e9').value.trim();x.d=d;
+  $('#es').disabled=true;try{const nid=await call('api_bookingSave',x,nw?'':'Изменены данные группы');close_();toast(nw?'Группа создана ✓':'Сохранено ✓');BK=null;view='bk:'+nid;render()}catch(e){err(e);$('#es').disabled=false}}}
 
 render();
 </script>
