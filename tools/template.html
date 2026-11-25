@@ -916,7 +916,7 @@ function renderLogo(){
  const kw=`<img src="${KWLOGO}" alt="King Wings Travel DMC" style="height:3.6rem;width:auto;background:#fff;border-radius:.6rem;padding:.2rem .5rem;display:block">`;
  const ag=s=>`<img src="${s}" alt="" style="height:2.1rem;max-width:9rem;object-fit:contain;background:#fff;border-radius:.4rem;padding:.15rem .3rem">`;
  let h="";
- if(lg.mode==="agent")h=im[0]?`<img src="${im[0]}" alt="" style="width:8.6rem;max-width:40vw;height:auto;border-radius:.45rem;display:block">`:"";
+ if(lg.mode==="agent")h=im[0]?`<img src="${im[0]}" alt="" style="width:8.6rem;max-width:40vw;height:auto;border-radius:.35rem;display:block;background:#fff;padding:.22rem;box-shadow:0 2px 10px rgba(0,0,0,.28)">`:"";
  else if(lg.mode==="two")h=im.slice(0,2).map(ag).join("");
  else if(lg.mode==="kw+agent")h=kw+(im[0]?ag(im[0]):"");
  else if(lg.mode==="none")h="";
