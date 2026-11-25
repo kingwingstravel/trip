@@ -10,6 +10,13 @@
  *     Адрес …/exec — это и есть админка (добавить в закладки / на главный экран телефона).
  *  3) При первом открытии админка попросит ключ GitHub (fine-grained token: репозиторий galeri,
  *     Contents: Read and write, Actions: Read). Вставляет владелец.
+ *
+ * ВЕРСИЯ 2 (26.11.2026): пульт ВСЕХ сайтов King Wings.
+ *  Админка сама находит сайты: в любом репозитории kingwingstravel файл «kw-site.json» (или «<имя>.kw-site.json»)
+ *  = паспорт сайта. Новый сайт с паспортом появляется на главной сам — без Claude и без программиста.
+ *  Поля паспорта: name, emoji, color, about, url, links[{t,u}], kind (programs | gallery | guides | page),
+ *  workflow (имя сборки в GitHub Actions), settings (путь к json настроек), content (папка данных), order, help[].
+ *  Открытые репозитории (trip) читаются и без ключа; закрытые (galeri) — по ключу.
  */
 var CFG = { OWNER: 'kingwingstravel', REPO: 'galeri', BRANCH: 'main', DIR: 'programs/content',
             SETTINGS: 'programs/settings.json', LIVE: 'https://raw.githubusercontent.com/kingwingstravel/trip/main/live.json',
@@ -27,15 +34,15 @@ function doGet() {
 
 /* ---------- GitHub ---------- */
 function token_() { return PropertiesService.getScriptProperties().getProperty('GITHUB_TOKEN'); }
-function gh_(method, path, body) {
+function gh_(method, path, body, repo) {
   var t = token_();
   if (!t) throw new Error('NO_TOKEN');
   var opt = { method: method, muteHttpExceptions: true,
     headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } };
   if (body) { opt.contentType = 'application/json'; opt.payload = JSON.stringify(body); }
-  var r = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/' + CFG.REPO + path, opt);
+  var r = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/' + (repo || CFG.REPO) + path, opt);
   var c = r.getResponseCode();
-  if (c === 404 && method === 'get') return null;
+  if ((c === 404 || (c === 403 && repo)) && method === 'get') return null;
   if (c === 401) throw new Error('Ключ GitHub не подходит или истёк — замените его (⚙︎ Ключ).');
   if (c >= 300) throw new Error('GitHub ' + c + ': ' + r.getContentText().slice(0, 200));
   return JSON.parse(r.getContentText() || '{}');
@@ -115,11 +122,13 @@ function check_(d) {
 function api_saveProgram(path, sha, data, what) {
   var errs = check_(data);
   if (errs.length) throw new Error(errs.join('\n'));
+  CacheService.getScriptCache().remove('sites2');
   var nsha = putText_(path, JSON.stringify(data, null, 2) + '\n', sha, 'Админка: ' + (what || 'программа') + ' — ' + data.slug + ' (' + who_() + ')');
   return { sha: nsha };
 }
 
 function api_saveSettings(sha, data, what) {
+  CacheService.getScriptCache().remove('sites2');
   var nsha = putText_(CFG.SETTINGS, JSON.stringify(data, null, 2) + '\n', sha, 'Админка: ' + (what || 'настройки') + ' (' + who_() + ')');
   return { sha: nsha };
 }
@@ -167,4 +176,124 @@ function api_groups() {
   }
   out.sort(function (x, y) { return x.start - y.start; });
   return out;
+}
+
+
+/* ================= ВЕРСИЯ 2: все сайты ================= */
+var REPOS = ['galeri', 'trip'];   // запасной список, если ключ не умеет показывать список репозиториев
+function repos_() {
+  try {
+    var r = UrlFetchApp.fetch('https://api.github.com/user/repos?per_page=100', { muteHttpExceptions: true,
+      headers: { Authorization: 'Bearer ' + token_(), Accept: 'application/vnd.github+json' } });
+    if (r.getResponseCode() === 200) {
+      var names = JSON.parse(r.getContentText()).filter(function (x) { return x.owner && x.owner.login === CFG.OWNER; }).map(function (x) { return x.name; });
+      REPOS.forEach(function (n) { if (names.indexOf(n) < 0) names.push(n); });
+      return names;
+    }
+  } catch (e) {}
+  return REPOS.slice();
+}
+// список файлов репозитория: сначала по ключу, для открытых — через jsDelivr (без ключа)
+function files_(repo) {
+  var t = null;
+  try { t = gh_('get', '/git/trees/' + CFG.BRANCH + '?recursive=1', null, repo); } catch (e) {}
+  if (t && t.tree) return { via: 'key', list: t.tree.filter(function (x) { return x.type === 'blob'; }).map(function (x) { return x.path; }) };
+  try {   // открытый репозиторий: GitHub без ключа (свежие данные), запасной путь — jsDelivr
+    var g = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/' + repo + '/git/trees/' + CFG.BRANCH + '?recursive=1', { muteHttpExceptions: true, headers: { Accept: 'application/vnd.github+json' } });
+    if (g.getResponseCode() === 200) return { via: 'public', list: JSON.parse(g.getContentText()).tree.filter(function (x) { return x.type === 'blob'; }).map(function (x) { return x.path; }) };
+  } catch (e) {}
+  try {
+    var r = UrlFetchApp.fetch('https://data.jsdelivr.com/v1/packages/gh/' + CFG.OWNER + '/' + repo + '@' + CFG.BRANCH + '?structure=flat', { muteHttpExceptions: true });
+    if (r.getResponseCode() === 200) return { via: 'public', list: JSON.parse(r.getContentText()).files.map(function (x) { return x.name.replace(/^\//, ''); }) };
+  } catch (e) {}
+  return { via: 'none', list: [] };
+}
+function readAny_(repo, path, via) {
+  if (via === 'key') { var x = getTextR_(repo, path); return x ? x.text : null; }
+  var r = UrlFetchApp.fetch('https://raw.githubusercontent.com/' + CFG.OWNER + '/' + repo + '/' + CFG.BRANCH + '/' + encodeURI(path), { muteHttpExceptions: true });
+  return r.getResponseCode() === 200 ? r.getContentText('UTF-8') : null;
+}
+function getTextR_(repo, path) {
+  var r = gh_('get', '/contents/' + encodeURI(path) + '?ref=' + CFG.BRANCH, null, repo);
+  if (!r) return null;
+  return { sha: r.sha, text: Utilities.newBlob(Utilities.base64Decode(r.content.replace(/\n/g, ''))).getDataAsString('UTF-8') };
+}
+function builds_(repo) {
+  try { var runs = gh_('get', '/actions/runs?per_page=20&branch=' + CFG.BRANCH, null, repo); return (runs && runs.workflow_runs) || []; } catch (e) { return []; }
+}
+function lastCommit_(repo, dir) {
+  try {
+    var c = gh_('get', '/commits?per_page=1&sha=' + CFG.BRANCH + (dir ? '&path=' + encodeURIComponent(dir) : ''), null, repo);
+    if (c && c[0]) return { at: c[0].commit.committer.date, msg: c[0].commit.message.split('\n')[0] };
+  } catch (e) {}
+  return null;
+}
+
+// Найти все сайты (паспорта kw-site.json). Кэш 10 минут; «Обновить» на главной — сразу.
+function api_sites(fresh) {
+  var cache = CacheService.getScriptCache();
+  if (!fresh) { var c = cache.get('sites2'); if (c) return JSON.parse(c); }
+  var out = { sites: [], repos: [], live: null, at: new Date().toISOString() };
+  repos_().forEach(function (repo) {
+    var f = files_(repo); out.repos.push({ name: repo, via: f.via, files: f.list.length });
+    var runs = f.via === 'key' ? builds_(repo) : [];
+    f.list.filter(function (p) { return /(^|\/)([\w-]+\.)?kw-site\.json$/.test(p); }).forEach(function (p) {
+      var m; try { m = JSON.parse(readAny_(repo, p, f.via) || '{}'); } catch (e) { m = { name: p, error: 'паспорт с ошибкой: ' + e.message }; }
+      m.repo = repo; m.file = p; m.id = (repo + '-' + p.replace(/\.?kw-site\.json$/, '').replace(/[^\w]+/g, '-')).replace(/-+$/, '');
+      m.private = f.via !== 'public';
+      if (m.workflow) {
+        var r = runs.filter(function (x) { return new RegExp(m.workflow, 'i').test(x.name); })[0];
+        if (r) m.build = { status: r.status, result: r.conclusion, at: r.updated_at, url: r.html_url };
+      }
+      var dir = p.indexOf('/') >= 0 ? p.replace(/\/[^\/]*$/, '') : (m.content || '');
+      if (f.via === 'key') m.changed = lastCommit_(repo, m.content || dir);
+      if (m.settings && f.via === 'key') { try { var st = getTextR_(repo, m.settings); m.settingsData = st ? JSON.parse(st.text) : null; } catch (e) {} }
+      if (m.kind === 'gallery' && m.content) m.count = f.list.filter(function (x) { return x.indexOf(m.content + '/') === 0 && /\/group\.json$/.test(x); }).length;
+      if (m.kind === 'programs' && m.content) m.count = f.list.filter(function (x) { return x.indexOf(m.content + '/') === 0 && /\.json$/.test(x); }).length;
+      if (m.kind === 'guides' && m.content) m.count = f.list.filter(function (x) { return new RegExp('^' + m.content + '/[a-z0-9]{8}/index\\.html$').test(x); }).length;
+      out.sites.push(m);
+    });
+  });
+  out.sites.sort(function (a, b) { return (a.order || 99) - (b.order || 99); });
+  try { out.live = JSON.parse(UrlFetchApp.fetch(CFG.LIVE, { muteHttpExceptions: true }).getContentText()); } catch (e) {}
+  try { cache.put('sites2', JSON.stringify(out), 600); } catch (e) {}
+  return out;
+}
+
+// Проверка, что сайт открывается (код ответа), — по кнопке «Проверить»
+function api_ping(url) {
+  try { var t = Date.now(), r = UrlFetchApp.fetch(url, { muteHttpExceptions: true, followRedirects: true }); return { code: r.getResponseCode(), ms: Date.now() - t }; }
+  catch (e) { return { code: 0, ms: 0, error: String(e.message || e) }; }
+}
+
+// Галерея: список групп и «показать / скрыть»
+function api_gallery(repo, dir) {
+  var list = gh_('get', '/contents/' + dir + '?ref=' + CFG.BRANCH, null, repo) || [], out = [];
+  list.filter(function (x) { return x.type === 'dir'; }).forEach(function (d) {
+    var g = getTextR_(repo, d.path + '/group.json'); if (!g) return;
+    var j = JSON.parse(g.text);
+    out.push({ path: d.path + '/group.json', sha: g.sha, slug: j.slug, title: j.title, start: j.date_start, end: j.date_end, pax: j.pax, city: j.city,
+      hidden: !!j.hidden, example: !!j.example, photos: (j.photos || []).length, videos: (j.videos || []).length, words: String(j.story || '').split(/\s+/).length });
+  });
+  out.sort(function (a, b) { return String(b.start).localeCompare(String(a.start)); });
+  return out;
+}
+function api_galleryToggle(repo, path, hidden) {
+  var g = getTextR_(repo, path), j = JSON.parse(g.text);
+  if (hidden) j.hidden = true; else delete j.hidden;
+  putTextR_(repo, path, JSON.stringify(j, null, 2) + '\n', g.sha, 'Админка: галерея — ' + (hidden ? 'скрыть ' : 'показать ') + j.slug + ' (' + who_() + ')');
+  CacheService.getScriptCache().remove('sites2');
+  return true;
+}
+function putTextR_(repo, path, text, sha, msg) {
+  var body = { message: msg, content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), branch: CFG.BRANCH };
+  if (sha) body.sha = sha;
+  return gh_('put', '/contents/' + encodeURI(path), body, repo).content.sha;
+}
+// Настройки любого сайта (простые поля: да/нет, текст, число) — для сайтов вида «page»
+function api_siteSettings(repo, path) { var x = getTextR_(repo, path); return x ? { sha: x.sha, data: JSON.parse(x.text) } : null; }
+function api_saveSiteSettings(repo, path, sha, data) {
+  var r = putTextR_(repo, path, JSON.stringify(data, null, 2) + '\n', sha, 'Админка: настройки ' + path + ' (' + who_() + ')');
+  CacheService.getScriptCache().remove('sites2');
+  return { sha: r };
 }
