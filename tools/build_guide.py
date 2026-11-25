@@ -122,6 +122,10 @@ if G.get('people'):
         import hashlib; G['staffHash']=hashlib.sha256((G.get('code','')+':'+sc).encode()).hexdigest()
 lg=G.get('logo') or {'mode':'kw'}
 imgs=list(lg.get('imgs',[]))
+# 25.11.2026: brands/<код>.png в репозитории = группа только под брендом агента (King Wings нигде). Сильнее B9/B10.
+_bf=os.path.join(os.path.dirname(here),'brands',str(G.get('code',''))+'.png')
+if os.path.exists(_bf):
+    lg={'mode':'agent'};imgs=['data:image/png;base64,'+base64.b64encode(open(_bf,'rb').read()).decode()]
 for p in lg.pop('files',[]) or []:
     mt=mimetypes.guess_type(p)[0] or 'image/png'
     imgs.append(f'data:{mt};base64,'+base64.b64encode(open(p,'rb').read()).decode())
