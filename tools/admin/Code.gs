@@ -20,7 +20,7 @@
  */
 var CFG = { OWNER: 'kingwingstravel', REPO: 'galeri', BRANCH: 'main', DIR: 'programs/content',
             SETTINGS: 'programs/settings.json', LIVE: 'https://raw.githubusercontent.com/kingwingstravel/trip/main/live.json',
-            SITE: 'https://kingwingstravel-dmc.com/programs/' };
+            SITE: 'https://trip.kingwingstravel-dmc.com/programs/' };
 var LANGS = ['en', 'id', 'tr', 'es', 'hi'];
 
 function doGet() {
