@@ -462,3 +462,34 @@ function api_bookingSave(o, what) {
     return id;
   } finally { lock.releaseLock(); }
 }
+
+/* ================= ЗАЩИТА ================= */
+// 1) Все листы таблицы под защитой «с предупреждением»: при ручной правке или удалении Google спросит «Вы уверены?». Админка и сайт пишут без вопросов.
+// 2) Каждую ночь копия таблицы в папку «KW Резервные копии» на Диске. Хранятся последние 30 копий.
+function api_safety() {
+  var P = PropertiesService.getScriptProperties();
+  if (P.getProperty('safe') === 'v1') return { ok: true, last: P.getProperty('lastBackup') || '' };
+  var ss = pinSS_();
+  bkSheets_();
+  ss.getSheets().forEach(function (sh) {
+    if (sh.getProtections(SpreadsheetApp.ProtectionType.SHEET).length) return;
+    sh.protect().setDescription('Ведёт админка King Wings. Не удаляйте и не переименовывайте этот лист.').setWarningOnly(true);
+  });
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'backup_') ScriptApp.deleteTrigger(t); });
+  ScriptApp.newTrigger('backup_').timeBased().everyDays(1).atHour(3).inTimezone('Asia/Almaty').create();
+  backup_();
+  P.setProperty('safe', 'v1');
+  return { ok: true, last: P.getProperty('lastBackup') || '' };
+}
+function backup_() {
+  var it = DriveApp.getFoldersByName('KW Резервные копии'), f = it.hasNext() ? it.next() : DriveApp.createFolder('KW Резервные копии');
+  var src = DriveApp.getFileById(PIN_SHEET), tz = 'Asia/Almaty';
+  src.makeCopy(src.getName() + ' — копия ' + Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd HH:mm'), f);
+  var files = [], fi = f.getFiles();
+  while (fi.hasNext()) files.push(fi.next());
+  files.sort(function (a, b) { return b.getDateCreated() - a.getDateCreated(); });
+  files.slice(30).forEach(function (x) { x.setTrashed(true); });
+  PropertiesService.getScriptProperties().setProperty('lastBackup', new Date().toISOString());
+  PropertiesService.getScriptProperties().setProperty('backupFolder', f.getUrl());
+}
+function api_backupInfo() { var P = PropertiesService.getScriptProperties(); return { last: P.getProperty('lastBackup') || '', folder: P.getProperty('backupFolder') || '' }; }
