@@ -40,8 +40,13 @@ function gh_(method, path, body, repo) {
   var opt = { method: method, muteHttpExceptions: true,
     headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } };
   if (body) { opt.contentType = 'application/json'; opt.payload = JSON.stringify(body); }
-  var r = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/' + (repo || CFG.REPO) + path, opt);
-  var c = r.getResponseCode();
+  var r, c;
+  for (var k = 0; k < 3; k++) {   // GitHub иногда отвечает 502/503 — пробуем ещё раз
+    r = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/' + (repo || CFG.REPO) + path, opt);
+    c = r.getResponseCode();
+    if (c < 500) break;
+    Utilities.sleep(700 * (k + 1));
+  }
   if ((c === 404 || (c === 403 && repo)) && method === 'get') return null;
   if (c === 401) throw new Error('Ключ GitHub не подходит или истёк — замените его (⚙︎ Ключ).');
   if (c >= 300) throw new Error('GitHub ' + c + ': ' + r.getContentText().slice(0, 200));
@@ -229,34 +234,65 @@ function lastCommit_(repo, dir) {
   return null;
 }
 
-// Найти все сайты (паспорта kw-site.json). Кэш 10 минут; «Обновить» на главной — сразу.
+// Параллельные запросы к GitHub (быстрее в несколько раз). Возвращает тексты ответов или null.
+function many_(reqs) {
+  if (!reqs.length) return [];
+  var t = token_(), list = reqs.map(function (q) {
+    var h = { Accept: q.raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json' };
+    if (q.key && t) h.Authorization = 'Bearer ' + t;
+    return { url: q.url, headers: h, muteHttpExceptions: true };
+  });
+  var out = reqs.map(function () { return null; }), todo = list.map(function (x, k) { return k; });
+  for (var a = 0; a < 3 && todo.length; a++) {
+    var rs = UrlFetchApp.fetchAll(todo.map(function (k) { return list[k]; })), again = [];
+    rs.forEach(function (r, n) { var k = todo[n], c = r.getResponseCode(); if (c === 200) out[k] = r.getContentText('UTF-8'); else if (c >= 500) again.push(k); });
+    todo = again; if (todo.length) Utilities.sleep(700);
+  }
+  return out;
+}
+var API = 'https://api.github.com/repos/';
+// Найти все сайты (паспорта kw-site.json). Кэш 30 минут; «обновить» на главной — сразу.
 function api_sites(fresh) {
   var cache = CacheService.getScriptCache();
   if (!fresh) { var c = cache.get('sites2'); if (c) return JSON.parse(c); }
-  var out = { sites: [], repos: [], live: null, at: new Date().toISOString() };
+  var out = { sites: [], repos: [], live: null, at: new Date().toISOString() }, found = [];
   repos_().forEach(function (repo) {
     var f = files_(repo); out.repos.push({ name: repo, via: f.via, files: f.list.length });
     var runs = f.via === 'key' ? builds_(repo) : [];
-    f.list.filter(function (p) { return /(^|\/)([\w-]+\.)?kw-site\.json$/.test(p); }).forEach(function (p) {
-      var m; try { m = JSON.parse(readAny_(repo, p, f.via) || '{}'); } catch (e) { m = { name: p, error: 'паспорт с ошибкой: ' + e.message }; }
-      m.repo = repo; m.file = p; m.id = (repo + '-' + p.replace(/\.?kw-site\.json$/, '').replace(/[^\w]+/g, '-')).replace(/-+$/, '');
-      m.private = f.via !== 'public';
-      if (m.workflow) {
-        var r = runs.filter(function (x) { return new RegExp(m.workflow, 'i').test(x.name); })[0];
-        if (r) m.build = { status: r.status, result: r.conclusion, at: r.updated_at, url: r.html_url };
-      }
-      var dir = p.indexOf('/') >= 0 ? p.replace(/\/[^\/]*$/, '') : (m.content || '');
-      if (f.via === 'key') m.changed = lastCommit_(repo, m.content || dir);
-      if (m.settings && f.via === 'key') { try { var st = getTextR_(repo, m.settings); m.settingsData = st ? JSON.parse(st.text) : null; } catch (e) {} }
-      if (m.kind === 'gallery' && m.content) m.count = f.list.filter(function (x) { return x.indexOf(m.content + '/') === 0 && /\/group\.json$/.test(x); }).length;
-      if (m.kind === 'programs' && m.content) m.count = f.list.filter(function (x) { return x.indexOf(m.content + '/') === 0 && /\.json$/.test(x); }).length;
-      if (m.kind === 'guides' && m.content) m.count = f.list.filter(function (x) { return new RegExp('^' + m.content + '/[a-z0-9]{8}/index\\.html$').test(x); }).length;
-      out.sites.push(m);
-    });
+    f.list.filter(function (p) { return /(^|\/)([\w-]+\.)?kw-site\.json$/.test(p); }).forEach(function (p) { found.push({ repo: repo, file: p, via: f.via, runs: runs, list: f.list }); });
   });
-  out.sites.sort(function (a, b) { return (a.order || 99) - (b.order || 99); });
+  // 1) паспорта — все сразу
+  var txt = many_(found.map(function (x) {
+    return x.via === 'key' ? { url: API + CFG.OWNER + '/' + x.repo + '/contents/' + encodeURI(x.file) + '?ref=' + CFG.BRANCH, key: 1, raw: 1 }
+                           : { url: 'https://raw.githubusercontent.com/' + CFG.OWNER + '/' + x.repo + '/' + CFG.BRANCH + '/' + encodeURI(x.file) };
+  }));
+  // 2) последние изменения и настройки — тоже все сразу
+  var extra = [];
+  found.forEach(function (x, k) {
+    var m; try { m = JSON.parse(txt[k] || ''); } catch (e) { m = { name: x.file.replace(/\.?kw-site\.json$/, '') || x.file, error: txt[k] == null ? 'GitHub не ответил — нажмите «обновить»' : 'в паспорте ошибка: ' + e.message }; }
+    m.repo = x.repo; m.file = x.file; m.private = x.via !== 'public';
+    m.id = (x.repo + '-' + x.file.replace(/\.?kw-site\.json$/, '').replace(/[^\w]+/g, '-')).replace(/-+$/, '');
+    if (m.workflow) { var r = x.runs.filter(function (z) { return new RegExp(m.workflow, 'i').test(z.name); })[0]; if (r) m.build = { status: r.status, result: r.conclusion, at: r.updated_at, url: r.html_url }; }
+    var dir = m.content || (x.file.indexOf('/') >= 0 ? x.file.replace(/\/[^\/]*$/, '') : '');
+    if (x.via === 'key') {
+      m._c = extra.length; extra.push({ url: API + CFG.OWNER + '/' + x.repo + '/commits?per_page=1&sha=' + CFG.BRANCH + (dir ? '&path=' + encodeURIComponent(dir) : ''), key: 1 });
+      if (m.settings) { m._s = extra.length; extra.push({ url: API + CFG.OWNER + '/' + x.repo + '/contents/' + encodeURI(m.settings) + '?ref=' + CFG.BRANCH, key: 1, raw: 1 }); }
+    }
+    var L = x.list;
+    if (m.kind === 'gallery' && m.content) m.count = L.filter(function (z) { return z.indexOf(m.content + '/') === 0 && /\/group\.json$/.test(z); }).length;
+    if (m.kind === 'programs' && m.content) m.count = L.filter(function (z) { return z.indexOf(m.content + '/') === 0 && /\.json$/.test(z); }).length;
+    if (m.kind === 'guides' && m.content) m.count = L.filter(function (z) { return new RegExp('^' + m.content + '/[a-z0-9]{8}/index\\.html$').test(z); }).length;
+    out.sites.push(m);
+  });
+  var ex = many_(extra);
+  out.sites.forEach(function (m) {
+    if (m._c != null && ex[m._c]) { try { var c = JSON.parse(ex[m._c])[0]; if (c) m.changed = { at: c.commit.committer.date, msg: c.commit.message.split('\n')[0] }; } catch (e) {} }
+    if (m._s != null && ex[m._s]) { try { m.settingsData = JSON.parse(ex[m._s]); } catch (e) {} }
+    delete m._c; delete m._s;
+  });
+  out.sites.sort(function (a, b) { return (a.order != null ? a.order : 99) - (b.order != null ? b.order : 99); });
   try { out.live = JSON.parse(UrlFetchApp.fetch(CFG.LIVE, { muteHttpExceptions: true }).getContentText()); } catch (e) {}
-  try { cache.put('sites2', JSON.stringify(out), 600); } catch (e) {}
+  if (!out.sites.some(function (m) { return m.error; })) { try { cache.put('sites2', JSON.stringify(out), 1800); } catch (e) {} }
   return out;
 }
 
