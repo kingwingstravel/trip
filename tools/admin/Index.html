@@ -108,6 +108,7 @@ code.kb{background:#0F172A;color:#E2E8F0;display:block;padding:14px;border-radiu
     <button class="nav x" data-v="home"><i>◎</i><span>Обзор</span></button>
     <button class="nav" data-v="prices"><i>$</i><span>Цены</span></button>
     <button class="nav" data-v="progs"><i>▤</i><span>Программы</span></button>
+    <button class="nav x" data-v="pins"><i>🔑</i><span>PIN агентов</span></button>
     <button class="nav x" data-v="sales"><i>✓</i><span>Продажи</span></button>
     <button class="nav x" data-v="google"><i>G</i><span>Google</span></button>
     <div class="sec">Другие сайты</div>
@@ -149,6 +150,7 @@ async function render(){
  if(view==='sites')return vSites();
  if(view==='gallery')return vGallery();
  if(view==='more')return vMore();
+ if(view==='pins')return vPins();
  if(view.indexOf('site:')===0)return vSite(view.slice(5));
  if(!await load())return;
  ({home:vHome,prices:vPrices,progs:vProgs,sales:vSales,google:vGoogle})[view]()}
@@ -242,6 +244,7 @@ function vSales(){const st=S.settings.data,b=st.bank||{};
  m.innerHTML=`<div class="view"><h1>Продажи${qb('sales')}</h1><p class="lead">Что агент видит на странице программы.</p>
  <div class="card">${swRow('show_prices','Показывать цену','Агент сразу видит цену за человека, сумму за группу и депозит 30 %',st.show_prices)}
   ${swRow('show_book','Кнопка «Забронировать»','Вместо «Получить цену» — бронь с готовой ценой (заявка приходит в WhatsApp)',st.show_book)}
+  <label class="f">Адрес проверки PIN <small>скрипт «KW Цены по PIN» …/exec · пусто — цены по PIN выключены</small></label><input class="t" data-s="pin_api" value="${esc(st.pin_api||'')}" placeholder="https://script.google.com/macros/s/…/exec">
   <label class="f">Ссылка на оплату депозита <small>карта / счёт · пусто — кнопки нет</small></label><input class="t" data-s="pay_url" value="${esc(st.pay_url||'')}" placeholder="https://…"></div>
  <div class="card" style="margin-top:16px"><h2>Реквизиты для перевода (USD)</h2>
   ${[['beneficiary','Получатель'],['bin','БИН'],['bank','Банк'],['swift','SWIFT'],['iban_usd','Счёт (IBAN) USD'],['address','Адрес банка']].map(f=>`<label class="f">${f[1]}</label><input class="t" data-b="${f[0]}" value="${esc(b[f[0]]||'')}">`).join('')}
@@ -285,7 +288,7 @@ function vKey(){m.innerHTML=`<div class="view"><h1>Ключ GitHub${qb('key')}</
  <div class="hint">Ключ хранится только в вашем Google-скрипте. Когда срок закончится, админка попросит новый.</div></div></div>`;
  $('#tks').onclick=async()=>{$('#tks').disabled=true;try{await call('api_setToken',$('#tk').value);toast('Ключ принят ✓');S=null;go('home')}catch(e){err(e)}$('#tks').disabled=false}}
 /* ================= Версия 2: пульт всех сайтов ================= */
-const MORE=[['home','◎','Обзор сайта программ'],['sales','✓','Продажи'],['google','G','Google'],['sites','◫','Все сайты'],['key','⚙︎','Ключ GitHub']];
+const MORE=[['home','◎','Обзор сайта программ'],['pins','🔑','PIN агентов'],['sales','✓','Продажи'],['google','G','Google'],['sites','◫','Все сайты'],['key','⚙︎','Ключ GitHub']];
 const HELP={
  hub:['Главная','Здесь все сайты King Wings на одном экране. Зелёная метка — сайт работает и обновлён. Жёлтая — обновляется прямо сейчас. Красная — что-то сломалось: нажмите «Подробнее».<br><br>Новый сайт появится здесь сам, когда у него будет «паспорт» (файл kw-site.json). Делать ничего не надо.'],
  home:['Сайт программ','Короткий обзор: сколько программ показано, есть ли цены, включена ли бронь и виден ли сайт в Google. Внизу — что сделать дальше.'],
@@ -296,6 +299,7 @@ const HELP={
  gallery:['Галерея','Список групп в галерее. Выключатель — показать или скрыть группу на сайте. Группы «пример» — учебные, их никто не видит.'],
  groups:['Группы','Текущие и будущие группы из папок «1. Confirmed»: ссылка на путеводитель, PIN для туристов и код для гида.'],
  sites:['Все сайты','Список всех сайтов, которые админка нашла сама, и как добавить новый.'],
+ pins:['PIN агентов','Цены на сайте видят только агенты с PIN. Нажмите «Выдать PIN», впишите агентство — админка придумает PIN и даст готовое сообщение для WhatsApp.<br><br>Выключатель у PIN — включить или выключить его сразу. «Открытий» — сколько раз агент смотрел цены. Внизу журнал: кто, когда и какую программу смотрел, и неверные попытки.<br><br>Если увидели скриншот цен у конкурента — на нём водяной знак с агентством и PIN: выключите этот PIN.'],
  key:['Ключ GitHub','Ключ — это пропуск, через который админка сохраняет изменения на сайт. Вставляется один раз.']};
 function help(v){const h=HELP[v];if(!h)return;dlg(`<h2>${h[0]}</h2><p style="line-height:1.6">${h[1]}</p><div class="save" style="position:static"><button class="btn main" onclick="close_()">Понятно</button></div>`)}
 function qb(v){return `<button class="q" title="Подсказка" onclick="help('${v}')">?</button>`}
@@ -382,6 +386,36 @@ async function vSites(){if(!await loadHub())return;
 
 function vMore(){m.innerHTML=`<div class="view"><h1>Ещё</h1><div class="card list">${MORE.map(x=>`<div class="item"><span style="font-size:20px;width:28px;text-align:center">${x[1]}</span><b>${x[2]}</b><span class="sp"></span><button class="btn" data-go="${x[0]}">Открыть →</button></div>`).join('')}</div></div>`;
  m.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
+
+/* ---------- PIN агентов ---------- */
+function pinMsg(pin){const u=(S&&S.site)||'https://trip.kingwingstravel-dmc.com/programs/';
+ return `King Wings Travel — your agent PIN: ${pin}\n\nOpen ${u} → choose a program → tap «See your price» → enter the PIN.\nThe PIN is personal, please do not share it.\n\nPIN agen King Wings Anda: ${pin}\nBuka ${u} → pilih paket → ketuk «Lihat harga Anda» → masukkan PIN. PIN bersifat pribadi, mohon tidak dibagikan.`}
+async function vPins(){m.innerHTML=`<div class="view"><div class="row"><h1>🔑 PIN агентов ${qb('pins')}</h1><span class="sp"></span><button class="btn main" id="padd">＋ Выдать PIN</button></div><p class="lead">Цены на сайте видят только агенты с PIN. Цен в коде сайта нет.</p><div id="pb"><div class="skel"></div></div></div>`;
+ $('#padd').onclick=addPin;let R;try{R=await call('api_pins')}catch(e){return err(e)}
+ if(!S)try{S=await call('api_state')}catch(e){}
+ const api=S&&S.settings&&S.settings.data.pin_api;
+ $('#pb').innerHTML=`${api?'':'<div class="card" style="border-left:5px solid var(--gold)"><b>Цены по PIN пока выключены на сайте.</b><br><small>Впишите адрес скрипта «KW Цены по PIN» в разделе «Продажи».</small> <button class="btn" data-go="sales" style="margin-top:8px">Открыть «Продажи» →</button></div>'}
+ <div class="grid" style="margin:16px 0"><div class="card stat"><small>PIN выдано</small><b>${R.pins.length}</b><small>включено: ${R.pins.filter(p=>p.on).length}</small></div>
+ <div class="card stat"><small>Программ с ценами</small><b>${R.priced}</b><small><a href="#" id="psync">обновить цены в таблице</a></small></div>
+ <div class="card stat"><small>Просмотров цен</small><b>${R.pins.reduce((a,p)=>a+p.count,0)}</b><small>всего</small></div></div>
+ <div class="card list">${R.pins.length?R.pins.map((p,k)=>`<div class="item"><label class="sw" title="Включён"><input type="checkbox" data-k="${k}" ${p.on?'checked':''}><span></span></label>
+  <div style="flex:1;min-width:0"><div class="row" style="gap:8px"><b style="font-family:monospace;font-size:18px;letter-spacing:.12em">${esc(p.pin)}</b><span class="tt">${esc(p.agent)}</span>${p.until&&p.until<new Date().toISOString().slice(0,10)?'<span class="pill bad">срок истёк</span>':''}</div>
+  <small>${esc([p.country,p.contact].filter(Boolean).join(' · '))}${p.until?' · до '+esc(p.until):' · без срока'} · открытий: <b>${p.count}</b>${p.last?' · последний раз '+ago(p.last):''}</small></div>
+  <button class="btn ghost" data-msg="${k}">Сообщение</button></div>`).join(''):'<p>PIN пока нет. Нажмите «Выдать PIN».</p>'}</div>
+ <div class="card" style="margin-top:16px"><h2>Журнал (последние 40)</h2>${R.log.length?'<div class="list">'+R.log.map(l=>`<div class="item"><span class="pill ${/показаны/.test(l.res)?'ok':/нет/.test(l.res)?'warn':'bad'}">${esc(l.res)}</span><div><b>${esc(l.agent||'—')}</b> <small>${esc(l.pin)} · ${esc(l.prog)} · ${esc(l.lang)}</small></div><span class="sp"></span><small>${ago(l.at)}</small></div>`).join('')+'</div>':'<p style="color:var(--muted)">Пока пусто.</p>'}
+ <p><a href="${esc(R.sheet)}" target="_blank">Открыть таблицу ↗</a></p></div>`;
+ m.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+ $('#psync').onclick=async e=>{e.preventDefault();try{const n=await call('api_pricesSync');toast('Цены обновлены в таблице: '+n+' программ');vPins()}catch(x){err(x)}};
+ m.querySelectorAll('.sw input').forEach(i=>i.onchange=async()=>{const p=R.pins[i.dataset.k];i.disabled=true;try{await call('api_pinSet',p.row,'on',i.checked);toast(i.checked?'PIN '+p.pin+' включён ✓':'PIN '+p.pin+' выключен — цены по нему больше не откроются')}catch(e){i.checked=!i.checked;err(e)}i.disabled=false});
+ m.querySelectorAll('[data-msg]').forEach(b=>b.onclick=()=>showMsg(R.pins[b.dataset.msg].pin))}
+function showMsg(pin){dlg(`<h2>Сообщение для агента</h2><p style="color:var(--muted);margin-top:-4px">Скопируйте и отправьте в WhatsApp.</p><textarea class="t" id="pmt" style="min-height:220px">${esc(pinMsg(pin))}</textarea><div class="row" style="margin-top:12px"><button class="btn main" id="pcp">Скопировать</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Закрыть</button></div>`);
+ $('#pcp').onclick=()=>{const t=$('#pmt');t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand('copy')}toast('Скопировано ✓')}}
+function addPin(){dlg(`<h2>Выдать PIN</h2><label class="f">Агентство</label><input class="t" id="pa1" placeholder="PT Contoh Travel">
+ <label class="f">Страна <small>необязательно</small></label><input class="t" id="pa2" placeholder="Indonesia">
+ <label class="f">Контакт <small>WhatsApp или e-mail, необязательно</small></label><input class="t" id="pa3">
+ <label class="f">Действует до <small>пусто — без срока</small></label><input class="t" id="pa4" type="date">
+ <div class="row" style="margin-top:14px"><button class="btn main" id="pas">Выдать</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+ $('#pas').onclick=async()=>{$('#pas').disabled=true;try{const pin=await call('api_pinAdd',{agent:$('#pa1').value,country:$('#pa2').value,contact:$('#pa3').value,until:$('#pa4').value});showMsg(pin);toast('PIN '+pin+' выдан ✓');vPins()}catch(e){err(e);$('#pas').disabled=false}}}
 
 render();
 </script>

@@ -127,6 +127,7 @@ function check_(d) {
 function api_saveProgram(path, sha, data, what) {
   var errs = check_(data);
   if (errs.length) throw new Error(errs.join('\n'));
+  try { pricesToSheet_(data); } catch (e) {}   // цены для PIN-агентов — копия в таблицу
   CacheService.getScriptCache().remove('sites2');
   var nsha = putText_(path, JSON.stringify(data, null, 2) + '\n', sha, 'Админка: ' + (what || 'программа') + ' — ' + data.slug + ' (' + who_() + ')');
   return { sha: nsha };
@@ -332,4 +333,49 @@ function api_saveSiteSettings(repo, path, sha, data) {
   var r = putTextR_(repo, path, JSON.stringify(data, null, 2) + '\n', sha, 'Админка: настройки ' + path + ' (' + who_() + ')');
   CacheService.getScriptCache().remove('sites2');
   return { sha: r };
+}
+
+
+/* ================= PIN агентов (26.11.2026) ================= */
+// Цены на сайте видят только агенты с PIN. PIN и копия цен — в таблице «KW — PIN агентов (цены для сайта Sales)».
+var PIN_SHEET = '1ryBFBySbEXoISn6lEFbb-juZ49YoypmWmnuqm1sOd8M';
+var PIN_ABC = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';   // без похожих 0/O, 1/I/L
+function pinSS_() { return SpreadsheetApp.openById(PIN_SHEET); }
+function pricesToSheet_(d) {
+  var sh = pinSS_().getSheetByName('Цены'), v = sh.getDataRange().getValues(), row = -1;
+  for (var i = 1; i < v.length; i++) if (String(v[i][0]) === d.slug) { row = i + 1; break; }
+  if (!d.prices) { if (row > 0) sh.deleteRow(row); return; }
+  var vals = [[d.slug, (d.en || {}).title || d.slug, new Date(), JSON.stringify(d.prices)]];
+  if (row > 0) sh.getRange(row, 1, 1, 4).setValues(vals); else sh.appendRow(vals[0]);
+}
+function api_pricesSync() {   // все программы → таблица (кнопка в разделе PIN)
+  var list = gh_('get', '/contents/' + CFG.DIR + '?ref=' + CFG.BRANCH) || [], n = 0;
+  list.filter(function (f) { return /\.json$/.test(f.name); }).forEach(function (f) { var d = JSON.parse(getText_(f.path).text); pricesToSheet_(d); if (d.prices) n++; });
+  return n;
+}
+function api_pins() {
+  var ss = pinSS_(), v = ss.getSheetByName('PIN').getDataRange().getValues(), out = [], tz = 'Asia/Almaty';
+  var f = function (x) { return x instanceof Date ? Utilities.formatDate(x, tz, 'yyyy-MM-dd') : String(x || ''); };
+  for (var i = 1; i < v.length; i++) if (v[i][0]) out.push({ row: i + 1, pin: String(v[i][0]), agent: String(v[i][1]), country: String(v[i][2]), contact: String(v[i][3]),
+    issued: f(v[i][4]), until: f(v[i][5]), on: v[i][6] === true || String(v[i][6]).toUpperCase() === 'TRUE', note: String(v[i][7]),
+    count: +v[i][8] || 0, last: v[i][9] instanceof Date ? v[i][9].toISOString() : '' });
+  var lg = ss.getSheetByName('Журнал'), n = lg.getLastRow(), log = [];
+  if (n > 1) lg.getRange(Math.max(2, n - 39), 1, Math.min(40, n - 1), 6).getValues().reverse().forEach(function (r) {
+    log.push({ at: r[0] instanceof Date ? r[0].toISOString() : String(r[0]), pin: String(r[1]), agent: String(r[2]), prog: String(r[3]), lang: String(r[4]), res: String(r[5]) }); });
+  var pr = ss.getSheetByName('Цены').getLastRow() - 1;
+  return { pins: out, log: log, priced: Math.max(0, pr), sheet: ss.getUrl() };
+}
+function api_pinAdd(o) {
+  o = o || {}; if (!String(o.agent || '').trim()) throw new Error('Впишите название агентства');
+  var sh = pinSS_().getSheetByName('PIN'), have = sh.getDataRange().getValues().map(function (r) { return String(r[0]); }), pin;
+  do { pin = ''; for (var k = 0; k < 6; k++) pin += PIN_ABC.charAt(Math.floor(Math.random() * PIN_ABC.length)); } while (have.indexOf(pin) >= 0);
+  sh.appendRow([pin, String(o.agent).trim(), String(o.country || '').trim(), String(o.contact || '').trim(), new Date(), o.until ? new Date(o.until) : '', true, String(o.note || '').trim(), 0, '']);
+  return pin;
+}
+function api_pinSet(row, field, value) {
+  var col = { on: 7, until: 6, note: 8 }[field]; if (!col) throw new Error('bad field');
+  var sh = pinSS_().getSheetByName('PIN');
+  if (sh.getRange(row, 1).getValue() === '') throw new Error('PIN не найден');
+  sh.getRange(row, col).setValue(field === 'until' ? (value ? new Date(value) : '') : value);
+  return true;
 }
