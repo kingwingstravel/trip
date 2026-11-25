@@ -134,6 +134,13 @@ if lg.get('mode') in ('agent','two','kw+agent') and not imgs: warn.append('ло�
 if err:
     print('ОШИБКИ:\n- '+'\n- '.join(err));sys.exit(1)
 t=open(os.path.join(here,'template.html'),encoding='utf8').read()
+# --- B2C (26.11.2026): "b2c": true -> тексты для прямого клиента (без агента) + хинди. Значения группы важнее. ---
+if G.get('b2c'):
+    G.setdefault('ui',{})
+    for lg in langs:
+        f=os.path.join(here,'b2c','ui_'+lg+'.json')
+        if os.path.exists(f):
+            G['ui'][lg]=dict(json.load(open(f,encoding='utf8')),**(G['ui'].get(lg) or {}))
 data=json.dumps(G,ensure_ascii=False).replace('</','<\\/')
 esc=lambda s:s.replace('&','&amp;').replace('<','&lt;')
 t=t.replace('/*__G__*/null',data,1).replace('__TITLE__',esc(G['title']),1).replace('__LANG__',G['lang'],1)

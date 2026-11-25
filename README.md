@@ -37,6 +37,8 @@ CODE — 8 chars `[a-hj-km-np-z2-9]`, PIN — 6 digits. Never change them for an
 - Daily memo (🧳 on Today): `build_guide.py` fills `days[i].wx` = `[{n,lat,lon,m}]` (place for the forecast; `m:1` mountains) and `days[i].holy` from hotel city and plan text. The phone fetches a free forecast (open-meteo, no key) after the page is shown, caches it 3 h; offline → `ui.weatherV`. What to wear / take is chosen from the forecast. On the day the group enters a country the memo lists its border rules (`dn_<country>` in the template, checked 11.11.2026); Help shows all of them.
 - `route`, `tripImg` — for the "share the whole trip" picture; `showMeals` (false hides meals); `photos` (link after the trip)
 
+- `b2c: true` — guide for a direct client (no agent): texts from `tools/b2c/ui_<lang>.json` ("I am the guide", "Tell a friend on WhatsApp" with the King Wings number, next trip = Uzbekistan) and full Hindi interface `tools/b2c/ui_hi.json` (use `langs:["en","hi"]`). Group `ui` values win. Weekday/month names in Hindi fall back to English. Added 26.11.2026.
+
 New group: `python3 tools/newcode.py .` prints a free CODE and a PIN.
 Full sample (fictional contacts): `tools/example_group.json`.
 Change check: `python3 tools/srchash.py SHEET_VALUES.json "<logo link>"` → compare with `g/CODE/src.sha`; write the new value there after publishing.
