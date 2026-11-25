@@ -207,7 +207,7 @@ var dlg=document.getElementById("kwd"),bx=dlg.querySelector(".bx");function open
 function close(){dlg.hidden=true}dlg.addEventListener("click",function(e){if(e.target===dlg)close()});document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 function n(x){return Math.round(x).toLocaleString("en-US")}
 function grid(){if(!P)return null;var t=((P[st.h]||{})[st.m])||{},ks=Object.keys(t).map(Number).sort(function(a,b){return a-b}),best=null;ks.forEach(function(k){if(k<=st.n)best=t[k]});if(best==null&&ks.length)best=t[ks[0]];return best}
-function wm(){var s=who.agent+" · PIN "+who.pin+" · "+new Date().toISOString().slice(0,10);var svg='<svg xmlns="http://www.w3.org/2000/svg" width="260" height="120"><text x="10" y="70" transform="rotate(-20 130 60)" font-family="Arial" font-size="15" font-weight="bold" fill="#1C2642">'+s.replace(/[<&]/g,"")+'</text></svg>';return 'url("data:image/svg+xml,'+encodeURIComponent(svg)+'")'}
+function wm(){var s=who.agent+" · PIN "+who.pin+" · "+new Date().toLocaleDateString("en-CA");var svg='<svg xmlns="http://www.w3.org/2000/svg" width="420" height="150"><text x="20" y="95" transform="rotate(-18 210 75)" font-family="Arial" font-size="15" font-weight="bold" fill="#1C2642">'+s.replace(/[<&]/g,"")+'</text></svg>';return 'url("data:image/svg+xml,'+encodeURIComponent(svg)+'")'}
 function ask(){return "https://wa.me/"+D.wa+"?text="+encodeURIComponent(T.nopin+" — "+D.title)}
 function lock(){B.innerHTML='<h2>🔒 '+T.h+'</h2><p>'+T.s+'</p><button type="button" class="btn gold" id="kwpg">'+T.see+'</button><a class="lk" target="_blank" rel="noopener" href="'+ask()+'">'+T.nopin+'</a>';document.getElementById("kwpg").onclick=pinDlg}
 function pinDlg(){open('<h3>🔒 '+T.pin+'</h3><input class="pin" id="kwpin" maxlength="10" autocomplete="off" autocapitalize="characters" placeholder="'+T.pinph+'"><div class="er" id="kwer"></div><button type="button" class="btn gold" id="kwgo">'+T.go+'</button><a class="lk" style="display:block;text-align:center;margin-top:10px" target="_blank" rel="noopener" href="'+ask()+'">'+T.nopin+'</a>');
@@ -219,12 +219,12 @@ function check(p,cb){fetch(api+"?pin="+encodeURIComponent(p)+"&p="+encodeURIComp
 function sg(name,opts,cur){return '<div class="sg" data-k="'+name+'">'+opts.map(function(o){return '<button type="button" data-v="'+o[0]+'" aria-pressed="'+(o[0]===cur)+'">'+o[1]+'</button>'}).join("")+'</div>'}
 function show(){if(!P){B.innerHTML='<h2>'+T.h+'</h2><p>'+T.none+'</p><a class="btn gold" target="_blank" rel="noopener" href="https://wa.me/'+D.wa+'?text='+encodeURIComponent(T.msg+" "+D.title)+'">'+T.ask+'</a>'+whoLine();bindOut();return}
  var hs=Object.keys(P).sort();if(hs.indexOf(st.h)<0)st.h=hs[0];var ms=Object.keys(P[st.h]||{});if(ms.indexOf(st.m)<0)st.m=ms[0]||"bo";
- B.innerHTML='<h2>'+T.h+'</h2><div class="sec"><div class="wm" style="background-image:'+wm()+'"></div><label>'+T.guests+': <span id="kwn">'+st.n+'</span></label><input type="range" id="kwr" min="10" max="40" value="'+st.n+'"><div class="rg"><span>10</span><span>40</span></div>'
+ B.innerHTML='<h2>'+T.h+'</h2><div class="sec"><div class="wm"></div><label>'+T.guests+': <span id="kwn">'+st.n+'</span></label><input type="range" id="kwr" min="10" max="40" value="'+st.n+'"><div class="rg"><span>10</span><span>40</span></div>'
  +(hs.length>1?'<label>'+T.hotel+'</label>'+sg("h",hs.map(function(h){return[h,h+"★"]}),st.h):'')+(ms.length>1?'<label>'+T.meals+'</label>'+sg("m",ms.map(function(m){return[m,T[m]]}),st.m):'')
  +'<div class="pp"><small>USD</small><b id="kwpp">—</b><small>'+T.pp+'</small></div><ul><li><span>'+T.tot+'</span><b id="kwt">—</b></li><li><span>'+T.dep+'</span><b id="kwd2">—</b></li><li><span>'+T.bal+'</span><b id="kwb">—</b></li></ul><p class="nt">'+T.from_+'</p></div>'
  +'<button type="button" class="btn gold" id="kwbk">'+T.book+'</button>'+whoLine();
  var r=document.getElementById("kwr");r.oninput=function(){st.n=+r.value;calc()};B.querySelectorAll(".sg button").forEach(function(b){b.onclick=function(){var k=b.parentNode.dataset.k;st[k]=b.dataset.v;b.parentNode.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});calc()}});
- document.getElementById("kwbk").onclick=book;bindOut();calc()}
+ B.querySelector(".wm").style.backgroundImage=wm();document.getElementById("kwbk").onclick=book;bindOut();calc()}
 function whoLine(){return '<div class="who"><span>'+T.only+' '+esc(who.agent)+'</span><button type="button" id="kwout">'+T.out+'</button></div>'}
 function bindOut(){document.getElementById("kwout").onclick=function(){ls("kw_pin",null);P=null;who=null;lock()}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
