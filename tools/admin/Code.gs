@@ -484,28 +484,100 @@ function bkFromDrive_(s, force) {
   for (var i = 1; i < v.length; i++) { try { var d0 = JSON.parse(v[i][15] || '{}'); if (d0.src) have[d0.src] = { row: i + 1, st: String(v[i][2]), id: String(v[i][0]), d: d0 }; } catch (e) {} }
   G.forEach(function (g) {
     var old = have[g.folder];
-    if (old) {   // уже есть: поднять статус, если папку перенесли дальше
-      if (RANK[g.stage] > (RANK[old.st] != null ? RANK[old.st] : 0) && ['new', 'offer', 'wait'].indexOf(old.st) >= 0) {
-        s.b.getRange(old.row, 3).setValue(g.stage); old.d.stage = g.stage; s.b.getRange(old.row, 16).setValue(JSON.stringify(old.d));
-        bkLog_(s.h, old.id, 'Папку перенесли в «' + g.stageName + '» → ' + STAGE_TXT[g.stage], 'Система');
-      }
-      return;
-    }
-    // путеводители — для ссылок и дат, если в названии их нет
     if (g.stage === 'ok' && !guides) { guides = {}; try { api_groups().forEach(function (x) { guides[x.folder] = x; }); } catch (e) {} }
     var gd = (guides && guides[g.folder]) || {};
+    if (old) {   // уже есть: поднять статус, если папку перенесли дальше
+      var ch = false;
+      if (RANK[g.stage] > (RANK[old.st] != null ? RANK[old.st] : 0) && ['new', 'offer', 'wait'].indexOf(old.st) >= 0) {
+        s.b.getRange(old.row, 3).setValue(g.stage); old.d.stage = g.stage; ch = true;
+        bkLog_(s.h, old.id, 'Папку перенесли в «' + g.stageName + '» → ' + STAGE_TXT[g.stage], 'Система');
+      }
+      var sh0 = old.d.sheet || gd.sheet;   // пустые разделы карточки — из путеводителя группы
+      if (sh0) { old.d.sheet = sh0; var what = fromGuide_(old.d, sh0); if (what) { ch = true; n++; bkLog_(s.h, old.id, 'Из путеводителя: ' + what, 'Система'); } }
+      if (ch) s.b.getRange(old.row, 16).setValue(JSON.stringify(old.d));
+      return;
+    }
     var a = g.start ? new Date(g.start) : gd.start ? new Date(gd.start) : null, b = g.end ? new Date(g.end) : gd.end ? new Date(gd.end) : null;
     var st = g.stage === 'ok' && a && b && a <= today && today <= b ? 'tour' : g.stage;
     var id = 'KW-' + Utilities.formatDate(new Date(g.start || Date.now()), tz, 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900);
     var d = { src: g.folder, stage: g.stage, sheet: gd.sheet || '', link: gd.link || '', gpin: gd.pin || '', staff: gd.staff || '', lang: gd.lang || '',
       guide: {}, transport: {}, hotels: [], meals: [], trip: {}, docs: {}, contact: {}, note: 'Из папки «' + g.stageName + '» на Диске' };
+    var what0 = d.sheet ? fromGuide_(d, d.sheet) : '';
     s.b.appendRow([id, new Date(), st, g.agent || 'Агент не указан', '', '', g.name, paxFromName_(g.name) || parseInt(String(gd.guests || '').replace(/\D+/g, ' '), 10) || 0,
       a || '', b || '', 0, 0, '', '', '', JSON.stringify(d), new Date()]);
-    bkLog_(s.h, id, 'Добавлена из Диска (папка «' + g.stageName + '», ' + g.year + ')', 'Система'); n++;
+    bkLog_(s.h, id, 'Добавлена из Диска (папка «' + g.stageName + '», ' + g.year + ')' + (what0 ? '; из путеводителя: ' + what0 : ''), 'Система'); n++;
   });
   return n;
 }
 function api_bookingsSync() { var s = bkSheets_(); return bkFromDrive_(s, true); }
+
+/* ===== Путеводитель группы → карточка (27.11.2026) =====
+   Заполняет ТОЛЬКО пустое: рейсы, гостей, гида, водителя, отели (по колонке «Ночлег»), обеды и ужины (без «?»), программу по дням.
+   То, что уже внесено в админке руками, не трогает. */
+function gTime_(t) { var m = String(t).match(/\b(\d{1,2}):(\d{2})\b/); return m ? ('0' + m[1]).slice(-2) + ':' + m[2] : ''; }
+function gDate_(t) { var m = String(t).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/); return m ? m[3] + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[1]).slice(-2) : ''; }
+function gDayType_(title, k, last) {
+  var t = String(title).toLowerCase();
+  if (k === 0 || k === last || /✈|departure|arrival|airport|home|вылет|прилёт|аэропорт/.test(t)) return 'transfer';
+  if (/canyon|lake|kolsa|kaindy|charyn|issyk|mountain|border|turgen|altyn|чарын|кольсай|каинды|граница|горы| — /.test(t)) return 'out';
+  return 'city';
+}
+function fromGuide_(d, url) {
+  var id = (String(url).match(/\/d\/([\w-]+)/) || [])[1]; if (!id) return '';
+  var sh = SpreadsheetApp.openById(id).getSheetByName('Путеводитель'); if (!sh) return '';
+  var v = sh.getRange('A1:L70').getDisplayValues(), B = {}, done = [], hdr = -1;
+  v.forEach(function (r, i) { if (r[0] && hdr < 0) B[r[0].trim()] = r[1]; if (r[0] === 'День' && r[1] === 'Дата') hdr = i; });
+  var get = function (k) { for (var x in B) if (x.indexOf(k) === 0) return String(B[x] || '').trim(); return ''; };
+  var rng = get('Даты').match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/), y0 = rng ? +rng[3] : new Date().getFullYear(), m0 = rng ? +rng[2] : 1;
+  var iso = function (t) { var m = String(t).match(/(\d{1,2})\.(\d{1,2})/); if (!m) return ''; var y = +m[2] < m0 ? y0 + 1 : y0; return y + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[1]).slice(-2); };
+  var bad = function (t) { t = String(t || '').trim(); return !t || /^\?/.test(t); };
+  d.trip = d.trip || {}; d.guide = d.guide || {}; d.transport = d.transport || {};
+  // гости
+  var pax = parseInt((get('Группа').match(/(\d+)\s*(гост|чел|pax)/i) || [])[1], 10);
+  if (!d.trip.adults && pax) { d.trip.adults = pax; done.push('гостей ' + pax); }
+  // рейсы
+  [['arr', 'Прилёт'], ['dep', 'Вылет']].forEach(function (p) {
+    var t = get(p[1]); d.trip[p[0]] = d.trip[p[0]] || {};
+    if (t && !d.trip[p[0]].flight) { d.trip[p[0]] = { date: gDate_(t), time: gTime_(t.replace(/\d{1,2}\.\d{1,2}\.\d{4}/, '')), flight: t.slice(0, 300) }; done.push(p[1].toLowerCase()); }
+  });
+  // гид, водитель
+  if (!d.guide.name && !bad(get('Гид'))) { d.guide = { name: get('Гид').slice(0, 200), phone: get('Телефон гида') }; done.push('гид'); }
+  if (!d.transport.name && !bad(get('Водитель'))) { d.transport = { name: get('Водитель').slice(0, 200), car: '', phone: '' }; done.push('водитель'); }
+  if (hdr < 0) return done.join(', ');
+  var days = []; for (var i = hdr + 1; i < v.length; i++) { var r = v[i]; if (!/^\d+$/.test(String(r[0]).trim())) break; days.push(r); }
+  var guests = d.trip.adults || pax || '';
+  // программа
+  if (!(d.days || []).length && days.length) {
+    d.days = days.map(function (r, k) { return { date: iso(r[1]), type: gDayType_(r[2], k, days.length - 1), what: String(r[2] || '').trim(), tickets: '' }; });
+    done.push('программа ' + days.length + ' дн.');
+  }
+  // отели: подряд идущие ночи в одном отеле
+  if (!(d.hotels || []).length) {
+    var H = [];
+    days.forEach(function (r) {
+      var h = String(r[7] || '').trim(), dt = iso(r[1]); if (!h || bad(h)) return;
+      var last = H[H.length - 1];
+      if (last && last.full === h && last.out === dt) { last.nights++; last.out = Utilities.formatDate(new Date(new Date(dt + 'T12:00:00').getTime() + 864e5), 'Asia/Almaty', 'yyyy-MM-dd'); return; }
+      var parts = h.split(',').map(function (x) { return x.trim(); }), nx = new Date(new Date(dt + 'T12:00:00').getTime() + 864e5);
+      H.push({ full: h, city: parts[1] || '', name: parts[0], in: dt, out: Utilities.formatDate(nx, 'Asia/Almaty', 'yyyy-MM-dd'), nights: 1, rooms: '', meal: 'BB', extra: '', contact: '', ok: false });
+    });
+    if (H.length) { d.hotels = H.map(function (h) { delete h.full; return h; }); done.push('отели ' + H.length); }
+  }
+  // обеды и ужины (только с названием места, «?» пропускаем)
+  if (!(d.meals || []).length) {
+    var M = [];
+    days.forEach(function (r) {
+      [[9, 'lunch'], [10, 'dinner']].forEach(function (c) {
+        var t = String(r[c[0]] || '').trim(); if (bad(t)) return;
+        var p = t.split('·').map(function (x) { return x.trim(); }), city = (p[0].match(/\(([^)]+)\)/) || [])[1] || '';
+        M.push({ date: iso(r[1]), kind: c[1], time: gTime_(t), city: city || (String(r[7] || '').split(',')[1] || '').trim(), place: p[0].replace(/\s*\([^)]*\)/, ''),
+          n: guests, staff: 2, budget: 0, note: p.slice(2).join(' · ').slice(0, 300), ok: true });
+      });
+    });
+    if (M.length) { d.meals = M; done.push('питание ' + M.length); }
+  }
+  return done.join(', ');
+}
 
 /* ================= ЗАЯВКИ ПОСТАВЩИКАМ (27.11.2026) ================= */
 // Текст заявки готовит страница (по данным карточки). Здесь — сохранить его файлом Word в папку группы:

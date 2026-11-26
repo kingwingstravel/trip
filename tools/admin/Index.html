@@ -459,7 +459,7 @@ async function vBookings(){m.innerHTML=`<div class="view"><div class="row"><h1>�
  <div class="row" style="margin-top:14px"><button class="btn ghost" id="bsync">⟳ Подтянуть группы из Диска</button><a href="${esc(BK.sheet)}" target="_blank">Открыть таблицу броней ↗</a></div>`;
  call('api_safety').then(()=>call('api_backupInfo')).then(b=>{if(!b.last)return;const e=document.createElement('p');e.style.cssText='color:var(--muted);font-size:14px;margin-top:8px';e.innerHTML='🛡 Защита включена · последняя резервная копия: '+ago(b.last)+(b.folder?' · <a href="'+esc(b.folder)+'" target="_blank">все копии ↗</a>':'');$('#bb')&&$('#bb').appendChild(e)}).catch(()=>{});
  if(BK.added)toast('Из Диска добавлено групп: '+BK.added);
- $('#bsync').onclick=async()=>{$('#bsync').disabled=true;try{const n=await call('api_bookingsSync');toast(n?'Добавлено групп из Диска: '+n:'Новых групп в Диске нет');vBookings()}catch(e){err(e);$('#bsync').disabled=false}};
+ $('#bsync').onclick=async()=>{$('#bsync').disabled=true;try{const n=await call('api_bookingsSync');toast(n?'Обновлено из Диска (новые группы и данные из путеводителей): '+n:'Нового в Диске нет');vBookings()}catch(e){err(e);$('#bsync').disabled=false}};
  m.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{bkF=b.dataset.f;vBookings()});
  m.querySelectorAll('.bo').forEach(b=>b.onclick=()=>{view='bk:'+b.dataset.id;render();window.scrollTo(0,0)})}
 
