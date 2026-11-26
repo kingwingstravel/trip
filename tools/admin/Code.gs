@@ -518,16 +518,16 @@ function api_saveRequest(id, kind, fname, text) {
   if (!src) throw new Error('У группы нет папки на Диске — скопируйте текст кнопкой «Скопировать».');
   var dir = sub_(sub_(DriveApp.getFolderById(src), 'Personal'), kind === 'hotel' ? 'Hotel' : 'Restaurant');
   var name = String(fname || 'Заявка').replace(/[\\/:*?"<>|]+/g, ' ').trim();
-  var doc = DocumentApp.create(name), body = doc.getBody();
-  body.setMarginLeft(56).setMarginRight(56);
-  String(text || '').split('\n').forEach(function (line, k) {
-    var p = k === 0 ? body.getParagraphs()[0].setText(line) : body.appendParagraph(line);
-    p.setFontFamily('Arial').setFontSize(11);
-  });
-  doc.saveAndClose();
-  var blob = UrlFetchApp.fetch('https://docs.google.com/document/d/' + doc.getId() + '/export?format=docx',
-    { headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() } }).getBlob().setName(name + '.docx');
-  DriveApp.getFileById(doc.getId()).setTrashed(true);
+  var doc = DocumentApp.create(name), blob;
+  try {
+    var body = doc.getBody();
+    body.setMarginLeft(56).setMarginRight(56);
+    body.setText(String(text || ' '));
+    body.editAsText().setFontFamily('Arial').setFontSize(11);
+    doc.saveAndClose();
+    blob = UrlFetchApp.fetch('https://docs.google.com/document/d/' + doc.getId() + '/export?format=docx',
+      { headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() } }).getBlob().setName(name + '.docx');
+  } finally { DriveApp.getFileById(doc.getId()).setTrashed(true); }   // черновик Google Doc не оставляем никогда
   var old = dir.getFilesByName(name + '.docx'); while (old.hasNext()) old.next().setTrashed(true);
   var f = dir.createFile(blob);
   var s = bkSheets_(); bkLog_(s.h, id, 'Заявка сохранена: ' + name + '.docx (Personal / ' + dir.getName() + ')');

@@ -466,7 +466,7 @@ async function vBookings(){m.innerHTML=`<div class="view"><div class="row"><h1>�
 async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></div></div>';let x;try{x=await call('api_booking',id)}catch(e){return err(e)}
  const d=bkD(x),r=ready(x),today=(BK&&BK.today)||new Date().toISOString().slice(0,10),pb=probs(x,today),rest=Math.max(0,x.total-x.dep);
  const ok=v=>v?'<span style="color:var(--ok);font-weight:700">✓</span>':'<span style="color:#8A5B00">⏳</span>';
- const ln=(a,b,act)=>`<div class="kv" ${act?`data-a="${act}" style="cursor:pointer"`:''}><div style="flex:1;min-width:0">${a}</div><div style="white-space:nowrap">${b}</div></div>`;
+ const ln=(a,b,act,wrap)=>`<div class="kv" ${act?`data-a="${act}" style="cursor:pointer"`:''}><div style="flex:${wrap?'none':'1'};min-width:0">${a}</div><div style="${wrap?'flex:1;min-width:0;text-align:right;overflow-wrap:anywhere':'white-space:nowrap'}">${b}</div></div>`;
  const tip=[];
  if(x.depPaid&&['new','offer','wait'].includes(x.st))tip.push(`<div class="card" style="background:#E3F5EC;border:1.5px solid #A8DCC0"><b style="color:var(--ok)">💵 Депозит ${money(x.dep)} получен</b><p style="margin:4px 0 10px;color:var(--ok)">Перевести группу в Confirmed?</p><div class="row"><button class="btn" style="background:var(--ok);color:#fff" data-to="ok">Да, Confirmed</button></div></div>`);
  if(x.st==='tour'&&x.end&&x.end<today)tip.push(`<div class="card" style="background:#F1F3F7"><b>Тур закончился ${dshort(x.end)}.</b><p style="margin:4px 0 10px">Все расчёты сделаны? Закройте группу.</p><button class="btn dark" data-to="done">Закрыть группу</button></div>`);
@@ -485,9 +485,9 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   ${ln('🧑 Гид'+(d.guide.name?' · <b>'+esc(d.guide.name)+'</b><br><small>'+esc(d.guide.phone||'')+'</small>':''),d.guide.name?ok(1)+' <button class="btn ghost" data-a="guide">Изменить</button>':'<button class="btn main" data-a="guide">Назначить</button>')}
   ${ln('🚌 Транспорт'+(d.transport.name?' · <b>'+esc(d.transport.name)+'</b><br><small>'+esc([d.transport.car,d.transport.phone].filter(Boolean).join(' · '))+'</small>':''),d.transport.name?ok(1)+' <button class="btn ghost" data-a="transport">Изменить</button>':'<button class="btn main" data-a="transport">Назначить</button>')}</div>
  <div class="card bk"><h2>🧳 Тур</h2>
-  ${ln('Гости',esc(tripLine(x,d))||'<span style="color:var(--bad)">не заполнено</span>','trip')}
-  ${ln('✈ Прилёт',esc(flt(d.trip.arr))||'—','trip')}
-  ${ln('✈ Вылет',esc(flt(d.trip.dep))||'—','trip')}
+  ${ln('Гости',esc(tripLine(x,d))||'<span style="color:var(--bad)">не заполнено</span>','trip',1)}
+  ${ln('✈ Прилёт',esc(flt(d.trip.arr))||'—','trip',1)}
+  ${ln('✈ Вылет',esc(flt(d.trip.dep))||'—','trip',1)}
   ${ln('Халяль',{yes:'да',no:'нет'}[d.trip.halal]||'<span style="color:#8A5B00">уточнить</span>','trip')}
   <button class="btn" data-a="trip" style="margin-top:10px">✎ Изменить</button></div>
  <div class="card bk"><h2>🏨 Отели</h2>
@@ -501,9 +501,9 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   ${[['rooming','Rooming list'],['voucher','Ваучер'],['invoice','Инвойс']].map(([k,t])=>`<div class="kv"><label class="sw"><input type="checkbox" data-doc="${k}" ${d.docs[k]?'checked':''}><span></span></label><b>${t}</b></div>`).join('')}</div>
  <div class="card bk"><h2>📝 Группа</h2>
   ${ln('Агент',esc(x.agent)+(x.pin?' · PIN '+esc(x.pin):''),'grp')}
-  ${ln('Контакт',esc([d.contact.name,d.contact.wa,d.contact.email].filter(Boolean).join(' · ')||'—'),'grp')}
+  ${ln('Контакт',esc([d.contact.name,d.contact.wa,d.contact.email].filter(Boolean).join(' · ')||'—'),'grp',1)}
   ${ln('Ответственный',esc(x.owner||'—'),'grp')}
-  ${d.note?ln('Заметка',esc(d.note),'grp'):''}
+  ${d.note?ln('Заметка',esc(d.note),'grp',1):''}
   ${d.src?`<div class="kv"><div>Диск</div><div><a href="${esc(d.src)}" target="_blank">Папка ↗</a>${d.sheet?` · <a href="${esc(d.sheet)}" target="_blank">Таблица ↗</a>`:''}${d.link?` · <a href="${esc(d.link)}" target="_blank">Путеводитель ↗</a>`:''}</div></div>`:''}
   <button class="btn" data-a="grp" style="margin-top:10px">✎ Изменить данные группы</button></div>
  <div class="card"><h2>🕘 История</h2>${x.hist.length?'<div>'+x.hist.map(h=>`<div class="kv" style="padding:8px 0;align-items:flex-start"><small style="width:90px;flex:none">${h.at?new Date(h.at).toLocaleDateString('ru',{day:'numeric',month:'short'}):''}</small><div style="flex:1;min-width:0"><b>${esc(h.who)}</b> · ${esc(h.what)}</div></div>`).join('')+'</div>':'<p style="color:var(--muted)">Пока пусто.</p>'}</div>
