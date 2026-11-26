@@ -137,7 +137,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 function call(fn,...a){return new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(e=>no(e))[fn](...a))}
 function toast(t,bad){const e=$('#toast');e.textContent=t;e.className='toast on'+(bad?' bad':'');clearTimeout(e._t);e._t=setTimeout(()=>e.className='toast',bad?6000:2800)}
 function err(e){const s=String(e&&e.message||e);if(s.indexOf('NO_TOKEN')>=0){go('key');return}toast(s,1)}
-function dlg(html){$('#dlg').innerHTML=html;$('#ov').classList.add('on')}function close_(){$('#ov').classList.remove('on')}
+function dlg(html){$('#dlg').style.maxWidth='';$('#dlg').innerHTML=html;$('#ov').classList.add('on')}function close_(){$('#ov').classList.remove('on')}
 $('#ov').addEventListener('click',e=>{if(e.target.id==='ov')close_()});
 document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>go(b.dataset.v));
 function go(v){if(dirty&&!confirm('Есть несохранённые изменения. Уйти без сохранения?'))return;dirty=false;view=v;cur=null;close_();
@@ -431,7 +431,7 @@ const money=v=>(Math.round(+v||0)).toLocaleString('ru')+' $';
 const dshort=s=>s?new Date(s+'T00:00:00').toLocaleDateString('ru',{day:'numeric',month:'short'}):'';
 const dates=x=>x.start?dshort(x.start)+(x.end?' – '+dshort(x.end):''):'даты не выбраны';
 let BK=null,bkF='act';
-function bkD(x){const d=x.d||{};d.guide=d.guide||{};d.transport=d.transport||{};d.hotels=d.hotels||[];d.meals=d.meals||[];d.trip=d.trip||{};d.trip.arr=d.trip.arr||{};d.trip.dep=d.trip.dep||{};d.docs=d.docs||{};d.contact=d.contact||{};x.d=d;return d}
+function bkD(x){const d=x.d||{};d.guide=d.guide||{};d.transport=d.transport||{};d.hotels=d.hotels||[];d.meals=d.meals||[];d.days=d.days||[];d.trip=d.trip||{};d.trip.arr=d.trip.arr||{};d.trip.dep=d.trip.dep||{};d.docs=d.docs||{};d.contact=d.contact||{};x.d=d;return d}
 function ready(x){const d=bkD(x);const it=[['Депозит',!!x.depPaid],['Остаток',!!x.balPaid],['Гид',!!d.guide.name],['Транспорт',!!d.transport.name],['Отели',d.hotels.length>0&&d.hotels.every(h=>h.ok)],['Документы',!!(d.docs.rooming&&d.docs.voucher&&d.docs.invoice)]];return{it,n:it.filter(i=>i[1]).length}}
 function daysTo(x,today){return x.start?Math.round((new Date(x.start)-new Date(today))/864e5):null}
 function probs(x,today){const p=[],dl=daysTo(x,today),d=bkD(x);if(dl===null||dl>30||dl<0)return p;
@@ -483,13 +483,18 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   ${ln(`Остаток · ${money(rest)}`,x.balPaid?`<span style="color:var(--ok);font-weight:700">✓ ${dshort(x.balPaid)}</span>`:'<button class="btn" data-pay="bal">Получен</button>')}</div>
  <div class="card bk"><h2>👥 Команда</h2>
   ${ln('🧑 Гид'+(d.guide.name?' · <b>'+esc(d.guide.name)+'</b><br><small>'+esc(d.guide.phone||'')+'</small>':''),d.guide.name?ok(1)+' <button class="btn ghost" data-a="guide">Изменить</button>':'<button class="btn main" data-a="guide">Назначить</button>')}
-  ${ln('🚌 Транспорт'+(d.transport.name?' · <b>'+esc(d.transport.name)+'</b><br><small>'+esc([d.transport.car,d.transport.phone].filter(Boolean).join(' · '))+'</small>':''),d.transport.name?ok(1)+' <button class="btn ghost" data-a="transport">Изменить</button>':'<button class="btn main" data-a="transport">Назначить</button>')}</div>
+  ${ln('🚌 Транспорт'+(d.transport.name?' · <b>'+esc(d.transport.name)+'</b><br><small>'+esc([d.transport.car,d.transport.phone].filter(Boolean).join(' · '))+'</small>':''),d.transport.name?ok(1)+' <button class="btn ghost" data-a="transport">Изменить</button>':'<button class="btn main" data-a="transport">Назначить</button>')}
+  <div class="row" style="margin-top:10px;gap:8px"><button class="btn" data-rq="g0">📨 Заявка гиду</button><button class="btn" data-rq="t0">📨 Заявка водителю</button></div></div>
  <div class="card bk"><h2>🧳 Тур</h2>
   ${ln('Гости',esc(tripLine(x,d))||'<span style="color:var(--bad)">не заполнено</span>','trip',1)}
   ${ln('✈ Прилёт',esc(flt(d.trip.arr))||'—','trip',1)}
   ${ln('✈ Вылет',esc(flt(d.trip.dep))||'—','trip',1)}
   ${ln('Халяль',{yes:'да',no:'нет'}[d.trip.halal]||'<span style="color:#8A5B00">уточнить</span>','trip')}
   <button class="btn" data-a="trip" style="margin-top:10px">✎ Изменить</button></div>
+ <div class="card bk"><h2>📅 Программа</h2>
+  ${progSum(d)}
+  ${d.days.map((y,k)=>`<div class="kv" style="cursor:pointer;align-items:flex-start" data-de="${k}"><div style="flex:none;width:64px"><b>${dd(y.date)}</b><br><small>${DTN[y.type]||''}</small></div><div style="flex:1;min-width:0">${esc(y.what||'—')}${y.tickets?'<br><small>🎟 '+esc(y.tickets)+'</small>':''}</div></div>`).join('')||'<p style="color:var(--muted);margin:4px 0">Дни ещё не внесены.</p>'}
+  <div class="row" style="margin-top:10px;gap:8px"><button class="btn" data-a="day">＋ День</button>${!d.days.length&&d.trip.arr.date&&d.trip.dep.date?'<button class="btn" data-a="days">Создать дни по датам</button>':''}</div></div>
  <div class="card bk"><h2>🏨 Отели</h2>
   ${d.hotels.map((h,k)=>`<div class="kv"><label class="sw" title="Подтверждён"><input type="checkbox" data-h="${k}" ${h.ok?'checked':''}><span></span></label><div style="flex:1;min-width:0;cursor:pointer" data-he="${k}"><b>${esc(h.city)}</b> · ${+h.nights||0} ноч.${h.in?' · '+dd(h.in)+' → '+dd(h.out):''}<br><small>${esc(h.name||'отель не выбран')}${h.rooms?' · '+esc(h.rooms):''}${h.ok?' · <span style="color:var(--ok)">подтверждён</span>':' · <span style="color:var(--bad)">не подтверждён</span>'}</small></div><button class="btn" data-rq="h${k}" title="Заявка в отель">📨</button><button class="x2" data-hd="${k}" aria-label="Удалить">✕</button></div>`).join('')||'<p style="color:var(--muted);margin:4px 0">Отели ещё не внесены.</p>'}
   <button class="btn" data-a="hotel" style="margin-top:10px">＋ Отель</button></div>
@@ -505,7 +510,7 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   ${ln('Ответственный',esc(x.owner||'—'),'grp')}
   ${d.note?ln('Заметка',esc(d.note),'grp',1):''}
   ${d.src?`<div class="kv"><div>Диск</div><div><a href="${esc(d.src)}" target="_blank">Папка ↗</a>${d.sheet?` · <a href="${esc(d.sheet)}" target="_blank">Таблица ↗</a>`:''}${d.link?` · <a href="${esc(d.link)}" target="_blank">Путеводитель ↗</a>`:''}</div></div>`:''}
-  <button class="btn" data-a="grp" style="margin-top:10px">✎ Изменить данные группы</button></div>
+  <div class="row" style="margin-top:10px;gap:8px"><button class="btn" data-a="grp">✎ Изменить данные группы</button><button class="btn main" data-a="intro">📄 Вводные данные</button></div></div>
  <div class="card"><h2>🕘 История</h2>${x.hist.length?'<div>'+x.hist.map(h=>`<div class="kv" style="padding:8px 0;align-items:flex-start"><small style="width:90px;flex:none">${h.at?new Date(h.at).toLocaleDateString('ru',{day:'numeric',month:'short'}):''}</small><div style="flex:1;min-width:0"><b>${esc(h.who)}</b> · ${esc(h.what)}</div></div>`).join('')+'</div>':'<p style="color:var(--muted)">Пока пусто.</p>'}</div>
  </div></div>`;
  const sv=async(what,toastT)=>{try{await call('api_bookingSave',x,what);toast(toastT||'Сохранено ✓');BK=null;vBooking(id)}catch(e){err(e)}};
@@ -519,13 +524,17 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
  m.querySelectorAll('[data-he]').forEach(b=>b.onclick=()=>hotelDlg(x,d,+b.dataset.he,sv));
  m.querySelectorAll('[data-me]').forEach(b=>b.onclick=()=>mealDlg(x,d,+b.dataset.me,sv));
  m.querySelectorAll('[data-md]').forEach(b=>b.onclick=()=>{const r=d.meals[b.dataset.md];if(!confirm('Убрать '+(r.kind==='dinner'?'ужин':'обед')+' '+dd(r.date)+'?'))return;d.meals.splice(b.dataset.md,1);sv('Убран '+(r.kind==='dinner'?'ужин':'обед')+' '+dd(r.date))});
- m.querySelectorAll('[data-rq]').forEach(b=>b.onclick=()=>{const k=b.dataset.rq;reqDlg(x,d,k[0]==='h'?'hotel':'meal',+k.slice(1))});
+ m.querySelectorAll('[data-de]').forEach(b=>b.onclick=()=>dayDlg(x,d,+b.dataset.de,sv));
+ m.querySelectorAll('[data-rq]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.rq;reqDlg(x,d,{h:'hotel',m:'meal',g:'guide',t:'driver'}[k[0]],+k.slice(1))});
  m.querySelectorAll('[data-doc]').forEach(i=>i.onchange=()=>{d.docs[i.dataset.doc]=i.checked;sv('')});
  m.querySelectorAll('[data-a]').forEach(b=>b.onclick=e=>{e.stopPropagation();const a=b.dataset.a;
   if(a==='grp')return bkEdit(x);
   if(a==='hotel')return hotelDlg(x,d,-1,sv);
   if(a==='meal')return mealDlg(x,d,-1,sv);
   if(a==='trip')return tripDlg(x,d,sv);
+  if(a==='day')return dayDlg(x,d,-1,sv);
+  if(a==='days')return makeDays(x,d,sv);
+  if(a==='intro')return introDlg(x,d);
   const g=d[a],T=a==='guide'?'Гид':'Транспорт';
   dlg(`<h2>${T}</h2><label class="f">${a==='guide'?'Имя гида':'Водитель или компания'}</label><input class="t" id="g1" value="${esc(g.name||'')}">${a==='transport'?`<label class="f">Машина <small>например, автобус 30 мест</small></label><input class="t" id="g3" value="${esc(g.car||'')}">`:''}<label class="f">Телефон</label><input class="t" id="g2" type="tel" value="${esc(g.phone||'')}"><div class="row" style="margin-top:14px"><button class="btn main" id="gs">Сохранить</button><span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
   $('#gs').onclick=()=>{g.name=$('#g1').value.trim();g.phone=$('#g2').value.trim();if(a==='transport')g.car=$('#g3').value.trim();close_();sv(T+': '+(g.name||'снят'))}})}
@@ -606,11 +615,11 @@ function mealText(x,d,k){const r=d.meals[k],t=d.trip,w=r.kind==='dinner'?'ужи
   `• Меню: сет-${w}${r.budget?', бюджет ≈ '+(+r.budget).toLocaleString('ru')+' тенге на человека':''}`,...(sp.length?['• Особенности: '+sp.join(', ')]:[]),
   '• Напитки: вода и чай включены, алкоголь за счёт гостей','• Оплата: наличными','',
   'Пришлите, пожалуйста, варианты меню и подтвердите бронь. Спасибо!','Отабек, King Wings Travel'].join('\n')}
-function reqDlg(x,d,kind,k){let mode='check';const it=kind==='hotel'?d.hotels[k]:d.meals[k];
- const name=()=>kind==='hotel'?`Заявка отель — ${it.city}${it.name?' ('+it.name+')':''} — ${x.title||x.agent}`:`Заявка ресторан — ${dd(it.date)} ${it.kind==='dinner'?'ужин':'обед'} — ${x.title||x.agent}`;
- const txt=()=>kind==='hotel'?hotelText(x,d,k,mode):mealText(x,d,k);
- const miss=[];if(!people(d.trip).all)miss.push('гости (🧳 Тур)');if(kind==='hotel'&&!it.rooms)miss.push('номера');if(kind==='hotel'&&(!it.in||!it.out))miss.push('даты заезда/выезда');if(kind!=='hotel'&&!it.place)miss.push('ресторан');
- dlg(`<h2>📨 ${kind==='hotel'?'Заявка в отель — '+esc(it.city):'Заявка в ресторан — '+dd(it.date)}</h2>
+function reqDlg(x,d,kind,k){let mode='check';const team=kind==='guide'||kind==='driver';const it=kind==='hotel'?d.hotels[k]:kind==='meal'?d.meals[k]:(kind==='guide'?d.guide:d.transport);
+ const name=()=>team?`Заявка ${kind==='guide'?'гиду':'водителю'} — ${x.title||x.agent}`:kind==='hotel'?`Заявка отель — ${it.city}${it.name?' ('+it.name+')':''} — ${x.title||x.agent}`:`Заявка ресторан — ${dd(it.date)} ${it.kind==='dinner'?'ужин':'обед'} — ${x.title||x.agent}`;
+ const txt=()=>team?teamText(x,d,kind):kind==='hotel'?hotelText(x,d,k,mode):mealText(x,d,k);
+ const miss=[];if(team){if(!d.days.length)miss.push('дни программы (📅 Программа)')}else if(!people(d.trip).all)miss.push('гости (🧳 Тур)');if(kind==='hotel'&&!it.rooms)miss.push('номера');if(kind==='hotel'&&(!it.in||!it.out))miss.push('даты заезда/выезда');if(kind==='meal'&&!it.place)miss.push('ресторан');
+ dlg(`<h2>📨 ${team?(kind==='guide'?'Заявка гиду':'Заявка водителю'):kind==='hotel'?'Заявка в отель — '+esc(it.city):'Заявка в ресторан — '+dd(it.date)}</h2>
  ${kind==='hotel'?`<div class="tabs"><button class="tab on" data-m="check">Проверка наличия и цены</button><button class="tab" data-m="book">Бронь</button></div>`:''}
  ${miss.length?`<p class="hint" style="color:#8A5B00">Не заполнено: ${miss.join(', ')} — в тексте стоит «?».</p>`:''}
  <textarea class="t" id="qt" style="min-height:300px;font-size:15px">${esc(txt())}</textarea>
@@ -618,7 +627,76 @@ function reqDlg(x,d,kind,k){let mode='check';const it=kind==='hotel'?d.hotels[k]
  <div class="row" style="margin-top:12px"><button class="btn main" id="qc">Скопировать</button>${d.src?'<button class="btn" id="qs">💾 Сохранить в папку группы</button>':''}<span class="sp"></span><button class="btn ghost" onclick="close_()">Закрыть</button></div>`);
  $('#dlg').querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$('#dlg').querySelectorAll('[data-m]').forEach(z=>z.classList.toggle('on',z===b));$('#qt').value=txt()});
  $('#qc').onclick=async()=>{try{await navigator.clipboard.writeText($('#qt').value)}catch(e){$('#qt').select();document.execCommand('copy')}toast('Скопировано ✓ Вставьте в WhatsApp или письмо')};
- if($('#qs'))$('#qs').onclick=async()=>{$('#qs').disabled=true;try{const r=await call('api_saveRequest',x.id,kind==='hotel'?'hotel':'meal',name(),$('#qt').value);toast('Сохранено в Personal / '+(kind==='hotel'?'Hotel':'Restaurant')+' ✓');$('#qs').outerHTML=`<a class="btn" href="${esc(r.folder)}" target="_blank">Открыть папку ↗</a>`}catch(e){err(e);$('#qs').disabled=false}}}
+ if($('#qs'))$('#qs').onclick=async()=>{$('#qs').disabled=true;try{const r=await call('api_saveRequest',x.id,team?'team':kind==='hotel'?'hotel':'meal',name(),$('#qt').value);toast('Сохранено в Personal / '+(team?'Transport & Guides':kind==='hotel'?'Hotel':'Restaurant')+' ✓');$('#qs').outerHTML=`<a class="btn" href="${esc(r.folder)}" target="_blank">Открыть папку ↗</a>`}catch(e){err(e);$('#qs').disabled=false}}}
+
+
+/* ---------- Программа, заявки гиду и водителю, «Вводные данные» (27.11.2026) ---------- */
+const DTN={city:'город',out:'за городом',transfer:'трансфер',free:'свободно'};
+function progCount(d){const c={city:0,out:0,transfer:0,free:0};d.days.forEach(y=>c[y.type]=(c[y.type]||0)+1);return c}
+function progSum(d){if(!d.days.length)return'';const c=progCount(d);return `<div class="hint" style="margin-top:0">В городе <b>${c.city}</b> · за городом <b>${c.out}</b> · трансферов <b>${c.transfer}</b>${c.free?' · свободно '+c.free:''}</div>`}
+function addDays(s,n){const t=new Date(s+'T00:00:00');t.setDate(t.getDate()+n);return t.toISOString().slice(0,10)}
+function makeDays(x,d,sv){const a=d.trip.arr.date,b=d.trip.dep.date;if(!a||!b)return toast('Сначала даты прилёта и вылета (🧳 Тур)',1);
+ for(let t=a;t<=b;t=addDays(t,1))d.days.push({date:t,type:t===a||t===b?'transfer':'city',what:t===a?'Прилёт'+(d.trip.arr.time?' '+d.trip.arr.time:'')+', встреча, отель':t===b?'Выезд, аэропорт'+(d.trip.dep.time?' (вылет '+d.trip.dep.time+')':''):'',tickets:''});
+ sv('Созданы дни программы по датам')}
+function dayDlg(x,d,k,sv){const nw=k<0,y=nw?{type:'city',date:d.days.length?addDays(d.days[d.days.length-1].date,1):(d.trip.arr.date||'')}:d.days[k];
+ dlg(`<h2>📅 ${nw?'Новый день':'День '+dd(y.date)}</h2>
+ <div class="row" style="gap:10px">${F2('y1','Дата',y.date,'date')}<div style="flex:1;min-width:130px"><label class="f">Тип дня</label><select class="t" id="y2">${Object.keys(DTN).map(v=>`<option value="${v}" ${y.type===v?'selected':''}>${DTN[v]}</option>`).join('')}</select></div></div>
+ <label class="f">Что делаем</label><textarea class="t" id="y3" placeholder="Медеу, Шымбулак по канатке">${esc(y.what||'')}</textarea>
+ <label class="f">Билеты <small>например: Shymbulak 6; Kok-Tobe 7</small></label><input class="t" id="y4" value="${esc(y.tickets||'')}">
+ <div class="row" style="margin-top:16px"><button class="btn main" id="ys">${nw?'Добавить':'Сохранить'}</button>${nw?'':'<button class="btn ghost" id="yd">Удалить день</button>'}<span class="sp"></span><button class="btn ghost" onclick="close_()">Отмена</button></div>`);
+ $('#ys').onclick=()=>{if(!$('#y1').value)return toast('Выберите дату',1);Object.assign(y,{date:$('#y1').value,type:$('#y2').value,what:$('#y3').value.trim(),tickets:$('#y4').value.trim()});
+  if(nw)d.days.push(y);d.days.sort((a,b)=>a.date<b.date?-1:1);close_();sv((nw?'Добавлен день ':'Изменён день ')+dd(y.date))};
+ if($('#yd'))$('#yd').onclick=()=>{if(!confirm('Удалить день '+dd(y.date)+'?'))return;d.days.splice(k,1);close_();sv('Удалён день '+dd(y.date))}}
+function teamText(x,d,who){const g=who==='guide'?d.guide:d.transport,t=d.trip,a=d.days[0]?d.days[0].date:(t.arr.date||x.start),b=d.days.length?d.days[d.days.length-1].date:(t.dep.date||x.end);
+ const hs=[...new Set(d.hotels.map(h=>(h.name||'отель уточняется')+', '+h.city))];
+ const name=String(g.name||'').split(/\s+/)[0];
+ return [hello(name).replace('как ваши дела?','как дела?'),'',`Вы свободны ${dd(a)}–${dd(b)}?`,
+  `• Даты: ${dd(a)} – ${dd(b)}`,`• Прилёт: ${dd(t.arr.date)||'?'}${t.arr.time?' в '+t.arr.time:''}`,`• Вылет: ${dd(t.dep.date)||'?'}${t.dep.time?' в '+t.dep.time:''}`,
+  `• Гостиница: ${hs.join('; ')||'?'}`,'• Программа:',...(d.days.length?d.days.map(y=>`  – ${dd(y.date)}: ${y.what||DTN[y.type]||''}`):['  – ?']),'','Отабек, King Wings Travel'].join('\n')}
+
+/* «Вводные данные»: те же разделы и итоги, что в калькуляторе */
+function introBlocks(x,d){const t=d.trip,K=ages(t),A=+t.adults||0,inf=K.filter(a=>a<=2).length,ch=K.filter(a=>a>2&&a<10).length,big=K.filter(a=>a>=10).length;
+ const pax=A+K.length-inf,staff=2,adM=A+big+staff,c=progCount(d),R=s=>'[['+s+']]',q=v=>v||R('?');
+ const B=[];const h=s=>B.push({t:'h',text:s}),p=(s,tt)=>B.push({t:tt||'p',text:s}),T=rows=>B.push({t:'table',rows});
+ B.push({t:'title',text:'ВВОДНЫЕ ДАННЫЕ ДЛЯ КАЛЬКУЛЯЦИИ'});
+ p(`${x.agent} · ${x.title||''} · ${dd(x.start)}–${dd(x.end)} · ${A} взр. + ${K.length} реб.${K.length?' ('+K.join(', ')+' лет)':''} · Статус: ${(bst(x.st)||[])[1]||''}`,'bold');
+ p('Собрано админкой из карточки группы. Только данные, без расчёта. Красным — ещё не известно. Разделы — в порядке калькулятора.','note');
+ h('1. Группа');T([['Что','Данные'],['Pax',pax+(inf?` (${inf} Infant)`:'')+` = ${A} взр. + ${K.length-inf} реб.`+(inf?' + малыш до 2 лет (не в pax)':'')],['Страна',q(t.country)],['С ними',`гид + водитель = ${staff}`],['Халяль',{yes:'да',no:'нет'}[t.halal]||R('уточнить')]]);
+ h('2. Прилёт и вылет');T([['Что','Данные'],['Прилёт',flt(t.arr)||R('?')],['Вылет',flt(t.dep)||R('?')],['В аэропорту',t.dep.time?`за 3 часа до вылета`:R('?')]]);
+ h('3. Программа');T([['Дата','Что','Тип дня'],...d.days.map(y=>[dd(y.date),y.what||R('?'),DTN[y.type]||''])]);
+ p(`Итого: в городе ${c.city} · за городом ${c.out} · трансферов ${c.transfer}${c.free?' · свободных '+c.free:''}.`,'bold');
+ h('4. Проживание');T([['Город','Отель','Даты','Ночей','Номера','Питание'],...d.hotels.map(z=>[z.city,q(z.name),`${dd(z.in)} → ${dd(z.out)}`,z.nights||nights(z.in,z.out),q(z.rooms),z.meal||'BB'])]);
+ const byCity={};d.hotels.forEach(z=>byCity[z.city]=(byCity[z.city]||0)+(+z.nights||0));
+ p('Итого: '+(Object.keys(byCity).reduce((a,k)=>a+byCity[k],0))+' ночей = '+Object.keys(byCity).map(k=>k+' '+byCity[k]).join(' + ')+'.','bold');
+ h('5. Питание');const dates=[...new Set(d.meals.map(r=>r.date))].sort(),mk=(dt,k)=>{const r=d.meals.find(z=>z.date===dt&&(z.kind==='dinner')===(k==='d'));return r?(r.city||'?')+(r.place?' · '+r.place:'')+(outA(r.city)?' ⚠':''):'—'};
+ const L=d.meals.filter(r=>r.kind!=='dinner'),D=d.meals.filter(r=>r.kind==='dinner'),o=a=>a.filter(r=>outA(r.city)).length;
+ T([['Дата','Обед — где','Ужин — где'],...dates.map(dt=>[dd(dt),mk(dt,'l'),mk(dt,'d')]),['ИТОГО',`${plu(L.length,'обед','обеда','обедов')} (вне Алматы ${o(L)})`,`${plu(D.length,'ужин','ужина','ужинов')} (вне Алматы ${o(D)})`]]);
+ if(o(d.meals))p('⚠ — не в Алматы: там может быть дорого или мало выбора. Цену проверить заранее.','warn');
+ T([['Строка калькулятора','Раз в день','Дней','Человек'],['Lunch adults','1',L.length,adM+` = ${A} взр.${big?' + '+big+' реб. 10+':''} + гид + водитель`],['Dinner adults','1',D.length,adM],['Lunch Children under 10yrs','1',L.length,ch],['Dinner Children under 10yrs','1',D.length,ch]]);
+ p(`Итого порций: обедов ${L.length} × ${adM+ch} = ${L.length*(adM+ch)}, ужинов ${D.length} × ${adM+ch} = ${D.length*(adM+ch)}.`+(inf?' Малыш до 2 лет не считается.':''),'bold');
+ const restNo=d.meals.filter(r=>!r.place).length;if(restNo)p(`Ресторан не выбран: ${restNo} из ${d.meals.length}.`,'note');
+ h('6. Гид');T([['Строка калькулятора','Сколько'],['Num. of days city',c.city],['Num. of days outskirts',c.out],['Num. of transfers',c.transfer],['Гид',d.guide.name||R('не назначен')]]);
+ h('7. Билеты');const tk=d.days.filter(y=>y.tickets);T([['Дата','Билеты'],...(tk.length?tk.map(y=>[dd(y.date),y.tickets]):[[R('?'),R('билеты не внесены в дни программы')]])]);
+ h('8. Сервис-сбор');p('No. of Pax = '+pax+'.','bold');
+ h('9. Транспорт');T([['Строка калькулятора','Сколько'],['Num. of days city',c.city],['Num. of days outskirts (KKCH)',c.out],['Num. of transfers',c.transfer],['Машина',d.transport.name?d.transport.name+(d.transport.car?' · '+d.transport.car:''):R('не назначена')]]);
+ const nd=d.days.length,wd=Math.max(0,nd-1);
+ h('10. Доп. расходы');T([['Строка калькулятора','No. of Pax','В день','Дней','Всего'],['Water',pax,'2',wd,pax*2*wd+' бутылок'],['Chocolate',pax,'1','1',pax+' шт.'],['Miscellaneous','—','—','—','резерв']]);
+ p(`Вода: первый и последний день — по полдня (1 + 1 = 1 день), остальные ${Math.max(0,nd-2)} — полные. Итого ${wd} дн. × 2 × ${pax} = ${pax*2*wd}.`,'note');
+ h('ИТОГ ДЛЯ КАЛЬКУЛЯТОРА');T([['Раздел','Что вписать'],['PAX',pax+(inf?` (${inf} Infant)`:'')],['Проживание',d.hotels.map(z=>`${z.city} ${z.nights||nights(z.in,z.out)} н.${z.rooms?' · '+z.rooms:''}`).join('; ')||R('?')],
+  ['Питание',`Обеды: взр. ${L.length} × ${adM}, дети ${L.length} × ${ch} · Ужины: взр. ${D.length} × ${adM}, дети ${D.length} × ${ch}. Вне Алматы: ${plu(o(L),'обед','обеда','обедов')}, ${plu(o(D),'ужин','ужина','ужинов')}`],
+  ['Гид',`город ${c.city} · за городом ${c.out} · трансферы ${c.transfer}`],['Билеты',tk.map(y=>y.tickets).join('; ')||R('?')],['Сервис-сбор',pax+' pax'],
+  ['Транспорт',`город ${c.city} · за городом ${c.out} · трансферы ${c.transfer}`],['Доп. расходы',`вода ${pax} × 2 × ${wd} = ${pax*2*wd} · шоколад ${pax} · резерв`]]);
+ const ask=[];if(!t.country)ask.push('Страна гостей');if(!t.halal)ask.push('Халяль?');[...new Set(d.hotels.filter(z=>!z.name).map(z=>z.city))].forEach(c=>ask.push('Отель: '+c));if(d.hotels.some(z=>!z.rooms))ask.push('Руминг');if(!d.guide.name)ask.push('Гид');if(!d.transport.name)ask.push('Транспорт');
+ if(ask.length){h('Ещё не известно');ask.forEach((a,i)=>p(`${i+1}) ${a}`))}
+ return B}
+function introDlg(x,d){if(!d.days.length)return toast('Сначала внесите дни программы (📅 Программа)',1);const B=introBlocks(x,d);
+ const html=B.map(b=>b.t==='table'?`<table class="pr" style="margin:6px 0 10px;font-size:13px">${b.rows.map((r,i)=>`<tr>${r.map(c=>i?`<td style="text-align:left">${rd(c)}</td>`:`<th>${esc(c)}</th>`).join('')}</tr>`).join('')}</table>`:
+  b.t==='title'?`<h2>${esc(b.text)}</h2>`:b.t==='h'?`<h3 style="margin:14px 0 4px;color:var(--blue)">${esc(b.text)}</h3>`:`<p style="margin:4px 0;${b.t==='bold'?'font-weight:700':''}${b.t==='warn'?';color:var(--bad);font-weight:700':''}${b.t==='note'?';color:var(--muted);font-style:italic':''}">${rd(b.text)}</p>`).join('');
+ dlg(`<div style="max-height:62vh;overflow:auto;padding-right:6px">${html}</div>
+ <div class="row" style="margin-top:12px">${d.src?'<button class="btn main" id="is">💾 Сохранить в Personal (Word)</button>':''}<span class="sp"></span><button class="btn ghost" onclick="close_()">Закрыть</button></div>`);
+ $('#dlg').style.maxWidth='760px';
+ if($('#is'))$('#is').onclick=async()=>{$('#is').disabled=true;try{const r=await call('api_saveIntro',x.id,'Вводные данные — '+(x.title||x.agent),B);toast('Сохранено в Personal ✓');$('#is').outerHTML=`<a class="btn" href="${esc(r.folder)}" target="_blank">Открыть папку ↗</a>`}catch(e){err(e);$('#is').disabled=false}}}
+const rd=s=>esc(String(s==null?'':s)).replace(/\[\[(.*?)\]\]/g,'<b style="color:var(--bad)">$1</b>');
 
 function bkEdit(x){const nw=!x;x=x||{st:'new',agent:'',n:20,d:{}};const d=bkD(x),P=(S&&S.programs)||[];
  dlg(`<h2>${nw?'Новая группа':'Данные группы'}</h2>

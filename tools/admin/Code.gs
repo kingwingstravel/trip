@@ -509,14 +509,14 @@ function api_bookingsSync() { var s = bkSheets_(); return bkFromDrive_(s, true);
 
 /* ================= ЗАЯВКИ ПОСТАВЩИКАМ (27.11.2026) ================= */
 // Текст заявки готовит страница (по данным карточки). Здесь — сохранить его файлом Word в папку группы:
-// <группа> / Personal / Hotel  (отели)  ·  <группа> / Personal / Restaurant  (рестораны).
+// <группа> / Personal / Hotel (отели) · Personal / Restaurant (рестораны) · Personal / Transport & Guides (гид, водитель).
 // Файл с тем же именем заменяется (старый — в корзину), чтобы не было двух одинаковых.
 function folderIdFromUrl_(u) { var m = String(u || '').match(/folders\/([\w-]+)/) || String(u || '').match(/[?&]id=([\w-]+)/); return m ? m[1] : ''; }
 function sub_(parent, name) { var it = parent.getFoldersByName(name); return it.hasNext() ? it.next() : parent.createFolder(name); }
 function api_saveRequest(id, kind, fname, text) {
   var x = api_booking(id), src = folderIdFromUrl_((x.d || {}).src);
   if (!src) throw new Error('У группы нет папки на Диске — скопируйте текст кнопкой «Скопировать».');
-  var dir = sub_(sub_(DriveApp.getFolderById(src), 'Personal'), kind === 'hotel' ? 'Hotel' : 'Restaurant');
+  var dir = sub_(sub_(DriveApp.getFolderById(src), 'Personal'), { hotel: 'Hotel', meal: 'Restaurant', team: 'Transport & Guides' }[kind] || 'Restaurant');
   var name = String(fname || 'Заявка').replace(/[\\/:*?"<>|]+/g, ' ').trim();
   var doc = DocumentApp.create(name), blob;
   try {
@@ -608,3 +608,56 @@ function backup_() {
   PropertiesService.getScriptProperties().setProperty('backupFolder', f.getUrl());
 }
 function api_backupInfo() { var P = PropertiesService.getScriptProperties(); return { last: P.getProperty('lastBackup') || '', folder: P.getProperty('backupFolder') || '' }; }
+
+/* ================= ВВОДНЫЕ ДАННЫЕ (27.11.2026) ================= */
+// Страница собирает документ (заголовки, абзацы, таблицы) по данным карточки, здесь — Word-файл в <группа>/Personal.
+// blocks: [{t:'title'|'h'|'p'|'note'|'table', text, rows:[[...]], red:[[r,c],...]}]; «[[...]]» в тексте = красным (не известно).
+function api_saveIntro(id, name, blocks) {
+  var x = api_booking(id), src = folderIdFromUrl_((x.d || {}).src);
+  if (!src) throw new Error('У группы нет папки на Диске.');
+  var dir = sub_(DriveApp.getFolderById(src), 'Personal');
+  name = String(name || 'Вводные данные').replace(/[\\/:*?"<>|]+/g, ' ').trim();
+  var doc = DocumentApp.create(name), blob;
+  try {
+    var b = doc.getBody(); b.setMarginLeft(50).setMarginRight(50).setMarginTop(50).setMarginBottom(50);
+    var first = true;
+    var red = function (el) {   // «[[текст]]» → красный жирный, скобки убрать
+      var t = el.editAsText(), s = t.getText(), m, re = /\[\[(.*?)\]\]/g, out = [];
+      while ((m = re.exec(s))) out.push([m.index, m[1].length]);
+      for (var k = out.length - 1; k >= 0; k--) {
+        var a = out[k][0], n = out[k][1];
+        t.deleteText(a + n + 2, a + n + 3); t.deleteText(a, a + 1);
+        if (n) t.setForegroundColor(a, a + n - 1, '#C00000').setBold(a, a + n - 1, true);
+      }
+    };
+    (blocks || []).forEach(function (bl) {
+      if (bl.t === 'table') {
+        var tb = b.appendTable(bl.rows.map(function (r) { return r.map(function (c) { return String(c == null ? '' : c) || ' '; }); }));
+        tb.setBorderColor('#B8C4D6');
+        for (var i = 0; i < tb.getNumRows(); i++) for (var j = 0; j < tb.getRow(i).getNumCells(); j++) {
+          var cell = tb.getCell(i, j); cell.setPaddingTop(3).setPaddingBottom(3);
+          var tx = cell.editAsText(); tx.setFontFamily('Arial').setFontSize(9.5);
+          if (i === 0) { cell.setBackgroundColor('#1F3A5F'); tx.setForegroundColor('#FFFFFF').setBold(true); }
+          else if (j === 0) tx.setBold(true);
+          red(cell);
+        }
+        return;
+      }
+      var p = first ? b.getParagraphs()[0].setText(bl.text || ' ') : b.appendParagraph(bl.text || ' '); first = false;
+      var t = p.editAsText(); t.setFontFamily('Arial').setFontSize(10.5).setForegroundColor('#1A1F47').setBold(false).setItalic(false);
+      if (bl.t === 'title') { t.setFontSize(16).setBold(true); }
+      else if (bl.t === 'h') { t.setFontSize(12.5).setBold(true).setForegroundColor('#1F3A5F'); p.setSpacingBefore(10); }
+      else if (bl.t === 'note') { t.setItalic(true).setForegroundColor('#555555'); }
+      else if (bl.t === 'bold') { t.setBold(true); }
+      else if (bl.t === 'warn') { t.setBold(true).setForegroundColor('#C00000'); }
+      red(p);
+    });
+    doc.saveAndClose();
+    blob = UrlFetchApp.fetch('https://docs.google.com/document/d/' + doc.getId() + '/export?format=docx',
+      { headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() } }).getBlob().setName(name + '.docx');
+  } finally { DriveApp.getFileById(doc.getId()).setTrashed(true); }
+  var old = dir.getFilesByName(name + '.docx'); while (old.hasNext()) old.next().setTrashed(true);
+  var f = dir.createFile(blob);
+  var s = bkSheets_(); bkLog_(s.h, id, 'Вводные данные сохранены: ' + name + '.docx (Personal)');
+  return { url: f.getUrl(), folder: dir.getUrl() };
+}
