@@ -151,35 +151,103 @@ function api_duplicate(path) {
   return np;
 }
 
-// группы из таблиц «Путеводитель» (только смотреть): текущие и будущие
-function api_groups() {
+/* ================= ПАПКИ ГРУПП НА ДИСКЕ (27.11.2026) ================= */
+// Туризм / 1.b2b / <агент> / <год> / <«Confirmed» | «Quotation» | «Drafted»> / [<месяц>] / <группа>
+// Номер перед словом не важен («1. Confirmed», «2. Confirmed» — одно и то же).
+var MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+            янв: 0, фев: 1, мар: 2, апр: 3, мая: 4, май: 4, июн: 5, июл: 6, авг: 7, сен: 8, окт: 9, ноя: 10, дек: 11 };
+function mon_(s) { var k = String(s || '').toLowerCase().replace(/[^a-zа-я]/g, '').slice(0, 3); return MON[k] != null ? MON[k] : -1; }
+function stage_(name) { var n = String(name).toLowerCase(); return /confirm/.test(n) ? 'ok' : /quot/.test(n) ? 'offer' : /draft/.test(n) ? 'new' : ''; }
+var SKIP = /^(архив|archive|initial info|personal|whatsapp|from |offer$|quotation$)/i;
+// Даты из названия: «02-08 Dec.», «26-Nov.- 6 Dec.», «30 Dec.-6 Jan.», «15-17 Bishkek, 17-20 Almaty» (месяц из папки)
+function datesFromName_(name, year, m0) {
+  var s = String(name).replace(/^\s*\d{1,2}\.\s+/, ' '), toks = [], re = /\d+|[A-Za-zА-Яа-я]{3,}/g, x;
+  while ((x = re.exec(s))) {
+    var t = x[0], before = s.slice(0, x.index).replace(/\s+$/, ''), after = s.slice(x.index + t.length);
+    if (/^\d+$/.test(t)) {   // число = день, если это не «25+1», «20 Pax», «3 Star», «2025»
+      if (t.length > 2 || +t < 1 || +t > 31) continue;
+      if (/\+$/.test(before) || /^\s*(\+|pax|star|чел|stan|★|\*|d\d|n\b|ноч|night|day)/i.test(after)) continue;
+      toks.push({ d: +t });
+    } else if (mon_(t) >= 0 && /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|янв|фев|мар|апр|ма[йя]|июн|июл|авг|сен|окт|ноя|дек)/i.test(t)) toks.push({ m: mon_(t) });
+  }
+  var days = [], cm = null;   // месяц стоит после числа («02-08 Dec») или до него («Nov 26»)
+  for (var i = 0; i < toks.length; i++) {
+    if (toks[i].d != null) days.push({ d: toks[i].d, m: null });
+    else { for (var k = days.length - 1; k >= 0 && days[k].m == null; k--) days[k].m = toks[i].m; cm = toks[i].m; }
+  }
+  if (!days.length) return null;
+  var a = days[0], b = days[days.length - 1];
+  var ma = a.m != null ? a.m : (m0 >= 0 ? m0 : cm), mb = b.m != null ? b.m : ma;
+  if (ma == null || ma < 0) return null;
+  var A = new Date(year, ma, a.d), B = new Date(year, mb, b.d);
+  if (B < A) B = new Date(year, mb + (b.m == null ? 1 : 12), b.d);   // через месяц / Новый год
+  return { start: A, end: B };
+}
+// Все группы из папок b2b (кэш 10 минут). Только текущие и будущие (или без дат, но тронутые за 60 дней).
+function scanGroups_(fresh) {
+  var c = CacheService.getScriptCache();
+  if (!fresh) { var h = c.get('scan1'); if (h) return JSON.parse(h); }
   var out = [], today = new Date(); today.setHours(0, 0, 0, 0);
-  var tops = DriveApp.getFoldersByName('1. Confirmed');
+  var tops = DriveApp.getFoldersByName('1.b2b');
   while (tops.hasNext()) {
-    var top = tops.next(), agent = '';
-    try { agent = top.getParents().next().getParents().next().getName(); } catch (e) {}
-    var ms = top.getFolders();
-    while (ms.hasNext()) {
-      var gs = ms.next().getFolders();
-      while (gs.hasNext()) {
-        var gf = gs.next();
-        if (gf.getLastUpdated().getTime() < Date.now() - 200 * 864e5) continue;
-        var it = gf.getFilesByType(MimeType.GOOGLE_SHEETS), f = null;
-        while (it.hasNext()) { var x = it.next(); if (x.getName().indexOf('Путеводитель') >= 0) { f = x; break; } }
-        if (!f) continue;
-        try {
-          var v = SpreadsheetApp.openById(f.getId()).getSheetByName('Путеводитель').getRange('A1:B26').getDisplayValues();
-          var m = v[6][1].match(/(\d{1,2})\.(\d{1,2})\.(\d{4})\s*[–-]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/);
-          var a = m ? new Date(+m[3], +m[2] - 1, +m[1]) : null, b = m ? new Date(+m[6], +m[5] - 1, +m[4]) : null;
-          if (b && b < today) continue;
-          var link = (v[24][1].match(/https:\/\/\S+\/g\/[a-z0-9]{8}\//) || [''])[0], pin = (v[24][1].match(/PIN\s*(\d{6})/) || ['', ''])[1];
-          out.push({ name: gf.getName(), agent: agent, dates: m ? m[0] : v[6][1], start: a ? a.getTime() : 0, end: b ? b.getTime() : 0,
-            now: !!(a && b && a <= today && today <= b), guests: v[4][1], lang: v[7][1], publish: v[22][1] === 'TRUE',
-            link: link, pin: pin, staff: v[25][1], sheet: f.getUrl(), folder: gf.getUrl() });
-        } catch (e) {}
+    var agents = tops.next().getFolders();
+    while (agents.hasNext()) {
+      var ag = agents.next(), agent = ag.getName(), years = ag.getFolders();
+      if (SKIP.test(agent) || /email|website|whatsapp/i.test(agent)) continue;
+      while (years.hasNext()) {
+        var yf = years.next(), yr = +yf.getName();
+        if (!(yr >= 2025 && yr <= 2035)) continue;
+        var sts = yf.getFolders();
+        while (sts.hasNext()) {
+          var sf = sts.next(), st = stage_(sf.getName());
+          if (!st) continue;
+          var subs = sf.getFolders();
+          while (subs.hasNext()) {
+            var mf = subs.next(), m0 = mon_(mf.getName()), groups = [];
+            if (m0 >= 0 && mf.getName().replace(/[^A-Za-zА-Яа-я]/g, '').length <= 9) { var gi = mf.getFolders(); while (gi.hasNext()) groups.push(gi.next()); }
+            else groups.push(mf);
+            groups.forEach(function (gf) {
+              var nm = gf.getName();
+              if (SKIP.test(nm)) return;
+              var dd = datesFromName_(nm, yr, m0), upd = gf.getLastUpdated().getTime();
+              if (dd ? dd.end < today : upd < Date.now() - 60 * 864e5) return;
+              out.push({ name: nm, agent: agent, year: yr, stage: st, stageName: sf.getName(), month: m0 >= 0 ? mf.getName() : '',
+                start: dd ? dd.start.getTime() : 0, end: dd ? dd.end.getTime() : 0, folder: gf.getUrl(), id: gf.getId() });
+            });
+          }
+        }
       }
     }
   }
+  out.sort(function (x, y) { return (x.start || 9e15) - (y.start || 9e15); });
+  try { c.put('scan1', JSON.stringify(out), 600); } catch (e) {}
+  return out;
+}
+
+// группы из таблиц «Путеводитель» (только смотреть): текущие и будущие, только Confirmed
+function api_groups() {
+  var out = [], today = new Date(); today.setHours(0, 0, 0, 0);
+  scanGroups_().filter(function (g) { return g.stage === 'ok'; }).forEach(function (sg) {
+    try {
+      var gf = DriveApp.getFolderById(sg.id);
+      var it = gf.getFilesByType(MimeType.GOOGLE_SHEETS), f = null;
+      while (it.hasNext()) { var x = it.next(); if (x.getName().indexOf('Путеводитель') >= 0) { f = x; break; } }
+      if (!f) {   // путеводителя ещё нет — группа всё равно видна (даты из названия папки)
+        var a0 = sg.start ? new Date(sg.start) : null, b0 = sg.end ? new Date(sg.end) : null;
+        out.push({ name: sg.name, agent: sg.agent, dates: '', start: sg.start, end: sg.end, now: !!(a0 && b0 && a0 <= today && today <= b0),
+          guests: '', lang: '', publish: false, link: '', pin: '', staff: '', sheet: '', folder: sg.folder, noGuide: true });
+        return;
+      }
+      var v = SpreadsheetApp.openById(f.getId()).getSheetByName('Путеводитель').getRange('A1:B26').getDisplayValues();
+      var m = v[6][1].match(/(\d{1,2})\.(\d{1,2})\.(\d{4})\s*[–-]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+      var a = m ? new Date(+m[3], +m[2] - 1, +m[1]) : null, b = m ? new Date(+m[6], +m[5] - 1, +m[4]) : null;
+      if (b && b < today) return;
+      var link = (v[24][1].match(/https:\/\/\S+\/g\/[a-z0-9]{8}\//) || [''])[0], pin = (v[24][1].match(/PIN\s*(\d{6})/) || ['', ''])[1];
+      out.push({ name: gf.getName(), agent: sg.agent, dates: m ? m[0] : v[6][1], start: a ? a.getTime() : sg.start, end: b ? b.getTime() : sg.end,
+        now: !!(a && b && a <= today && today <= b), guests: v[4][1], lang: v[7][1], publish: v[22][1] === 'TRUE',
+        link: link, pin: pin, staff: v[25][1], sheet: f.getUrl(), folder: gf.getUrl() });
+    } catch (e) {}
+  });
   out.sort(function (x, y) { return x.start - y.start; });
   return out;
 }
@@ -401,24 +469,67 @@ function bkRow_(r, i) {
     depPaid: bkDay_(r[12]), balPaid: bkDay_(r[13]), owner: String(r[14]), d: d, upd: r[16] instanceof Date ? r[16].toISOString() : '' };
 }
 function bkLog_(h, id, what, who) { h.appendRow([new Date(), id, who || who_(), what]); }
-// Группы из папок «1. Confirmed» на Диске → в «Брони» (один раз каждую, статус Confirmed). Раз в 30 минут или по кнопке.
+// Группы из папок Confirmed / Quotation / Drafted на Диске → в «Брони». Раз в 30 минут или по кнопке.
+// Новая папка → новая строка. Папку перенесли из Quotation в Confirmed → статус поднимается сам (вниз — никогда).
+var STAGE_TXT = { ok: 'Confirmed', offer: 'Quotation', 'new': 'Drafted' }, RANK = { 'new': 0, offer: 1, wait: 2, ok: 3, tour: 4, done: 5, lost: 5 };
+function paxFromName_(n) { var m = String(n).match(/(\d+)\s*\+\s*(\d+)/); if (m) return +m[1] + +m[2]; m = String(n).match(/(\d+)\s*pax/i); return m ? +m[1] : 0; }
 function bkFromDrive_(s, force) {
   var c = CacheService.getScriptCache();
   if (!force && c.get('gsync')) return 0;
   c.put('gsync', '1', 1800);
-  var G = api_groups(), v = s.b.getDataRange().getValues(), have = {}, n = 0, tz = 'Asia/Almaty';
-  for (var i = 1; i < v.length; i++) { try { var d0 = JSON.parse(v[i][15] || '{}'); if (d0.src) have[d0.src] = 1; } catch (e) {} }
+  var G = scanGroups_(force), v = s.b.getDataRange().getValues(), have = {}, n = 0, tz = 'Asia/Almaty', guides = null, today = new Date(); today.setHours(0, 0, 0, 0);
+  for (var i = 1; i < v.length; i++) { try { var d0 = JSON.parse(v[i][15] || '{}'); if (d0.src) have[d0.src] = { row: i + 1, st: String(v[i][2]), id: String(v[i][0]), d: d0 }; } catch (e) {} }
   G.forEach(function (g) {
-    if (!g.folder || have[g.folder]) return;
+    var old = have[g.folder];
+    if (old) {   // уже есть: поднять статус, если папку перенесли дальше
+      if (RANK[g.stage] > (RANK[old.st] != null ? RANK[old.st] : 0) && ['new', 'offer', 'wait'].indexOf(old.st) >= 0) {
+        s.b.getRange(old.row, 3).setValue(g.stage); old.d.stage = g.stage; s.b.getRange(old.row, 16).setValue(JSON.stringify(old.d));
+        bkLog_(s.h, old.id, 'Папку перенесли в «' + g.stageName + '» → ' + STAGE_TXT[g.stage], 'Система');
+      }
+      return;
+    }
+    if (g.stage === 'ok' && !guides) { guides = {}; try { api_groups().forEach(function (x) { guides[x.folder] = x; }); } catch (e) {} }
+    var gd = (guides && guides[g.folder]) || {};
+    var a = g.start ? new Date(g.start) : null, b = g.end ? new Date(g.end) : null;
+    var st = g.stage === 'ok' && a && b && a <= today && today <= b ? 'tour' : g.stage;
     var id = 'KW-' + Utilities.formatDate(new Date(g.start || Date.now()), tz, 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900);
-    var d = { src: g.folder, sheet: g.sheet, link: g.link, gpin: g.pin, staff: g.staff, lang: g.lang, guide: {}, transport: {}, hotels: [], docs: {}, contact: {}, note: 'Из папки «1. Confirmed» на Диске' };
-    s.b.appendRow([id, new Date(), g.now ? 'tour' : 'ok', g.agent || 'Агент не указан', '', '', g.name, parseInt(String(g.guests).replace(/\D+/g, ' '), 10) || 0,
-      g.start ? new Date(g.start) : '', g.end ? new Date(g.end) : '', 0, 0, '', '', '', JSON.stringify(d), new Date()]);
-    bkLog_(s.h, id, 'Добавлена из Диска (папка «1. Confirmed»)', 'Система'); n++;
+    var d = { src: g.folder, stage: g.stage, sheet: gd.sheet || '', link: gd.link || '', gpin: gd.pin || '', staff: gd.staff || '', lang: gd.lang || '',
+      guide: {}, transport: {}, hotels: [], meals: [], trip: {}, docs: {}, contact: {}, note: 'Из папки «' + g.stageName + '» на Диске' };
+    s.b.appendRow([id, new Date(), st, g.agent || 'Агент не указан', '', '', g.name, paxFromName_(g.name) || parseInt(String(gd.guests || '').replace(/\D+/g, ' '), 10) || 0,
+      a || '', b || '', 0, 0, '', '', '', JSON.stringify(d), new Date()]);
+    bkLog_(s.h, id, 'Добавлена из Диска (папка «' + g.stageName + '», ' + g.year + ')', 'Система'); n++;
   });
   return n;
 }
 function api_bookingsSync() { var s = bkSheets_(); return bkFromDrive_(s, true); }
+
+/* ================= ЗАЯВКИ ПОСТАВЩИКАМ (27.11.2026) ================= */
+// Текст заявки готовит страница (по данным карточки). Здесь — сохранить его файлом Word в папку группы:
+// <группа> / Personal / Hotel  (отели)  ·  <группа> / Personal / Restaurant  (рестораны).
+// Файл с тем же именем заменяется (старый — в корзину), чтобы не было двух одинаковых.
+function folderIdFromUrl_(u) { var m = String(u || '').match(/folders\/([\w-]+)/) || String(u || '').match(/[?&]id=([\w-]+)/); return m ? m[1] : ''; }
+function sub_(parent, name) { var it = parent.getFoldersByName(name); return it.hasNext() ? it.next() : parent.createFolder(name); }
+function api_saveRequest(id, kind, fname, text) {
+  var x = api_booking(id), src = folderIdFromUrl_((x.d || {}).src);
+  if (!src) throw new Error('У группы нет папки на Диске — скопируйте текст кнопкой «Скопировать».');
+  var dir = sub_(sub_(DriveApp.getFolderById(src), 'Personal'), kind === 'hotel' ? 'Hotel' : 'Restaurant');
+  var name = String(fname || 'Заявка').replace(/[\\/:*?"<>|]+/g, ' ').trim();
+  var doc = DocumentApp.create(name), body = doc.getBody();
+  body.setMarginLeft(56).setMarginRight(56);
+  String(text || '').split('\n').forEach(function (line, k) {
+    var p = k === 0 ? body.getParagraphs()[0].setText(line) : body.appendParagraph(line);
+    p.setFontFamily('Arial').setFontSize(11);
+  });
+  doc.saveAndClose();
+  var blob = UrlFetchApp.fetch('https://docs.google.com/document/d/' + doc.getId() + '/export?format=docx',
+    { headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() } }).getBlob().setName(name + '.docx');
+  DriveApp.getFileById(doc.getId()).setTrashed(true);
+  var old = dir.getFilesByName(name + '.docx'); while (old.hasNext()) old.next().setTrashed(true);
+  var f = dir.createFile(blob);
+  var s = bkSheets_(); bkLog_(s.h, id, 'Заявка сохранена: ' + name + '.docx (Personal / ' + dir.getName() + ')');
+  return { url: f.getUrl(), folder: dir.getUrl() };
+}
+
 function api_bookings() {
   var s0 = bkSheets_(), added = 0;
   try { added = bkFromDrive_(s0, false); } catch (e) {}
