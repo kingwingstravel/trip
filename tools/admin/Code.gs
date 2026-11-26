@@ -158,7 +158,7 @@ var MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep:
             янв: 0, фев: 1, мар: 2, апр: 3, мая: 4, май: 4, июн: 5, июл: 6, авг: 7, сен: 8, окт: 9, ноя: 10, дек: 11 };
 function mon_(s) { var k = String(s || '').toLowerCase().replace(/[^a-zа-я]/g, '').slice(0, 3); return MON[k] != null ? MON[k] : -1; }
 function stage_(name) { var n = String(name).toLowerCase(); return /confirm/.test(n) ? 'ok' : /quot/.test(n) ? 'offer' : /draft/.test(n) ? 'new' : ''; }
-var SKIP = /^(архив|archive|initial info|personal|whatsapp|from |offer$|quotation$)/i;
+var SKIP = /^(архив|archive|initial info|personal|whatsapp|from |offer$|\d*\.?\s*(quotation|quoted|confirmed|drafted|completed)\s*$)/i;
 // Даты из названия: «02-08 Dec.», «26-Nov.- 6 Dec.», «30 Dec.-6 Jan.», «15-17 Bishkek, 17-20 Almaty» (месяц из папки)
 function datesFromName_(name, year, m0) {
   var s = String(name).replace(/^\s*\d{1,2}\.\s+/, ' '), toks = [], re = /\d+|[A-Za-zА-Яа-я]{3,}/g, x;
@@ -166,7 +166,7 @@ function datesFromName_(name, year, m0) {
     var t = x[0], before = s.slice(0, x.index).replace(/\s+$/, ''), after = s.slice(x.index + t.length);
     if (/^\d+$/.test(t)) {   // число = день, если это не «25+1», «20 Pax», «3 Star», «2025»
       if (t.length > 2 || +t < 1 || +t > 31) continue;
-      if (/\+$/.test(before) || /^\s*(\+|pax|star|чел|stan|★|\*|d\d|n\b|ноч|night|day)/i.test(after)) continue;
+      if (/\+$/.test(before) || /^\s*(\+|pax|star|чел|stan|★|\*|d\d|n\b|ноч|night|day|infant|inf\b|child|twin|dbl|sgl|trp|room|номер|реб|взр)/i.test(after)) continue;
       toks.push({ d: +t });
     } else if (mon_(t) >= 0 && /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|янв|фев|мар|апр|ма[йя]|июн|июл|авг|сен|окт|ноя|дек)/i.test(t)) toks.push({ m: mon_(t) });
   }
@@ -175,6 +175,8 @@ function datesFromName_(name, year, m0) {
     if (toks[i].d != null) days.push({ d: toks[i].d, m: null });
     else { for (var k = days.length - 1; k >= 0 && days[k].m == null; k--) days[k].m = toks[i].m; cm = toks[i].m; }
   }
+  var lastM = -1; for (var q = 0; q < days.length; q++) if (days[q].m != null) lastM = q;
+  if (lastM >= 0 && lastM < days.length - 1) days = days.slice(0, lastM + 1);   // «3-6 Nov. 7 Pax (1 Infant)» — после месяца уже не даты
   if (!days.length) return null;
   var a = days[0], b = days[days.length - 1];
   var ma = a.m != null ? a.m : (m0 >= 0 ? m0 : cm), mb = b.m != null ? b.m : ma;
@@ -210,7 +212,8 @@ function scanGroups_(fresh) {
               var nm = gf.getName();
               if (SKIP.test(nm)) return;
               var dd = datesFromName_(nm, yr, m0), upd = gf.getLastUpdated().getTime();
-              if (dd ? dd.end < today : upd < Date.now() - 60 * 864e5) return;
+              var monthEnd = m0 >= 0 ? new Date(yr, m0 + 1, 0) : null;   // дат в названии нет — смотрим месяц папки
+              if (dd ? dd.end < today : monthEnd ? monthEnd < today : upd < Date.now() - 60 * 864e5) return;
               out.push({ name: nm, agent: agent, year: yr, stage: st, stageName: sf.getName(), month: m0 >= 0 ? mf.getName() : '',
                 start: dd ? dd.start.getTime() : 0, end: dd ? dd.end.getTime() : 0, folder: gf.getUrl(), id: gf.getId() });
             });
@@ -488,9 +491,10 @@ function bkFromDrive_(s, force) {
       }
       return;
     }
+    // путеводители — для ссылок и дат, если в названии их нет
     if (g.stage === 'ok' && !guides) { guides = {}; try { api_groups().forEach(function (x) { guides[x.folder] = x; }); } catch (e) {} }
     var gd = (guides && guides[g.folder]) || {};
-    var a = g.start ? new Date(g.start) : null, b = g.end ? new Date(g.end) : null;
+    var a = g.start ? new Date(g.start) : gd.start ? new Date(gd.start) : null, b = g.end ? new Date(g.end) : gd.end ? new Date(gd.end) : null;
     var st = g.stage === 'ok' && a && b && a <= today && today <= b ? 'tour' : g.stage;
     var id = 'KW-' + Utilities.formatDate(new Date(g.start || Date.now()), tz, 'yyMMdd') + '-' + Math.floor(100 + Math.random() * 900);
     var d = { src: g.folder, stage: g.stage, sheet: gd.sheet || '', link: gd.link || '', gpin: gd.pin || '', staff: gd.staff || '', lang: gd.lang || '',
