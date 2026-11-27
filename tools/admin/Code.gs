@@ -579,6 +579,88 @@ function fromGuide_(d, url) {
   return done.join(', ');
 }
 
+/* ================= ПУТЕВОДИТЕЛЬ: готовность, публикация, PIN и коды (27.11.2026) =================
+   Кнопка «Опубликовать» в карточке группы: ставит галочку B23 в таблице «Путеводитель» и запускает
+   сборку ТОЛЬКО этой группы в GitHub (trip → Actions → Guide autopilot, only = id таблицы). Через 2–4 минуты
+   в таблице появляются ссылка и PIN (B25), код гида (B26), ссылка гида (C26) — админка их показывает.
+   Если ключ GitHub не умеет запускать сборку — галочка всё равно стоит, путеводитель выйдет утром (05:47). */
+function guideSheetIn_(folderId) {
+  var it = DriveApp.getFolderById(folderId).getFilesByType(MimeType.GOOGLE_SHEETS);
+  while (it.hasNext()) { var f = it.next(); if (f.getName().indexOf('Путеводитель') >= 0) return f; }
+  return null;
+}
+function guideInfo_(folderUrl) {
+  var fid = folderIdFromUrl_(folderUrl); if (!fid) return { none: true, why: 'У группы нет папки на Диске' };
+  var f = guideSheetIn_(fid); if (!f) return { none: true, folder: folderUrl };
+  var sh = SpreadsheetApp.openById(f.getId()).getSheetByName('Путеводитель'); if (!sh) return { none: true, folder: folderUrl, sheet: f.getUrl(), why: 'В таблице нет листа «Путеводитель»' };
+  var v = sh.getRange('A1:L70').getDisplayValues(), B = {}, hdr = -1;
+  for (var i = 0; i < 27; i++) if (v[i][0]) B[i + 1] = String(v[i][1] || '').trim();
+  for (var j = 0; j < v.length; j++) if (v[j][0] === 'День' && v[j][1] === 'Дата') { hdr = j; break; }
+  var days = []; if (hdr >= 0) for (var k = hdr + 1; k < v.length; k++) { if (!/^\d+$/.test(String(v[k][0]).trim())) break; days.push(v[k]); }
+  var q = function (t) { return /\?/.test(String(t || '')); }, e = function (t) { return !String(t || '').trim(); };
+  // обязательное: без этого путеводитель не соберётся
+  var must = [], warn = [];
+  if (e(B[5])) must.push('Группа (B5)');
+  if (!/\d{1,2}\.\d{1,2}\.\d{4}\s*[–-]\s*\d{1,2}\.\d{1,2}\.\d{4}/.test(B[7] || '')) must.push('Даты (B7) — формат 26.11.2026 – 07.12.2026');
+  if (e(B[8])) must.push('Язык путеводителя (B8)');
+  if (!days.length) must.push('Дни программы (с 29-й строки)');
+  else if (days.some(function (r) { return e(r[1]) || e(r[5]); })) must.push('У каждого дня — дата и план дня (колонки B и F)');
+  // желательно: жёлтое и «?»
+  [[11, 'Руководитель группы'], [12, 'Прилёт'], [13, 'Вылет'], [14, 'Отель'], [16, 'Гид'], [17, 'Телефон гида'], [19, 'Водитель']].forEach(function (p) {
+    if (e(B[p[0]])) warn.push(p[1] + ' — пусто'); else if (q(B[p[0]])) warn.push(p[1] + ' — есть «?»');
+  });
+  if (/агент/i.test(B[9] || '') && e(B[10])) must.push('Файл логотипа агента (B10)');
+  var dq = 0, dn = 0; days.forEach(function (r) { for (var c = 2; c <= 10; c++) if (q(r[c])) dq++; if (e(r[7]) && r !== days[days.length - 1]) dn++; });
+  if (dq) warn.push('В днях программы «?»: ' + dq);
+  if (dn) warn.push('Дней без ночлега (колонка H): ' + dn);
+  var b25 = String(v[24][1] || ''), link = (b25.match(/https:\/\/\S+\/g\/[a-z0-9]{8}\//) || [''])[0], pin = (b25.match(/PIN\s*(\d{6})/) || ['', ''])[1];
+  var staff = String(v[25][1] || '').replace(/\D/g, ''), staffLink = (String(v[25][2] || '').match(/https:\/\/\S+/) || [''])[0];
+  if (!staffLink && link && pin && staff) staffLink = link + '?p=' + pin + '&s=' + staff;
+  var gtext = (b25.split('Текст для группы:')[1] || '').trim();
+  if (!gtext && link && pin) gtext = 'Your travel guide: ' + link + '?p=' + pin + '  PIN: ' + pin;
+  var log = String(v[23][1] || ''), pubs = log.match(/Опубликовано[^·\n]*/g) || [];
+  return { id: f.getId(), sheet: f.getUrl(), folder: folderUrl, publish: String(v[22][1]).toUpperCase() === 'TRUE',
+    title: String(v[0][0] || '').replace(/^Путеводитель\s*[—-]\s*/, ''), dates: B[7] || '', lang: B[8] || '',
+    must: must, warn: warn, ready: !must.length, days: days.length,
+    link: link, pin: pin, tlink: link && pin ? link + '?p=' + pin : '', staff: staff, slink: staffLink, gtext: gtext,
+    last: pubs.length ? pubs[pubs.length - 1].trim() : '', run: PropertiesService.getScriptProperties().getProperty('grun_' + f.getId()) || '' };
+}
+function api_guide(id) {
+  var x = api_booking(id), d = x.d || {}, g = guideInfo_(d.src);
+  if (!g.none && (g.sheet !== d.sheet || g.link !== (d.link || '') || g.pin !== (d.gpin || '') || g.staff !== (d.staff || ''))) {   // запомнить в карточке
+    var s = bkSheets_(), v = s.b.getDataRange().getValues();
+    for (var i = 1; i < v.length; i++) if (String(v[i][0]) === id) {
+      var dj = {}; try { dj = JSON.parse(v[i][15] || '{}'); } catch (e) {}
+      dj.sheet = g.sheet; dj.link = g.link; dj.gpin = g.pin; dj.staff = g.staff;
+      s.b.getRange(i + 1, 16).setValue(JSON.stringify(dj)); break;
+    }
+  }
+  return g;
+}
+function api_guidePublish(id) {
+  var lock = LockService.getScriptLock(); lock.waitLock(15000);
+  try {
+    var x = api_booking(id), g = guideInfo_((x.d || {}).src);
+    if (g.none) throw new Error('У группы ещё нет таблицы «Путеводитель».');
+    if (!g.ready) throw new Error('Сначала заполните: ' + g.must.join('; '));
+    var sh = SpreadsheetApp.openById(g.id).getSheetByName('Путеводитель'); sh.getRange('B23').setValue(true);
+    var now = new Date(), stamp = Utilities.formatDate(now, 'Asia/Almaty', 'dd.MM HH:mm'), started = false, why = '';
+    try {
+      var t = token_(); if (!t) throw new Error('нет ключа');
+      var r = UrlFetchApp.fetch('https://api.github.com/repos/' + CFG.OWNER + '/trip/actions/workflows/guide-autopilot.yml/dispatches', {
+        method: 'post', muteHttpExceptions: true, contentType: 'application/json',
+        headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
+        payload: JSON.stringify({ ref: 'main', inputs: { force: true, only: g.id } }) });
+      started = r.getResponseCode() === 204;
+      if (!started) why = 'GitHub ' + r.getResponseCode();
+    } catch (e) { why = String(e.message || e); }
+    if (started) PropertiesService.getScriptProperties().setProperty('grun_' + g.id, String(now.getTime()));
+    var s = bkSheets_();
+    bkLog_(s.h, id, started ? 'Путеводитель: «Опубликовать» — сборка запущена ' + stamp : 'Путеводитель: галочка «Опубликовать» поставлена ' + stamp + ' — выйдет утром (' + why + ')');
+    return { started: started, why: why, had: !!g.link };
+  } finally { lock.releaseLock(); }
+}
+
 /* ================= ЗАЯВКИ ПОСТАВЩИКАМ (27.11.2026) ================= */
 // Текст заявки готовит страница (по данным карточки). Здесь — сохранить его файлом Word в папку группы:
 // <группа> / Personal / Hotel (отели) · Personal / Restaurant (рестораны) · Personal / Transport & Guides (гид, водитель).

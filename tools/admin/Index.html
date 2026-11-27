@@ -285,6 +285,41 @@ async function vGroups(){m.innerHTML='<div class="view"><h1>Группы'+qb('gr
   <div style="margin-top:6px">${g.link?`<a href="${esc(g.link)}" target="_blank">Путеводитель ↗</a> · PIN <b>${esc(g.pin)}</b>${g.staff?' · код гида <b>'+esc(g.staff)+'</b>':''}`:g.noGuide?'<span class="pill off">путеводителя ещё нет</span>':`<span class="pill ${g.publish?'warn':'off'}">${g.publish?'опубликуется утром':'не опубликован'}</span>`}</div></div>
   ${g.sheet?`<a class="btn ghost" href="${esc(g.sheet)}" target="_blank">Таблица</a>`:`<a class="btn ghost" href="${esc(g.folder)}" target="_blank">Папка</a>`}</div>`).join('')}</div>`:'<div class="card">Текущих групп нет.</div>'}
 
+/* ---------- Путеводитель в карточке группы (27.11.2026): готовность, «Опубликовать», ссылки, PIN и коды ---------- */
+async function guideCard(x,wait){const box=$('#gcard');if(!box)return;let g;try{g=await call('api_guide',x.id)}catch(e){box.innerHTML='<h2>📲 Путеводитель</h2><p style="color:var(--bad)">'+esc(e.message||e)+'</p>';return}
+ if(!$('#gcard'))return;
+ const cp=(t,v)=>`<button class="btn ghost" data-cp="${esc(v)}" title="Скопировать">📋</button>`;
+ const row=(t,v,note,link)=>v?`<div class="kv"><div><b>${t}</b>${note?` <small style="color:var(--bad)">${note}</small>`:''}<small style="display:block;word-break:break-all">${link?`<a href="${esc(v)}" target="_blank">${esc(v)}</a>`:`<span style="font-size:18px;font-weight:700;letter-spacing:.08em;color:var(--navy)">${esc(v)}</span>`}</small></div>${cp(t,v)}</div>`:'';
+ if(g.none){box.innerHTML=`<h2>📲 Путеводитель</h2><p><span class="pill off">таблицы «Путеводитель» ещё нет</span></p><p style="color:var(--muted);margin:6px 0 10px">${esc(g.why||'В папке группы нет таблицы «Путеводитель». Когда она появится, здесь будет кнопка «Опубликовать».')}</p>${g.folder?`<a class="btn ghost" href="${esc(g.folder)}" target="_blank">Папка группы ↗</a>`:''}`;return}
+ const st=wait?['warn','⏳ собираю…']:!g.ready?['bad','не готов']:g.link?['ok','опубликован']:g.publish?['warn','опубликуется утром']:g.warn.length?['warn','можно публиковать, есть пробелы']:['ok','готов к публикации'];
+ box.innerHTML=`<h2>📲 Путеводитель</h2>
+  <div class="row" style="gap:8px;margin-bottom:8px"><span class="pill ${st[0]}">${st[1]}</span>${g.last?`<small style="color:var(--muted)">${esc(g.last)}</small>`:''}</div>
+  ${g.must.length?`<div style="background:#FCE8E6;border-radius:12px;padding:10px 12px;margin:8px 0"><b style="color:var(--bad)">Нужно заполнить, без этого не выйдет:</b><ul style="margin:6px 0 0;padding-left:20px">${g.must.map(t=>'<li>'+esc(t)+'</li>').join('')}</ul></div>`:''}
+  ${g.warn.length?`<details style="background:#FFF4DA;border-radius:12px;padding:10px 12px;margin:8px 0"><summary style="cursor:pointer;color:#8A5B00"><b>Пробелы: ${g.warn.length}</b> — путеводитель выйдет, но покажет «уточняется»</summary><ul style="margin:6px 0 0;padding-left:20px">${g.warn.map(t=>'<li>'+esc(t)+'</li>').join('')}</ul></details>`:''}
+  ${wait?`<p style="color:var(--muted)">Сборка идёт на GitHub, обычно 2–4 минуты. Страницу можно не закрывать — ссылка и PIN появятся здесь сами.</p>`:''}
+  ${g.link?`<div style="margin-top:6px">
+   ${row('Ссылка для туристов',g.tlink,'',1)}
+   ${row('PIN для туристов',g.pin)}
+   ${row('Код гида и агента',g.staff,'туристам не давать')}
+   ${row('Ссылка для гида и агента',g.slink,'туристам не давать',1)}
+   ${g.gtext?`<label class="f">Текст для группы <small>готов для WhatsApp</small></label><textarea class="t" id="gtx" readonly style="min-height:110px">${esc(g.gtext)}</textarea>`:''}</div>`:''}
+  <div class="row" style="margin-top:12px;gap:8px">
+   <button class="btn main" id="gpub" ${!g.ready||wait?'disabled style="opacity:.5"':''}>${g.link?'⟳ Обновить путеводитель':'📲 Опубликовать путеводитель'}</button>
+   ${g.gtext?'<button class="btn" id="gtc">📋 Текст для группы</button>':''}
+   ${g.tlink?`<a class="btn ghost" href="${esc(g.tlink)}" target="_blank">Открыть ↗</a>`:''}
+   <a class="btn ghost" href="${esc(g.sheet)}" target="_blank">Таблица ↗</a></div>`;
+ const cpy=async v=>{try{await navigator.clipboard.writeText(v)}catch(e){const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}toast('Скопировано ✓')};
+ box.querySelectorAll('[data-cp]').forEach(b=>b.onclick=()=>cpy(b.dataset.cp));
+ if($('#gtc'))$('#gtc').onclick=()=>cpy(g.gtext);
+ $('#gpub').onclick=async()=>{const q=g.link?'Обновить путеводитель по данным таблицы? Ссылка и PIN останутся те же.':'Опубликовать путеводитель группы? Появятся ссылка, PIN и код гида.';if(!confirm(q))return;
+  const b=$('#gpub');b.disabled=true;b.textContent='…';let r;try{r=await call('api_guidePublish',x.id)}catch(e){b.disabled=false;b.textContent='📲 Опубликовать путеводитель';return err(e)}
+  if(!r.started){toast('Галочка поставлена ✓ Путеводитель выйдет утром');guideCard(x);return}
+  toast('Сборка запущена ✓ Обычно 2–4 минуты');const was=g.last+'|'+g.link,t0=Date.now();guideCard(x,true);
+  const tick=async()=>{if(!$('#gcard'))return;let n;try{n=await call('api_guide',x.id)}catch(e){n=null}
+   if(n&&(n.last+'|'+n.link)!==was){toast(g.link?'Путеводитель обновлён ✓':'Путеводитель опубликован ✓');return guideCard(x)}
+   if(Date.now()-t0>7*60e3){toast('Сборка дольше обычного — загляните через пару минут',1);return guideCard(x)}
+   setTimeout(tick,20000)};setTimeout(tick,30000)}}
+
 /* ---------- Ключ ---------- */
 function vKey(){m.innerHTML=`<div class="view"><h1>Ключ GitHub${qb('key')}</h1><p class="lead">Нужен один раз: через него админка сохраняет изменения на сайт.</p>
  <div class="card"><ol style="margin:0 0 10px;padding-left:20px;line-height:1.8"><li>github.com → аккаунт kingwingstravel → Settings → Developer settings → Fine-grained tokens → <b>Generate new token</b></li>
@@ -504,6 +539,7 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
   <button class="btn" data-a="meal" style="margin-top:10px">＋ Обед / ужин</button></div>
  <div class="card bk"><h2>📄 Документы</h2>
   ${[['rooming','Rooming list'],['voucher','Ваучер'],['invoice','Инвойс']].map(([k,t])=>`<div class="kv"><label class="sw"><input type="checkbox" data-doc="${k}" ${d.docs[k]?'checked':''}><span></span></label><b>${t}</b></div>`).join('')}</div>
+ ${d.src?'<div class="card bk" id="gcard"><h2>📲 Путеводитель</h2><div class="skel" style="height:60px"></div></div>':''}
  <div class="card bk"><h2>📝 Группа</h2>
   ${ln('Агент',esc(x.agent)+(x.pin?' · PIN '+esc(x.pin):''),'grp')}
   ${ln('Контакт',esc([d.contact.name,d.contact.wa,d.contact.email].filter(Boolean).join(' · ')||'—'),'grp',1)}
@@ -527,6 +563,7 @@ async function vBooking(id){m.innerHTML='<div class="view"><div class="skel"></d
  m.querySelectorAll('[data-de]').forEach(b=>b.onclick=()=>dayDlg(x,d,+b.dataset.de,sv));
  m.querySelectorAll('[data-rq]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=b.dataset.rq;reqDlg(x,d,{h:'hotel',m:'meal',g:'guide',t:'driver'}[k[0]],+k.slice(1))});
  m.querySelectorAll('[data-doc]').forEach(i=>i.onchange=()=>{d.docs[i.dataset.doc]=i.checked;sv('')});
+ if(d.src)guideCard(x);
  m.querySelectorAll('[data-a]').forEach(b=>b.onclick=e=>{e.stopPropagation();const a=b.dataset.a;
   if(a==='grp')return bkEdit(x);
   if(a==='hotel')return hotelDlg(x,d,-1,sv);

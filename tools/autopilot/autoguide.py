@@ -19,6 +19,9 @@ SITE = 'https://trip.kingwingstravel-dmc.com'
 ARGS = sys.argv[1:]
 FORCE, DRY, CHECK = '--force' in ARGS, '--dry' in ARGS, '--check' in ARGS
 LOCAL = ARGS[ARGS.index('--local') + 1] if '--local' in ARGS else None
+# 27.11.2026: кнопка «Опубликовать» в админке — собрать ТОЛЬКО одну группу (id таблицы «Путеводитель»), остальных не трогать
+ONLY = (ARGS[ARGS.index('--only') + 1] if '--only' in ARGS and ARGS.index('--only') + 1 < len(ARGS) else os.environ.get('ONLY_ID', '')).strip()
+if ONLY and not re.fullmatch(r'[\w-]{20,80}', ONLY): ONLY = '__bad__'   # не id таблицы — ничего не собираем
 NOW = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) + datetime.timedelta(hours=5)          # Алматы, UTC+5
 TODAY = NOW.date()
 LOG = []
@@ -488,7 +491,7 @@ def main():
         if not FEED: log('Нет секрета GUIDE_FEED — автопилот не настроен (см. ИНСТРУКЦИЯ.md).'); return 0
         # 1) автозаполнение таблиц из файлов партнёров (Gemini, в Google-скрипте) — только пустые клетки
         try:
-            todo = post({'op': 'filllist'}).get('list') or []
+            todo = [] if ONLY else (post({'op': 'filllist'}).get('list') or [])
             for it in todo[:15]:
                 r = post({'op': 'fill', 'folder': it['folder'], 'partner': it.get('partner', '')})
                 log('Автозаполнение', it.get('name'), ':', r.get('ok') or r.get('error'))
@@ -503,6 +506,7 @@ def main():
         if grp.get('error'): log('-', grp.get('name'), ':', grp['error']); continue
         g, t = grp['g'], grp.get('t') or []
         name = grp.get('name', '')
+        if ONLY and grp.get('id') != ONLY: continue
         if not tru(C(g, 'B23')): continue
         try:
             hdr, rows = day_rows(g); start, end, ds = dates_of(g, rows)
@@ -513,7 +517,9 @@ def main():
         code, pin = (mc.group(1), mp.group(1)) if mc and mp else (None, None)
         sh = srchash(g, t, C(g, 'B9') + ' ' + C(g, 'B10'))
         if code and os.path.exists(os.path.join(REPO, 'g', code, 'src.sha')) and open(os.path.join(REPO, 'g', code, 'src.sha')).read().strip() == sh:
-            log('-', name, ': без изменений'); continue
+            log('-', name, ': без изменений')
+            if ONLY: writes.append((grp['id'], {}, f' · Опубликовано {NOW:%d.%m %H:%M} (без изменений)', None))   # админка видит, что кнопка сработала
+            continue
         try:
             G, start, end, ds, lang = build_group(grp)
         except Exception as e: log('-', name, ': НЕ собрано —', e); continue
