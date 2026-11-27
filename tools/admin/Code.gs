@@ -688,6 +688,43 @@ function api_saveRequest(id, kind, fname, text) {
   return { url: f.getUrl(), folder: dir.getUrl() };
 }
 
+/* ===== Подтверждения отелей из папки группы (27.11.2026, просьба владельца) =====
+   <группа>/Personal/Hotel (и подпапки «Directly from hotel», «Modified» …): PDF/фото от отеля с его названием в имени файла
+   → отель «подтверждён» сам, в карточке ссылка на файл. Наши заявки («Заявка …») не считаются.
+   Если владелец сам снял галочку (okManual = false) — не ставим обратно. Список файлов кэшируется на 10 минут. */
+var HOTEL_GENERIC_ = /^(hotel|hotels|residence|residences|resort|spa|plaza|garden|town|lake|lakes|inn|house|guest|the|and|city|grand|apart|apartments|hostel|boutique|отель|гостиница)$/;
+function hotelKey_(s) { return String(s || '').toLowerCase().replace(/y/g, 'i').replace(/[^a-zа-яё0-9]+/g, ' '); }
+function hotelDocs_(folderUrl) {
+  var fid = folderIdFromUrl_(folderUrl); if (!fid) return [];
+  var c = CacheService.getScriptCache(), ck = 'hdoc_' + fid, got = c.get(ck); if (got) return JSON.parse(got);
+  var out = [];
+  try {
+    var p = DriveApp.getFolderById(fid).getFoldersByName('Personal');
+    if (p.hasNext()) {
+      var h = p.next().getFoldersByName('Hotel');
+      if (h.hasNext()) (function walk(f, depth) {
+        var it = f.getFiles();
+        while (it.hasNext()) { var x = it.next(), n = x.getName(); if (!/^заявка/i.test(n)) out.push({ n: n, u: x.getUrl() }); }
+        if (depth < 3) { var fs = f.getFolders(); while (fs.hasNext()) walk(fs.next(), depth + 1); }
+      })(h.next(), 0);
+    }
+  } catch (e) {}
+  try { c.put(ck, JSON.stringify(out), 600); } catch (e) {}
+  return out;
+}
+function hotelConfirm_(d) {
+  if (!d || !d.hotels || !d.hotels.length || !d.src) return;
+  var docs = hotelDocs_(d.src); if (!docs.length) return;
+  d.hotels.forEach(function (h) {
+    var words = hotelKey_(h.name).split(' ').filter(function (w) { return w.length >= 4 && !HOTEL_GENERIC_.test(w); });
+    if (!words.length) return;
+    var hit = null;
+    docs.some(function (f) { var k = ' ' + hotelKey_(f.n) + ' '; if (words.every(function (w) { return k.indexOf(w) >= 0; })) { hit = f; return true; } return false; });
+    if (!hit) return;
+    h.doc = hit.u; h.docName = hit.n;
+    if (!h.ok && h.okManual !== false) { h.ok = true; h.auto = true; }
+  });
+}
 function api_bookings() {
   var s0 = bkSheets_(), added = 0;
   try { added = bkFromDrive_(s0, false); } catch (e) {}
@@ -698,6 +735,7 @@ function api_bookings() {
     if (x.st === 'ok' && x.start && x.start <= today && (!x.end || today <= x.end)) {   // начался тур → «В туре» сам
       s.b.getRange(i + 1, 3).setValue('tour'); bkLog_(s.h, x.id, 'Confirmed → В туре (тур начался)', 'Система'); x.st = 'tour';
     }
+    if (!/^(done|lost)$/.test(x.st)) try { hotelConfirm_(x.d); } catch (e) {}
     out.push(x);
   }
   return { list: out, today: today, added: added, sheet: s.ss.getUrl() + '#gid=' + s.b.getSheetId() };
@@ -708,7 +746,7 @@ function api_booking(id) {
   if (!x) throw new Error('Бронь не найдена');
   var hv = s.h.getDataRange().getValues(), hist = [];
   for (var k = hv.length - 1; k > 0; k--) if (String(hv[k][1]) === id) hist.push({ at: hv[k][0] instanceof Date ? hv[k][0].toISOString() : '', who: String(hv[k][2]), what: String(hv[k][3]) });
-  x.hist = hist; return x;
+  x.hist = hist; try { hotelConfirm_(x.d); } catch (e) {} return x;
 }
 // o: {id?, st, agent, pin, slug, title, n, start, end, total, dep, depPaid, balPaid, owner, d}; what — текст для истории
 function api_bookingSave(o, what) {
