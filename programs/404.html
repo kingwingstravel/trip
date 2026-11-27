@@ -71,7 +71,11 @@ ul.ok li:before{content:"✓";position:absolute;left:4px;color:#1f8a5b;font-weig
 .terms dl{display:grid;grid-template-columns:150px 1fr;gap:8px 16px}.terms dt{font-weight:700}.terms dd{margin:0}
 @media(max-width:560px){.terms dl{grid-template-columns:1fr;gap:2px}.terms dd{margin-bottom:8px}}
 .po{display:none}
-@media print{.terms,.top nav,.live,.req,.mob,.cta,footer,.alt,.proof,section .spin{display:none!important}.po{display:block;margin-top:20px;font-size:14px}
+.trd{background:var(--ink);color:#fff}.trd .wrap{display:flex;gap:14px;align-items:center;padding-top:16px;padding-bottom:16px}.trd b{flex:none;background:var(--gold);color:var(--ink);border-radius:999px;padding:6px 14px;font-size:15px}.trd p{margin:0;font-size:17px;line-height:1.45}
+@media(max-width:600px){.trd .wrap{flex-direction:column;align-items:flex-start;gap:8px}}
+.rvg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:18px}.rvc{margin:0;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.rvc p{margin:0;font-size:17px;line-height:1.5;font-style:italic}.rvc .o{font-style:normal;font-size:14px;color:var(--muted)}.rvc cite{font-style:normal;font-size:15px;color:var(--muted)}.rvc cite b{color:var(--ink)}.rvc a{margin-top:auto;font-weight:700;color:var(--deep);text-decoration:none}
+@media print{.terms,.top,.live,.trd,.rvw,.hbtn,#kwp,.kwp,.kwpb,.req,.mob,.cta,footer,.alt,.proof,section .spin{display:none!important}.po{display:block;margin-top:20px;font-size:14px}
 .hero{background:#fff!important;color:#000;padding:10px 0}.crumb a{color:#333!important}.hero p,.crumb{color:#333}.chip{border:1px solid #ccc}.grid{display:block}.cover img{max-height:260px;animation:none}
 .days li{break-inside:avoid}.days figure{display:none}.js .rv{opacity:1!important;transform:none!important}body{font-size:13px}section{padding:12px 0}}
 .noimg{aspect-ratio:5/3;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:20px;color:#fff}.noimg b{font-size:22px}.noimg span{font-size:15px;color:#D3DFEE;line-height:1.45}
